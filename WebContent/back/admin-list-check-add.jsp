@@ -31,136 +31,85 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>姓名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="李友惠" placeholder="请输入业主姓名" id="ownerName" name="ownerName">
-			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>密码：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="123" placeholder="" id="ownerPwd" name="ownerPwd">
+				<input type="text" class="input-text" value="李友惠" placeholder="请输入业主姓名" id="tenementName" name="tenementName">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>性别：</label>
 			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
 				<div class="radio-box">
-					<input name="ownerSex" type="radio" id="sex-1" value="男" checked>
+					<input name="sex" type="radio" id="sex-1" value="男" checked>
 					<label for="sex-1">男</label>
 				</div>
 				<div class="radio-box">
-					<input type="radio" id="sex-2" name="ownerSex" value="女">
+					<input type="radio" id="sex-2" name="sex" value="女">
 					<label for="sex-2">女</label>
 				</div>
 				<div class="radio-box">
-					<input type="radio" id="sex-3" name="ownerSex" value="保密">
+					<input type="radio" id="sex-3" name="sex" value="保密">
 					<label for="sex-3">保密</label>
 				</div>
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>楼号：</label>
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>工作单位：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="7" placeholder="" id="ownerLHao" name="ownerLHao">
-			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>房号：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="408" placeholder="" id="ownerFHao" name="ownerFHao">
-			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>是否户主：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="是" placeholder="" id="ownerIsHuZhu" name="ownerIsHuZhu">
-			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>与户主关系：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="自己" placeholder="" id="ownerRelation" name="ownerRelation">
-			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>民族：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="喊" placeholder="" id="ownerNationality" name="ownerNationality">
-			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>籍贯：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="厦门" placeholder="" id="ownerHomeTown" name="ownerHomeTown">
-			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机号码：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="1531111111" placeholder="请输入手机号码" id="ownerMobileTel" name="ownerMobileTel">
-			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>邮箱：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="15@1" placeholder="@" name="ownerEmail" id="ownerEmail">
-			</div>
-		</div>
-
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>出生日期：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="1999-10-10" placeholder="" id="ownerBirthday" name="ownerBirthday">
+				<input type="text" class="input-text" value="4399公司" placeholder="" id="aunit" name="aunit">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>身份证号码：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="3506241996096446" placeholder="" id="ownerCardId" name="ownerCardId">
-			</div>
-		</div>
-		
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>政治面貌：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="党员" placeholder="" id="ownerFaction" name="ownerFaction">
+				<input type="text" class="input-text" value="350624199712123810" placeholder="" id="idCard" name="idCard">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>学历：</label>
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机号码：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="博士" placeholder="" id="ownerEducational" name="ownerEducational">
+				<input type="text" class="input-text" value="17720153123" placeholder="" id="mobilePhone" name="mobilePhone">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邮箱：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="177@qq.com" placeholder="" id="email" name="email">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>入住时间：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="2018-09-10" placeholder="" id="areStay" name="areStay">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>民族：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="汉" placeholder="" id="nationality" name="nationality">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>婚姻状况：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="委会" placeholder="" id="ownerMaritalStatus" name="ownerMaritalStatus">
+				<input type="text" class="input-text" value="未婚" placeholder="" id="maritalStatus" name="maritalStatus">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>家庭详细地址：</label>
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>居住类型：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="在自爱个自爱者" placeholder="" id="ownerHomeAddress" name="ownerHomeAddress">
+				<input type="text" class="input-text" value="常住" placeholder="" id="residenceType" name="residenceType">
 			</div>
 		</div>
 		
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>入住时间：</label>
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>状态：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="2018-10-19" placeholder="" id="ownerHomeDate" name="ownerHomeDate">
+				<input type="text" class="input-text" value="0" placeholder="" id="status" name="status">
 			</div>
 		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>入住办理人：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="李" placeholder="" id="ownerCreateby" name="ownerCreateby">
-			</div>
-		</div>
-
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3">备注：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<textarea name="ownerRemark" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" onKeyUp="textarealength(this,100)"></textarea>
+				<textarea name="remark" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" onKeyUp="textarealength(this,100)"></textarea>
 				<p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
 			</div>
 		</div>
@@ -198,28 +147,22 @@ $(function(){
 		console.log(111);
 		//ajax请求
 		$.ajax({
-			url : "${pageContext.request.contextPath}/hms.do?op=register",//url地址
+			url : "${pageContext.request.contextPath}/TenementBeanServlet?op=register",//url地址
 			type : "post",
 			data : {
-				"ownerName" : $('#ownerName').val(),
-				"ownerPwd" : $('#ownerPwd').val(),//传值
-				"ownerSex" : $("input[type='radio']:checked").val(),
-				"ownerLHao" : $('#ownerLHao').val(),
-				"ownerFHao" : $('#ownerFHao').val(),
-				"ownerIsHuZhu" : $('#ownerIsHuZhu').val(),
-				"ownerRelation" : $('#ownerRelation').val(),
-				"ownerNationality" : $('#ownerNationality').val(),
-				"ownerHomeTown" : $('#ownerHomeTown').val(),
-				"ownerMobileTel" : $('#ownerMobileTel').val(),
-				"ownerEmail" : $('#ownerEmail').val(),
-				"ownerBirthday" : $('#ownerBirthday').val(),
-				"ownerCardId" : $('#ownerCardId').val(),
-				"ownerEducational" : $('#ownerEducational').val(),
-				"ownerMaritalStatus" : $('#ownerMaritalStatus').val(),
-				"ownerHomeAddress" : $('#ownerHomeAddress').val(),
-				"ownerHomeDate" : $('#ownerHomeDate').val(),
-				"ownerCreateby" : $('#ownerCreateby').val(),
-				"ownerRemark" : $('#ownerRemark').val()
+				"tenementName" : $('#tenementName').val(),
+				"sex" : $("input[type='radio']:checked").val(),
+				"idCard" : $('#idCard').val(),
+				"aunit" : $('#aunit').val(),
+				"mobilePhone" : $('#mobilePhone').val(),
+				"email" : $('#email').val(),
+				"areStay" : $('#areStay').val(),
+				"createBy" : $('#createBy').val(),
+				"nationality" : $('#nationality').val(),
+				"homeAddress" : $('#homeAddress').val(),
+				"residenceType" : $('#residenceType').val(),
+				"maritalStatus" : $('#maritalStatus').val(),
+				"status" : $('#status').val(),
 			},
 			//成功后执行的操作
 			success : function(data) {

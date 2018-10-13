@@ -74,13 +74,12 @@
 								name="employeeCheckAll"></th>
 							<th>编号</th>
 							<th>姓名</th>
-							<th>楼号</th>
-							<th>房号</th>
-							<th>是否户主</th>
+							<th>身份证</th>
+							<th>所属单位</th>
+							<th>电话</th>
 							<th>手机号码</th>
-							<th>身份证号码</th>
-							<th>入住时间</th>
-							<th>办理人</th>
+							<th>邮箱</th>
+							<th>是否入住</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -209,7 +208,7 @@
 							layer.msg('删除成功');
 							//页面跳转，跳转到servlet
 							$.ajax({
-								url : "${pageContext.request.contextPath}/hms.do?op=deleteOwner",//url地址
+								url : "${pageContext.request.contextPath}/TenementBeanServlet?op=deleteTenement",//url地址
 								type : "post",
 								data : {
 									"ownerId" : $(obj).parents("tr").find("td").eq(1).text()
@@ -379,7 +378,7 @@
 		employee.url = "/"; //  这里 / 表示的是localhost/
 		employee.requestUrl = {
 			queryList : employee.url
-					+ "Community_Management_System/hms.do?op=dengji" //数据是从servlet一侧返回的 json格式
+					+ "CMSys/TenementBeanServlet" //数据是从servlet一侧返回的 json格式
 		};
 
 		employee.search = {
@@ -422,31 +421,28 @@
 					}
 				}, //这里是返回的json对象中的 属性值   {data : }
 				{
-					"data" : "ownerId"
+					"data" : "tenementId"
 				},
 				{
-					"data" : "ownerName"
+					"data" : "tenementName"
 				},
 				{
-					"data" : "ownerLHao"
+					"data" : "idCard"
 				},
 				{
-					"data" : "ownerFHao"
+					"data" : "aunit"
 				},
 				{
-					"data" : "ownerIsHuZhu"
+					"data" : "phone"
 				},
 				{
-					"data" : "ownerCardId"
+					"data" : "mobilePhone"
 				},
 				{
-					"data" : "ownerMobileTel"
+					"data" : "email"
 				},
 				{
-					"data" : "ownerHomeDate"
-				},
-				{
-					"data" : "ownerCreateby"
+					"data" : "areStay"
 				},
 				{ //创建操作那个列
 					"data" : "extn",

@@ -7,15 +7,13 @@ package com.feiyue.entiy;
 
 public class UserBean {
 	private String userId;
-	private String account;// 账号
-	private String userName;// 用户姓名
+	private String userName;// 用户账号
 	private String userPwd;
-	private String identityCard;// 身份证号码
+	private String idEntityCard;// 身份证号码
 	private String question;// 提示问题
 	private String answer;// 答案
 	private String email;
 	private RoleBean roleModel;// 角色对象
-	private String extent;
 
 
 	public String getUserId() {
@@ -26,21 +24,6 @@ public class UserBean {
 		this.userId = userId;
 	}
 
-	
-
-	/**
-	 * @return the account
-	 */
-	public String getAccount() {
-		return account;
-	}
-
-	/**
-	 * @param account the account to set
-	 */
-	public void setAccount(String account) {
-		this.account = account;
-	}
 
 	public String getUserName() {
 		return userName;
@@ -57,13 +40,14 @@ public class UserBean {
 	public void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
 	}
+	
 
-	public String getIdentityCard() {
-		return identityCard;
+	public String getIdEntityCard() {
+		return idEntityCard;
 	}
 
-	public void setIdentityCard(String identityCard) {
-		this.identityCard = identityCard;
+	public void setIdEntityCard(String idEntityCard) {
+		this.idEntityCard = idEntityCard;
 	}
 
 	public String getQuestion() {
@@ -98,13 +82,6 @@ public class UserBean {
 	public void setRoleModel(RoleBean roleModel) {
 		this.roleModel = roleModel;
 	}
-
-	public String getExtent() {
-		return extent;
-	}
-
-	public void setExtent(String extent) {
-		this.extent = extent;
-	}
-
+	
+	
 }
