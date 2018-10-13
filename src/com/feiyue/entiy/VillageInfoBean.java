@@ -1,20 +1,18 @@
 ﻿package com.feiyue.entiy;
 
-/*
- * 小区信息bean
+
+/**
+ * 小区表的实体类
+ * @author Administrator
+ *
  */
-
-import java.util.Date;
-
-
 public class VillageInfoBean {
-	private String villageId;
+	private int villageId;//编号
 	private String villageName;
-	private CommunityInfoBean communityModel;// 社区model
 	private String linkman;// 负责人
-	private Date setUpTime;// 建立日期
-	private String phone;
-	private String mobilePhone;
+	private String setUpTime;// 建立日期
+	private String phone;//电话
+	private String mobilePhone;//手机
 	private String floorArea;// 占地面积
 	private String buildingArea;// 建筑面积
 	private String garageArea;// 车库面积
@@ -22,14 +20,61 @@ public class VillageInfoBean {
 	private String greenArea;// 绿化面积
 	private String location;// 位置说明
 	private String introduction;// 小区说明
-	private String extent;
+	private String extent;//备注
 
 
-	public String getVillageId() {
+	
+	
+	
+	public VillageInfoBean() {
+		super();
+	}
+
+	
+	public VillageInfoBean(String villageName, String linkman, String setUpTime,
+			String phone, String mobilePhone, String floorArea, String buildingArea, String garageArea, String stallNum,
+			String greenArea, String location, String introduction, String extent,int villageId) {
+		super();
+		this.villageId = villageId;
+		this.villageName = villageName;
+		this.linkman = linkman;
+		this.setUpTime = setUpTime;
+		this.phone = phone;
+		this.mobilePhone = mobilePhone;
+		this.floorArea = floorArea;
+		this.buildingArea = buildingArea;
+		this.garageArea = garageArea;
+		this.stallNum = stallNum;
+		this.greenArea = greenArea;
+		this.location = location;
+		this.introduction = introduction;
+		this.extent = extent;
+	}
+	
+	public VillageInfoBean(String villageName, String linkman, String setUpTime,
+			String phone, String mobilePhone, String floorArea, String buildingArea, String garageArea, String stallNum,
+			String greenArea, String location, String introduction, String extent) {
+		super();
+		this.villageName = villageName;
+		this.linkman = linkman;
+		this.setUpTime = setUpTime;
+		this.phone = phone;
+		this.mobilePhone = mobilePhone;
+		this.floorArea = floorArea;
+		this.buildingArea = buildingArea;
+		this.garageArea = garageArea;
+		this.stallNum = stallNum;
+		this.greenArea = greenArea;
+		this.location = location;
+		this.introduction = introduction;
+		this.extent = extent;
+	}
+
+	public int getVillageId() {
 		return villageId;
 	}
 
-	public void setVillageId(String villageId) {
+	public void setVillageId(int villageId) {
 		this.villageId = villageId;
 	}
 
@@ -42,13 +87,6 @@ public class VillageInfoBean {
 
 	}
 
-	public CommunityInfoBean getCommunityModel() {
-		return communityModel;
-	}
-
-	public void setCommunityModel(CommunityInfoBean communityModel) {
-		this.communityModel = communityModel;
-	}
 
 	public String getLinkman() {
 		return linkman;
@@ -58,11 +96,11 @@ public class VillageInfoBean {
 		this.linkman = linkman;
 	}
 
-	public Date getSetUpTime() {
+	public String getSetUpTime() {
 		return setUpTime;
 	}
 
-	public void setSetUpTime(Date setUpTime) {
+	public void setSetUpTime(String setUpTime) {
 		this.setUpTime = setUpTime;
 	}
 
@@ -145,5 +183,15 @@ public class VillageInfoBean {
 	public void setExtent(String extent) {
 		this.extent = extent;
 	}
+
+	@Override
+	public String toString() {
+		return "VillageInfoBean [villageId=" + villageId + ", villageName=" + villageName + ", linkman=" + linkman + ", setUpTime=" + setUpTime + ", phone=" + phone
+				+ ", mobilePhone=" + mobilePhone + ", floorArea=" + floorArea + ", buildingArea=" + buildingArea
+				+ ", garageArea=" + garageArea + ", stallNum=" + stallNum + ", greenArea=" + greenArea + ", location="
+				+ location + ", introduction=" + introduction + ", extent=" + extent + "]";
+	}
+	
+	
 
 }

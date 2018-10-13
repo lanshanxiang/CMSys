@@ -1,8 +1,12 @@
 package com.feiyue.entiy;
 
-
+/**
+ * 楼房管理的实体类
+ * @author Administrator
+ *
+ */
 public class BuildingBean {
-	private String buildingId;// 楼房编号
+	private int buildingId;// 楼房编号
 	private String buildingName;// 楼名(A-1幢、A-2幢)
 	private String face;// 朝向
 	private double buildArea;// 建筑面积
@@ -10,15 +14,73 @@ public class BuildingBean {
 	private double height;// 高度
 	private String buildTime;// 建筑时间
 	private String type;// 类别
-	private VillageInfoBean villageInfoModel;// 小区编号（外键，与小区信息表建立联系）
-	private String extent;
-
+	private int villageId;// 小区编号（外键，与小区信息表建立联系）
+	private String extent;//备注
+	private String villageName;//小区名字
 	
-	public String getBuildingId() {
+	
+	
+	public String getVillageName() {
+		return villageName;
+	}
+
+	public void setVillageName(String villageName) {
+		this.villageName = villageName;
+	}
+
+	public BuildingBean() {
+		super();
+	}
+
+	public BuildingBean(String buildingName, String face, double buildArea, int floorNum, double height,
+			String buildTime, String type, int villageId, String extent,int buildingId) {
+		super();
+		this.buildingId = buildingId;
+		this.buildingName = buildingName;
+		this.face = face;
+		this.buildArea = buildArea;
+		this.floorNum = floorNum;
+		this.height = height;
+		this.buildTime = buildTime;
+		this.type = type;
+		this.villageId = villageId;
+		this.extent = extent;
+	}
+	
+	public BuildingBean(String buildingName, String face, double buildArea, int floorNum, double height,
+			String buildTime, String type, int villageId, String extent) {
+		super();
+		this.buildingName = buildingName;
+		this.face = face;
+		this.buildArea = buildArea;
+		this.floorNum = floorNum;
+		this.height = height;
+		this.buildTime = buildTime;
+		this.type = type;
+		this.villageId = villageId;
+		this.extent = extent;
+	}
+	
+	public BuildingBean(int buildingId, String buildingName, String face, double buildArea, int floorNum, double height,
+			String buildTime, String type, int villageId, String extent) {
+		super();
+		this.buildingId = buildingId;
+		this.buildingName = buildingName;
+		this.face = face;
+		this.buildArea = buildArea;
+		this.floorNum = floorNum;
+		this.height = height;
+		this.buildTime = buildTime;
+		this.type = type;
+		this.villageId = villageId;
+		this.extent = extent;
+	}
+
+	public int getBuildingId() {
 		return buildingId;
 	}
 
-	public void setBuildingId(String buildingId) {
+	public void setBuildingId(int buildingId) {
 		this.buildingId = buildingId;
 	}
 
@@ -78,12 +140,12 @@ public class BuildingBean {
 		this.type = type;
 	}
 
-	public VillageInfoBean getVillageInfoModel() {
-		return villageInfoModel;
+	public int getVillageId() {
+		return villageId;
 	}
 
-	public void setVillageInfoModel(VillageInfoBean villageInfoModel) {
-		this.villageInfoModel = villageInfoModel;
+	public void setVillageId(int villageId) {
+		this.villageId = villageId;
 	}
 
 	public String getExtent() {
@@ -93,4 +155,14 @@ public class BuildingBean {
 	public void setExtent(String extent) {
 		this.extent = extent;
 	}
+
+	@Override
+	public String toString() {
+		return "BuildingBean [buildingId=" + buildingId + ", buildingName=" + buildingName + ", face=" + face
+				+ ", buildArea=" + buildArea + ", floorNum=" + floorNum + ", height=" + height + ", buildTime="
+				+ buildTime + ", type=" + type + ", villageId=" + villageId + ", extent=" + extent + ", villageName="
+				+ villageName + "]";
+	}
+	
+	
 }
