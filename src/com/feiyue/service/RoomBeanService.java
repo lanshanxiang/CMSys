@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.feiyue.entiy.RoomBean;
 
-
-
 public interface RoomBeanService {
 	 //查询所有(楼房表+房屋表)
     public List<RoomBean> getQueryRoomBuildingBean();

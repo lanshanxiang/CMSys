@@ -10,16 +10,18 @@ package com.feiyue.entiy;
  */
 
 public class CostTypeBean {
-	private String ctId;// 费用类型编号
+	private int ctId;// 费用类型编号
 	private String ctName;// 费用类型名称
 	private String extent;// 扩展字段
 
 
-	public String getCtId() {
+	
+
+	public int getCtId() {
 		return ctId;
 	}
 
-	public void setCtId(String ctId) {
+	public void setCtId(int ctId) {
 		this.ctId = ctId;
 	}
 
@@ -39,4 +41,28 @@ public class CostTypeBean {
 		this.ctName = ctName;
 	}
 
+	public CostTypeBean() {
+		super();
+	}
+
+	public CostTypeBean(int ctId, String ctName, String extent) {
+		super();
+		this.ctId = ctId;
+		this.ctName = ctName;
+		this.extent = extent;
+	}
+
+	public CostTypeBean(String ctName, String extent) {
+		super();
+		this.ctName = ctName;
+		this.extent = extent;
+	}
+
+	@Override
+	public String toString() {
+		return "CostTypeBean [ctId=" + ctId + ", ctName=" + ctName + ", extent=" + extent + "]";
+	}
+		
+	
+	
 }

@@ -15,39 +15,28 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui/css/style.css" />
-<title>物业缴费信息</title>
+<title>物业费用信息表</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 费用管理 <span class="c-gray en">&gt;</span> 物业缴费 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 费用管理 <span class="c-gray en">&gt;</span> 费用类型信息 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 	<article class="cl pd-20"> 
 		<div class="text-c">
 		        是否自动检索：<input type="checkbox" id="autoSearch">
-		        物业编号：<input type="text" class="form-controlSearch input-text " placeholder="输入物业编号" data-column="2" id="col2_filter" style="width:100px;">
-		    年：<input type="text" class="form-controlSearch input-text " placeholder="输入年" data-column="3" id="col3_filter" style="width:100px;">
-		     月：<input type="text" class="form-controlSearch input-text " placeholder="输入月" data-column="4" id="col4_filter" style="width:100px;">
-   		 费用编号：<input type="text" class="form-controlSearch input-text " placeholder="输入费用编号" data-column="7" id="col7_filter" style="width:100px;">
+		        费用类型名称：<input type="text" class="form-controlSearch input-text " placeholder="输入费用类型名称" data-column="2" id="col2_filter" style="width:100px;">
+		    备注：<input type="text" class="form-controlSearch input-text " placeholder="输入备注" data-column="3" id="col3_filter" style="width:100px;">
    
 		   </div>
-			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加物业缴费表','admin-list-water-electric-add.jsp','','760')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加物业缴费表</a></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
+			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加费用类型','admin-list-costtype-add.jsp','','540')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加费用类型</a></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>
 						<tr class="text-c">
 							<th width="25"><input type="checkbox" id="PaymentCheckAll" name="PaymentCheckAll"></th>
-							<th>缴费编号</th>
-         				    <th>物业编号</th>
-          				    <th>年</th>
-           					<th>月</th>
-           				   <th>上月度数</th>
-           				   <th>本月度数</th>
-           				   <th>费用编号</th>
-           				   <th>走表数</th>
-           				   <th>应缴费</th>
-           				   <th>实缴费</th>
-           				   <th>缴费日期</th>
-           				   <th width="150">备注</th>
-           				   <th>操作</th>
+							<th>费用类型编号</th>
+         				    <th>费用类型名称</th>
+           				    <th>备注</th>
+           				    <th width="150">操作</th>
 						</tr>
 					</thead>
 					<tbody>					
@@ -159,10 +148,10 @@ function member_del(obj,id){
 					layer.msg('删除成功');
 					//页面跳转，跳转到servlet
 					$.ajax({
-						url : "${pageContext.request.contextPath}/PaymentServlet?op=del",//url地址
+						url : "${pageContext.request.contextPath}/CostTypeServlet?op=del",//url地址
 						type : "post",
 						data : {
-							"payId" : $(obj).parents("tr").find("td").eq(1).text()
+							"ctId" : $(obj).parents("tr").find("td").eq(1).text()
 						},
 						//成功后执行的操作
 						success : function(data) {
@@ -250,7 +239,7 @@ function member_del(obj,id){
 	 		maxmin: true,
 	 		shade:0.4,
 	 		title: '编辑物业表单', //显示的标题
-	 		content: 'admin-list-water-electric-update.jsp', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
+	 		content: 'admin-list-costtype-update.jsp', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
 	 		success: function(layero, index){ //success可以不写
 	             var body = layer.getChildFrame('body',index);//建立父子联系
 	             var iframeWin = window[layero.find('iframe')[0]['name']];
@@ -359,7 +348,7 @@ function member_del(obj,id){
     //路径配置,此处配置的路径是获取数据的重要手段;
     employee.url="/"; //  这里 / 表示的是localhost/
     employee.requestUrl = {
-        queryList:employee.url+"CMSys/PaymentServlet"  //数据是从servlet一侧返回的 json格式
+        queryList:employee.url+"CMSys/CostTypeServlet"   //数据是从servlet一侧返回的 json格式
     };
 
     employee.search={
@@ -393,17 +382,9 @@ function member_del(obj,id){
                 $(nTd).html("<input type='checkbox' name='checkList' value='" + sData + "'>");
             }
         }, //这里是返回的json对象中的 属性值   {data : }
-        {"data": "payId"},
-        {"data": "tenementId"},
-        {"data": "years"},
-        {"data": "months"},
-        {"data": "lastHalf"},
-        {"data": "thisMonth"},
-        {"data": "costId"},
-        {"data": "quantity"},
-        {"data": "payable"},
-        {"data": "practical"},
-        {"data": "payDate"},
+        
+        {"data": "ctId"},
+        {"data": "ctName"},
         {"data": "extent"},
         {    //创建操作那个列
         	"data":"extn",

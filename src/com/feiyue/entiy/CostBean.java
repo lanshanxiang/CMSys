@@ -10,20 +10,20 @@ package com.feiyue.entiy;
  */
 
 public class CostBean {
-	private String costId;// 费用编号
+	private int costId;// 费用编号
 	private String costName;// 费用名称
 	private double unitPrice;// 费用单价
 	private String remarks;// 费用说明
-	private CostTypeBean costTypeModel;// 外键-费用类型
+	private int ctId;// 费用类型编号
 	private String munit;// 计价单位
 	private String extent;// 扩展字段
 
 
-	public String getCostId() {
+	public int getCostId() {
 		return costId;
 	}
 
-	public void setCostId(String costId) {
+	public void setCostId(int costId) {
 		this.costId = costId;
 	}
 
@@ -52,12 +52,14 @@ public class CostBean {
 	}
 
 
-	public CostTypeBean getCostTypeModel() {
-		return costTypeModel;
+	
+
+	public int getCtId() {
+		return ctId;
 	}
 
-	public void setCostTypeModel(CostTypeBean costTypeModel) {
-		this.costTypeModel = costTypeModel;
+	public void setCtId(int ctId) {
+		this.ctId = ctId;
 	}
 
 	public String getMunit() {
@@ -75,4 +77,39 @@ public class CostBean {
 	public void setExtent(String extent) {
 		this.extent = extent;
 	}
+
+	public CostBean() {
+		super();
+	}
+
+	public CostBean(int costId, String costName, double unitPrice, String remarks, int ctId, String munit,
+			String extent) {
+		super();
+		this.costId = costId;
+		this.costName = costName;
+		this.unitPrice = unitPrice;
+		this.remarks = remarks;
+		this.ctId = ctId;
+		this.munit = munit;
+		this.extent = extent;
+	}
+
+	public CostBean(String costName, double unitPrice, String remarks, int ctId, String munit, String extent) {
+		super();
+		this.costName = costName;
+		this.unitPrice = unitPrice;
+		this.remarks = remarks;
+		this.ctId = ctId;
+		this.munit = munit;
+		this.extent = extent;
+	}
+
+	@Override
+	public String toString() {
+		return "CostBean [costId=" + costId + ", costName=" + costName + ", unitPrice=" + unitPrice + ", remarks="
+				+ remarks + ", ctId=" + ctId + ", munit=" + munit + ", extent=" + extent + "]";
+	}
+	
+	
+	
 }
