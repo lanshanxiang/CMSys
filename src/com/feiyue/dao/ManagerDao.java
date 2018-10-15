@@ -15,4 +15,6 @@ public interface ManagerDao {
 	//返回值为boolean  List
 	// 用户名在表中应该是唯一的
 	ManagerBean queryManager(String mName,String mPwd);
+	//查询所有用户
+	public List<ManagerBean> queryOnlyManager();
 }

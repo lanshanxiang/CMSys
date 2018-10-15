@@ -1,6 +1,8 @@
 package com.feiyue.service;
 
 
+import java.util.List;
+
 import com.feiyue.entiy.ManagerBean;
 
 /**
@@ -11,4 +13,5 @@ import com.feiyue.entiy.ManagerBean;
  */
 public interface ManagerService {
 	ManagerBean login(String mName,String mPwd);
+	public List<ManagerBean> getQueryManager();
 }

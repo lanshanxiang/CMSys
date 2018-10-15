@@ -21,5 +21,10 @@ public class ManagerServiceImpl implements ManagerService {
 		// TODO Auto-generated method stub
 		return md.queryManager(mName, mPwd);
 	}
+	@Override
+	public List<ManagerBean> getQueryManager() {
+		// TODO Auto-generated method stub
+		return md.queryOnlyManager();
+	}
 
 }
