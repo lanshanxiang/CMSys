@@ -73,7 +73,7 @@
 					href="#menu1">已迁入</a></li>
 				<li><a id="checkYN" data-toggle="tab" href="#menu2">待审核</a></li>
 				<li><a id="checkN" data-toggle="tab" href="#menu3">审核失败</a></li>
-				<li><a id="checkYR" data-toggle="tab" href="#menu4">已入住</a></li>
+				<li><a id="checkYR" data-toggle="tab" href="#menu4">已迁出</a></li>
 			</ul>
 			<br>
 			<div class="tab-content">
@@ -88,10 +88,9 @@
 							<th>姓名</th>
 							<th>身份证</th>
 							<th>所属单位</th>
-							<th>电话</th>
 							<th>手机号码</th>
 							<th>邮箱</th>
-							<th>是否入住</th>
+							<th>入住时间</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -110,10 +109,9 @@
 							<th>姓名</th>
 							<th>身份证</th>
 							<th>所属单位</th>
-							<th>电话</th>
 							<th>手机号码</th>
 							<th>邮箱</th>
-							<th>是否入住</th>
+							<th>入住时间</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -132,10 +130,9 @@
 							<th>姓名</th>
 							<th>身份证</th>
 							<th>所属单位</th>
-							<th>电话</th>
 							<th>手机号码</th>
 							<th>邮箱</th>
-							<th>是否入住</th>
+							<th>入住时间</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -154,10 +151,9 @@
 							<th>姓名</th>
 							<th>身份证</th>
 							<th>所属单位</th>
-							<th>电话</th>
 							<th>手机号码</th>
 							<th>邮箱</th>
-							<th>是否入住</th>
+							<th>入住时间</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -315,7 +311,7 @@
 								url : "${pageContext.request.contextPath}/TenementBeanServlet?op=deleteTenement",//url地址
 								type : "post",
 								data : {
-									"ownerId" : $(obj).parents("tr").find("td").eq(1).text()
+									"tenementId" : $(obj).parents("tr").find("td").eq(1).text()
 								},
 								//成功后执行的操作
 								success : function(data) {
@@ -406,15 +402,14 @@
 						//change-password.html
 
 						//打开新窗口 编辑窗口
-						layer
-								.open({
+						layer.open({
 									type : 2,
 									area : [ '710px', '510px' ], //窗口大小
 									fix : false, //不固定
 									maxmin : true,
 									shade : 0.4,
 									title : '编辑员工信息', //显示的标题
-									content : 'admin-list-check-add.jsp', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
+									content : 'admin-list-check-update.jsp', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
 									success : function(layero, index) { //success可以不写
 										var body = layer.getChildFrame('body',
 												index);//建立父子联系
@@ -535,9 +530,6 @@
 				},
 				{
 					"data" : "aunit"
-				},
-				{
-					"data" : "phone"
 				},
 				{
 					"data" : "mobilePhone"

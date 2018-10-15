@@ -20,8 +20,8 @@ public interface TenementBeanService {
 	public List<TenementBean> getQueryTenementBeanByIsYR();
 
 	boolean getInsertTenementBean(TenementBean t);
-
+	
 	boolean getDeleteTenementBean(int tenementId);
-
+	//修改居民信息
 	boolean updateTenementBean(TenementBean t);
 }

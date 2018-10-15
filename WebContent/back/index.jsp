@@ -110,15 +110,15 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="admin-list-out.jsp" data-title="小区列表"
+						<li><a _href="admin-list-village.jsp" data-title="小区列表"
 							href="javascript:void(0)">小区列表</a></li>
-						<li><a _href="admin-list-out.jsp" data-title="楼房管理"
+						<li><a _href="admin-list-house-Building.jsp" data-title="楼房管理"
 							href="javascript:void(0)">楼房管理</a></li>
-						<li><a _href="admin-list-out.jsp" data-title="房屋管理"
+						<li><a _href="admin-list-house-room.jsp" data-title="房屋管理"
 							href="javascript:void(0)">房屋管理</a></li>
 						<li><a _href="admin-list-check.jsp" data-title="住户管理"
 							href="javascript:void(0)">住户管理</a></li>
-						<li><a _href="admin-list-check.jsp" data-title="车位管理"
+						<li><a _href="parking-list.jsp" data-title="车位管理"
 							href="javascript:void(0)">车位管理</a></li>
 					</ul>
 				</dd>
@@ -182,7 +182,7 @@
 							href="javascript:void(0)">小区公告</a></li>
 						<li><a _href="admin-list-pw.jsp" data-title="报修管理"
 							href="javascript:void(0)">报修管理</a></li>
-						<li><a _href="admin-list-pw.jsp" data-title="生活导航"
+						<li><a _href="admin-list-report.jsp" data-title="维修管理"
 							href="javascript:void(0)">维修管理</a></li>
 						<li><a _href="admin-list-cis.jsp" data-title="生活导航"
 							href="javascript:void(0)">生活导航</a></li>
@@ -191,8 +191,8 @@
 			</dl>
 			<dl id="menu-member">
 				<dt>
-					<i class="Hui-iconfont">&#xe60d;</i> 社区商家<i
-						class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+					<i class="Hui-iconfont">&#xe60d;</i> 社区商家
+					<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
 				</dt>
 				<dd>
 					<ul>

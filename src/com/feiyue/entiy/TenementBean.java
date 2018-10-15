@@ -22,7 +22,7 @@ public class TenementBean {
 	private String residenceType;// 居住类型
 	private String maritalStatus;// 婚姻状况
 	private int userId;// 用户对象
-	private int status; // 0待审核 ，1未通过 2已通过 3 已入住
+	private int status; // 0已通过  ，1待审核 2未通过 3 已迁出
 	private String remark;// 备注
 	
 
@@ -184,6 +184,28 @@ public class TenementBean {
 		this.remark = remark;
 	}
 	
+	/**
+	 * 修改居民信息构造函数
+	 * @param tenementId
+	 * @param tenementName
+	 * @param aunit
+	 * @param idCard
+	 * @param mobilePhone
+	 * @param email
+	 * @param areStay
+	 */
+	
+	public TenementBean(String tenementId, String tenementName, String aunit, String idCard, String mobilePhone,
+			String email, String areStay) {
+		super();
+		this.tenementId = tenementId;
+		this.tenementName = tenementName;
+		this.aunit = aunit;
+		this.idCard = idCard;
+		this.mobilePhone = mobilePhone;
+		this.email = email;
+		this.areStay = areStay;
+	}
 	/**
 	 * 删除居民构造函数
 	 * @param tenementId

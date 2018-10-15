@@ -1,48 +1,209 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+<html>
 
-    <title>问答系统-用户登录</title>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>管理员登录</title>
+		<style>
+			.ie-warning {
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 9999;
+				background: #000;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				color: #fff;
+				font-family: "Courier New", Courier, monospace;
+				padding: 50px 0
+			}
+			
+			.ie-warning p {
+				font-size: 17px
+			}
+			
+			.ie-warning .iew-container {
+				min-width: 1024px;
+				width: 100%;
+				height: 200px;
+				background: #fff;
+				margin: 50px 0
+			}
+			
+			.ie-warning .iew-download {
+				list-style: none;
+				padding: 30px 0;
+				margin: 0 auto;
+				width: 720px
+			}
+			
+			.ie-warning .iew-download>li {
+				float: left;
+				vertical-align: top
+			}
+			
+			.ie-warning .iew-download>li>a {
+				display: block;
+				color: #000;
+				width: 140px;
+				font-size: 15px;
+				padding: 15px 0
+			}
+			
+			.ie-warning .iew-download>li>a>div {
+				margin-top: 10px
+			}
+			
+			.ie-warning .iew-download>li>a:hover {
+				background-color: #eee
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/lsx.css" />
 
-    <!-- Bootstrap core CSS -->
-    <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
+	</head>
 
+	<body>
+		<!-- Older IE warning message -->
+		<div class="ie-warning" id="ie" style="display: none">
+			<h1 class="c-white">Warning!!</h1>
+			<p>你正在使用的浏览器版本过低！<br>请升级你的浏览器以查看此页面 。</p>
+			<div class="iew-container">
+				<ul class="iew-download">
+					<li>
+						<a href="http://chrome.360.cn/">
+							<img src="https://img.weixiaoqu.com/images/uploads/201806/dff3c4f74aa874a1ea41b2354eb8ff6c.png" alt="">
+							<div>360极速浏览器</div>
+						</a>
+					</li>
+					<li>
+						<a href="http://browser.qq.com/?adtag=SEM1">
+							<img src="https://img.weixiaoqu.com/images/uploads/201806/eb0c513ee1bd5cd7a6f3921c0b0950a0.png" alt="">
+							<div>QQ浏览器</div>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.google.com/chrome/">
+							<img src="https://img.weixiaoqu.com/images/uploads/201806/b178c635619936371c12e6241294846f.png" alt="">
+							<div>Chrome</div>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.mozilla.org/en-US/firefox/new/">
+							<img src="https://img.weixiaoqu.com/images/uploads/201806/691ac03f74625976893d7001ad3aa49f.png" alt="">
+							<div>Firefox</div>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.opera.com">
+							<img src="https://img.weixiaoqu.com/images/uploads/201806/2913ae8d4c35c37565bf8176ede31d22.png" alt="">
+							<div>Opera</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<p>抱歉给您带来不便！</p>
+		</div>
+		<div id="root">
+			<div class="container___1qll8">
+				<header class="topNav___30byD">
+					<div class="topNav_content___20HcD">
+						<a href="https://www.weixiaoqu.com"><img src="https://vip.weixiaoqu.com/vipstatic/images/logo2016.png"></a>
+						<ul class="menu___2j7Ji">
+							<li>
+								<a href="https://www.weixiaoqu.com/" target="_blank">首页</a>
+							</li>
+							<li>
+								<a href="https://www.weixiaoqu.com/product" target="_blank">产品</a>
+							</li>
+							<li>
+								<a href="https://www.weixiaoqu.com/price" target="_blank">价格</a>
+							</li>
+							<li>
+								<a href="https://www.weixiaoqu.com/case" target="_blank">案例</a>
+							</li>
+							<li>
+								<a href="https://www.weixiaoqu.com/service" target="_blank">服务</a>
+							</li>
+							<li>
+								<a href="https://www.weixiaoqu.com/facilitator" target="_blank">渠道</a>
+							</li>
+							<li>
+								<a href="https://www.weixiaoqu.com/shop" target="_blank">商家</a>
+							</li>
+							<li>
+								<a href="http://docs.weixiaoqu.com/" target="_blank">帮助</a>
+							</li>
+							<li>
+								<a href="https://www.weixiaoqu.com/blog" target="_blank">博客</a>
+							</li>
+						</ul>
+					</div>
+				</header>
+				<div class="content___1xAM2">
+					<div class="top___dAPWE">
+						<div class="header___3xyac">
+							<a href="javascript:"><span class="title___2SlIy">飞跃社区管理中心-登录</span></a>
+						</div>
+						<div class="desc___1uABx">微社区 - 智慧社区管理创导者</div>
+					</div>
+					<div class="main___3vXQQ">
+						<div class="login___1MW8J">
+							<form class="ant-form ant-form-horizontal" action="${pageContext.request.contextPath}/ManagerServlet?op=login" method="post">
+								<div class="ant-row ant-form-item">
+									<div class="ant-form-item-control-wrapper">
+										<div style="height: 50px;" class="ant-form-item-control has-success"><span class="ant-form-item-children"><span class="ant-input-affix-wrapper ant-input-affix-wrapper-lg" style="margin-top: 40px;"><span class="ant-input-prefix"><i class="anticon anticon-user prefixIcon___5euWy"></i></span>
+											<input placeholder="手机号码/邮箱" type="text" id="userName" name="mName" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" value=""></span>
+											</span>
+										</div>
+									</div>
+							</div><br /><br />
+								<div class="ant-row ant-form-item">
+									<div class="ant-form-item-control-wrapper">
+										<div style="height: 50px;" class="ant-form-item-control has-success"><span class="ant-form-item-children"><span class="ant-input-affix-wrapper ant-input-affix-wrapper-lg"><span class="ant-input-prefix"><i class="anticon anticon-lock prefixIcon___5euWy"></i></span>
+											<input type="password" placeholder="密码" id="password" name="mPwd" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" value=""></span>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div>
+									<a target="_blank" href="/user/forgotpwd" style="float: right;">忘记密码</a>
+									<a class="register___2JZTi" target="_blank" href="/user/register">注册账户</a>
+								</div>
+								<div class="ant-row ant-form-item">
+									<div class="ant-form-item-control-wrapper">
+										<div class="ant-form-item-control">
+										<span class="ant-form-item-children">
+										<button type="submit" class="ant-btn submit___3bWpy ant-btn-primary ant-btn-lg" style="height: 50px;">
+										<span>登 录</span>
+										</button>
+										</span>
+										</div>
+									</div>
+								</div>
+								
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="globalFooter___1W2x2">
+					<div class="copyright___3hvsv">Copyright <i class="anticon anticon-copyright"></i> 2018.10.09-2018.10.19 飞跃社区团队</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://hm.baidu.com/hm.js?bc7493bf7c88666cc89fc3c230ebcabd"></script>
+		<script src="//www.weixiaoqu.com/vip_analysis.js"></script>
+		<script language="javascript" src="http://127.0.0.1:8008/YOWOCloudRFIDReader.js"></script>
+		<script>
+			function isIE() {
+				if(!!window.ActiveXObject || "ActiveXObject" in window) {
+					document.getElementById('ie').style.display = 'block'
+				}
+			}
+			isIE()
+		</script>
+	</body>
 
-
-    <!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
-
-  </head>
-
-  <body>
-
-    <div class="container">
-
-      <form class="form-signin" action="${pageContext.request.contextPath}/ManagerServlet?op=login" method="post">
-        <h2 class="form-signin-heading">请登录</h2>
-        <input type="hidden" name="op" value="login" >
-        <label for="userName" class="sr-only">用户名</label>
-        <input type="text" id="userName" name="mName" class="form-control" placeholder="请输入用户名" required autofocus>
-        <label for="userPwd" class="sr-only">密码</label>
-        <input type="password" id="userPwd" name="mPwd" class="form-control" placeholder="请输入密码" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> 记住我
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
-      </form>
-
-    </div> <!-- /container -->
-  
-  </body>
 </html>

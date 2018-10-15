@@ -59,7 +59,6 @@ public class TenementBeanServlet extends HttpServlet {
 
 			out.print(jsonString);
 			System.out.println("[jsonString] :" + jsonString);
-
 			out.close();
 		}else if("register".equals(op)) {
 			String tenementName = request.getParameter("tenementName");
@@ -75,16 +74,32 @@ public class TenementBeanServlet extends HttpServlet {
 			String residenceType = request.getParameter("residenceType");
 			String maritalStatus = request.getParameter("maritalStatus");
 			String status = request.getParameter("status");
-			String remark = request.getParameter("remark");
-			
+			String remark = request.getParameter("remark");		
 			TenementBean tb = new TenementBean(tenementName, sex, aunit, idCard, mobilePhone, email, areStay, createBy, nationality, homeAddress, residenceType, maritalStatus, Integer.parseInt(status), remark);
 			boolean flag = tbs.getInsertTenementBean(tb);
 			PrintWriter out = response.getWriter();
 			out.print(flag);
 			out.close();
 		}else if("update".equals(op)){
-			
-		}else if("queryIsY".equals(op)) {
+			String tenementId = request.getParameter("tenementId");
+			String tenementName = request.getParameter("tenementName");
+			String aunit = request.getParameter("aunit");
+			String idCard = request.getParameter("idCard");
+			String mobilePhone = request.getParameter("mobilePhone");
+			String email = request.getParameter("email");
+			String areStay = request.getParameter("areStay");
+			TenementBean tb = new TenementBean(tenementId, tenementName, aunit, idCard, mobilePhone, email, areStay);
+			boolean flag = tbs.updateTenementBean(tb);		
+			PrintWriter out = response.getWriter();
+			out.print(flag);
+			out.close();
+		}else if("deleteTenement".equals(op)) {
+			String tenementId = request.getParameter("tenementId");
+			boolean flag = tbs.getDeleteTenementBean(Integer.valueOf(tenementId));
+			PrintWriter out = response.getWriter();
+			out.print(flag);
+			out.close();
+		}else  if("queryIsY".equals(op)) {
 			List<TenementBean> list = tbs.getQueryTenementBeanByIsY();
 			// Ajax来实现
 			// 返回数据最好是json格式 外部的jar包 gson
