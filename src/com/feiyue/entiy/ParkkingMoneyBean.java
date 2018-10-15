@@ -9,7 +9,7 @@ package com.feiyue.entiy;
 
 public class ParkkingMoneyBean {
 	private String parkkingMoneyId;// 收费编号
-	private ParkkingBean parkkingModel;// 车位编号
+	private ParkingBean parkkingModel;// 车位编号
 	private String year;// 缴费年份
 	private double parkkingMoney;// 车位收费
 	private String parkkingMoneyDate;// 收费日期
@@ -25,11 +25,11 @@ public class ParkkingMoneyBean {
 	}
 
 
-	public ParkkingBean getParkkingModel() {
+	public ParkingBean getParkkingModel() {
 		return parkkingModel;
 	}
 
-	public void setParkkingModel(ParkkingBean parkkingModel) {
+	public void setParkkingModel(ParkingBean parkkingModel) {
 		this.parkkingModel = parkkingModel;
 	}
 
