@@ -18,7 +18,7 @@ public class ParkingBeanDaoImpl implements ParkingBeanDao {
 	@Override
 	public List<ParkingBean> getAllParkingBean() {
 		// TODO Auto-generated method stub
-		String sql="select p.parkingId,p.parkingNo,pt.ptName,r.roomName,p.carNum,p.carType,p.money,p.timeStart,p.timeEnd,pst.parkSRName ,p.remarks from tb_parking as p,tb_parksrtype as pst,tb_parktype as pt,tb_room as r where p.parkSRId=pst.parkSRId and p.ptId=pt.ptId and p.roomId=r.RoomId";
+		String sql="select p.parkingId,p.parkingNo,pt.ptId,pt.ptName,v.villageId,v.villageName,pst.parkSRId,pst.parkSRName ,p.area,p.remarks from tb_parkings as p,tb_parksrtype as pst,tb_parktype as pt,tb_villageinfo as v where p.parkSRId=pst.parkSRId and p.ptId=pt.ptId and p.villageId=v.villageId";
 		List<ParkingBean> list = (List<ParkingBean>) DBUtil.select(sql, ParkingBean.class);
 		if(list!=null && list.size()>0){
             return list;
@@ -30,21 +30,21 @@ public class ParkingBeanDaoImpl implements ParkingBeanDao {
 	@Override
 	public boolean addParkingBean(ParkingBean ps) {
 		// TODO Auto-generated method stub
-		String sql="INSERT INTO tb_parking (parkingNo, ptId, roomId, carNum, carType, money, timeStart, timeEnd, parkSRId,remarks) VALUES (?,?,?,?,?,?,?,?,?,?)";
-		return DBUtil.execute(sql,ps.getParkingNo(),ps.getPtId(),ps.getRoomId(),ps.getCarNum(),ps.getCarType(),ps.getMoney(),ps.getTimeStart(),ps.getTimeEnd(),ps.getParkSRId(),ps.getRemarks())>0;
+		String sql="INSERT INTO tb_parkings (parkingNo, ptId, villageId, parkSRId,area,remarks) VALUES (?,?,?,?,?,?)";
+		return DBUtil.execute(sql,ps.getParkingNo(),ps.getPtId(),ps.getVillageId(),ps.getParkSRId(),ps.getArea(),ps.getRemarks())>0;
 	}
 
 	@Override
 	public boolean updateParkingBean(ParkingBean ps) {
 		// TODO Auto-generated method stub
-		String sql = "UPDATE tb_parking SET parkingNo=?, ptId=?, roomId=?, carNum=?, carType=?, money=?, timeStart=?, timeEnd=?, parkSRId=?, remarks=? WHERE parkingId=?";
-		return DBUtil.execute(sql,ps.getParkingNo(),ps.getPtId(),ps.getRoomId(),ps.getCarNum(),ps.getCarType(),ps.getMoney(),ps.getTimeStart(),ps.getTimeEnd(),ps.getParkSRId(),ps.getRemarks(),ps.getParkingId())>0;
+		String sql = "UPDATE tb_parkings SET parkingNo=?, ptId=?, villageId=?, parkSRId=?,area=?, remarks=? WHERE parkingId=?";
+		return DBUtil.execute(sql,ps.getParkingNo(),ps.getPtId(),ps.getVillageId(),ps.getParkSRId(),ps.getArea(),ps.getRemarks(),ps.getParkingId())>0;
 	}
 
 	@Override
 	public boolean deleteParkingBean(int pId) {
 		// TODO Auto-generated method stub
-		String sql="DELETE FROM tb_parking WHERE parkingId=?";
+		String sql="DELETE FROM tb_parkings WHERE parkingId=?";
 		return DBUtil.execute(sql, pId)>0;
 	}
 

@@ -4,7 +4,7 @@ package com.feiyue.entiy;
 
 /**
  * 
- * 车位信息
+ * 车位信息实体类
  * 
  */
 
@@ -14,17 +14,16 @@ public class ParkingBean {
 	private String parkingNo;//车位号
 	private int ptId;// 车位类型编号
 	private String ptName;//车位类型名称
-	private int roomId;// 住房编号
-	private String roomName;// 房间名称
-	private String carNum;// 车牌号
-	private String carType;// 车类型
-	private double money;// 出租、出售的钱
-	private String timeStart;// 时间
-	private String timeEnd;// 结束时间
+	private int villageId;// 小区编号
+	private String villageName;// 小区名称	
 	private int parkSRId;//  出售状态编号
 	private String parkSRName;//  状态名称 出售出租
+	private double area;//车位面积
 	private String remarks;// 备注
-	public int getParkingId() {
+	
+	
+	
+public int getParkingId() {
 		return parkingId;
 	}
 	public void setParkingId(int parkingId) {
@@ -48,47 +47,17 @@ public class ParkingBean {
 	public void setPtName(String ptName) {
 		this.ptName = ptName;
 	}
-	public int getRoomId() {
-		return roomId;
+	public int getVillageId() {
+		return villageId;
 	}
-	public void setRoomId(int roomId) {
-		this.roomId = roomId;
+	public void setVillageId(int villageId) {
+		this.villageId = villageId;
 	}
-	public String getRoomName() {
-		return roomName;
+	public String getVillageName() {
+		return villageName;
 	}
-	public void setRoomName(String roomName) {
-		this.roomName = roomName;
-	}
-	public String getCarNum() {
-		return carNum;
-	}
-	public void setCarNum(String carNum) {
-		this.carNum = carNum;
-	}
-	public String getCarType() {
-		return carType;
-	}
-	public void setCarType(String carType) {
-		this.carType = carType;
-	}
-	public double getMoney() {
-		return money;
-	}
-	public void setMoney(double money) {
-		this.money = money;
-	}
-	public String getTimeStart() {
-		return timeStart;
-	}
-	public void setTimeStart(String timeStart) {
-		this.timeStart = timeStart;
-	}
-	public String getTimeEnd() {
-		return timeEnd;
-	}
-	public void setTimeEnd(String timeEnd) {
-		this.timeEnd = timeEnd;
+	public void setVillageName(String villageName) {
+		this.villageName = villageName;
 	}
 	public int getParkSRId() {
 		return parkSRId;
@@ -102,6 +71,12 @@ public class ParkingBean {
 	public void setParkSRName(String parkSRName) {
 		this.parkSRName = parkSRName;
 	}
+	public double getArea() {
+		return area;
+	}
+	public void setArea(double area) {
+		this.area = area;
+	}
 	public String getRemarks() {
 		return remarks;
 	}
@@ -111,68 +86,81 @@ public class ParkingBean {
 public ParkingBean() {
 	// TODO Auto-generated constructor stub
 }
+@Override
+public String toString() {
+	return "ParkingBean [parkingId=" + parkingId + ", parkingNo=" + parkingNo + ", ptId=" + ptId + ", ptName=" + ptName
+			+ ", villageId=" + villageId + ", villageName=" + villageName + ", parkSRId=" + parkSRId + ", parkSRName="
+			+ parkSRName + ", area=" + area + ", remarks=" + remarks + "]";
+}
 /**
- * 带参构造 增删
+ * 带参构造 增加时用
  * @param parkingNo
  * @param ptId
- * @param roomId
- * @param carNum
- * @param carType
- * @param money
- * @param timeStart
- * @param timEnd
+ * @param villageId
  * @param parkSRId
+ * @param area
  * @param remarks
  */
-public ParkingBean( String parkingNo, int ptId, int roomId, String carNum, String carType, double money,
-		String timeStart, String timeEnd, int parkSRId, String remarks) {
+public ParkingBean(String parkingNo, int ptId, int villageId, int parkSRId, double area, String remarks) {
 	super();
 	this.parkingNo = parkingNo;
 	this.ptId = ptId;
-	this.roomId = roomId;
-	this.carNum = carNum;
-	this.carType = carType;
-	this.money = money;
-	this.timeStart = timeStart;
-	this.timeEnd = timeEnd;
+	this.villageId = villageId;
 	this.parkSRId = parkSRId;
+	this.area = area;
 	this.remarks = remarks;
 }
 /**
- * 带参构造  显示
- * @param parkkingId
+ * 全参构造
+ * @param parkingId
  * @param parkingNo
+ * @param ptId
  * @param ptName
- * @param roomName
- * @param carNum
- * @param carType
- * @param money
- * @param timeStart
- * @param timEnd
+ * @param villageId
+ * @param villageName
+ * @param parkSRId
  * @param parkSRName
+ * @param area
  * @param remarks
  */
-public ParkingBean(int parkingId, String parkingNo, String ptName, String roomName, String carNum, String carType,
-		double money, String timeStart, String timeEnd, String parkSRName, String remarks) {
+public ParkingBean(int parkingId, String parkingNo, int ptId, String ptName, int villageId, String villageName,
+		int parkSRId, String parkSRName, double area, String remarks) {
 	super();
 	this.parkingId = parkingId;
 	this.parkingNo = parkingNo;
+	this.ptId = ptId;
 	this.ptName = ptName;
-	this.roomName = roomName;
-	this.carNum = carNum;
-	this.carType = carType;
-	this.money = money;
-	this.timeStart = timeStart;
-	this.timeEnd = timeEnd;
+	this.villageId = villageId;
+	this.villageName = villageName;
+	this.parkSRId = parkSRId;
 	this.parkSRName = parkSRName;
+	this.area = area;
 	this.remarks = remarks;
 }
-@Override
-public String toString() {
-	return "ParkingBean [parkingId=" + parkingId + ", parkingNo=" + parkingNo + ", ptName=" + ptName + ", roomName="
-			+ roomName + ", carNum=" + carNum + ", carType=" + carType + ", money=" + money + ", timeStart=" + timeStart
-			+ ", timeEnd=" + timeEnd + ", parkSRName=" + parkSRName + ", remarks=" + remarks + "]";
+/**
+ * 带参构造 修改时可用
+ * @param parkingId
+ * @param parkingNo
+ * @param ptId
+ * @param villageId
+ * @param parkSRId
+ * @param area
+ * @param remarks
+ */
+public ParkingBean(int parkingId, String parkingNo, int ptId, int villageId, int parkSRId, double area,
+		String remarks) {
+	super();
+	this.parkingId = parkingId;
+	this.parkingNo = parkingNo;
+	this.ptId = ptId;
+	this.villageId = villageId;
+	this.parkSRId = parkSRId;
+	this.area = area;
+	this.remarks = remarks;
 }
+
+
+
 
 
 

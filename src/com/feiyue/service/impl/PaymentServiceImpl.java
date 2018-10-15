@@ -32,6 +32,17 @@ public class PaymentServiceImpl implements PaymentService{
 		return pd.getPayment();
 	}
 	@Override
+	public List<PaymentBean> getPaymentBefore() {
+		// TODO Auto-generated method stub
+		return pd.getPaymentBefore();
+	}
+	@Override
+	public List<PaymentBean> getPaymentAfter() {
+		// TODO Auto-generated method stub
+		return pd.getPaymentAfter();
+	}
+	
+	@Override
 	public PageData<PaymentBean> queryPaymentByPage(int page, int pageSize, String keywords) {
 		// TODO Auto-generated method stub
 		return pd.queryPaymentByPage(page, pageSize, keywords);
@@ -41,5 +52,6 @@ public class PaymentServiceImpl implements PaymentService{
 		// TODO Auto-generated method stub
 		return pd.selectPayment(keyword);
 	}
+	 
 	
 }

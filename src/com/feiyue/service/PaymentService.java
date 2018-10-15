@@ -14,6 +14,10 @@ public interface PaymentService {
 	    public boolean deletePayment(int fareId);
 	    //遍历
 	    public List<PaymentBean> getPayment();
+	    //遍历未缴费的
+	    public List<PaymentBean> getPaymentBefore();
+	    //遍历已缴费的
+	    public List<PaymentBean> getPaymentAfter();
 	    //分页
 	    public PageData<PaymentBean> queryPaymentByPage(int page, int pageSize, String keywords);
 	    //查询

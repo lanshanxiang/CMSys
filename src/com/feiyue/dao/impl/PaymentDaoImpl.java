@@ -38,6 +38,18 @@ public class PaymentDaoImpl implements PaymentDao{
 		// TODO Auto-generated method stub
 		return (List<PaymentBean>) DBUtil.select("SELECT * FROM tb_payment ", PaymentBean.class);
 	}
+	//遍历未缴费的
+	@Override
+	public List<PaymentBean> getPaymentBefore() {
+		// TODO Auto-generated method stub
+		return (List<PaymentBean>) DBUtil.select("SELECT * FROM tb_payment WHERE payable > practical ", PaymentBean.class);
+	}
+	//遍历已缴费的
+	@Override
+	public List<PaymentBean> getPaymentAfter() {
+		// TODO Auto-generated method stub
+		return (List<PaymentBean>) DBUtil.select("SELECT * FROM tb_payment WHERE payable <= practical ", PaymentBean.class);
+	}
 	//分页
 	@Override
 	public PageData<PaymentBean> queryPaymentByPage(int page, int pageSize, String keywords) {

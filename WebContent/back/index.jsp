@@ -130,13 +130,13 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="admin-list-water-electric.jsp"
+						<li><a _href="admin-list-water-electric-before.jsp"
 							data-title="未缴账单" href="javascript:void(0)">未缴账单</a></li>
-						<li><a _href="admin-list-water-electric-check.jsp"
+						<li><a _href="admin-list-water-electric-after.jsp"
 							data-title="已缴账单" href="javascript:void(0)">已缴账单</a></li>
-						<li><a _href="admin-list-Property.jsp" data-title="缴费通知"
+						<li><a _href="admin-list-paynotice.jsp" data-title="缴费通知"
 							href="javascript:void(0)">缴费通知</a></li>
-						<li><a _href="admin-listOther.jsp" data-title="收费设置"
+						<li><a _href="admin-list-cost.jsp" data-title="收费设置"
 							href="javascript:void(0)">收费设置</a></li>
 					</ul>
 				</dd>

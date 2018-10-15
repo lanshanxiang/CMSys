@@ -8,61 +8,41 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-<LINK rel="Bookmark" href="/favicon.ico">
+<LINK rel="Bookmark" href="/favicon.ico" >
 <LINK rel="Shortcut Icon" href="/favicon.ico" />
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/static/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/static/h-ui.admin/css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/lib/Hui-iconfont/1.0.8/iconfont.css" />
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/static/h-ui.admin/skin/default/skin.css"
-	id="skin" />
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/static/h-ui.admin/css/style.css" />
-
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui/css/H-ui.min.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui/css/H-ui.admin.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui/css/style.css" />
-<title>车位列表</title>
+<title>物业费用信息表</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 车位管理 <span class="c-gray en">&gt;</span> 车位列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 费用管理 <span class="c-gray en">&gt;</span> 物业费用信息 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 	<article class="cl pd-20"> 
 		<div class="text-c">
 		        是否自动检索：<input type="checkbox" id="autoSearch">
-		   车位号：<input type="text" class="form-controlSearch input-text " placeholder="输入车位号" data-column="2" id="col2_filter" style="width:100px;">
-		     车位类型：<input type="text" class="form-controlSearch input-text " placeholder="输入车位类型" data-column="3" id="col3_filter" style="width:100px;">
-    所属小区：<input type="text" class="form-controlSearch input-text "   placeholder="输入小区名称" data-column="4" id="col4_filter" style="width:100px;">
-     
-		   车位状态：<input type="text" class="form-controlSearch input-text " placeholder="输入车位状态" data-column="5" id="col5_filter" style="width:100px;">
-		    
+		        住户名称：<input type="text" class="form-controlSearch input-text " placeholder="输入住户名称" data-column="1" id="col1_filter" style="width:100px;">
+		   手机号：<input type="text" class="form-controlSearch input-text " placeholder="输入手机号" data-column="2" id="col2_filter" style="width:100px;">
+		     小区名称：<input type="text" class="form-controlSearch input-text " placeholder="输入小区名称" data-column="3" id="col3_filter" style="width:100px;">
+   		 年：<input type="text" class="form-controlSearch input-text " placeholder="输入年" data-column="4" id="col4_filter" style="width:100px;">
+   		  月：<input type="text" class="form-controlSearch input-text " placeholder="输入月" data-column="5" id="col5_filter" style="width:100px;">
    
 		   </div>
-			
-			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加新车位','parking-add.jsp','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加新车位</a></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
+			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加物业费用信息表','admin-list-cost-add.jsp','','540')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加物业费用信息表</a></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>
 						<tr class="text-c">
-						<th width="25"><input type="checkbox" id="complainCheckAll" name="complainCheckAll"></th>
-						<th width="20">编号</th>						
-						<th width="30">车位号</th>
-						<th width="40">车位类型</th>
-						
-						<th width="50">所属小区</th>						
-						
-						<th width="50">车位状态</th>
-						<th width="50">车位面积</th>
-						<th width="50">备注</th>
-						<th></th>
-						<th width="100">操作</th>
+							<th width="25"><input type="checkbox" id="PaymentCheckAll" name="PaymentCheckAll"></th>
+							<th>住户名称</th>
+         				    <th>手机号</th>
+          				    <th>小区名称</th>
+           					<th>年</th>
+           				  	<th>月</th>
+           				    <th>总费用</th>
+           				    <th>操作</th>
 						</tr>
 					</thead>
 					<tbody>					
@@ -84,16 +64,16 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
 $(function(){
-	//暂时注释掉hui自带的dt访问	
-	/* $('.table-sort').dataTable({
+	/*暂时注释掉hui自带的dt访问	
+	$('.table-sort').dataTable({
 		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
 		"bStateSave": true,//状态保存
 		"aoColumnDefs": [
-		  {"bVisible": false, "aTargets": [ 4 ]} //控制列的隐藏显示
+		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
 		  {"orderable":false,"aTargets":[0,8,9]}// 制定列不参与排序
 		]
-	}); */
-	
+	});
+	*/
     /*单击数据行 被选中，再次单击取消选中*/
 	$('.table-sort tbody').on( 'click', 'tr', function () {
 		if ( $(this).hasClass('selected') ) {
@@ -105,15 +85,15 @@ $(function(){
 		}
 	});
 });
-/*车位-添加*/
+/*用户-添加*/
 function member_add(title,url,w,h){
 	layer_show(title,url,w,h);
 }
-/*车位-查看*/
+/*用户-查看*/
 function member_show(title,url,id,w,h){
 	layer_show(title,url,w,h);
 }
-/*车位-停用*/
+/*用户-停用*/
 function member_stop(obj,id){
 	layer.confirm('确认要停用吗？',function(index){
 		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a>');
@@ -171,13 +151,13 @@ function member_del(obj,id){
 			function(pass, index) {
 				layer.close(index);
 				if (pass == "admin") {
-					
+					layer.msg('删除成功');
 					//页面跳转，跳转到servlet
 					$.ajax({
-						url : "${pageContext.request.contextPath}/ParkingBeanServlet?op=delete",//url地址
+						url : "${pageContext.request.contextPath}/PayNoticeServlet?op=del",//url地址
 						type : "post",
 						data : {
-							"parkingId" : $(obj).parents("tr").find("td").eq(1).text()
+							"costId" : $(obj).parents("tr").find("td").eq(1).text()
 						},
 						//成功后执行的操作
 						success : function(data) {
@@ -194,7 +174,6 @@ function member_del(obj,id){
 										},
 										function() {
 											eloancn.table.grid.ajax.reload();
-
 										});
 							}
 						}
@@ -246,7 +225,7 @@ function member_del(obj,id){
 	  
 	  
 	  
-	 //修改车位信息的超链接单击事件
+	 //修改员工信息的超链接单击事件
 	 $(document).on("click",'.empedit',function()
 	 {
 		 var _this = $(this); //当前对象 编辑的超链接
@@ -254,60 +233,26 @@ function member_del(obj,id){
 	      var arr = [];
 	     for(var i = 1; i< data.length; i++){ //1 从1开始 从姓名开始
 	        arr.push($(data[i]).text());//每一个td中的内容() 放到一个数组里
-	        
 	     }
-	   //先拿到点击的行号  
-	     var rowIndex = $(this).parents("tr").index();  
-	    //此处拿到隐藏列的id  
-	    var villageId = $('#example').DataTable().row(rowIndex).data().villageId;
-	     console.log(villageId);
+	    // console.log(arr);
 		 //change-password.html
 		 
 		 //打开新窗口 编辑窗口
 	     layer.open({
 	 		type: 2,
-	 		area: ['710px', '510px'], //窗口大小
+	 		area: ['710px', '760px'], //窗口大小
 	 		fix: false, //不固定
 	 		maxmin: true,
 	 		shade:0.4,
-	 		title: '编辑车位信息', //显示的标题
-	 		content: 'parking-update.jsp', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
+	 		title: '编辑物业表单', //显示的标题
+	 		content: 'admin-list-cost-update.jsp', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
 	 		success: function(layero, index){ //success可以不写
 	             var body = layer.getChildFrame('body',index);//建立父子联系
 	             var iframeWin = window[layero.find('iframe')[0]['name']];
 	             
-	             var inputList = body.find('.u'); //找所有的input
-	            
+	             var inputList = body.find('input'); //找所有的input
 	             for(var j = 0; j< arr.length; j++){
-	            	 if(j==2){
-	            		 if("门口车位"==arr[j]){
-	            			 $(inputList[j]).val("1");
-	            		 }else if("地下车库"==arr[j]){
-	            			 $(inputList[j]).val("2");
-	            		 }else{
-	            			 $(inputList[j]).val("3");
-	            		 }
-	            		
-	            	 }else if(j==4){
-	            		 if("已出售"==arr[j]){
-	            			 $(inputList[j]).val("1");
-	            		 }else if("已出租"==arr[j]){
-	            			 $(inputList[j]).val("2");
-	            		 }else{
-	            			 $(inputList[j]).val("3");
-	            		 }
-	            	 }
-	            	 else if(j==3){
-	            		console.log(villageId);
-	            			 $(inputList[j]).val(villageId);
-	            		
-	            	 }
-	            	 else {
-	            		 $(inputList[j]).val(arr[j]); //arr[j] 数组中的值 赋值给  $(inputList[j]) 
-	            	 }
-	                
-	               
-
+	                 $(inputList[j]).val(arr[j]); //arr[j] 数组中的值 赋值给  $(inputList[j])
 	             }
 	         }
 	 	});
@@ -318,7 +263,45 @@ function member_del(obj,id){
 	  
   });
 </script>
+<!--/请在上方写此页面业务相关的脚本-->
 
+
+<!-- 从之前datatable案例中移植过来的代码  头部检索以及表格头部信息-->
+<!-- <div class="container">
+    是否自动检索：<input type="checkbox" id="autoSearch">
+    <br>
+    员工编号：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="1" id="col1_filter">
+    <br>
+    姓名：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="2" id="col2_filter">
+    <br>
+    岗位：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="3" id="col3_filter">
+    <br>
+    入职时间：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="4" id="col4_filter">
+    <br>
+    部门编号：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="5" id="col5_filter">
+    <br>
+    编号：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="6" id="col6_filter">
+    <br>
+    <hr>
+    <table id="example" class="display">
+        <thead>
+        <tr>
+            <th><input type="checkbox" id="employeeCheckAll"></th>
+            <th>员工编号</th>
+            <th>姓名</th>
+            <th>岗位</th>
+            <th>入职时间</th>
+            <th>部门编号</th>
+        </tr>
+        </thead>
+    </table>
+</div> -->
+<!-- 头部检索以及表格标题头结束 -->
+<!-- <link rel="stylesheet" type="text/css" href="plugin/datatables/jquery.dataTables.min.css"/> -->
+
+<!-- <style>
+  .paginate_button{box-sizing:content-box}
+</style> -->
 
 
 <script src="${pageContext.request.contextPath}/plugin/datatables/jquery.dataTables.min.js"></script>
@@ -347,13 +330,7 @@ function member_del(obj,id){
         isTest:"是",
         noTest:"否",
         banned:"禁用",
-        enable:"启用",
-        a1:"空閒",
-        a2:"使用中",
-        a3:"無法使用",
-        t1:"汽车位",
-        t2:"摩托车位",
-        t3:"自行车位",
+        enable:"启用"
     };
 
     //初始化配置
@@ -371,14 +348,13 @@ function member_del(obj,id){
         scrollCollapse:true,
         jQueryUI:false,
         autoWidth:true,
-        autoSearch:false,
-       
+        autoSearch:false
     };
 
     //路径配置,此处配置的路径是获取数据的重要手段;
     employee.url="/"; //  这里 / 表示的是localhost/
     employee.requestUrl = {
-        queryList:employee.url+"CMSys/ParkingBeanServlet"  //数据是从servlet一侧返回的 json格式
+        queryList:employee.url+"CMSys/PayNoticeServlet"  //数据是从servlet一侧返回的 json格式
     };
 
     employee.search={
@@ -387,7 +363,20 @@ function member_del(obj,id){
 
     employee.status = [
         {"searchable": false, "orderable": false, "targets": 0},//第一行不进行排序和搜索
-
+//        {"targets": [12], "visible": false},    //设置第13列隐藏/显示
+//        {"width": "10%", "targets": [1]},  //设置第2列宽度
+//        {
+//            对第7列内容进行替换处理
+//            targets: 6,
+//            render: function (data, type, row, meta) {
+//                if (data == "1") {
+//                    return employee.table.sexMan;
+//                }
+//                if (data == "0") {
+//                    return employee.table.sexWoman;
+//                }
+//            }
+//        },
         {defaultContent: '',targets: ['_all']} //所有列设置默认值为空字符串
     ];
     //对应的返回数据格式
@@ -399,22 +388,19 @@ function member_del(obj,id){
                 $(nTd).html("<input type='checkbox' name='checkList' value='" + sData + "'>");
             }
         }, //这里是返回的json对象中的 属性值   {data : }
-        {"data": "parkingId"},
-        {"data": "parkingNo"},
-        {"data": "ptName"}, 
-       
-        {"data": "villageName"},     
-          
-        {"data": "parkSRName"},
-        {"data": "area"},
-        {"data": "remarks"},
-        {"data": "villageId","visible": false},  
+        
+        {"data": "tenementName"},
+        {"data": "mobilePhone"},
+        {"data": "villageName"},
+        {"data": "years"},
+        {"data": "months"},
+        {"data": "totalPay"},
         {    //创建操作那个列
         	"data":"extn",
         	"createdCell":function(nTd)
         	{
         		//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
-        		$(nTd).html(' <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="changepwd ml-5"  href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
+        		$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="changepwd ml-5"  href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
         		//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");
@@ -423,12 +409,12 @@ function member_del(obj,id){
     ];
 
      //导航按钮操作
-  /*   employee.buttons =
+    employee.buttons =
             '<button class="btn btn-default"  type="button" id="reload" data-toggle="modal" data-target="#employeeModal">刷新表格</button>'+
             '<button class="btn btn-primary" type="button" id="batchIds" style="margin-left:20px;" data-toggle="modal" >多选</button>'+
             '<button class="btn btn-success" type="button" id="selection" style="margin-left:20px;" data-toggle="modal" >单选</button>'+
             '<button class="btn btn-success" type="button" id="search" style="margin-left:20px;" data-toggle="modal" >查询</button>'+
-            '<button class="btn btn-success" type="button" id="clearSearch" style="margin-left:20px;" data-toggle="modal" >重置</button>'; */
+            '<button class="btn btn-success" type="button" id="clearSearch" style="margin-left:20px;" data-toggle="modal" >重置</button>';
 
 </script>
 
@@ -585,7 +571,7 @@ function member_del(obj,id){
             if(elo.gridInit.autoSearch){
                 filterColumn( $(this).attr('data-column') );
             }
-        } );
+        });
     }
 
     //选中一行 checkbox选中

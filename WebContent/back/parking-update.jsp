@@ -41,6 +41,18 @@
 <body>
 	<article class="page-container">
 		<form class="form form-horizontal" id="form-member-add">
+		
+		
+				
+				
+					
+				<div class="row cl">
+				<div class="formControls col-xs-6 col-sm-6">
+					<input type="hidden" class="input-text u" 
+						id="parkingId" name="parkingId">
+				</div>
+			</div>
+			
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>车位号：</label>
@@ -52,8 +64,8 @@
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>车位类型：</label>
-				<div class="formControls col-xs-2 col-sm-2">
-					<span class="select-box"> <select name="ptName" id="ptName"
+				<div class="formControls col-xs-3 col-sm-3">
+					<span class="select-box "> <select name="ptId" id="ptId"
 						class="select u">
 							<option value="1">门口车位</option>
 							<option value="2">地下车库</option>
@@ -62,92 +74,54 @@
 				</div>
 			</div>
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>房间号：</label>
-				<div class="formControls col-xs-6 col-sm-6">
-					<!-- <input type="text" class="input-text"  placeholder="例：A103" id="roomName" name="roomName"> -->
-					<select name="roomName" id="roomName" class="select u">
-						<option value="1">A301</option>
-						<option value="2">A302</option>
-						<option value="3">A303</option>
+				<label for="villageId" class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>所属小区</label>
+				<div class="formControls col-xs-3 col-sm-3">
+					<select class="form-control u" name="villageId" id="villageId">
+
 					</select>
 				</div>
 			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>车牌号：</label>
-				<div class="formControls col-xs-6 col-sm-6">
-					<input type="text" class="input-text u" placeholder="例：闽E2566"
-						id="carNum" name="carNum">
-				</div>
-			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>车品牌：</label>
-				<div class="formControls col-xs-6 col-sm-6">
-					<input type="text" class="input-text u" placeholder="例：奔驰"
-						id="carType" name="carType">
-				</div>
-			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>金额（元）：</label>
-				<div class="formControls col-xs-6 col-sm-6">
-					<input type="text" class="input-text u" placeholder="例：2000.00"
-						id="money" name="money">
-				</div>
-			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>付费时间：</label>
-				<div class="formControls col-xs-6 col-sm-6">
-					<input type="datetime-local" id="timeStart" name="timeStart"
-						class="input-text u" style="width: 300px;">
-
-				</div>
-			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>结束使用时间：</label>
-				<div class="formControls col-xs-6 col-sm-9">
-
-					<input type="datetime-local" id="timeEnd" name="timeEnd"
-						class="input-text u" style="width: 300px;">
-				</div>
-			</div>
+			
 
 
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>车位状态：</label>
-				<div class="formControls col-xs-2 col-sm-2">
-					<span class="select-box"> <select name="parkSRName"
-						id="parkSRName" class="select u">
+				<div class="formControls col-xs-3 col-sm-3">
+					<span class="select-box "> <select name="parkSRId"
+						id="parkSRId" class="select u">
 							<option value="1">已出售</option>
 							<option value="2">已出租</option>
 							<option value="3">空置</option>
 					</select></span>
 				</div>
 			</div>
-
+			
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>备注：</label>
+					class="c-red">*</span>车位面积（平方米）：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text u" placeholder="" value="100"
+					<input type="text" class="input-text u" placeholder="" value=""
+						name="area" id="area">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3">备注：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text u" placeholder="" value=""
 						name="remarks" id="remarks">
 				</div>
 			</div>
 
 			<div class="row cl">
 				<div class="col-xs-5 col-sm-6 col-xs-offset-4 col-sm-offset-3">
-					<input class="btn btn-primary radius" id="addBtn" type="button"
+					<input class="btn btn-primary radius" id="btnUpdate" type="button" name="btnUpdate"
 						value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
 				</div>
 			</div>
 		</form>
 	</article>
-
 
 	<!--_footer 作为公共模版分离出去-->
 	<script type="text/javascript"
@@ -176,82 +150,74 @@
 				radioClass : 'iradio-blue',
 				increaseArea : '20%'
 			});
-			$("#btnAdd")
-					.click(
-							function() {
-								//ajax请求
-								$.ajax({
-											url : "${pageContext.request.contextPath}/ParkingBeanServlet?op=updateParking",//url地址
-											type : "post",
-											data : {
-												"parkingNo" : $('#parkingNo')
-														.val(),s
-												"ptName" : $('#ptName').val(),
-												"roomName" : $('#roomName')
-														.val(),//传值
-												"carNum" : $('#carNum').val(),
-												"carType" : $('#carType').val(),
-												"money" : $('#money').val(),
-												"timeStart" : $('#timeStart')
-														.val(),//传值
-												"timeEnd" : $('#timeEnd').val(),
-												"parkSRName" : $('#parkSRName')
-														.val(),
-												"remarks" : $('#remarks').val()
+			$("#btnUpdate").click(function() {
+						//ajax请求
+						console.log("a");
+						$.ajax({
+									url : "${pageContext.request.contextPath}/ParkingBeanServlet?op=updateParking",//url地址
+									type : "post",
+									data : {
+										
+										"parkingId" : $('#parkingId')
+										.val(),
+										"parkingNo" : $('#parkingNo')
+												.val(),
+										"ptId" : $('#ptId').val(),
+							
+										"villageId" : $('#villageId')
+												.val(),//传值
+										"parkSRId" : $('#parkSRId').val(),
+										"area" : $('#area')
+												.val(),
+										"remarks" : $('#remarks').val()
 
-											},
-											//成功后执行的操作
-											success : function(data) {
-												//判断用户名密码是否正确，正确的话则跳到前台首页
-												if (data == "false") {
-													alert("失败");
-												} else {
-													layer
-															.msg(
-																	'增加成功!',
-																	{
-																		icon : 1,
-																		time : 1000
-																	},
-																	function() {
-																		//获取父层					
-																		var index = parent.layer
-																				.getFrameIndex(window.name);
-																		//刷新父层					
-																		parent.location
-																				.reload();
-																		//关闭弹出层			
-																		parent.layer
-																				.close(index);
+									},
+									//成功后执行的操作
+									success : function(data) {
+										//判断用户名密码是否正确，正确的话则跳到前台首页
+										if (data == "false") {
+											alert("失败");
+										} else {
+											layer
+													.msg(
+															'修改车位信息成功!',
+															{
+																icon : 1,
+																time : 1000
+															},
+															function() {
+																//获取父层					
+																var index = parent.layer
+																		.getFrameIndex(window.name);
+																//刷新父层					
+																parent.location
+																		.reload();
+																//关闭弹出层			
+																parent.layer
+																		.close(index);
 
-																	});
-												}
-											}
-										});
-							});
-			/*validate验证和 ajax 的方式完成表单提交 */
+															});
+										}
+									}
+								});
+					});
+	/*validate验证和 ajax 的方式完成表单提交 */
 
-		});
+});
 	</script>
 	<script type="text/javascript">
 		$(function() {
 			//ajax的 get请求
-			$
-					.get(
-							"${pageContext.request.contextPath}/ParkingBeanServlet?op=getRooms",
-							function(data, status) {
-								//使用js的内置对象JSON将返回的值转化为数组
-								/* array = JSON.parse(data); */
-								//遍历数组
-								console.log("2");
-								$.each(data,
-										function(index, e) {
-											$("#roomName").append(
-													"<option value="+e.roomId+">"
-															+ e.roomName
-															+ "</option>");
-										});
-							});
+			$.get("${pageContext.request.contextPath}/VillageInfoBeanServlet?op=load", function(data, status) {
+				//使用js的内置对象JSON将返回的值转化为数组
+				/* array = JSON.parse(data); */
+				//遍历数组
+				$.each(data, function(index, villageInfo) {
+					$("#villageId").append(
+							"<option value="+villageInfo.villageId+">" + villageInfo.villageName
+									+ "</option>");
+				});
+			});
 		});
 	</script>
 

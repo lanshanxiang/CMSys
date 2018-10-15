@@ -70,6 +70,42 @@ public class PaymentServlet extends HttpServlet {
 			System.out.println("[jsonStr]:"+jsonStr);
 			//关闭
 			out.close();
+		}else if("before".equals(op)) {
+			//使用Gson对象
+			Gson gson=new Gson();
+			//得到费用信息
+			List<PaymentBean> list=psi.getPaymentBefore();
+			
+			MyData<PaymentBean> md = new MyData<PaymentBean>();
+
+			md.setData(list);
+			//把list转为Gson
+			String jsonStr=gson.toJson(md);
+			//创建out对象
+			PrintWriter out =response.getWriter();
+			//输出jsonStr
+			out.print(jsonStr);
+			System.out.println("[jsonStr]:"+jsonStr);
+			//关闭
+			out.close();
+		}else if("after".equals(op)) {
+			//使用Gson对象
+			Gson gson=new Gson();
+			//得到费用信息
+			List<PaymentBean> list=psi.getPaymentAfter();
+			
+			MyData<PaymentBean> md = new MyData<PaymentBean>();
+
+			md.setData(list);
+			//把list转为Gson
+			String jsonStr=gson.toJson(md);
+			//创建out对象
+			PrintWriter out =response.getWriter();
+			//输出jsonStr
+			out.print(jsonStr);
+			System.out.println("[jsonStr]:"+jsonStr);
+			//关闭
+			out.close();
 		}else if("add".equals(op)) {
 			int tenementId = Integer.parseInt(request.getParameter("tenementId"));
 			String years = request.getParameter("years");
