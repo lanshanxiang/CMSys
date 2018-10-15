@@ -937,9 +937,6 @@
 					"data" : "aunit"
 				},
 				{
-					"data" : "phone"
-				},
-				{
 					"data" : "mobilePhone"
 				},
 				{

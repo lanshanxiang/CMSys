@@ -118,6 +118,7 @@ public class TenementBeanServlet extends HttpServlet {
 
 			out.close();
 		}else if("queryIsYN".equals(op)) {
+			System.out.println(111);
 			List<TenementBean> list = tbs.getQueryTenementBeanByIsYN();
 			// Ajax来实现
 			// 返回数据最好是json格式 外部的jar包 gson
