@@ -2,20 +2,68 @@ package com.feiyue.entiy;
 
 
 public class ReportBean {
-	private String reportId;
+	private int reportId;
 	private String equipment; // 设备名称
-	private TenementBean tenementModel;
+	private int tenementId;
 	private String reportName; // 报修人
 	private String reportTime; // 维修时间
-	private String isReport; // 是否维修
+	private int isReport; // 是否维修
 	private String extent;
+	private String tenementName;
 
+	
+	
+	public ReportBean(String equipment, int tenementId, String reportName, String reportTime,
+			int isReport, String extent,int reportId) {
+		super();
+		this.equipment = equipment;
+		this.tenementId = tenementId;
+		this.reportName = reportName;
+		this.reportTime = reportTime;
+		this.isReport = isReport;
+		this.extent = extent;
+		this.reportId = reportId;
+	}
+	
+	public ReportBean(String equipment, int tenementId, String reportName, String reportTime, String extent) {
+		super();
+		this.equipment = equipment;
+		this.tenementId = tenementId;
+		this.reportName = reportName;
+		this.reportTime = reportTime;
+		this.extent = extent;
+	}
+	
+	public ReportBean() {
+		super();
+	}
 
-	public String getReportId() {
+	public ReportBean(int reportId, String equipment, int tenementId, String reportName, String reportTime,
+			int isReport, String extent, String tenementName) {
+		super();
+		this.reportId = reportId;
+		this.equipment = equipment;
+		this.tenementId = tenementId;
+		this.reportName = reportName;
+		this.reportTime = reportTime;
+		this.isReport = isReport;
+		this.extent = extent;
+		this.tenementName = tenementName;
+	}
+
+	public String getTenementName() {
+		return tenementName;
+	}
+
+	public void setTenementName(String tenementName) {
+		this.tenementName = tenementName;
+	}
+
+	public int getReportId() {
 		return reportId;
 	}
 
-	public void setReportId(String reportId) {
+	public void setReportId(int reportId) {
 		this.reportId = reportId;
 	}
 
@@ -28,12 +76,14 @@ public class ReportBean {
 	}
 
 
-	public TenementBean getTenementModel() {
-		return tenementModel;
+	
+
+	public int getTenementId() {
+		return tenementId;
 	}
 
-	public void setTenementModel(TenementBean tenementModel) {
-		this.tenementModel = tenementModel;
+	public void setTenementId(int tenementId) {
+		this.tenementId = tenementId;
 	}
 
 	public String getReportName() {
@@ -52,11 +102,11 @@ public class ReportBean {
 		this.reportTime = reportTime;
 	}
 
-	public String getIsReport() {
+	public int getIsReport() {
 		return isReport;
 	}
 
-	public void setIsReport(String isReport) {
+	public void setIsReport(int isReport) {
 		this.isReport = isReport;
 	}
 
@@ -68,4 +118,14 @@ public class ReportBean {
 		this.extent = extent;
 	}
 
+	@Override
+	public String toString() {
+		return "ReportBean [reportId=" + reportId + ", equipment=" + equipment + ", tenementId=" + tenementId
+				+ ", reportName=" + reportName + ", reportTime=" + reportTime + ", isReport=" + isReport + ", extent="
+				+ extent + ", tenementName=" + tenementName + "]";
+	}
+     
+	
+	
+	
 }

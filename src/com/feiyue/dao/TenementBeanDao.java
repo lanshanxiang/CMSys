@@ -8,6 +8,14 @@ public interface TenementBeanDao {
 
 	//查询所有居民信息
 	public List<TenementBean> queryTenementBean();
+	//查询所有居民信息(查询住户迁入)
+	public List<TenementBean> queryTenementBeanByIsY();
+	//查询所有居民信息(查询住户正在办理)
+	public List<TenementBean> queryTenementBeanByIsYN();
+	//查询所有居民信息(查询住户迁出)
+	public List<TenementBean> queryTenementBeanByIsN();
+	//查询所有居民信息(查询住户已入驻)
+	public List<TenementBean> queryTenementBeanByIsYR();
 	//增加居民
 	boolean insertTenementBean(TenementBean t);
 	//删除居民信息

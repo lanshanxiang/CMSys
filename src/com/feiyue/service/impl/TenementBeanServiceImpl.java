@@ -30,5 +30,25 @@ public class TenementBeanServiceImpl implements TenementBeanService{
 		// TODO Auto-generated method stub
 		return tbd.updateTenementBean(t);
 	}
+	@Override
+	public List<TenementBean> getQueryTenementBeanByIsY() {
+		// TODO Auto-generated method stub
+		return tbd.queryTenementBeanByIsY();
+	}
+	@Override
+	public List<TenementBean> getQueryTenementBeanByIsYN() {
+		// TODO Auto-generated method stub
+		return tbd.queryTenementBeanByIsYN();
+	}
+	@Override
+	public List<TenementBean> getQueryTenementBeanByIsN() {
+		// TODO Auto-generated method stub
+		return tbd.queryTenementBeanByIsN();
+	}
+	@Override
+	public List<TenementBean> getQueryTenementBeanByIsYR() {
+		// TODO Auto-generated method stub
+		return tbd.queryTenementBeanByIsYR();
+	}
 
 }

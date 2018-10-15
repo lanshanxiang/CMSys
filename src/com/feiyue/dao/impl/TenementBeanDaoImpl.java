@@ -40,4 +40,32 @@ public class TenementBeanDaoImpl implements TenementBeanDao {
 		return DBUtil.execute(sql,t.getTenementName(),t.getSex(),t.getAunit(),t.getIdCard(),t.getMobilePhone(),t.getEmail(),t.getAreStay(),t.getCreateBy(),t.getNationality(),t.getHomeAddress(),t.getResidenceType(),t.getMaritalStatus(),t.getUserId(),t.getStatus(),t.getRemark(),t.getTenementId()) > 0;
 	}
 
+	@Override
+	public List<TenementBean> queryTenementBeanByIsY() {
+		// TODO Auto-generated method stub
+		String sql = "select * from tb_tenement where status=0";
+		return (List<TenementBean>) DBUtil.select(sql, TenementBean.class);
+	}
+
+	@Override
+	public List<TenementBean> queryTenementBeanByIsYN() {
+		// TODO Auto-generated method stub
+		String sql = "select * from tb_tenement where status=1";
+		return (List<TenementBean>) DBUtil.select(sql, TenementBean.class);
+	}
+
+	@Override
+	public List<TenementBean> queryTenementBeanByIsN() {
+		// TODO Auto-generated method stub
+		String sql = "select * from tb_tenement where status=2";
+		return (List<TenementBean>) DBUtil.select(sql, TenementBean.class);
+	}
+
+	@Override
+	public List<TenementBean> queryTenementBeanByIsYR() {
+		// TODO Auto-generated method stub
+		String sql = "select * from tb_tenement where status=3";
+		return (List<TenementBean>) DBUtil.select(sql, TenementBean.class);
+	}
+
 }

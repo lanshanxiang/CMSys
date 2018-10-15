@@ -84,6 +84,78 @@ public class TenementBeanServlet extends HttpServlet {
 			out.close();
 		}else if("update".equals(op)){
 			
+		}else if("queryIsY".equals(op)) {
+			List<TenementBean> list = tbs.getQueryTenementBeanByIsY();
+			// Ajax来实现
+			// 返回数据最好是json格式 外部的jar包 gson
+			MyData<TenementBean> md = new MyData<TenementBean>();
+
+			md.setData(list);
+
+			Gson gson = new Gson();
+			String jsonString = gson.toJson(md);
+
+			// 使用printWriter对象
+			PrintWriter out = response.getWriter();
+
+			out.print(jsonString);
+			System.out.println("[jsonString] :" + jsonString);
+
+			out.close();
+		}else if("queryIsYN".equals(op)) {
+			List<TenementBean> list = tbs.getQueryTenementBeanByIsYN();
+			// Ajax来实现
+			// 返回数据最好是json格式 外部的jar包 gson
+			MyData<TenementBean> md = new MyData<TenementBean>();
+
+			md.setData(list);
+
+			Gson gson = new Gson();
+			String jsonString = gson.toJson(md);
+
+			// 使用printWriter对象
+			PrintWriter out = response.getWriter();
+
+			out.print(jsonString);
+			System.out.println("[jsonString] :" + jsonString);
+
+			out.close();
+		}else if("queryIsN".equals(op)) {
+			List<TenementBean> list = tbs.getQueryTenementBeanByIsN();
+			// Ajax来实现
+			// 返回数据最好是json格式 外部的jar包 gson
+			MyData<TenementBean> md = new MyData<TenementBean>();
+
+			md.setData(list);
+
+			Gson gson = new Gson();
+			String jsonString = gson.toJson(md);
+
+			// 使用printWriter对象
+			PrintWriter out = response.getWriter();
+
+			out.print(jsonString);
+			System.out.println("[jsonString] :" + jsonString);
+
+			out.close();
+		}else if("queryIsYR".equals(op)) {
+			List<TenementBean> list = tbs.getQueryTenementBeanByIsYR();
+			// Ajax来实现
+			// 返回数据最好是json格式 外部的jar包 gson
+			MyData<TenementBean> md = new MyData<TenementBean>();
+
+			md.setData(list);
+
+			Gson gson = new Gson();
+			String jsonString = gson.toJson(md);
+
+			// 使用printWriter对象
+			PrintWriter out = response.getWriter();
+
+			out.print(jsonString);
+			System.out.println("[jsonString] :" + jsonString);
+
+			out.close();
 		}
 	}
 
