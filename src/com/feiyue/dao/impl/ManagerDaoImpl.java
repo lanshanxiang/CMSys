@@ -26,4 +26,10 @@ public class ManagerDaoImpl implements ManagerDao {
 		return null;
 	}
 
+	@Override
+	public List<ManagerBean> queryOnlyManager() {
+		// TODO Auto-generated method stub
+		return (List<ManagerBean>) DBUtil.select("select * from tb_manager", ManagerBean.class);
+	}
+
 }

@@ -99,7 +99,7 @@
 			<dl id="menu-article">
 				<dt>
 					<i class="Hui-iconfont">&#xe616;</i> <a
-						_href="${pageContext.request.contextPath}/back/article-list.jsp"
+						_href="${pageContext.request.contextPath}/HomeServlet"
 						data-title="控制台" href="javascript:void(0)">控制台</a>
 				</dt>
 			</dl>
@@ -273,7 +273,7 @@
 		<div id="Hui-tabNav" class="Hui-tabNav hidden-xs">
 			<div class="Hui-tabNav-wp">
 				<ul id="min_title_list" class="acrossTab cl">
-					<li class="active"><span title="我的桌面" data-href="welcome.jsp">我的桌面</span><em></em></li>
+					<li class="active"><span title="我的桌面" data-href="${pageContext.request.contextPath}/HomeServlet">我的桌面</span><em></em></li>
 				</ul>
 			</div>
 			<div class="Hui-tabNav-more btn-group">
@@ -286,7 +286,7 @@
 		<div id="iframe_box" class="Hui-article">
 			<div class="show_iframe">
 				<div style="display: none" class="loading"></div>
-				<iframe scrolling="yes" frameborder="0" src="welcome.jsp"></iframe>
+				<iframe scrolling="yes" frameborder="0" src="${pageContext.request.contextPath}/HomeServlet"></iframe>
 			</div>
 		</div>
 	</section>
