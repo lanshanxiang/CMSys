@@ -13,12 +13,12 @@
 <script type="text/javascript" src="lib/respond.min.js"></script>
 <script type="text/javascript" src="lib/PIE_IE678.js"></script>
 <![endif]-->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui/css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/Hui-iconfont/1.0.7/iconfont.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/icheck/icheck.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui/skin/default/skin.css" id="skin" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui/css/style.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static1/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static1/h-ui/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib1/Hui-iconfont/1.0.7/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib1/icheck/icheck.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static1/h-ui/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static1/h-ui/css/style.css" />
 <!--[if IE 6]>
 <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -30,13 +30,13 @@
 <div class="page-container">
 	<div id="container" style="min-width:700px;height:400px"></div>
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/layer/2.1/layer.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/static/h-ui/js/H-ui.js"></script> 
-<script type="text/javascript" src="${pageContext.request.contextPath}/static/h-ui/js/H-ui.admin.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/Highcharts/4.1.7/js/highcharts.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/Highcharts/4.1.7/js/modules/exporting.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/Highcharts/4.1.7/js/highcharts-3d.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/lib1/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="${pageContext.request.contextPath}/lib1/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/static1/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="${pageContext.request.contextPath}/static1/h-ui/js/H-ui.admin.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/lib1/Highcharts/4.1.7/js/highcharts.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/lib1/Highcharts/4.1.7/js/modules/exporting.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/lib1/Highcharts/4.1.7/js/highcharts-3d.js"></script>
 <script type="text/javascript">
 ﻿﻿$(function () {
     $('#container').highcharts({

@@ -148,28 +148,13 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="admin-listComplaint.jsp" data-title="业主投诉管理"
-							href="javascript:;">业主投诉管理</a></li>
 						<li><a _href="admin-list-complaint.jsp" data-title="投诉报表管理"
 							href="javascript:void(0)">投诉报表管理</a></li>
 					</ul>
 				</dd>
 			</dl>
 			
-			<dl id="menu-comments">
-				<dt>
-					<i class="Hui-iconfont">&#xe622;</i> 反馈管理<i
-						class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
-				</dt>
-				<dd>
-					<ul>
-						<li><a _href="admin-listComplaint.jsp" data-title="反馈信息列表"
-							href="javascript:;">反馈信息列表</a></li>
-						<li><a _href="admin-list-complaint.jsp" data-title="预留功能"
-							href="javascript:void(0)">预留功能</a></li>
-					</ul>
-				</dd>
-			</dl>
+			
 			
 			<dl id="menu-admin">
 				<dt>
@@ -180,7 +165,7 @@
 					<ul>
 						<li><a _href="admin-list-pw.jsp" data-title="小区公告"
 							href="javascript:void(0)">小区公告</a></li>
-						<li><a _href="admin-list-pw.jsp" data-title="报修管理"
+						<li><a _href="admin-list-repair.jsp" data-title="报修管理"
 							href="javascript:void(0)">报修管理</a></li>
 						<li><a _href="admin-list-report.jsp" data-title="维修管理"
 							href="javascript:void(0)">维修管理</a></li>
@@ -196,9 +181,9 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="owner_repair-list.jsp" data-title="商家入驻"
+						<li><a _href="business-add.jsp" data-title="商家入驻"
 							href="javascript:;">商家入驻</a></li>
-						<li><a _href="public_repair-list.jsp" data-title="商家列表"
+						<li><a _href="admin-list-business.jsp" data-title="商家列表"
 							href="javascript:;">商家列表</a></li>
 					</ul>
 				</dd>

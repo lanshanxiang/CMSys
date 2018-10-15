@@ -1682,7 +1682,7 @@
 		});
 		$(document).ready(function() {
 			//$.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
-			//$('table.display').dataTable();
+			$('table.display').dataTable();
 		});
 	</script>
 	

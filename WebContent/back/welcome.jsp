@@ -310,7 +310,7 @@
 																	class="ant-avatar ant-avatar-sm ant-avatar-circle ant-avatar-image"><img
 																	src="https://img.weixiaoqu.com/images/uploads/201806/2273fe28116b1c61f3d9288ca3b718b8.png"></span>
 																<div class="base_hd___3cZJ5">
-																	<span>商家</span><span>0个</span>
+																	<span>商家</span><span>${listBusiness}个</span>
 																</div>
 															</div>
 														</div>
