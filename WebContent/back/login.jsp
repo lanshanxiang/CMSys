@@ -171,7 +171,6 @@
 								</div>
 								<div>
 									<a target="_blank" href="/user/forgotpwd" style="float: right;">忘记密码</a>
-									<a class="register___2JZTi" target="_blank" href="/user/register">注册账户</a>
 								</div>
 								<div class="ant-row ant-form-item">
 									<div class="ant-form-item-control-wrapper">

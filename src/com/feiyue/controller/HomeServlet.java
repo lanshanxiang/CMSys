@@ -46,15 +46,16 @@ import com.feiyue.util.PageData;
 @WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	VillageInfoBeanService vibd=new VillageInfoBeanServiceImpl();
-	BuildingBeanService bbs=new BuildingBeanServiceImpl();
-	RoomBeanService rbs=new RoomBeanServiceImpl();
-	TenementBeanService tbs=new TenementBeanServiceImpl();
-	ParkingBeanService pbs=new ParkingBeanServiceImpl();
-	UserBeanService ubs=new UserBeanServiceImpl();
-	ManagerService ms=new ManagerServiceImpl();
-	BusinessBeanService bbss=new BusinessBeanServiceImpl();
-	LogBeanService lbs=new LogBeanServiceImpl();
+	VillageInfoBeanService vibd = new VillageInfoBeanServiceImpl();
+	BuildingBeanService bbs = new BuildingBeanServiceImpl();
+	RoomBeanService rbs = new RoomBeanServiceImpl();
+	TenementBeanService tbs = new TenementBeanServiceImpl();
+	ParkingBeanService pbs = new ParkingBeanServiceImpl();
+	UserBeanService ubs = new UserBeanServiceImpl();
+	ManagerService ms = new ManagerServiceImpl();
+	BusinessBeanService bbss = new BusinessBeanServiceImpl();
+	LogBeanService lbs = new LogBeanServiceImpl();
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -80,33 +81,38 @@ public class HomeServlet extends HttpServlet {
 		if (request.getParameter("op") != null) {
 			op = request.getParameter("op");
 		}
-		int page=1;
-		int pageSize=5;
-		if (request.getParameter("page") != null) {
-			page = Integer.parseInt(request.getParameter("page"));
+		Object obj = request.getSession().getAttribute("users");
+		if (obj != null) {
+			int page = 1;
+			int pageSize = 5;
+			if (request.getParameter("page") != null) {
+				page = Integer.parseInt(request.getParameter("page"));
+			}
+			if (request.getParameter("pageSize") != null) {
+				pageSize = Integer.parseInt(request.getParameter("pageSize"));
+			}
+			List<VillageInfoBean> list1 = vibd.getQueryVillageInfoBean();
+			request.setAttribute("listVillage", list1.size());
+			List<BuildingBean> list2 = bbs.getQueryOnlyBuildingBean();
+			request.setAttribute("listBuilding", list2.size());
+			List<RoomBean> list3 = rbs.getQueryOnlyRoomBean();
+			request.setAttribute("listRoom", list3.size());
+			List<TenementBean> list4 = tbs.getTenementBean();
+			request.setAttribute("listTenement", list4.size());
+			List<ParkingBean> list5 = pbs.getAllParkingBean();
+			request.setAttribute("listParking", list5.size());
+			List<UserBean> list6 = ubs.getQueryUser();
+			request.setAttribute("listUser", list6.size());
+			List<ManagerBean> list7 = ms.getQueryManager();
+			request.setAttribute("listManager", list7.size());
+			List<BusinessBean> list8 = bbss.getQueryBusinessBean();
+			request.setAttribute("listBusiness", list8.size());
+			PageData<LogBean> list9 = lbs.getQueryLogByPage(page, pageSize);
+			request.setAttribute("listLog", list9);
+			request.getRequestDispatcher("back/welcome.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("back/login.jsp").forward(request, response);
 		}
-		if (request.getParameter("pageSize") != null) {
-			pageSize = Integer.parseInt(request.getParameter("pageSize"));
-		}
-		List<VillageInfoBean> list1=vibd.getQueryVillageInfoBean();
-		request.setAttribute("listVillage", list1.size());
-		List<BuildingBean> list2=bbs.getQueryOnlyBuildingBean();
-		request.setAttribute("listBuilding", list2.size());
-		List<RoomBean> list3=rbs.getQueryOnlyRoomBean();
-		request.setAttribute("listRoom", list3.size());
-		List<TenementBean> list4=tbs.getTenementBean();
-		request.setAttribute("listTenement", list4.size());
-		List<ParkingBean> list5=pbs.getAllParkingBean();
-		request.setAttribute("listParking", list5.size());
-		List<UserBean> list6=ubs.getQueryUser();
-		request.setAttribute("listUser", list6.size());
-		List<ManagerBean> list7=ms.getQueryManager();
-		request.setAttribute("listManager", list7.size());
-		List<BusinessBean> list8=bbss.getQueryBusinessBean();
-		request.setAttribute("listBusiness", list8.size());
-		PageData<LogBean> list9=lbs.getQueryLogByPage(page, pageSize);
-		request.setAttribute("listLog", list9);
-		request.getRequestDispatcher("back/welcome.jsp").forward(request, response);
 	}
 
 	/**

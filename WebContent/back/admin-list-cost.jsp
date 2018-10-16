@@ -3,6 +3,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<%
+	if (null == request.getSession().getAttribute("users")) {
+		request.getRequestDispatcher("login.jsp").forward(request, response);
+	}
+%>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

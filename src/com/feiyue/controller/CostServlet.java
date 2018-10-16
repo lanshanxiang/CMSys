@@ -25,19 +25,22 @@ import com.google.gson.Gson;
 @WebServlet("/CostServlet")
 public class CostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private CostService csi=new CostServiceImpl();
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CostServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private CostService csi = new CostServiceImpl();
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public CostServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
@@ -46,88 +49,91 @@ public class CostServlet extends HttpServlet {
 		if (request.getParameter("op") != null) {
 			op = request.getParameter("op");
 		}
-		if ("load".equals(op)) {
-			List<CostBean> list=csi.getCost();
-			PrintWriter out = response.getWriter();
+		Object obj = request.getSession().getAttribute("users");
+		if (obj != null) {
+			if ("load".equals(op)) {
+				List<CostBean> list = csi.getCost();
+				PrintWriter out = response.getWriter();
 
-			Gson gson = new Gson();
-			out.println(gson.toJson(list));
+				Gson gson = new Gson();
+				out.println(gson.toJson(list));
 
-			out.close();
+				out.close();
 
-		} else if("".equals(op)) {
-			//使用Gson对象
-			Gson gson=new Gson();
-			//得到费用信息
-			List<CostBean> list=csi.getCost();
-			
-			MyData<CostBean> md = new MyData<CostBean>();
+			} else if ("".equals(op)) {
+				// 使用Gson对象
+				Gson gson = new Gson();
+				// 得到费用信息
+				List<CostBean> list = csi.getCost();
 
-			md.setData(list);
-			//把list转为Gson
-			String jsonStr=gson.toJson(md);
-			//创建out对象
-			PrintWriter out =response.getWriter();
-			//输出jsonStr
-			out.print(jsonStr);
-			System.out.println("[jsonStr]:"+jsonStr);
-			//关闭
-			out.close();
-		}else if("add".equals(op)) {
-			String costName = request.getParameter("costName");
-			double unitPrice = Double.parseDouble(request.getParameter("unitPrice"));
-			String remarks = request.getParameter("remarks");
-			int ctId = Integer.parseInt(request.getParameter("ctId"));
-			String munit = request.getParameter("munit");
-			String extent = request.getParameter("extent");
-			CostBean cost=new CostBean(costName, unitPrice, remarks, ctId, munit, extent);
-			boolean flag=csi.addCost(cost);
-			PrintWriter out =response.getWriter();
-			if(flag) {
-				out.print(true);
-			}else {
-				out.print(false);
+				MyData<CostBean> md = new MyData<CostBean>();
+
+				md.setData(list);
+				// 把list转为Gson
+				String jsonStr = gson.toJson(md);
+				// 创建out对象
+				PrintWriter out = response.getWriter();
+				// 输出jsonStr
+				out.print(jsonStr);
+				System.out.println("[jsonStr]:" + jsonStr);
+				// 关闭
+				out.close();
+			} else if ("add".equals(op)) {
+				String costName = request.getParameter("costName");
+				double unitPrice = Double.parseDouble(request.getParameter("unitPrice"));
+				String remarks = request.getParameter("remarks");
+				int ctId = Integer.parseInt(request.getParameter("ctId"));
+				String munit = request.getParameter("munit");
+				String extent = request.getParameter("extent");
+				CostBean cost = new CostBean(costName, unitPrice, remarks, ctId, munit, extent);
+				boolean flag = csi.addCost(cost);
+				PrintWriter out = response.getWriter();
+				if (flag) {
+					out.print(true);
+				} else {
+					out.print(false);
+				}
+
+			} else if ("update".equals(op)) {
+				int costId = Integer.parseInt(request.getParameter("costId"));
+				String costName = request.getParameter("costName");
+				double unitPrice = Double.parseDouble(request.getParameter("unitPrice"));
+				String remarks = request.getParameter("remarks");
+				int ctId = Integer.parseInt(request.getParameter("ctId"));
+				String munit = request.getParameter("munit");
+				String extent = request.getParameter("extent");
+				CostBean cost = new CostBean(costId, costName, unitPrice, remarks, ctId, munit, extent);
+				PrintWriter out = response.getWriter();
+				boolean flag = csi.updateCost(cost);
+				if (flag) {
+					out.print(true);
+				} else {
+					out.print(false);
+				}
+
+			} else if ("del".equals(op)) {
+				int costId = Integer.parseInt(request.getParameter("costId"));
+				boolean flag = csi.deleteCost(costId);
+				PrintWriter out = response.getWriter();
+				if (flag) {
+					out.print(true);
+				} else {
+					out.print(false);
+				}
+
 			}
-			
-			
-			
-		}else if("update".equals(op)) {
-			int costId = Integer.parseInt(request.getParameter("costId"));
-			String costName = request.getParameter("costName");
-			double unitPrice = Double.parseDouble(request.getParameter("unitPrice"));
-			String remarks = request.getParameter("remarks");
-			int ctId = Integer.parseInt(request.getParameter("ctId"));
-			String munit = request.getParameter("munit");
-			String extent = request.getParameter("extent");
-			CostBean cost=new CostBean(costId,costName, unitPrice, remarks, ctId, munit, extent);
-			PrintWriter out =response.getWriter();
-			boolean flag=csi.updateCost(cost);
-			if(flag) {
-				out.print(true);
-			}else {
-				out.print(false);
-			}
-			
-			
-			
-		}else if("del".equals(op)) {
-			int costId=Integer.parseInt(request.getParameter("costId"));
-			boolean flag=csi.deleteCost(costId);
-			PrintWriter out =response.getWriter();
-			if(flag) {
-				out.print(true);
-			}else {
-				out.print(false);
-			}
-			
+		} else {
+			request.getRequestDispatcher("back/login.jsp").forward(request, response);
 		}
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

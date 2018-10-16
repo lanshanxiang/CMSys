@@ -22,19 +22,22 @@ import com.google.gson.Gson;
 @WebServlet("/CostTypeServlet")
 public class CostTypeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private CostTypeService ctsi=new CostTypeServiceImpl();
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CostTypeServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private CostTypeService ctsi = new CostTypeServiceImpl();
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public CostTypeServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
@@ -43,80 +46,83 @@ public class CostTypeServlet extends HttpServlet {
 		if (request.getParameter("op") != null) {
 			op = request.getParameter("op");
 		}
-		if ("load".equals(op)) {
-			List<CostTypeBean> list=ctsi.getCostType();
-			PrintWriter out = response.getWriter();
+		Object obj = request.getSession().getAttribute("users");
+		if (obj != null) {
+			if ("load".equals(op)) {
+				List<CostTypeBean> list = ctsi.getCostType();
+				PrintWriter out = response.getWriter();
 
-			Gson gson = new Gson();
-			out.println(gson.toJson(list));
+				Gson gson = new Gson();
+				out.println(gson.toJson(list));
 
-			out.close();
+				out.close();
 
-		} else if("".equals(op)) {
-			//使用Gson对象
-			Gson gson=new Gson();
-			//得到费用信息
-			List<CostTypeBean> list=ctsi.getCostType();
-			
-			MyData<CostTypeBean> md = new MyData<CostTypeBean>();
+			} else if ("".equals(op)) {
+				// 使用Gson对象
+				Gson gson = new Gson();
+				// 得到费用信息
+				List<CostTypeBean> list = ctsi.getCostType();
 
-			md.setData(list);
-			//把list转为Gson
-			String jsonStr=gson.toJson(md);
-			//创建out对象
-			PrintWriter out =response.getWriter();
-			//输出jsonStr
-			out.print(jsonStr);
-			System.out.println("[jsonStr]:"+jsonStr);
-			//关闭
-			out.close();
-		}else if("add".equals(op)) {
-			String ctName = request.getParameter("ctName");
-			String extent = request.getParameter("extent");
-			CostTypeBean costType=new CostTypeBean(ctName, extent);
-			boolean flag=ctsi.addCostType(costType);
-			PrintWriter out =response.getWriter();
-			if(flag) {
-				out.print(true);
-			}else {
-				out.print(false);
+				MyData<CostTypeBean> md = new MyData<CostTypeBean>();
+
+				md.setData(list);
+				// 把list转为Gson
+				String jsonStr = gson.toJson(md);
+				// 创建out对象
+				PrintWriter out = response.getWriter();
+				// 输出jsonStr
+				out.print(jsonStr);
+				System.out.println("[jsonStr]:" + jsonStr);
+				// 关闭
+				out.close();
+			} else if ("add".equals(op)) {
+				String ctName = request.getParameter("ctName");
+				String extent = request.getParameter("extent");
+				CostTypeBean costType = new CostTypeBean(ctName, extent);
+				boolean flag = ctsi.addCostType(costType);
+				PrintWriter out = response.getWriter();
+				if (flag) {
+					out.print(true);
+				} else {
+					out.print(false);
+				}
+
+			} else if ("update".equals(op)) {
+				int ctId = Integer.parseInt(request.getParameter("ctId"));
+				String ctName = request.getParameter("ctName");
+				String extent = request.getParameter("extent");
+				CostTypeBean costType = new CostTypeBean(ctId, ctName, extent);
+				PrintWriter out = response.getWriter();
+				boolean flag = ctsi.updateCostType(costType);
+				if (flag) {
+					out.print(true);
+				} else {
+					out.print(false);
+				}
+
+			} else if ("del".equals(op)) {
+				int ctId = Integer.parseInt(request.getParameter("ctId"));
+				boolean flag = ctsi.deleteCostType(ctId);
+				PrintWriter out = response.getWriter();
+				if (flag) {
+					out.print(true);
+				} else {
+					out.print(false);
+				}
+
 			}
-			
-			
-			
-		}else if("update".equals(op)) {
-			int ctId=Integer.parseInt(request.getParameter("ctId"));
-			String ctName = request.getParameter("ctName");
-			String extent = request.getParameter("extent");
-			CostTypeBean costType=new CostTypeBean(ctId,ctName, extent);
-			PrintWriter out =response.getWriter();
-			boolean flag=ctsi.updateCostType(costType);
-			if(flag) {
-				out.print(true);
-			}else {
-				out.print(false);
-			}
-			
-			
-			
-		}else if("del".equals(op)) {
-			int ctId=Integer.parseInt(request.getParameter("ctId"));
-			boolean flag=ctsi.deleteCostType(ctId);
-			PrintWriter out =response.getWriter();
-			if(flag) {
-				out.print(true);
-			}else {
-				out.print(false);
-			}
-			
+		} else {
+			request.getRequestDispatcher("back/login.jsp").forward(request, response);
 		}
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

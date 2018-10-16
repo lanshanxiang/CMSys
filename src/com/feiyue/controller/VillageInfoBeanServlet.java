@@ -22,125 +22,136 @@ import com.google.gson.Gson;
 @WebServlet("/VillageInfoBeanServlet")
 public class VillageInfoBeanServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	VillageInfoBeanService vifs=new VillageInfoBeanServiceImpl();
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public VillageInfoBeanServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	VillageInfoBeanService vifs = new VillageInfoBeanServiceImpl();
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//设置响应和请求编码
-				request.setCharacterEncoding("utf-8");
-				response.setCharacterEncoding("utf-8");
-				//设置返回的为json格式
-				response.setContentType("application/json");
-				//获取op
-				String op = "";
-				if (request.getParameter("op") != null) {
-					op = request.getParameter("op");
-				}
-				if ("load".equals(op)) {
-					List<VillageInfoBean> list = vifs.getQueryVillageInfoBean();
-					PrintWriter out = response.getWriter();
-
-					Gson gson = new Gson();
-					out.println(gson.toJson(list));
-
-					out.close();
-		        //展示所有功能
-				} else if ("".equals(op)) {
-					//调用service实现数据库的访问
-					List<VillageInfoBean> list = vifs.getQueryVillageInfoBean();
-					// Ajax来实现
-					// 返回数据最好是json格式 外部的jar包 gson
-					MyData<VillageInfoBean> md = new MyData<VillageInfoBean>();
-		            //将list存入到MyData中
-					md.setData(list);
-		            //创建一个Gson实体
-					Gson gson = new Gson();
-					//将MyData格式转化成字符串
-					String jsonString = gson.toJson(md);
-					// 使用printWriter对象
-					PrintWriter out = response.getWriter();
-		            //将jsonString返回到页面
-					out.print(jsonString);
-					System.out.println(jsonString);
-		            //释放资源
-					out.close();
-				//增加功能
-				}else if("addVillageInfoBean".equals(op)) {
-					//从页面中获取要用到的信息
-					String villageName=request.getParameter("villageName");
-					String linkman=request.getParameter("linkman");
-					String setUpTime=request.getParameter("setUpTime");
-					String phone=request.getParameter("phone");
-					String mobilePhone=request.getParameter("mobilePhone");
-					String floorArea=request.getParameter("floorArea");
-					String buildingArea=request.getParameter("buildingArea");
-					String garageArea=request.getParameter("garageArea");
-					String stallNum=request.getParameter("stallNum");
-					String greenArea=request.getParameter("greenArea");
-					String location=request.getParameter("location");
-					String introduction=request.getParameter("introduction");
-					String extent=request.getParameter("extent");
-					//将获取到的信息存储到实体类中
-					VillageInfoBean  vb=new VillageInfoBean(villageName, linkman, setUpTime, phone, mobilePhone, floorArea, buildingArea, garageArea, stallNum, greenArea, location, introduction, extent);
-					//再进行数据库交互，返回一个boolean类型的值
-					boolean flag=vifs.getAddVillageInfoBean(vb);
-					//在将返回值返回回页面
-					PrintWriter out = response.getWriter();
-					out.print(flag);
-					out.close();
-				//修改功能
-				}else if("updateVillageInfoBean".equals(op)) {
-					//从页面中获取要用到的信息
-					String villageName=request.getParameter("villageName");
-					String linkman=request.getParameter("linkman");
-					String setUpTime=request.getParameter("setUpTime");
-					String phone=request.getParameter("phone");
-					String mobilePhone=request.getParameter("mobilePhone");
-					String floorArea=request.getParameter("floorArea");
-					String buildingArea=request.getParameter("buildingArea");
-					String garageArea=request.getParameter("garageArea");
-					String stallNum=request.getParameter("stallNum");
-					String greenArea=request.getParameter("greenArea");
-					String location=request.getParameter("location");
-					String introduction=request.getParameter("introduction");
-					String extent=request.getParameter("extent");
-					int villageId=Integer.parseInt(request.getParameter("villageId"));
-					//将获取到的信息存储到实体类中
-					VillageInfoBean  vb=new VillageInfoBean(villageName, linkman, setUpTime, phone, mobilePhone, floorArea, buildingArea, garageArea, stallNum, greenArea, location, introduction, extent,villageId);
-					//再进行数据库交互，返回一个boolean类型的值
-					boolean flag=vifs.getUpdateVillageInfoBean(vb);
-					//在将返回值返回回页面
-					PrintWriter out = response.getWriter();
-					out.print(flag);
-					out.close();
-				//删除功能
-				}else if("deleteVillageInfoBean".equals(op)) {
-					//从页面中获取要用到的信息
-					int villageId=Integer.parseInt(request.getParameter("villageId"));
-					//再进行数据库交互，返回一个boolean类型的值
-					boolean flag=vifs.getDeleteVillageInfoBean(villageId);
-					//在将返回值返回回页面
-					PrintWriter out = response.getWriter();
-					out.print(flag);
-					out.close();
-		        }
+	public VillageInfoBeanServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		// 设置响应和请求编码
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		// 设置返回的为json格式
+		response.setContentType("application/json");
+		// 获取op
+		String op = "";
+		if (request.getParameter("op") != null) {
+			op = request.getParameter("op");
+		}
+		Object obj = request.getSession().getAttribute("users");
+		if (obj != null) {
+			if ("load".equals(op)) {
+				List<VillageInfoBean> list = vifs.getQueryVillageInfoBean();
+				PrintWriter out = response.getWriter();
+
+				Gson gson = new Gson();
+				out.println(gson.toJson(list));
+
+				out.close();
+				// 展示所有功能
+			} else if ("".equals(op)) {
+				// 调用service实现数据库的访问
+				List<VillageInfoBean> list = vifs.getQueryVillageInfoBean();
+				// Ajax来实现
+				// 返回数据最好是json格式 外部的jar包 gson
+				MyData<VillageInfoBean> md = new MyData<VillageInfoBean>();
+				// 将list存入到MyData中
+				md.setData(list);
+				// 创建一个Gson实体
+				Gson gson = new Gson();
+				// 将MyData格式转化成字符串
+				String jsonString = gson.toJson(md);
+				// 使用printWriter对象
+				PrintWriter out = response.getWriter();
+				// 将jsonString返回到页面
+				out.print(jsonString);
+				System.out.println(jsonString);
+				// 释放资源
+				out.close();
+				// 增加功能
+			} else if ("addVillageInfoBean".equals(op)) {
+				// 从页面中获取要用到的信息
+				String villageName = request.getParameter("villageName");
+				String linkman = request.getParameter("linkman");
+				String setUpTime = request.getParameter("setUpTime");
+				String phone = request.getParameter("phone");
+				String mobilePhone = request.getParameter("mobilePhone");
+				String floorArea = request.getParameter("floorArea");
+				String buildingArea = request.getParameter("buildingArea");
+				String garageArea = request.getParameter("garageArea");
+				String stallNum = request.getParameter("stallNum");
+				String greenArea = request.getParameter("greenArea");
+				String location = request.getParameter("location");
+				String introduction = request.getParameter("introduction");
+				String extent = request.getParameter("extent");
+				// 将获取到的信息存储到实体类中
+				VillageInfoBean vb = new VillageInfoBean(villageName, linkman, setUpTime, phone, mobilePhone, floorArea,
+						buildingArea, garageArea, stallNum, greenArea, location, introduction, extent);
+				// 再进行数据库交互，返回一个boolean类型的值
+				boolean flag = vifs.getAddVillageInfoBean(vb);
+				// 在将返回值返回回页面
+				PrintWriter out = response.getWriter();
+				out.print(flag);
+				out.close();
+				// 修改功能
+			} else if ("updateVillageInfoBean".equals(op)) {
+				// 从页面中获取要用到的信息
+				String villageName = request.getParameter("villageName");
+				String linkman = request.getParameter("linkman");
+				String setUpTime = request.getParameter("setUpTime");
+				String phone = request.getParameter("phone");
+				String mobilePhone = request.getParameter("mobilePhone");
+				String floorArea = request.getParameter("floorArea");
+				String buildingArea = request.getParameter("buildingArea");
+				String garageArea = request.getParameter("garageArea");
+				String stallNum = request.getParameter("stallNum");
+				String greenArea = request.getParameter("greenArea");
+				String location = request.getParameter("location");
+				String introduction = request.getParameter("introduction");
+				String extent = request.getParameter("extent");
+				int villageId = Integer.parseInt(request.getParameter("villageId"));
+				// 将获取到的信息存储到实体类中
+				VillageInfoBean vb = new VillageInfoBean(villageName, linkman, setUpTime, phone, mobilePhone, floorArea,
+						buildingArea, garageArea, stallNum, greenArea, location, introduction, extent, villageId);
+				// 再进行数据库交互，返回一个boolean类型的值
+				boolean flag = vifs.getUpdateVillageInfoBean(vb);
+				// 在将返回值返回回页面
+				PrintWriter out = response.getWriter();
+				out.print(flag);
+				out.close();
+				// 删除功能
+			} else if ("deleteVillageInfoBean".equals(op)) {
+				// 从页面中获取要用到的信息
+				int villageId = Integer.parseInt(request.getParameter("villageId"));
+				// 再进行数据库交互，返回一个boolean类型的值
+				boolean flag = vifs.getDeleteVillageInfoBean(villageId);
+				// 在将返回值返回回页面
+				PrintWriter out = response.getWriter();
+				out.print(flag);
+				out.close();
+			}
+		} else {
+			request.getRequestDispatcher("back/login.jsp").forward(request, response);
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

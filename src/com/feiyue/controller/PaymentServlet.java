@@ -22,19 +22,22 @@ import com.google.gson.Gson;
 @WebServlet("/PaymentServlet")
 public class PaymentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private PaymentService psi=new PaymentServiceImpl();
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PaymentServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private PaymentService psi = new PaymentServiceImpl();
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public PaymentServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
@@ -43,134 +46,139 @@ public class PaymentServlet extends HttpServlet {
 		if (request.getParameter("op") != null) {
 			op = request.getParameter("op");
 		}
-		if ("load".equals(op)) {
-			List<PaymentBean> list=psi.getPayment();
-			PrintWriter out = response.getWriter();
+		Object obj = request.getSession().getAttribute("users");
+		if (obj != null) {
+			if ("load".equals(op)) {
+				List<PaymentBean> list = psi.getPayment();
+				PrintWriter out = response.getWriter();
 
-			Gson gson = new Gson();
-			out.println(gson.toJson(list));
+				Gson gson = new Gson();
+				out.println(gson.toJson(list));
 
-			out.close();
+				out.close();
 
-		} else if("".equals(op)) {
-			//使用Gson对象
-			Gson gson=new Gson();
-			//得到费用信息
-			List<PaymentBean> list=psi.getPayment();
-			
-			MyData<PaymentBean> md = new MyData<PaymentBean>();
+			} else if ("".equals(op)) {
+				// 使用Gson对象
+				Gson gson = new Gson();
+				// 得到费用信息
+				List<PaymentBean> list = psi.getPayment();
 
-			md.setData(list);
-			//把list转为Gson
-			String jsonStr=gson.toJson(md);
-			//创建out对象
-			PrintWriter out =response.getWriter();
-			//输出jsonStr
-			out.print(jsonStr);
-			System.out.println("[jsonStr]:"+jsonStr);
-			//关闭
-			out.close();
-		}else if("before".equals(op)) {
-			//使用Gson对象
-			Gson gson=new Gson();
-			//得到费用信息
-			List<PaymentBean> list=psi.getPaymentBefore();
-			
-			MyData<PaymentBean> md = new MyData<PaymentBean>();
+				MyData<PaymentBean> md = new MyData<PaymentBean>();
 
-			md.setData(list);
-			//把list转为Gson
-			String jsonStr=gson.toJson(md);
-			//创建out对象
-			PrintWriter out =response.getWriter();
-			//输出jsonStr
-			out.print(jsonStr);
-			System.out.println("[jsonStr]:"+jsonStr);
-			//关闭
-			out.close();
-		}else if("after".equals(op)) {
-			//使用Gson对象
-			Gson gson=new Gson();
-			//得到费用信息
-			List<PaymentBean> list=psi.getPaymentAfter();
-			
-			MyData<PaymentBean> md = new MyData<PaymentBean>();
+				md.setData(list);
+				// 把list转为Gson
+				String jsonStr = gson.toJson(md);
+				// 创建out对象
+				PrintWriter out = response.getWriter();
+				// 输出jsonStr
+				out.print(jsonStr);
+				System.out.println("[jsonStr]:" + jsonStr);
+				// 关闭
+				out.close();
+			} else if ("before".equals(op)) {
+				// 使用Gson对象
+				Gson gson = new Gson();
+				// 得到费用信息
+				List<PaymentBean> list = psi.getPaymentBefore();
 
-			md.setData(list);
-			//把list转为Gson
-			String jsonStr=gson.toJson(md);
-			//创建out对象
-			PrintWriter out =response.getWriter();
-			//输出jsonStr
-			out.print(jsonStr);
-			System.out.println("[jsonStr]:"+jsonStr);
-			//关闭
-			out.close();
-		}else if("add".equals(op)) {
-			int tenementId = Integer.parseInt(request.getParameter("tenementId"));
-			String years = request.getParameter("years");
-			String months = request.getParameter("months");
-			double lastHalf = Double.parseDouble(request.getParameter("lastHalf"));
-			double thisMonth = Double.parseDouble(request.getParameter("thisMonth"));
-			int costId = Integer.parseInt(request.getParameter("costId"));
-			double quantity = Double.parseDouble(request.getParameter("quantity"));
-			double payable = Double.parseDouble(request.getParameter("payable"));
-			double practical = Double.parseDouble(request.getParameter("practical"));
-			String payDate = request.getParameter("payDate");
-			String extent = request.getParameter("extent");
-			PaymentBean payment=new PaymentBean(tenementId, years, months, lastHalf, thisMonth, costId, quantity, payable, practical, payDate, extent);
-			boolean flag=psi.addPayment(payment);
-			PrintWriter out =response.getWriter();
-			if(flag) {
-				out.print(true);
-			}else {
-				out.print(false);
+				MyData<PaymentBean> md = new MyData<PaymentBean>();
+
+				md.setData(list);
+				// 把list转为Gson
+				String jsonStr = gson.toJson(md);
+				// 创建out对象
+				PrintWriter out = response.getWriter();
+				// 输出jsonStr
+				out.print(jsonStr);
+				System.out.println("[jsonStr]:" + jsonStr);
+				// 关闭
+				out.close();
+			} else if ("after".equals(op)) {
+				// 使用Gson对象
+				Gson gson = new Gson();
+				// 得到费用信息
+				List<PaymentBean> list = psi.getPaymentAfter();
+
+				MyData<PaymentBean> md = new MyData<PaymentBean>();
+
+				md.setData(list);
+				// 把list转为Gson
+				String jsonStr = gson.toJson(md);
+				// 创建out对象
+				PrintWriter out = response.getWriter();
+				// 输出jsonStr
+				out.print(jsonStr);
+				System.out.println("[jsonStr]:" + jsonStr);
+				// 关闭
+				out.close();
+			} else if ("add".equals(op)) {
+				int tenementId = Integer.parseInt(request.getParameter("tenementId"));
+				String years = request.getParameter("years");
+				String months = request.getParameter("months");
+				double lastHalf = Double.parseDouble(request.getParameter("lastHalf"));
+				double thisMonth = Double.parseDouble(request.getParameter("thisMonth"));
+				int costId = Integer.parseInt(request.getParameter("costId"));
+				double quantity = Double.parseDouble(request.getParameter("quantity"));
+				double payable = Double.parseDouble(request.getParameter("payable"));
+				double practical = Double.parseDouble(request.getParameter("practical"));
+				String payDate = request.getParameter("payDate");
+				String extent = request.getParameter("extent");
+				PaymentBean payment = new PaymentBean(tenementId, years, months, lastHalf, thisMonth, costId, quantity,
+						payable, practical, payDate, extent);
+				boolean flag = psi.addPayment(payment);
+				PrintWriter out = response.getWriter();
+				if (flag) {
+					out.print(true);
+				} else {
+					out.print(false);
+				}
+
+			} else if ("update".equals(op)) {
+				int payId = Integer.parseInt(request.getParameter("payId"));
+				int tenementId = Integer.parseInt(request.getParameter("tenementId"));
+				String years = request.getParameter("years");
+				String months = request.getParameter("months");
+				double lastHalf = Double.parseDouble(request.getParameter("lastHalf"));
+				double thisMonth = Double.parseDouble(request.getParameter("thisMonth"));
+				int costId = Integer.parseInt(request.getParameter("costId"));
+				double quantity = Double.parseDouble(request.getParameter("quantity"));
+				double payable = Double.parseDouble(request.getParameter("payable"));
+				double practical = Double.parseDouble(request.getParameter("practical"));
+				String payDate = request.getParameter("payDate");
+				String extent = request.getParameter("extent");
+				PaymentBean payment = new PaymentBean(payId, tenementId, years, months, lastHalf, thisMonth, costId,
+						quantity, payable, practical, payDate, extent);
+				PrintWriter out = response.getWriter();
+				boolean flag = psi.updatePayment(payment);
+				if (flag) {
+					out.print(true);
+				} else {
+					out.print(false);
+				}
+
+			} else if ("del".equals(op)) {
+				int payId = Integer.parseInt(request.getParameter("payId"));
+				boolean flag = psi.deletePayment(payId);
+				PrintWriter out = response.getWriter();
+				if (flag) {
+					out.print(true);
+				} else {
+					out.print(false);
+				}
+
 			}
-			
-			
-			
-		}else if("update".equals(op)) {
-			int payId = Integer.parseInt(request.getParameter("payId"));
-			int tenementId = Integer.parseInt(request.getParameter("tenementId"));
-			String years = request.getParameter("years");
-			String months = request.getParameter("months");
-			double lastHalf = Double.parseDouble(request.getParameter("lastHalf"));
-			double thisMonth = Double.parseDouble(request.getParameter("thisMonth"));
-			int costId = Integer.parseInt(request.getParameter("costId"));
-			double quantity = Double.parseDouble(request.getParameter("quantity"));
-			double payable = Double.parseDouble(request.getParameter("payable"));
-			double practical = Double.parseDouble(request.getParameter("practical"));
-			String payDate = request.getParameter("payDate");
-			String extent = request.getParameter("extent");
-			PaymentBean payment =new PaymentBean(payId, tenementId, years, months, lastHalf, thisMonth, costId, quantity, payable, practical, payDate, extent);
-			PrintWriter out =response.getWriter();
-			boolean flag=psi.updatePayment(payment);
-			if(flag) {
-				out.print(true);
-			}else {
-				out.print(false);
-			}
-			
-			
-			
-		}else if("del".equals(op)) {
-			int payId=Integer.parseInt(request.getParameter("payId"));
-			boolean flag=psi.deletePayment(payId);
-			PrintWriter out =response.getWriter();
-			if(flag) {
-				out.print(true);
-			}else {
-				out.print(false);
-			}
-			
+		} else {
+			request.getRequestDispatcher("back/login.jsp").forward(request, response);
 		}
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

@@ -22,19 +22,22 @@ import com.google.gson.Gson;
 @WebServlet("/PayNoticeServlet")
 public class PayNoticeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private PayNoticeService pnsi=new PayNoticeServiceImpl();
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PayNoticeServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private PayNoticeService pnsi = new PayNoticeServiceImpl();
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public PayNoticeServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
@@ -43,57 +46,64 @@ public class PayNoticeServlet extends HttpServlet {
 		if (request.getParameter("op") != null) {
 			op = request.getParameter("op");
 		}
-		if ("load".equals(op)) {
-			List<PayNoticeBean> list=pnsi.getPayNotice();
-			PrintWriter out = response.getWriter();
+		Object obj = request.getSession().getAttribute("users");
+		if (obj != null) {
+			if ("load".equals(op)) {
+				List<PayNoticeBean> list = pnsi.getPayNotice();
+				PrintWriter out = response.getWriter();
 
-			Gson gson = new Gson();
-			out.println(gson.toJson(list));
+				Gson gson = new Gson();
+				out.println(gson.toJson(list));
 
-			out.close();
+				out.close();
 
-		} else if("".equals(op)) {
-			//使用Gson对象
-			Gson gson=new Gson();
-			System.out.println(123);
-			//得到费用信息
-			List<PayNoticeBean> list=pnsi.getPayNotice();
-			
-			MyData<PayNoticeBean> md = new MyData<PayNoticeBean>();
+			} else if ("".equals(op)) {
+				// 使用Gson对象
+				Gson gson = new Gson();
+				System.out.println(123);
+				// 得到费用信息
+				List<PayNoticeBean> list = pnsi.getPayNotice();
 
-			md.setData(list);
-			//把list转为Gson
-			String jsonStr=gson.toJson(md);
-			//创建out对象
-			PrintWriter out =response.getWriter();
-			//输出jsonStr
-			out.print(jsonStr);
-			System.out.println("[jsonStr]:"+jsonStr);
-			//关闭
-			out.close();
-		}else if("load".equals(op)) {
-			//使用Gson对象
-			Gson gson=new Gson();
-			//得到费用信息
-			List<PayNoticeBean> list=pnsi.getPayNotice();
-			
-			//把list转为Gson
-			String jsonStr=gson.toJson(list);
-			//创建out对象
-			PrintWriter out =response.getWriter();
-			//输出jsonStr
-			out.print(jsonStr);
-			System.out.println("[jsonStr]:"+jsonStr);
-			//关闭
-			out.close();
+				MyData<PayNoticeBean> md = new MyData<PayNoticeBean>();
+
+				md.setData(list);
+				// 把list转为Gson
+				String jsonStr = gson.toJson(md);
+				// 创建out对象
+				PrintWriter out = response.getWriter();
+				// 输出jsonStr
+				out.print(jsonStr);
+				System.out.println("[jsonStr]:" + jsonStr);
+				// 关闭
+				out.close();
+			} else if ("load".equals(op)) {
+				// 使用Gson对象
+				Gson gson = new Gson();
+				// 得到费用信息
+				List<PayNoticeBean> list = pnsi.getPayNotice();
+
+				// 把list转为Gson
+				String jsonStr = gson.toJson(list);
+				// 创建out对象
+				PrintWriter out = response.getWriter();
+				// 输出jsonStr
+				out.print(jsonStr);
+				System.out.println("[jsonStr]:" + jsonStr);
+				// 关闭
+				out.close();
+			}
+		} else {
+			request.getRequestDispatcher("back/login.jsp").forward(request, response);
 		}
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
