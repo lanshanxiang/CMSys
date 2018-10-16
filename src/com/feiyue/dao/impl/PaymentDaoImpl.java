@@ -42,13 +42,13 @@ public class PaymentDaoImpl implements PaymentDao{
 	@Override
 	public List<PaymentBean> getPaymentBefore() {
 		// TODO Auto-generated method stub
-		return (List<PaymentBean>) DBUtil.select("SELECT * FROM tb_payment WHERE payable > practical ", PaymentBean.class);
+		return (List<PaymentBean>) DBUtil.select("SELECT tb_payment.payId,tb_tenement.tenementName,tb_payment.years,tb_payment.months,tb_payment.lastHalf,tb_payment.thisMonth,tb_cost.costName,tb_payment.quantity,tb_payment.payable,tb_payment.practical,tb_payment.payDate,tb_payment.extent FROM tb_payment INNER JOIN tb_tenement ON tb_payment.tenementId = tb_tenement.tenementId INNER JOIN tb_cost ON tb_payment.costId = tb_cost.costId WHERE tb_payment.payable >tb_payment.practical", PaymentBean.class);
 	}
 	//遍历已缴费的
 	@Override
 	public List<PaymentBean> getPaymentAfter() {
 		// TODO Auto-generated method stub
-		return (List<PaymentBean>) DBUtil.select("SELECT * FROM tb_payment WHERE payable <= practical ", PaymentBean.class);
+		return (List<PaymentBean>) DBUtil.select("SELECT tb_payment.payId,tb_tenement.tenementName,tb_payment.years,tb_payment.months,tb_payment.lastHalf,tb_payment.thisMonth,tb_cost.costName,tb_payment.quantity,tb_payment.payable,tb_payment.practical,tb_payment.payDate,tb_payment.extent FROM tb_payment INNER JOIN tb_tenement ON tb_payment.tenementId = tb_tenement.tenementId INNER JOIN tb_cost ON tb_payment.costId = tb_cost.costId WHERE tb_payment.payable <= tb_payment.practical", PaymentBean.class);
 	}
 	//分页
 	@Override
@@ -63,6 +63,8 @@ public class PaymentDaoImpl implements PaymentDao{
 		
 		return (List<PaymentBean>) DBUtil.select("SELECT * FROM tb_payment WHERE tenementId=? ", PaymentBean.class,"%"+keyword+"%");
 	}
+
+
 	@Override
 	public boolean batchDeletePayment(String sql) {
 		// TODO Auto-generated method stub

@@ -45,12 +45,14 @@
 		<form class="form form-horizontal"
 			id="form-member-add">
 			<input type="hidden" name="payId" id="payId" value="" />
+			<input type="hidden" name="oldTenementId" id="oldTenementId" value="" />
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>物业编号：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" value="1" placeholder=""
-						id="tenementId" name="tenementId">
+				<label for="tenementId" class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>住户名称：</label>
+				<div class="formControls col-xs-4 col-sm-4 ">
+					<select class="form-control select" name="tenementId" id="tenementId">
+
+					</select>
 				</div>
 			</div>
 
@@ -86,12 +88,14 @@
 						name="thisMonth" id="thisMonth">
 				</div>
 			</div>
+			<input type="hidden" name="oldCostId" id="oldCostId" value="" />
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>费用编号：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="0"
-						name="costId" id="costId">
+				<label for="costId" class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>费用名称：</label>
+				<div class="formControls col-xs-4 col-sm-4 ">
+					<select class="form-control select" name="costId" id="costId">
+
+					</select>
 				</div>
 			</div>
 			<div class="row cl">
@@ -221,7 +225,32 @@
 			
 		});
 	</script>
-
+	<script type="text/javascript">
+		$(function() {
+			//ajax的 get请求
+			$.get("${pageContext.request.contextPath}/TenementBeanServlet?op=load", function(data, status) {
+				//使用js的内置对象JSON将返回的值转化为数组
+				/* array = JSON.parse(data); */
+				//遍历数组
+				$.each(data, function(index, report) {
+					$("#tenementId").append(
+							"<option value="+report.tenementId+">" + report.tenementName+ "</option>");
+				});
+			});
+		});
+		$(function() {
+			//ajax的 get请求
+			$.get("${pageContext.request.contextPath}/CostServlet?op=load", function(data, status) {
+				//使用js的内置对象JSON将返回的值转化为数组
+				/* array = JSON.parse(data); */
+				//遍历数组
+				$.each(data, function(index, report) {
+					$("#costId").append(
+							"<option value="+report.costId+">" + report.costName+ "</option>");
+				});
+			});
+		});
+	</script>
 
 	<!--/请在上方写此页面业务相关的脚本-->
 </body>

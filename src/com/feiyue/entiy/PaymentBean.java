@@ -32,6 +32,10 @@ public class PaymentBean {
 	private String payDate;
 	//扩展字段
 	private String extent;
+	//户主名称
+	private String tenementName;
+	//费用类型名称
+	private String costName;
 	
 	public int getPayId() {
 		return payId;
@@ -106,11 +110,24 @@ public class PaymentBean {
 	public void setExtent(String extent) {
 		this.extent = extent;
 	}
+	
+	public String getTenementName() {
+		return tenementName;
+	}
+	public void setTenementName(String tenementName) {
+		this.tenementName = tenementName;
+	}
+	public String getCostName() {
+		return costName;
+	}
+	public void setCostName(String costName) {
+		this.costName = costName;
+	}
 	public PaymentBean() {
 		super();
 	}
 	/**
-	 * 带payId的
+	 * 带payId的  不含tenementName costName 
 	 * @param payId
 	 * @param tenementModel
 	 * @param years
@@ -144,7 +161,7 @@ public class PaymentBean {
 		this.extent = extent;
 	}
 	/**
-	 * 不带payId的
+	 * 不带payId的  不含tenementName costName 
 	 * @param tenementModel
 	 * @param years
 	 * @param months
@@ -172,13 +189,76 @@ public class PaymentBean {
 		this.payDate = payDate;
 		this.extent = extent;
 	}
+	/**
+	 *  带ID的 含tenementName costName 
+	 * @param payId
+	 * @param tenementName
+	 * @param years
+	 * @param months
+	 * @param lastHalf
+	 * @param thisMonth
+	 * @param costName
+	 * @param quantity
+	 * @param payable
+	 * @param practical
+	 * @param payDate
+	 * @param extent
+	 */
+	public PaymentBean(int payId, String tenementName, String years, String months, double lastHalf, double thisMonth,
+			String costName, double quantity, double payable, double practical, String payDate, String extent) {
+		super();
+		this.payId = payId;
+		this.tenementName = tenementName;
+		this.years = years;
+		this.months = months;
+		this.lastHalf = lastHalf;
+		this.thisMonth = thisMonth;
+		this.costName = costName;
+		this.quantity = quantity;
+		this.payable = payable;
+		this.practical = practical;
+		this.payDate = payDate;
+		this.extent = extent;
+	}
+	/**
+	 * 不带ID的 含tenementName costName 
+	 * @param tenementName
+	 * @param years
+	 * @param months
+	 * @param lastHalf
+	 * @param thisMonth
+	 * @param costName
+	 * @param quantity
+	 * @param payable
+	 * @param practical
+	 * @param payDate
+	 * @param extent
+	 */
+	public PaymentBean(String tenementName, String years, String months, double lastHalf, double thisMonth,
+			String costName, double quantity, double payable, double practical, String payDate, String extent) {
+		super();
+		this.tenementName = tenementName;
+		this.years = years;
+		this.months = months;
+		this.lastHalf = lastHalf;
+		this.thisMonth = thisMonth;
+		this.costName = costName;
+		this.quantity = quantity;
+		this.payable = payable;
+		this.practical = practical;
+		this.payDate = payDate;
+		this.extent = extent;
+	}
 	@Override
 	public String toString() {
 		return "PaymentBean [payId=" + payId + ", tenementId=" + tenementId + ", years=" + years + ", months=" + months
 				+ ", lastHalf=" + lastHalf + ", thisMonth=" + thisMonth + ", costId=" + costId + ", quantity="
 				+ quantity + ", payable=" + payable + ", practical=" + practical + ", payDate=" + payDate + ", extent="
-				+ extent + "]";
+				+ extent + ", tenementName=" + tenementName + ", costName=" + costName + "]";
 	}
+	
+	
+	
 	
 	
 
