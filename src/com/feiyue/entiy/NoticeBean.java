@@ -4,37 +4,45 @@ package com.feiyue.entiy;
 
 
 public class NoticeBean {
-	private String noticeId, contents, extent, titles;
-	private String createTime;
-	private int isSide;
-	private int isTop;
-	private int isRecommend;
+	private int noticeId;//通知公告编号
+	private String titles;//通知公告标题
+	private String contents;//通知公告内容
+	private int typeId; //通知公告类型编号
+	private String releaseTime;//通知公告发布时间
+	private String Extent;//扩展
+	
+	public NoticeBean() {
+		super();
+	}
 
-	private NoticeTypeBean noticeTypeModel;
+	public NoticeBean(String titles, String contents, int typeId, String releaseTime, String extent) {
+		super();
+		this.titles = titles;
+		this.contents = contents;
+		this.typeId = typeId;
+		this.releaseTime = releaseTime;
+		Extent = extent;
+	}
 
-
-	public String getNoticeId() {
+	public NoticeBean(int noticeId, String titles, String contents, int typeId, String releaseTime, String extent) {
+		super();
+		this.noticeId = noticeId;
+		this.titles = titles;
+		this.contents = contents;
+		this.typeId = typeId;
+		this.releaseTime = releaseTime;
+		Extent = extent;
+	}
+	
+	
+	
+	
+	public int getNoticeId() {
 		return noticeId;
 	}
 
-	public void setNoticeId(String noticeId) {
+	public void setNoticeId(int noticeId) {
 		this.noticeId = noticeId;
-	}
-
-	public String getContents() {
-		return contents;
-	}
-
-	public void setContents(String contents) {
-		this.contents = contents;
-	}
-
-	public String getExtent() {
-		return extent;
-	}
-
-	public void setExtent(String extent) {
-		this.extent = extent;
 	}
 
 	public String getTitles() {
@@ -45,82 +53,47 @@ public class NoticeBean {
 		this.titles = titles;
 	}
 
-	public String getCreateTime() {
-		return createTime;
+	public String getContents() {
+		return contents;
 	}
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
-
-
-	public NoticeTypeBean getNoticeTypeModel() {
-		return noticeTypeModel;
-	}
-
-	public void setNoticeTypeModel(NoticeTypeBean noticeTypeModel) {
-		this.noticeTypeModel = noticeTypeModel;
-	}
-
-	public int getIsSide() {
-		return isSide;
-	}
-
-	public void setIsSide(int isSide) {
-		this.isSide = isSide;
-	}
-
-	public int getIsTop() {
-		return isTop;
-	}
-
-	public void setIsTop(int isTop) {
-		this.isTop = isTop;
-	}
-
-	public int getIsRecommend() {
-		return isRecommend;
-	}
-
-	public void setIsRecommend(int isRecommend) {
-		this.isRecommend = isRecommend;
-	}
-
-	public NoticeBean(String noticeId, String contents, String extent,
-			String titles, String createTime, int stateFlag, int isSide,
-			int isTop, int isRecommend, String imagePath,
-			NoticeTypeBean noticeTypeModel) {
-		super();
-		this.noticeId = noticeId;
+	public void setContents(String contents) {
 		this.contents = contents;
-		this.extent = extent;
-		this.titles = titles;
-		this.createTime = createTime;
-		this.isSide = isSide;
-		this.isTop = isTop;
-		this.isRecommend = isRecommend;
-
-		this.noticeTypeModel = noticeTypeModel;
 	}
 
-	public NoticeBean(String noticeId, String contents, String extent,
-			String titles, String createTime, int stateFlag, int isSide,
-			int isTop, String imagePath, NoticeTypeBean noticeTypeModel) {
-		super();
-		this.noticeId = noticeId;
-		this.contents = contents;
-		this.extent = extent;
-		this.titles = titles;
-		this.createTime = createTime;
-
-		this.isSide = isSide;
-		this.isTop = isTop;
-		this.noticeTypeModel = noticeTypeModel;
+	public int getTypeId() {
+		return typeId;
 	}
 
-	public NoticeBean() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setTypeId(int typeId) {
+		this.typeId = typeId;
 	}
 
+	public String getReleaseTime() {
+		return releaseTime;
+	}
+
+	public void setReleaseTime(String releaseTime) {
+		this.releaseTime = releaseTime;
+	}
+
+	public String getExtent() {
+		return Extent;
+	}
+
+	public void setExtent(String extent) {
+		Extent = extent;
+	}
+
+	@Override
+	public String toString() {
+		return "NoticeBean [noticeId=" + noticeId + ", titles=" + titles + ", contents=" + contents + ", typeId="
+				+ typeId + ", releaseTime=" + releaseTime + ", Extent=" + Extent + "]";
+	}
+	
+	
+	
 }
+	
+
+	
