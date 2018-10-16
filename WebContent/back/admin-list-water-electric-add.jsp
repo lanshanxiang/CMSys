@@ -4,11 +4,6 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<%
-	if (null == request.getSession().getAttribute("users")) {
-		request.getRequestDispatcher("login.jsp").forward(request, response);
-	}
-%>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -46,93 +41,22 @@
 			id="form-member-add">
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>物业编号：</label>
+					class="c-red">*</span>通知公告类型名称：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" value="1" placeholder=""
-						id="tenementId" name="tenementId">
+					<input type="text" class="input-text" value="新闻资讯" placeholder=""
+						id="typeName" name="typeName">
 				</div>
 			</div>
 
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>年：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" value="2018" placeholder=""
-						id="years" name="years">
-				</div>
-			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>月：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" value="1" placeholder=""
-						name="months" id="months">
-				</div>
-			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>上月度数：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" value="0"
-						placeholder="" name="lastHalf" id="lastHalf">
-				</div>
-			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>本月度数：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="0"
-						name="thisMonth" id="thisMonth">
-				</div>
-			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>费用编号：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="1"
-						name="costId" id="costId">
-				</div>
-			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>走表数：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="0"
-						name="quantity" id="quantity">
-				</div>
-			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>应缴费：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="0"
-						name="payable" id="payable">
-				</div>
-			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>实缴费：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="0"
-						name="practical" id="practical">
-				</div>
-			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>缴费日期：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="date" class="input-text" placeholder="" value="2010-10-10"
-						name="payDate" id="payDate">
-				</div>
-			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>备注：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="0"
+					<input type="text" class="input-text" placeholder="" value=""
 						name="extent" id="extent">
 				</div>
 			</div>
+			
 			
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
@@ -172,19 +96,11 @@
 			$("#btnAdd").click(function(){
 				//ajax请求
 				$.ajax({
-					url : "${pageContext.request.contextPath}/PaymentServlet?op=add",//url地址
+					url : "${pageContext.request.contextPath}/NoticeTypeBeanServlet?op=addNoticeType",//url地址
 					type : "post",
 					data : {
-						"tenementId" : $('#tenementId').val(),
-						"years" : $('#years').val(),//传值
-						"months" : $('#months').val(),
-						"lastHalf" : $('#lastHalf').val(),
-						"thisMonth" : $('#thisMonth').val(),
-						"costId" : $('#costId').val(),
-						"quantity" : $('#quantity').val(),
-						"payable" : $('#payable').val(),
-						"practical" : $('#practical').val(),
-						"payDate" : $('#payDate').val()
+						"typeName" : $('#typeName').val(),
+						"extent" : $('#extent').val()
 					},
 					// 成功后执行的操作
 					success : function(data) {

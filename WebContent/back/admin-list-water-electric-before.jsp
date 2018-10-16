@@ -41,12 +41,12 @@
 						<tr class="text-c">
 							<th width="25"><input type="checkbox" id="PaymentCheckAll" name="PaymentCheckAll"></th>
 							<th>缴费编号</th>
-         				    <th>物业编号</th>
+         				    <th>住户名称</th>
           				    <th>年</th>
            					<th>月</th>
            				   <th>上月度数</th>
            				   <th>本月度数</th>
-           				   <th>费用编号</th>
+           				   <th>费用类型名称</th>
            				   <th>走表数</th>
            				   <th>应缴费</th>
            				   <th>实缴费</th>
@@ -402,12 +402,12 @@ function member_del(obj,id){
             }
         }, //这里是返回的json对象中的 属性值   {data : }
         {"data": "payId"},
-        {"data": "tenementId"},
+        {"data": "tenementName"},
         {"data": "years"},
         {"data": "months"},
         {"data": "lastHalf"},
         {"data": "thisMonth"},
-        {"data": "costId"},
+        {"data": "costName"},
         {"data": "quantity"},
         {"data": "payable"},
         {"data": "practical"},

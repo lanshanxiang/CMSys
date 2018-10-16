@@ -32,7 +32,7 @@ public class CostDaoImpl implements CostDao{
 	@Override
 	public List<CostBean> getCost() {
 		// TODO Auto-generated method stub
-		return (List<CostBean>) DBUtil.select("SELECT * FROM tb_cost ", CostBean.class);
+		return (List<CostBean>) DBUtil.select("SELECT tb_cost.costId,tb_cost.costName,tb_cost.unitPrice,tb_cost.remarks,tb_costtype.ctName,tb_cost.munit,tb_cost.extent FROM tb_cost INNER JOIN tb_costtype ON tb_cost.ctId = tb_costtype.ctId", CostBean.class);
 	}
 	//分页
 	@Override
@@ -47,6 +47,7 @@ public class CostDaoImpl implements CostDao{
 		
 		return (List<CostBean>) DBUtil.select("SELECT * FROM tb_cost WHERE costName=? ", CostBean.class,"%"+keyword+"%");
 	}
+
 	@Override
 	public boolean batchDeleteCost(String sql) {
 		// TODO Auto-generated method stub

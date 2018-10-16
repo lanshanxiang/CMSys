@@ -45,7 +45,7 @@
          				    <th>费用名称</th>
           				    <th>单价</th>
            					<th>费用说明</th>
-           				  	<th>费用类别编号</th>
+           				  	<th>费用类别名称</th>
            				    <th>计价单位</th>
            				    <th width="150">备注</th>
            				    <th>操作</th>
@@ -402,7 +402,7 @@ function member_del(obj,id){
         {"data": "costName"},
         {"data": "unitPrice"},
         {"data": "remarks"},
-        {"data": "ctId"},
+        {"data": "ctName"},
         {"data": "munit"},
         {"data": "extent"},
         {    //创建操作那个列

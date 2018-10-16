@@ -70,12 +70,14 @@
 						name="remarks" id="remarks">
 				</div>
 			</div>
+			<input type="hidden" name="" id="" value="" />
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>费用类别编号：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" value="1"
-						placeholder="" name="ctId" id="ctId">
+				<label for="ctId" class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>费用类型名称：</label>
+				<div class="formControls col-xs-4 col-sm-4">
+					<select class="form-control select" name="ctId" id="ctId">
+
+					</select>
 				</div>
 			</div>
 			<div class="row cl">
@@ -176,7 +178,20 @@
 			
 		});
 	</script>
-
+	<script type="text/javascript">
+		$(function() {
+			//ajax的 get请求
+			$.get("${pageContext.request.contextPath}/CostTypeServlet?op=load", function(data, status) {
+				//使用js的内置对象JSON将返回的值转化为数组
+				/* array = JSON.parse(data); */
+				//遍历数组
+				$.each(data, function(index, report) {
+					$("#ctId").append(
+							"<option value="+report.ctId+">" + report.ctName+ "</option>");
+				});
+			});
+		});
+	</script>
 
 	<!--/请在上方写此页面业务相关的脚本-->
 </body>
