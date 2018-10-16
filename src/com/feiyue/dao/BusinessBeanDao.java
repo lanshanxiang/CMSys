@@ -21,4 +21,6 @@ public interface BusinessBeanDao {
     public boolean updateBusinessBeanByState(int bId,int bState);
     //删除操作
     public boolean deleteBusinessBean(int bId);
+    //批量删除
+    public boolean batchDeleteBusinessBean(String sql);
 }

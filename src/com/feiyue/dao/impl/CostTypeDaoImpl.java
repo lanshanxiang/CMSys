@@ -47,4 +47,9 @@ public class CostTypeDaoImpl implements CostTypeDao{
 		
 		return (List<CostTypeBean>) DBUtil.select("SELECT * FROM tb_costtype WHERE ctName=? ", CostTypeBean.class,"%"+keyword+"%");
 	}
+	@Override
+	public boolean batchDeleteCostType(String sql) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute(sql)>0;
+	}
 }

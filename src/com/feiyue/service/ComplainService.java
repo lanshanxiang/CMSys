@@ -17,4 +17,6 @@ public interface ComplainService {
      public boolean getUpdateComplain(ComplainBean c);
      //删除
      public boolean getDeleteComplain(int conplyId);
+   //批量删除
+     public boolean getBatchDeleteComplain(String sql);
 }

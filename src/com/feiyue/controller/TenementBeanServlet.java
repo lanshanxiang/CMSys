@@ -192,6 +192,20 @@ public class TenementBeanServlet extends HttpServlet {
 
 				out.print(flag);
 				out.close();
+			}else if("batchDelete".equals(op)) {
+				//批量删除的SQL语句
+				String sql="DELETE FROM tb_tenement WHERE tenementId IN (";
+				//获取批量ID
+				String[] tenementId = request.getParameterValues("tenementId");
+				PrintWriter out = response.getWriter();
+				//循环拼接ID
+				for (String string : tenementId) {
+					sql+=string+",";
+				}
+				//最后的SQL语句
+				sql=sql.substring(0,sql.lastIndexOf(","))+")";
+				boolean flag = tbs.getBatchDeleteTenementBean(sql);
+				out.print(flag);
 			}
 		} else {
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);

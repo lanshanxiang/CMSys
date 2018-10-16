@@ -63,4 +63,9 @@ public class PaymentDaoImpl implements PaymentDao{
 		
 		return (List<PaymentBean>) DBUtil.select("SELECT * FROM tb_payment WHERE tenementId=? ", PaymentBean.class,"%"+keyword+"%");
 	}
+	@Override
+	public boolean batchDeletePayment(String sql) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute(sql)>0;
+	}
 }

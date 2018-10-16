@@ -55,5 +55,10 @@ public class TenementBeanServiceImpl implements TenementBeanService{
 		// TODO Auto-generated method stub
 		return tbd.updateTenementBeanByState(status, tenementId);
 	}
+	@Override
+	public boolean getBatchDeleteTenementBean(String sql) {
+		// TODO Auto-generated method stub
+		return tbd.batchDeleteTenementBean(sql);
+	}
 
 }

@@ -74,4 +74,10 @@ public class TenementBeanDaoImpl implements TenementBeanDao {
 		return DBUtil.execute("update tb_tenement set status=? where tenementId=?", status,tenementId)>0;
 	}
 
+	@Override
+	public boolean batchDeleteTenementBean(String sql) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute(sql)>0;
+	}
+
 }

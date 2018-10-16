@@ -19,4 +19,6 @@ public interface BuildingBeanDao {
     public boolean updateBuildingBean(BuildingBean bb);
     //删除操作
     public boolean deleteBuildingBean(int buildingId);
+    //批量删除
+    public boolean batchDeleteBuildingBean(String sql);
 }

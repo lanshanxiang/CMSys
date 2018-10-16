@@ -110,6 +110,20 @@ public class CostTypeServlet extends HttpServlet {
 					out.print(false);
 				}
 
+			}else if("batchDelete".equals(op)) {
+				//批量删除的SQL语句
+				String sql="DELETE FROM tb_costtype WHERE ctId IN (";
+				//获取批量ID
+				String[] ctId = request.getParameterValues("ctId");
+				PrintWriter out = response.getWriter();
+				//循环拼接ID
+				for (String string : ctId) {
+					sql+=string+",";
+				}
+				//最后的SQL语句
+				sql=sql.substring(0,sql.lastIndexOf(","))+")";
+				boolean flag = ctsi.getBatchDeleteCostType(sql);
+				out.print(flag);
 			}
 		} else {
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);

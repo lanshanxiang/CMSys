@@ -18,4 +18,6 @@ public interface CostTypeService {
 	    public PageData<CostTypeBean> queryCostTypeByPage(int page, int pageSize, String keywords);
 	    //查询
 	    public List<CostTypeBean> selectCostType(String keyword);
+	  //批量删除
+	     public boolean getBatchDeleteCostType(String sql);
 }

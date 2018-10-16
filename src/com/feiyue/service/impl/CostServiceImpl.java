@@ -41,5 +41,10 @@ public class CostServiceImpl implements CostService{
 		// TODO Auto-generated method stub
 		return cd.selectCost(keyword);
 	}
+	@Override
+	public boolean getBatchDeleteCost(String sql) {
+		// TODO Auto-generated method stub
+		return cd.batchDeleteCost(sql);
+	}
 	
 }

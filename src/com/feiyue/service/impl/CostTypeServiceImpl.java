@@ -41,5 +41,10 @@ public class CostTypeServiceImpl implements CostTypeService{
 		// TODO Auto-generated method stub
 		return ctd.selectCostType(keyword);
 	}
+	@Override
+	public boolean getBatchDeleteCostType(String sql) {
+		// TODO Auto-generated method stub
+		return ctd.batchDeleteCostType(sql);
+	}
 	
 }

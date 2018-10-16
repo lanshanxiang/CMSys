@@ -15,4 +15,6 @@ public interface RoomBeanService {
     public boolean getUpdateRoomBean(RoomBean rb);
     //删除
     public boolean getDeleteRoomBean(int roomId);
+  //批量删除
+    public boolean getBatchDeleteRoomBean(String sql);
 }

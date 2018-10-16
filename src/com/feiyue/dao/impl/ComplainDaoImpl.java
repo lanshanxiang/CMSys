@@ -35,5 +35,10 @@ public class ComplainDaoImpl implements ComplainDao {
 		// TODO Auto-generated method stub
 		return DBUtil.execute("delete from tb_complain where conplyId=?", conplyId)>0;
 	}
+	@Override
+	public boolean batchDeleteComplain(String sql) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute(sql)>0;
+	}
 
 }

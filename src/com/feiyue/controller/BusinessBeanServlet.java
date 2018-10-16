@@ -191,6 +191,20 @@ public class BusinessBeanServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				out.print(flag);
 				out.close();
+			}else if("batchDelete".equals(op)) {
+				//批量删除的SQL语句
+				String sql="DELETE FROM tb_business WHERE bId IN (";
+				//获取批量ID
+				String[] bId = request.getParameterValues("bId");
+				PrintWriter out = response.getWriter();
+				//循环拼接ID
+				for (String string : bId) {
+					sql+=string+",";
+				}
+				//最后的SQL语句
+				sql=sql.substring(0,sql.lastIndexOf(","))+")";
+				boolean flag = bbs.getBatchDeleteBusinessBean(sql);
+				out.print(flag);
 			}
 		} else {
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);

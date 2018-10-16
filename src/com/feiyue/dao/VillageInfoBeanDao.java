@@ -19,4 +19,6 @@ public interface VillageInfoBeanDao {
     public boolean updateVillageInfoBean(VillageInfoBean vb);
     //删除操作
     public boolean deleteVillageInfoBean(int VillageId);
+   //批量删除
+    public boolean batchDeleteTenementBean(String sql);
 }

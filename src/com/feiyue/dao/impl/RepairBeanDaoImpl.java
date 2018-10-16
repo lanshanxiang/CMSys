@@ -42,4 +42,10 @@ public class RepairBeanDaoImpl implements RepairBeanDao {
 		return DBUtil.execute("delete from tb_repair where repairId=?", repairId)>0;
 	}
 
+	@Override
+	public boolean batchDeleteRepairBean(String sql) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute(sql)>0;
+	}
+
 }

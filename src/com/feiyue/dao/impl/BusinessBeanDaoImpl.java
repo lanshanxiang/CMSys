@@ -56,4 +56,10 @@ public class BusinessBeanDaoImpl implements BusinessBeanDao {
 		return DBUtil.execute("update tb_business set bState=? where bId=?", bState,bId)>0;
 	}
 
+	@Override
+	public boolean batchDeleteBusinessBean(String sql) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute(sql)>0;
+	}
+
 }

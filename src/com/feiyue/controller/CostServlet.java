@@ -121,6 +121,20 @@ public class CostServlet extends HttpServlet {
 					out.print(false);
 				}
 
+			}else if("batchDelete".equals(op)) {
+				//批量删除的SQL语句
+				String sql="DELETE FROM tb_cost WHERE costId IN (";
+				//获取批量ID
+				String[] costId = request.getParameterValues("costId");
+				PrintWriter out = response.getWriter();
+				//循环拼接ID
+				for (String string : costId) {
+					sql+=string+",";
+				}
+				//最后的SQL语句
+				sql=sql.substring(0,sql.lastIndexOf(","))+")";
+				boolean flag = csi.getBatchDeleteCost(sql);
+				out.print(flag);
 			}
 		} else {
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);

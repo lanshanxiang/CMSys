@@ -40,4 +40,10 @@ public class RepairBeanServiceImpl implements RepairBeanService {
 		return rbd.deleteRepairBean(repairId);
 	}
 
+	@Override
+	public boolean getBatchDeleteRepairBean(String sql) {
+		// TODO Auto-generated method stub
+		return rbd.batchDeleteRepairBean(sql);
+	}
+
 }

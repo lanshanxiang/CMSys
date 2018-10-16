@@ -28,4 +28,6 @@ public interface ReportBeanDao {
     public boolean updateReportBeanByIsReport(int isReport,int reportId);
     //删除操作
     public boolean deleteReportBean(int reportId);
+    //批量删除
+    public boolean batchDeleteReportBean(String sql);
 }

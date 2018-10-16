@@ -38,5 +38,10 @@ public class VillageInfoBeanDaoImpl implements VillageInfoBeanDao {
 		// TODO Auto-generated method stub
 		return DBUtil.execute("delete from tb_villageinfo where villageId=?", VillageId)>0;
 	}
+	@Override
+	public boolean batchDeleteTenementBean(String sql) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute(sql)>0;
+	}
 
 }

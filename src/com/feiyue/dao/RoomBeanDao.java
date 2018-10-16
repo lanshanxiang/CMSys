@@ -20,4 +20,6 @@ public interface RoomBeanDao {
     public boolean updateRoomBean(RoomBean rb);
     //删除操作
     public boolean deleteRoomBean(int roomId);
+  //批量删除
+    public boolean batchDeleteRoomBean(String sql);
 }

@@ -52,6 +52,11 @@ public class PaymentServiceImpl implements PaymentService{
 		// TODO Auto-generated method stub
 		return pd.selectPayment(keyword);
 	}
+	@Override
+	public boolean getBatchDeletePayment(String sql) {
+		// TODO Auto-generated method stub
+		return pd.batchDeletePayment(sql);
+	}
 	 
 	
 }

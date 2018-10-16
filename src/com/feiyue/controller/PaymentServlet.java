@@ -166,6 +166,20 @@ public class PaymentServlet extends HttpServlet {
 					out.print(false);
 				}
 
+			}else if("batchDelete".equals(op)) {
+				//批量删除的SQL语句
+				String sql="DELETE FROM tb_payment WHERE payId IN (";
+				//获取批量ID
+				String[] payId = request.getParameterValues("payId");
+				PrintWriter out = response.getWriter();
+				//循环拼接ID
+				for (String string : payId) {
+					sql+=string+",";
+				}
+				//最后的SQL语句
+				sql=sql.substring(0,sql.lastIndexOf(","))+")";
+				boolean flag = psi.getBatchDeletePayment(sql);
+				out.print(flag);
 			}
 		} else {
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);

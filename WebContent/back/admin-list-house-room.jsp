@@ -41,23 +41,20 @@
 	<div class="page-container">
 		<article class="cl pd-20">
 			<div class="text-c">
-				是否自动检索：<input type="checkbox" id="autoSearch"> 投诉人姓名+问题+时间：<input
-					type="text" class="form-controlSearch input-text "
-					placeholder="输入姓名" data-column="2" id="col2_filter"
-					style="width: 100px;"> 问题：<input type="text"
-					class="form-controlSearch input-text " placeholder="输入问题"
-					data-column="3" id="col3_filter" style="width: 100px;"> 问题：<input
-					type="text" class="form-controlSearch input-text "
-					placeholder="输入问题" data-column="4" id="col4_filter"
-					style="width: 100px;"> 投诉时间：<input type="text"
-					class="form-controlSearch input-text Wdate"
-					onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})"
-					placeholder="输入入职时间" data-column="4" id="col4_filter"
-					style="width: 100px;">
-
+				根据内容搜索相应的内容：<input type="checkbox" id="autoSearch"> <br>
+				          房间名称：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="2" id="col2_filter" style="width: 100px;"> 
+					楼房名称：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="3" id="col3_filter" style="width: 100px;"> 
+					 单元号：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="4" id="col4_filter" style="width: 100px;">
+					房间简介：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="5" id="col5_filter" style="width: 100px;">
+                                                  建筑面积：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="6" id="col6_filter" style="width: 100px;">
+                                                  使用面积：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="7" id="col7_filter" style="width: 100px;">
+                                                 朝向：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="8" id="col8_filter" style="width: 100px;">
+					备注：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="9" id="col9_filter" style="width: 100px;">
+					户型：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="10" id="col10_filter" style="width: 100px;">
+					是否租凭：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="11" id="col11_filter" style="width: 100px;">
 			</div>
 			<div class="cl pd-5 bg-1 bk-gray mt-20">
-				<span class="l"><a href="javascript:;" onclick="datadel()"
+				<span class="l"><a href="javascript:;" id="plsc"
 					class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i>
 						批量删除</a> <a href="javascript:;"
 					onclick="member_add('添加用户','house-room-add.jsp','','510')"
@@ -132,6 +129,9 @@
 					$(this).addClass('selected');
 				}
 			});
+		});
+		$("#plsc").click(function(){
+			batchIds();
 		});
 		/*用户-添加*/
 		function member_add(title, url, w, h) {
@@ -772,16 +772,48 @@
 
 		//获取所有选中行的UUID
 		function batchIds() {
-
 			var uuid = '';
 			var uuids = eloancn.table.grid.rows(".selected").data();
+			console.log(uuids.length);
 			if (uuids.length == 0) {
 				alert(eloancn.table.statusTitle);
 			} else {
+				// 上面是自带的语句,大概意思就是判断有没有选数据,没有的话进行提示
+				// 下面是选中数据后
+				// 创建一个数组commentId的数组进行存放选中行所对应要操作的commentId
+				var roomId = new Array();
+				// 循环往数组里添加数据
 				for (var i = 0; i < uuids.length; i++) {
-					uuid = uuid + uuids[i].extn + ",";
+					roomId.push(uuids[i]['roomId']);
 				}
-				alert(uuid);
+				//这里进行ajax
+				$.ajax({
+					type : 'POST',
+					url : '${pageContext.request.contextPath}/RoomBeanServlet?op=batchDelete',
+					// 传递数组
+					data : {
+						'roomId' : roomId
+					},
+					// 设置traditional属性: true后才能将集合传到servlet里面去
+					traditional : true,
+					dataType : 'text',//接受数据类型为文本类型
+					success : function(data) {
+						layer.msg('删除成功!', {
+							icon : 1,
+							time : 1000
+						});
+						//成功之后重新加载页面
+						reload();
+
+					},
+					error : function(data) {
+						layer.msg('删除失败!', {
+							icon : 1,
+							time : 1000
+						});
+					},
+				});
+
 			}
 		}
 

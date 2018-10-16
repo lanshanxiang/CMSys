@@ -16,4 +16,6 @@ public interface RepairBeanService {
     public boolean getUpdateRepairBean(RepairBean rb);
     //删除
     public boolean getDeleteRepairBean(int repairId);
+  //批量删除
+    public boolean getBatchDeleteRepairBean(String sql);
 }

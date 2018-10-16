@@ -132,6 +132,20 @@ public class BuildingBeanServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				out.print(flag);
 				out.close();
+			}else if("batchDelete".equals(op)) {
+				//批量删除的SQL语句
+				String sql="DELETE FROM tb_building WHERE buildingId IN (";
+				//获取批量ID
+				String[] buildingId = request.getParameterValues("buildingId");
+				PrintWriter out = response.getWriter();
+				//循环拼接ID
+				for (String string : buildingId) {
+					sql+=string+",";
+				}
+				//最后的SQL语句
+				sql=sql.substring(0,sql.lastIndexOf(","))+")";
+				boolean flag = bbs.getBatchDeleteBuildingBean(sql);
+				out.print(flag);
 			}
 		} else {
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);

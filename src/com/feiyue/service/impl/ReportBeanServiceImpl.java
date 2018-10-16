@@ -71,4 +71,10 @@ public class ReportBeanServiceImpl implements ReportBeanService {
 		return rtd.updateReportBeanByIsReport(isReport,reportId);
 	}
 
+	@Override
+	public boolean getBatchDeleteReportBean(String sql) {
+		// TODO Auto-generated method stub
+		return rtd.batchDeleteReportBean(sql);
+	}
+
 }

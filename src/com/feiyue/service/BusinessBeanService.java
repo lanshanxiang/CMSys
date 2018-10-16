@@ -21,4 +21,6 @@ public interface BusinessBeanService {
     public boolean getUpdateBusinessBeanByState(int bId,int bState);
     //删除操作
     public boolean getDeleteBusinessBean(int bId);
+  //批量删除
+    public boolean getBatchDeleteBusinessBean(String sql);
 }

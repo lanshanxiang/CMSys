@@ -76,4 +76,11 @@ public class ReportBeanDaoImpl implements ReportBeanDao {
 	}
 
 
+	@Override
+	public boolean batchDeleteReportBean(String sql) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute(sql)>0;
+	}
+
+
 }

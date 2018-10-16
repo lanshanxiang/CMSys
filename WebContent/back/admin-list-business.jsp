@@ -45,23 +45,25 @@
 	<div class="page-container">
 		<article class="cl pd-20">
 			<div class="text-c">
-				是否自动检索：<input type="checkbox" id="autoSearch"> 投诉人姓名+问题+时间：<input
-					type="text" class="form-controlSearch input-text "
-					placeholder="输入姓名" data-column="2" id="col2_filter"
-					style="width: 100px;"> 问题：<input type="text"
-					class="form-controlSearch input-text " placeholder="输入问题"
-					data-column="3" id="col3_filter" style="width: 100px;"> 问题：<input
-					type="text" class="form-controlSearch input-text "
-					placeholder="输入问题" data-column="4" id="col4_filter"
-					style="width: 100px;"> 投诉时间：<input type="text"
-					class="form-controlSearch input-text Wdate"
+				根据内容搜索相应的内容：<input type="checkbox" id="autoSearch"> <br>
+				商家名称：<input type="text" class="form-controlSearch input-text "
+					placeholder="" data-column="2" id="col2_filter"
+					style="width: 100px;"> 联系人：<input type="text"
+					class="form-controlSearch input-text " placeholder=""
+					data-column="3" id="col3_filter" style="width: 100px;">
+				联系电话：<input type="text" class="form-controlSearch input-text "
+					placeholder="" data-column="4" id="col4_filter"
+					style="width: 100px;"> 是否入驻：<input type="text"
+					class="form-controlSearch input-text " placeholder=""
+					data-column="5" id="col5_filter" style="width: 100px;">
+				投诉时间：<input type="text" class="form-controlSearch input-text Wdate"
 					onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})"
-					placeholder="输入入职时间" data-column="4" id="col4_filter"
+					placeholder="输入入职时间" data-column="6" id="col6_filter"
 					style="width: 100px;">
 
 			</div>
 			<div class="cl pd-5 bg-1 bk-gray mt-20">
-				<span class="l"><a href="javascript:;" onclick="datadel()"
+				<span class="l"><a id="plsc" href="javascript:;"
 					class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i>
 						批量删除</a> <a href="javascript:;"
 					onclick="member_add('添加用户','business-add.jsp','','510')"
@@ -83,7 +85,7 @@
 						class="table table-border table-bordered table-hover table-bg table-sort">
 						<thead>
 							<tr class="text-c">
-								<th width="25"><input type="checkbox" id="complainCheckAll"
+								<th width="25"><input type="checkbox" id="complainCheckAll1"
 									name="complainCheckAll"></th>
 								<th>商家编号</th>
 								<th>商家名称</th>
@@ -100,10 +102,10 @@
 				</div>
 				<div id="menu2" class="tab-pane fade">
 					<table id="example2"
-						class="table table-border table-bordered table-hover table-bg table-sort" >
+						class="table table-border table-bordered table-hover table-bg table-sort">
 						<thead>
 							<tr class="text-c">
-								<th width="25"><input type="checkbox" id="complainCheckAll"
+								<th width="25"><input type="checkbox" id="complainCheckAll2"
 									name="complainCheckAll"></th>
 								<th>商家编号</th>
 								<th>商家名称</th>
@@ -123,7 +125,7 @@
 						class="table table-border table-bordered table-hover table-bg table-sort">
 						<thead>
 							<tr class="text-c">
-								<th width="25"><input type="checkbox" id="complainCheckAll"
+								<th width="25"><input type="checkbox" id="complainCheckAll3"
 									name="complainCheckAll"></th>
 								<th>商家编号</th>
 								<th>商家名称</th>
@@ -183,6 +185,11 @@
 					$(this).addClass('selected');
 				}
 			});
+
+		});
+
+		$("#plsc").click(function(){
+			batchIds();
 		});
 		/*用户-添加*/
 		function member_add(title, url, w, h) {
@@ -465,7 +472,7 @@
 			version : "v1.0",
 			name : "employee1",
 			tableId : "example1",//显示数据的容器表格的id
-			checkAllId : "employeeCheckAll",
+			checkAllId : "employeeCheckAll1",
 			buttonId : "employeeButtonId",
 			formId : "employeeForm",
 			corporateFormId : "employeeForm",
@@ -513,7 +520,7 @@
 		};
 
 		employee1.search = {
-			uuid : ""
+			uuid1 : ""
 		};
 
 		employee1.status = [ {
@@ -548,7 +555,7 @@
 					"createdCell" : function(nTd, sData, oData, iRow, iCol) {
 						$(nTd)
 								.html(
-										"<input type='checkbox' name='checkList' value='" + sData + "'>");
+										"<input type='checkbox' name='checkList' value='" + oData.bId + "'>");
 					}
 				}, //这里是返回的json对象中的 属性值   {data : }
 				{
@@ -585,16 +592,16 @@
 
 
 	<script>
-		var eloancn = {};
+		var eloancn1 = {};
 
-		eloancn.table = {
+		eloancn1.table = {
 			grid : "",
 			statusTitle : "请选择一条数据！"
 		};
 
 		//dataTables方法封装
 		function dataTablesInit(elo) {
-			eloancn.table.grid = $('#' + elo.property.tableId)
+			eloancn1.table.grid = $('#' + elo.property.tableId)
 					.DataTable(
 							{
 								ajax : {
@@ -724,7 +731,7 @@
 			};
 
 			//回调，如果返回的时候有问题提示信息
-			eloancn.table.grid.on('xhr.dt', function(e, settings, json, xhr) {
+			eloancn1.table.grid.on('xhr.dt', function(e, settings, json, xhr) {
 				console.log("重新加载了数据");
 				if (typeof (json.code) != "undefined" && json.code != "0") {
 					alert(json.message);
@@ -733,27 +740,27 @@
 
 			//鼠标经过高亮
 			var lastIdx = null;
-			eloancn.table.grid
+			eloancn1.table.grid
 					.on('mouseover', 'td',
 							function() {
 
-								if (typeof (eloancn.table.grid.cell(this)
+								if (typeof (eloancn1.table.grid.cell(this)
 										.index()) != "undefined") {
-									var colIdx = eloancn.table.grid.cell(this)
+									var colIdx = eloancn1.table.grid.cell(this)
 											.index().column;
 									if (colIdx !== lastIdx) {
-										$(eloancn.table.grid.cells().nodes())
+										$(eloancn1.table.grid.cells().nodes())
 												.removeClass('highlight');
 										$(
-												eloancn.table.grid.column(
+												eloancn1.table.grid.column(
 														colIdx).nodes())
 												.addClass('highlight');
 									}
 								}
 							});
 
-			eloancn.table.grid.on('mouseleave', function() {
-				$(eloancn.table.grid.cells().nodes()).removeClass('highlight');
+			eloancn1.table.grid.on('mouseleave', function() {
+				$(eloancn1.table.grid.cells().nodes()).removeClass('highlight');
 			});
 
 			//自动搜索方法
@@ -790,20 +797,20 @@
 						if (filedValue != "") {
 							console.log($('#col' + filedValue + '_filter')
 									.val());
-							oSettings = eloancn.table.grid.column(filedValue)
+							oSettings = eloancn1.table.grid.column(filedValue)
 									.search(
 											$('#col' + filedValue + '_filter')
 													.val());
 						}
 					});
 			//搜索的数据一次条件，节省资源
-			eloancn.table.grid.draw(oSettings);
+			eloancn1.table.grid.draw(oSettings);
 		}
 
 		//搜索
 		function filterColumn(i) {
 
-			eloancn.table.grid.column(i)
+			eloancn1.table.grid.column(i)
 					.search($('#col' + i + '_filter').val()).draw();
 		}
 
@@ -814,45 +821,79 @@
 				$(this).val("");
 			});
 			//清空查询条件重新读取数据
-			eloancn.table.grid.columns().search("").draw();
+			eloancn1.table.grid.columns().search("").draw();
 		}
 
 		//获取所有选中行的UUID
 		function batchIds() {
-
-			var uuid = '';
-			var uuids = eloancn.table.grid.rows(".selected").data();
-			if (uuids.length == 0) {
-				alert(eloancn.table.statusTitle);
+			console.log(1);
+			var uuid1 = '';
+			var uuids1 = eloancn1.table.grid.rows(".selected").data();
+			console.log(uuids1.length);
+			if (uuids1.length == 0) {
+				alert(eloancn1.table.statusTitle);
 			} else {
-				for (var i = 0; i < uuids.length; i++) {
-					uuid = uuid + uuids[i].extn + ",";
+				// 上面是自带的语句,大概意思就是判断有没有选数据,没有的话进行提示
+				// 下面是选中数据后
+				// 创建一个数组commentId的数组进行存放选中行所对应要操作的commentId
+				var bId = new Array();
+				// 循环往数组里添加数据
+				for (var i = 0; i < uuids1.length; i++) {
+					bId.push(uuids1[i]['bId']);
 				}
-				alert(uuid);
+				//这里进行ajax
+				$.ajax({
+					type : 'POST',
+					url : '${pageContext.request.contextPath}/BusinessBeanServlet?op=batchDelete',
+					// 传递数组
+					data : {
+						'bId' : bId
+					},
+					// 设置traditional属性: true后才能将集合传到servlet里面去
+					traditional : true,
+					dataType : 'text',//接受数据类型为文本类型
+					success : function(data) {
+						layer.msg('删除成功!', {
+							icon : 1,
+							time : 1000
+						});
+						//成功之后重新加载页面
+						reload();
+
+					},
+					error : function(data) {
+						layer.msg('删除失败!', {
+							icon : 1,
+							time : 1000
+						});
+					},
+				});
+
 			}
 		}
 
 		//单选
 		function selection() {
 
-			if (eloancn.table.grid.rows(".selected").data().length == 1) {
-				var uuid = eloancn.table.grid.row(".selected").data().extn;
+			if (eloancn1.table.grid.rows(".selected").data().length == 1) {
+				var uuid1 = eloancn1.table.grid.row(".selected").data().extn;
 
-				if (uuid == "") {
-					alert(eloancn.table.statusTitle);
+				if (uuid1 == "") {
+					alert(eloancn1.table.statusTitle);
 				} else {
-					alert(uuid);
+					alert(uuid1);
 				}
 
 			} else {
-				alert(eloancn.table.statusTitle);
+				alert(eloancn1.table.statusTitle);
 			}
 		}
 
 		//刷新页面
 		//重新加载数据
 		function reload() {
-			eloancn.table.grid.ajax.reload();
+			eloancn1.table.grid.ajax.reload();
+			$("#employeeCheckAll1").click();
 		}
 
 		//销毁table
@@ -870,7 +911,7 @@
 			version : "v1.0",
 			name : "employee2",
 			tableId : "example2",//显示数据的容器表格的id
-			checkAllId : "employeeCheckAll",
+			checkAllId : "employeeCheckAll2",
 			buttonId : "employeeButtonId",
 			formId : "employeeForm",
 			corporateFormId : "employeeForm",
@@ -918,7 +959,7 @@
 		};
 
 		employee2.search = {
-			uuid : ""
+			uuid2 : ""
 		};
 
 		employee2.status = [ {
@@ -953,7 +994,7 @@
 					"createdCell" : function(nTd, sData, oData, iRow, iCol) {
 						$(nTd)
 								.html(
-										"<input type='checkbox' name='checkList' value='" + sData + "'>");
+										"<input type='checkbox' name='checkList' value='" + oData.bId + "'>");
 					}
 				}, //这里是返回的json对象中的 属性值   {data : }
 				{
@@ -990,9 +1031,9 @@
 
 
 	<script>
-		var eloancn = {};
+		var eloancn2 = {};
 
-		eloancn.table = {
+		eloancn2.table = {
 			grid : "",
 			statusTitle : "请选择一条数据！"
 		};
@@ -1000,7 +1041,7 @@
 		//dataTables方法封装
 		function dataTablesInit(elo) {
 
-			eloancn.table.grid = $('#' + elo.property.tableId)
+			eloancn2.table.grid = $('#' + elo.property.tableId)
 					.DataTable(
 							{
 								ajax : {
@@ -1130,7 +1171,7 @@
 			};
 
 			//回调，如果返回的时候有问题提示信息
-			eloancn.table.grid.on('xhr.dt', function(e, settings, json, xhr) {
+			eloancn2.table.grid.on('xhr.dt', function(e, settings, json, xhr) {
 				console.log("重新加载了数据");
 				if (typeof (json.code) != "undefined" && json.code != "0") {
 					alert(json.message);
@@ -1139,27 +1180,27 @@
 
 			//鼠标经过高亮
 			var lastIdx = null;
-			eloancn.table.grid
+			eloancn2.table.grid
 					.on('mouseover', 'td',
 							function() {
 
-								if (typeof (eloancn.table.grid.cell(this)
+								if (typeof (eloancn2.table.grid.cell(this)
 										.index()) != "undefined") {
-									var colIdx = eloancn.table.grid.cell(this)
+									var colIdx = eloancn2.table.grid.cell(this)
 											.index().column;
 									if (colIdx !== lastIdx) {
-										$(eloancn.table.grid.cells().nodes())
+										$(eloancn2.table.grid.cells().nodes())
 												.removeClass('highlight');
 										$(
-												eloancn.table.grid.column(
+												eloancn2.table.grid.column(
 														colIdx).nodes())
 												.addClass('highlight');
 									}
 								}
 							});
 
-			eloancn.table.grid.on('mouseleave', function() {
-				$(eloancn.table.grid.cells().nodes()).removeClass('highlight');
+			eloancn2.table.grid.on('mouseleave', function() {
+				$(eloancn2.table.grid.cells().nodes()).removeClass('highlight');
 			});
 
 			//自动搜索方法
@@ -1196,20 +1237,20 @@
 						if (filedValue != "") {
 							console.log($('#col' + filedValue + '_filter')
 									.val());
-							oSettings = eloancn.table.grid.column(filedValue)
+							oSettings = eloancn2.table.grid.column(filedValue)
 									.search(
 											$('#col' + filedValue + '_filter')
 													.val());
 						}
 					});
 			//搜索的数据一次条件，节省资源
-			eloancn.table.grid.draw(oSettings);
+			eloancn2.table.grid.draw(oSettings);
 		}
 
 		//搜索
 		function filterColumn(i) {
 
-			eloancn.table.grid.column(i)
+			eloancn2.table.grid.column(i)
 					.search($('#col' + i + '_filter').val()).draw();
 		}
 
@@ -1220,45 +1261,77 @@
 				$(this).val("");
 			});
 			//清空查询条件重新读取数据
-			eloancn.table.grid.columns().search("").draw();
+			eloancn2.table.grid.columns().search("").draw();
 		}
 
 		//获取所有选中行的UUID
 		function batchIds() {
-
-			var uuid = '';
-			var uuids = eloancn.table.grid.rows(".selected").data();
-			if (uuids.length == 0) {
-				alert(eloancn.table.statusTitle);
+			var uuid2 = '';
+			var uuids2 = eloancn2.table.grid.rows(".selected").data();
+			if (uuids2.length == 0) {
+				alert(eloancn2.table.statusTitle);
 			} else {
-				for (var i = 0; i < uuids.length; i++) {
-					uuid = uuid + uuids[i].extn + ",";
+				// 上面是自带的语句,大概意思就是判断有没有选数据,没有的话进行提示
+				// 下面是选中数据后
+				// 创建一个数组commentId的数组进行存放选中行所对应要操作的commentId
+				var bId = new Array();
+				// 循环往数组里添加数据
+				for (var i = 0; i < uuids2.length; i++) {
+					bId.push(uuids2[i]['bId']);
 				}
-				alert(uuid);
+				//这里进行ajax
+				$.ajax({
+					type : 'POST',
+					url : '${pageContext.request.contextPath}/BusinessBeanServlet?op=batchDelete',
+					// 传递数组
+					data : {
+						'bId' : bId
+					},
+					// 设置traditional属性: true后才能将集合传到servlet里面去
+					traditional : true,
+					dataType : 'text',//接受数据类型为文本类型
+					success : function(data) {
+						layer.msg('删除成功!', {
+							icon : 1,
+							time : 1000
+						});
+						//成功之后重新加载页面
+						reload();
+
+					},
+					error : function(data) {
+						layer.msg('删除失败!', {
+							icon : 1,
+							time : 1000
+						});
+					},
+				});
+
 			}
 		}
 
 		//单选
 		function selection() {
 
-			if (eloancn.table.grid.rows(".selected").data().length == 1) {
-				var uuid = eloancn.table.grid.row(".selected").data().extn;
+			if (eloancn2.table.grid.rows(".selected").data().length == 1) {
+				var uuid2 = eloancn2.table.grid.row(".selected").data().extn;
 
-				if (uuid == "") {
-					alert(eloancn.table.statusTitle);
+				if (uuid2 == "") {
+					alert(eloancn2.table.statusTitle);
 				} else {
-					alert(uuid);
+					alert(uuid2);
 				}
 
 			} else {
-				alert(eloancn.table.statusTitle);
+				alert(eloancn2.table.statusTitle);
 			}
 		}
 
 		//刷新页面
 		//重新加载数据
 		function reload() {
-			eloancn.table.grid.ajax.reload();
+			eloancn2.table.grid.ajax.reload();
+			$("#employeeCheckAll2").click();
 		}
 
 		//销毁table
@@ -1277,7 +1350,7 @@
 			version : "v1.0",
 			name : "employee3",
 			tableId : "example3",//显示数据的容器表格的id
-			checkAllId : "employeeCheckAll",
+			checkAllId : "employeeCheckAll3",
 			buttonId : "employeeButtonId",
 			formId : "employeeForm",
 			corporateFormId : "employeeForm",
@@ -1325,7 +1398,7 @@
 		};
 
 		employee3.search = {
-			uuid : ""
+			uuid3 : ""
 		};
 
 		employee3.status = [ {
@@ -1360,7 +1433,7 @@
 					"createdCell" : function(nTd, sData, oData, iRow, iCol) {
 						$(nTd)
 								.html(
-										"<input type='checkbox' name='checkList' value='" + sData + "'>");
+										"<input type='checkbox' name='checkList' value='" + oData.bId + "'>");
 					}
 				}, //这里是返回的json对象中的 属性值   {data : }
 				{
@@ -1633,16 +1706,47 @@
 
 		//获取所有选中行的UUID
 		function batchIds() {
-
-			var uuid = '';
-			var uuids = eloancn.table.grid.rows(".selected").data();
-			if (uuids.length == 0) {
+			var uuid3 = '';
+			var uuids3 = eloancn.table.grid.rows(".selected").data();
+			if (uuids3.length == 0) {
 				alert(eloancn.table.statusTitle);
 			} else {
-				for (var i = 0; i < uuids.length; i++) {
-					uuid = uuid + uuids[i].extn + ",";
+				// 上面是自带的语句,大概意思就是判断有没有选数据,没有的话进行提示
+				// 下面是选中数据后
+				// 创建一个数组commentId的数组进行存放选中行所对应要操作的commentId
+				var bId = new Array();
+				// 循环往数组里添加数据
+				for (var i = 0; i < uuids3.length; i++) {
+					bId.push(uuids3[i]['bId']);
 				}
-				alert(uuid);
+				//这里进行ajax
+				$.ajax({
+					type : 'POST',
+					url : '${pageContext.request.contextPath}/BusinessBeanServlet?op=batchDelete',
+					// 传递数组
+					data : {
+						'bId' : bId
+					},
+					// 设置traditional属性: true后才能将集合传到servlet里面去
+					traditional : true,
+					dataType : 'text',//接受数据类型为文本类型
+					success : function(data) {
+						layer.msg('删除成功!', {
+							icon : 1,
+							time : 1000
+						});
+						//成功之后重新加载页面
+						reload();
+
+					},
+					error : function(data) {
+						layer.msg('删除失败!', {
+							icon : 1,
+							time : 1000
+						});
+					},
+				});
+
 			}
 		}
 
@@ -1650,12 +1754,12 @@
 		function selection() {
 
 			if (eloancn.table.grid.rows(".selected").data().length == 1) {
-				var uuid = eloancn.table.grid.row(".selected").data().extn;
+				var uuid3 = eloancn.table.grid.row(".selected").data().extn;
 
-				if (uuid == "") {
+				if (uuid3 == "") {
 					alert(eloancn.table.statusTitle);
 				} else {
-					alert(uuid);
+					alert(uuid3);
 				}
 
 			} else {
@@ -1667,6 +1771,7 @@
 		//重新加载数据
 		function reload() {
 			eloancn.table.grid.ajax.reload();
+			$("#employeeCheckAll3").click();
 		}
 
 		//销毁table
@@ -1690,30 +1795,28 @@
 			$('table.display').dataTable();
 		});
 	</script>
-	
+
 	<script>
-	    $(function(){
+		$(function() {
 
-	    	/* $(document).on("click",'a[data-toggle="tab"]',function(){
-	    		console.log("click"+$(this));
-	    	
-	    		$.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
-	    		//$($.fn.dataTable.tables( true ) ).DataTable().columns.adjust().draw();
-	    	}); */
-	    	
-	    	$('a[data-toggle="tab"]').on("click",function(e){
-	    		console.log("click..  "+e.target);
-	    	
-	    		$.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
-	    		//$($.fn.dataTable.tables( true ) ).DataTable().columns.adjust().draw();
-	    	});
-	    	
-	    	
-	    });
-	    
-	    
-	 
+			/* $(document).on("click",'a[data-toggle="tab"]',function(){
+				console.log("click"+$(this));
+			
+				$.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
+				//$($.fn.dataTable.tables( true ) ).DataTable().columns.adjust().draw();
+			}); */
 
+			$('a[data-toggle="tab"]').on("click", function(e) {
+				console.log("click..  " + e.target);
+
+				$.fn.dataTable.tables({
+					visible : true,
+					api : true
+				}).columns.adjust();
+				//$($.fn.dataTable.tables( true ) ).DataTable().columns.adjust().draw();
+			});
+
+		});
 	</script>
 </body>
 </html>

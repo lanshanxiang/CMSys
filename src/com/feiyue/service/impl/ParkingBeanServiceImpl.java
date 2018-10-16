@@ -33,6 +33,12 @@ public class ParkingBeanServiceImpl implements ParkingBeanService {
 		// TODO Auto-generated method stub
 		return pbd.deleteParkingBean(pId);
 	}
+
+	@Override
+	public boolean getBatchDeleteParkingBean(String sql) {
+		// TODO Auto-generated method stub
+		return pbd.batchDeleteParkingBean(sql);
+	}
 	
 	
 	

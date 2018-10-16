@@ -58,4 +58,10 @@ public class BusinessBeanServiceImpl implements BusinessBeanService {
 		return bbd.updateBusinessBeanByState(bId, bState);
 	}
 
+	@Override
+	public boolean getBatchDeleteBusinessBean(String sql) {
+		// TODO Auto-generated method stub
+		return bbd.batchDeleteBusinessBean(sql);
+	}
+
 }

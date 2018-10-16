@@ -34,4 +34,10 @@ public class VillageInfoBeanServiceImpl implements VillageInfoBeanService{
 		return vibd.deleteVillageInfoBean(VillageId);
 	}
 
+	@Override
+	public boolean getBatchDeleteVillageInfoBean(String sql) {
+		// TODO Auto-generated method stub
+		return vibd.batchDeleteTenementBean(sql);
+	}
+
 }

@@ -44,5 +44,10 @@ public class BuildingBeanDaoImpl implements BuildingBeanDao {
 		// TODO Auto-generated method stub
 		return (List<BuildingBean>) DBUtil.select("select * from tb_building", BuildingBean.class);
 	}
+	@Override
+	public boolean batchDeleteBuildingBean(String sql) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute(sql)>0;
+	}
 
 }

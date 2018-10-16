@@ -24,4 +24,6 @@ public interface TenementBeanDao {
 	boolean updateTenementBean(TenementBean t);
 	//通过状态修改居民信息
 	boolean updateTenementBeanByState(int status,int tenementId);
+	//批量删除
+    public boolean batchDeleteTenementBean(String sql);
 }

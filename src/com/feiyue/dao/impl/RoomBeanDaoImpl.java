@@ -44,5 +44,10 @@ public class RoomBeanDaoImpl implements RoomBeanDao {
 		// TODO Auto-generated method stub
 		return DBUtil.execute("delete from tb_room where roomId=?", roomId)>0;
 	}
+	@Override
+	public boolean batchDeleteRoomBean(String sql) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute(sql)>0;
+	}
 
 }

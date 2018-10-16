@@ -48,4 +48,10 @@ public class ParkingBeanDaoImpl implements ParkingBeanDao {
 		return DBUtil.execute(sql, pId)>0;
 	}
 
+	@Override
+	public boolean batchDeleteParkingBean(String sql) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute(sql)>0;
+	}
+
 }

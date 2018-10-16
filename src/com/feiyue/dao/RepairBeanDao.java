@@ -17,4 +17,6 @@ public interface RepairBeanDao {
     public boolean updateRepairBean(RepairBean rb);
     //删除操作
     public boolean deleteRepairBean(int repairId);
+  //批量删除
+    public boolean batchDeleteRepairBean(String sql);
 }

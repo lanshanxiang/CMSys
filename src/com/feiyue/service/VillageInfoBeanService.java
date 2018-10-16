@@ -15,4 +15,6 @@ public interface VillageInfoBeanService {
     public boolean getUpdateVillageInfoBean(VillageInfoBean vb);
     //删除
     public boolean getDeleteVillageInfoBean(int VillageId);
+  //批量删除
+    public boolean getBatchDeleteVillageInfoBean(String sql);
 }

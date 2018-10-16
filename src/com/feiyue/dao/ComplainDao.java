@@ -18,4 +18,6 @@ public interface ComplainDao {
      public boolean updateComplain(ComplainBean c);
      //删除操作
      public boolean deleteComplain(int conplyId);
+     //批量删除
+     public boolean batchDeleteComplain(String sql);
 }

@@ -40,4 +40,10 @@ public class RoomBeanServiceImpl implements RoomBeanService  {
 		return rbd.deleteRoomBean(roomId);
 	}
 
+	@Override
+	public boolean getBatchDeleteRoomBean(String sql) {
+		// TODO Auto-generated method stub
+		return rbd.batchDeleteRoomBean(sql);
+	}
+
 }

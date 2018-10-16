@@ -15,4 +15,6 @@ public interface BuildingBeanService {
     public boolean getUpdateBuildingBean(BuildingBean bb);
     //删除
     public boolean getDeleteBuildingBean(int buildingId);
+  //批量删除
+    public boolean getBatchDeleteBuildingBean(String sql);
 }

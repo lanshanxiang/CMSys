@@ -130,6 +130,20 @@ public class RepairBeanServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				out.print(flag);
 				out.close();
+			}else if("batchDelete".equals(op)) {
+				//批量删除的SQL语句
+				String sql="DELETE FROM tb_repair WHERE repairId IN (";
+				//获取批量ID
+				String[] repairId = request.getParameterValues("repairId");
+				PrintWriter out = response.getWriter();
+				//循环拼接ID
+				for (String string : repairId) {
+					sql+=string+",";
+				}
+				//最后的SQL语句
+				sql=sql.substring(0,sql.lastIndexOf(","))+")";
+				boolean flag = rbs.getBatchDeleteRepairBean(sql);
+				out.print(flag);
 			}
 		} else {
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);

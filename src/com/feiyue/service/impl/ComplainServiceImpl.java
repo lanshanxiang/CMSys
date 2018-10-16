@@ -38,5 +38,10 @@ public class ComplainServiceImpl implements ComplainService {
 		// TODO Auto-generated method stub
 		return cd.deleteComplain(conplyId);
 	}
+	@Override
+	public boolean getBatchDeleteComplain(String sql) {
+		// TODO Auto-generated method stub
+		return cd.batchDeleteComplain(sql);
+	}
 
 }

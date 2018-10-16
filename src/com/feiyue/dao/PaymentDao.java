@@ -22,4 +22,6 @@ public interface PaymentDao {
     public PageData<PaymentBean> queryPaymentByPage(int page, int pageSize, String keywords);
     //查询
     public List<PaymentBean> selectPayment(String keyword);
+     //批量删除
+    public boolean batchDeletePayment(String sql);
 }

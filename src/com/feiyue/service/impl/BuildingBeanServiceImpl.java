@@ -40,4 +40,10 @@ public class BuildingBeanServiceImpl implements BuildingBeanService {
 		return bbd.queryOnlyBuildingBean();
 	}
 
+	@Override
+	public boolean getBatchDeleteBuildingBean(String sql) {
+		// TODO Auto-generated method stub
+		return bbd.batchDeleteBuildingBean(sql);
+	}
+
 }

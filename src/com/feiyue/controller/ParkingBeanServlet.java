@@ -108,6 +108,19 @@ public class ParkingBeanServlet extends HttpServlet {
 				out.print(flag);
 				out.close();
 
+			}else if("batchDelete".equals(op)) {
+				//批量删除的SQL语句
+				String sql="DELETE FROM tb_parkings WHERE parkingId IN (";
+				//获取批量ID
+				String[] parkingId = request.getParameterValues("parkingId");
+				//循环拼接ID
+				for (String string : parkingId) {
+					sql+=string+",";
+				}
+				//最后的SQL语句
+				sql=sql.substring(0,sql.lastIndexOf(","))+")";
+				boolean flag = pbs.getBatchDeleteParkingBean(sql);
+				out.print(flag);
 			}
 		} else {
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);

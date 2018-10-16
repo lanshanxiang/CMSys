@@ -47,4 +47,9 @@ public class CostDaoImpl implements CostDao{
 		
 		return (List<CostBean>) DBUtil.select("SELECT * FROM tb_cost WHERE costName=? ", CostBean.class,"%"+keyword+"%");
 	}
+	@Override
+	public boolean batchDeleteCost(String sql) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute(sql)>0;
+	}
 }
