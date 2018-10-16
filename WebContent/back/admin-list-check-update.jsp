@@ -18,8 +18,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui.admin/css/style.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/bootstrap.min.css">
-<script
-	src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+
 <title>添加用户 - H-ui.admin v2.3</title>
 <meta name="keywords" content="H-ui.admin v2.3,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v2.3，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
@@ -146,6 +145,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/h-ui/js/H-ui.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/h-ui.admin/js/H-ui.admin.page.js"></script>
+<script
+	src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <!--/_footer /作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
@@ -217,18 +218,18 @@ $(function(){
 <script type="text/javascript">
 		$(function() {
 			//ajax的 get请求
-			$.get("${pageContext.request.contextPath}/ReportBeanServlet?op=queryTenementBean", function(data, status) {
+			$.get("${pageContext.request.contextPath}/UserBeanServlet?op=load", function(data, status) {
 				//使用js的内置对象JSON将返回的值转化为数组
 				/* array = JSON.parse(data); */
 				//遍历数组
-				$.each(data, function(index, tenement) {
-					$("#tenementId").append(
-							"<option value="+tenement.tenementId+">" + tenement.tenementName
+				$.each(data, function(index, user) {
+					$("#userId").append(
+							"<option value="+user.userId+">" + user.userName
 									+ "</option>");
 				});
 			});
 		});
-	</script> 
+	</script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>

@@ -6,82 +6,88 @@ package com.feiyue.entiy;
 
 
 public class UserBean {
-	private String userId;
-	private String userName;// 用户账号
+	private int userId;
+	private String account;// 账号
+	private String userName;// 用户姓名
 	private String userPwd;
-	private String idEntityCard;// 身份证号码
 	private String question;// 提示问题
 	private String answer;// 答案
-	private String email;
-	private RoleBean roleModel;// 角色对象
-
-
-	public String getUserId() {
+	private String register;
+	
+	
+	
+	public UserBean(String userName, String userPwd, String question, String answer,int userId) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userPwd = userPwd;
+		this.question = question;
+		this.answer = answer;
+	}
+	
+	public UserBean() {
+		super();
+	}
+	public UserBean(int userId, String account, String userName, String userPwd, String question, String answer,
+			String register) {
+		super();
+		this.userId = userId;
+		this.account = account;
+		this.userName = userName;
+		this.userPwd = userPwd;
+		this.question = question;
+		this.answer = answer;
+		this.register = register;
+	}
+	public int getUserId() {
 		return userId;
 	}
-
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-
-
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
+	}
 	public String getUserName() {
 		return userName;
 	}
-
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
 	public String getUserPwd() {
 		return userPwd;
 	}
-
 	public void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
 	}
-	
-
-	public String getIdEntityCard() {
-		return idEntityCard;
-	}
-
-	public void setIdEntityCard(String idEntityCard) {
-		this.idEntityCard = idEntityCard;
-	}
-
 	public String getQuestion() {
 		return question;
 	}
-
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-
 	public String getAnswer() {
 		return answer;
 	}
-
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-
-	public String getEmail() {
-		return email;
+	public String getRegister() {
+		return register;
+	}
+	public void setRegister(String register) {
+		this.register = register;
+	}
+	@Override
+	public String toString() {
+		return "UserBean [userId=" + userId + ", account=" + account + ", userName=" + userName + ", userPwd=" + userPwd
+				+ ", question=" + question + ", answer=" + answer + ", register=" + register + "]";
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
-
-	public RoleBean getRoleModel() {
-		return roleModel;
-	}
-
-	public void setRoleModel(RoleBean roleModel) {
-		this.roleModel = roleModel;
-	}
 	
-	
+
 }

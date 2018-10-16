@@ -175,8 +175,15 @@ public class TenementBeanServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 
 			out.print(jsonString);
-			System.out.println("[jsonString] :" + jsonString);
 
+			out.close();
+		}else if("updateStatus".equals(op)) {
+			int status= Integer.parseInt(request.getParameter("status"));
+			int tenementId = Integer.parseInt(request.getParameter("tenementId"));
+			boolean flag=tbs.updateTenementBeanByStatus(status, tenementId);
+			PrintWriter out = response.getWriter();
+
+			out.print(flag);
 			out.close();
 		}
 	}

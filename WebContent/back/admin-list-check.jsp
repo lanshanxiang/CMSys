@@ -274,30 +274,6 @@
 		function member_edit(title, url, id, w, h) {
 			layer_show(title, url, w, h);
 		}
-		/*密码-修改*/
-		function change_password(title, url, id, w, h) {
-			//layer_show(title,url,w,h);	
-
-			layer.open({
-				type : 2,
-				area : [ '600px', '270px' ],
-				fix : false, //不固定
-				maxmin : true,
-				shade : 0.4,
-				title : title,
-				content : url,
-				success : function(layero, index) {
-					var body = layer.getChildFrame('body', index);//建立父子联系
-					var iframeWin = window[layero.find('iframe')[0]['name']];
-					// console.log(arr); //得到iframe页的body内容
-					// console.log(body.find('input'));
-					var inputList = body.find('input');
-					for (var j = 0; j < inputList.length; j++) {
-						$(inputList[j]).val(arr[j]);
-					}
-				}
-			});
-		}
 		/*用户-删除*/
 		function member_del(obj) {
 			layer
@@ -331,12 +307,7 @@
 													time : 1000
 												},
 												function() {
-													//获取父层					
-													var index = parent.layer
-															.getFrameIndex(window.name);
-													//刷新父层					
-													parent.location
-															.reload();
+													location.reload();
 
 												});
 									}
@@ -346,6 +317,90 @@
 							layer.msg('密码错误，删除失败');
 						}
 
+					});
+		}
+		//修改住户状态为已迁入
+		function member_success(obj) {
+			$
+					.ajax({
+						url : "${pageContext.request.contextPath}/TenementBeanServlet?op=updateStatus",//url地址
+						type : "post",
+						data : {
+							"tenementId" : $(obj).parents("tr").find("td").eq(1)
+									.text(),
+							"status" : 0
+						},
+						//成功后执行的操作
+						success : function(data) {
+							//判断用户名密码是否正确，正确的话则跳到前台首页
+							if (data == "false") {
+								layer.msg('请求失败');
+							} else {
+								layer.msg('审核成功!', {
+									icon : 1,
+									time : 1000
+								}, function() {
+									location.reload();
+
+								});
+							}
+						}
+					});
+		}
+		//修改住户状态为审核失败
+		function member_fail(obj) {
+			$
+					.ajax({
+						url : "${pageContext.request.contextPath}/TenementBeanServlet?op=updateStatus",//url地址
+						type : "post",
+						data : {
+							"tenementId" : $(obj).parents("tr").find("td").eq(1)
+									.text(),
+							"status" : 2
+						},
+						//成功后执行的操作
+						success : function(data) {
+							//判断用户名密码是否正确，正确的话则跳到前台首页
+							if (data == "false") {
+								layer.msg('请求失败');
+							} else {
+								layer.msg('审核失败!', {
+									icon : 1,
+									time : 1000
+								}, function() {
+									location.reload();
+
+								});
+							}
+						}
+					});
+		}
+		//修改住户状态为已迁出
+		function member_out(obj) {
+			$
+					.ajax({
+						url : "${pageContext.request.contextPath}/TenementBeanServlet?op=updateStatus",//url地址
+						type : "post",
+						data : {
+							"tenementId" : $(obj).parents("tr").find("td").eq(1)
+									.text(),
+							"status" : 3
+						},
+						//成功后执行的操作
+						success : function(data) {
+							//判断用户名密码是否正确，正确的话则跳到前台首页
+							if (data == "false") {
+								layer.msg('请求失败');
+							} else {
+								layer.msg('设置成功!', {
+									icon : 1,
+									time : 1000
+								}, function() {
+									location.reload();
+
+								});
+							}
+						}
 					});
 		}
 	</script>
@@ -553,7 +608,7 @@
 						//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
 						$(nTd)
 								.html(
-										'<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="changepwd ml-5"  href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
+										'<a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
 						//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
 						//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
 						//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");
@@ -961,7 +1016,7 @@
 						//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
 						$(nTd)
 								.html(
-										'<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="changepwd ml-5"  href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
+										'<a style="text-decoration:none" class="changepwd ml-5"  href="javascript:;" onclick="member_success(this)" title="审核成功"><i class="Hui-iconfont">&#xe63f;</i></a>  <a style="text-decoration:none"  onclick="member_fail(this)" href="javascript:;" title="审核失败"><i class="Hui-iconfont">&#xe631;</i></a><a style="text-decoration:none"  onclick="member_out(this)" href="javascript:;" title="设计为迁出用户"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class=\"ml-5 \"del\"\" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
 						//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
 						//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
 						//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");
@@ -1353,9 +1408,6 @@
 					"data" : "aunit"
 				},
 				{
-					"data" : "phone"
-				},
-				{
 					"data" : "mobilePhone"
 				},
 				{
@@ -1373,7 +1425,7 @@
 						//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
 						$(nTd)
 								.html(
-										'<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="changepwd ml-5"  href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
+										'<a title="删除" href="javascript:;" onclick="member_del(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
 						//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
 						//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
 						//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");
@@ -2046,9 +2098,6 @@
 					"data" : "aunit"
 				},
 				{
-					"data" : "phone"
-				},
-				{
 					"data" : "mobilePhone"
 				},
 				{
@@ -2066,7 +2115,7 @@
 						//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
 						$(nTd)
 								.html(
-										'<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="changepwd ml-5"  href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
+										' <a title="删除" href="javascript:;" onclick="member_del(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
 						//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
 						//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
 						//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");

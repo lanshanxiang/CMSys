@@ -50,5 +50,10 @@ public class TenementBeanServiceImpl implements TenementBeanService{
 		// TODO Auto-generated method stub
 		return tbd.queryTenementBeanByIsYR();
 	}
+	@Override
+	public boolean updateTenementBeanByStatus(int status, int tenementId) {
+		// TODO Auto-generated method stub
+		return tbd.updateTenementBeanByState(status, tenementId);
+	}
 
 }

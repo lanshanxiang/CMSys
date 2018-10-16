@@ -9,13 +9,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<LINK rel="Bookmark" href="/favicon.ico" >
-<LINK rel="Shortcut Icon" href="/favicon.ico" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui.admin/css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/Hui-iconfont/1.0.8/iconfont.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui.admin/skin/default/skin.css" id="skin" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui.admin/css/style.css" />
+<link rel="Bookmark" href="favicon.ico">
+<link rel="Shortcut Icon" href="favicon.ico" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/static/h-ui.admin/skin/default/skin.css"
+	id="skin" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+	<!--_footer 作为公共模版分离出去-->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/lib/jquery/1.9.1/jquery.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <title>添加用户 - H-ui.admin v2.3</title>
 <meta name="keywords" content="H-ui.admin v2.3,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v2.3，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
@@ -106,10 +119,10 @@
 			</div>
 		</div>
 		<div class="row cl">
-				<label for="tenementId" class="form-label col-xs-4 col-sm-3"><span
+				<label for="userId" class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>请选择用户：</label>
 				<div class="formControls col-xs-4 col-sm-4">
-					<select class="form-control" name="userId" id=""userId"">
+					<select class="form-control" name="userId" id="userId">
 
 					</select>
 				</div>
@@ -131,17 +144,24 @@
 
 <!--   表单结束     -->
 
-<!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/static/h-ui/js/H-ui.js"></script> 
-<script type="text/javascript" src="${pageContext.request.contextPath}/static/h-ui.admin/js/H-ui.admin.page.js"></script>
-<!--/_footer /作为公共模版分离出去-->
 
-<!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/My97DatePicker/4.8/WdatePicker.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/lib/laypage/1.2/laypage.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/lib/layer/2.4/layer.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/static/h-ui/js/H-ui.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/static/h-ui.admin/js/H-ui.admin.page.js"></script>
+	<!--/_footer /作为公共模版分离出去-->
+
+	<!--请在下方写此页面业务相关的脚本-->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/lib/jquery.validation/1.14.0/messages_zh.js"></script>
 
 <!--请在下方写此页面业务相关的脚本--> 
 <script type="text/javascript">
@@ -206,13 +226,13 @@ $(function(){
 <script type="text/javascript">
 		$(function() {
 			//ajax的 get请求
-			$.get("${pageContext.request.contextPath}/ReportBeanServlet?op=queryTenementBean", function(data, status) {
+			$.get("${pageContext.request.contextPath}/UserBeanServlet?op=load", function(data, status) {
 				//使用js的内置对象JSON将返回的值转化为数组
 				/* array = JSON.parse(data); */
 				//遍历数组
-				$.each(data, function(index, tenement) {
-					$("#tenementId").append(
-							"<option value="+tenement.tenementId+">" + tenement.tenementName
+				$.each(data, function(index, user) {
+					$("#userId").append(
+							"<option value="+user.userId+">" + user.userName
 									+ "</option>");
 				});
 			});

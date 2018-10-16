@@ -68,4 +68,10 @@ public class TenementBeanDaoImpl implements TenementBeanDao {
 		return (List<TenementBean>) DBUtil.select(sql, TenementBean.class);
 	}
 
+	@Override
+	public boolean updateTenementBeanByState(int status,int tenementId) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute("update tb_tenement set status=? where tenementId=?", status,tenementId)>0;
+	}
+
 }

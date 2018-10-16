@@ -24,4 +24,6 @@ public interface TenementBeanService {
 	boolean getDeleteTenementBean(int tenementId);
 	//修改居民信息
 	boolean updateTenementBean(TenementBean t);
+	//修改居民信息（通过状态）
+	boolean updateTenementBeanByStatus(int status,int tenementId);
 }
