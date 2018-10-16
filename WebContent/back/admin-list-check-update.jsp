@@ -16,6 +16,10 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<script
+	src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <title>添加用户 - H-ui.admin v2.3</title>
 <meta name="keywords" content="H-ui.admin v2.3,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v2.3，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
@@ -28,11 +32,10 @@
 
 <article class="page-container">
 	<form class="form form-horizontal" id="form-member-add">
-	   
 	    <div class="row cl" style="display: none;">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>编号：</label>
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>姓名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="tenementId" name="tenementId">
+				<input type="text" class="input-text" value="李友惠" placeholder="请输入业主姓名" id="tenementId" name="tenementId">
 			</div>
 		</div>
 		<div class="row cl">
@@ -41,10 +44,21 @@
 				<input type="text" class="input-text" value="李友惠" placeholder="请输入业主姓名" id="tenementName" name="tenementName">
 			</div>
 		</div>
-			<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>身份证号码：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="350624199712123810" placeholder="" id="idCard" name="idCard">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>性别：</label>
+			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
+				<div class="radio-box">
+					<input name="sex" type="radio" id="sex-1" value="男" checked>
+					<label for="sex-1">男</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" id="sex-2" name="sex" value="女">
+					<label for="sex-2">女</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" id="sex-3" name="sex" value="保密">
+					<label for="sex-3">保密</label>
+				</div>
 			</div>
 		</div>
 		<div class="row cl">
@@ -53,7 +67,12 @@
 				<input type="text" class="input-text" value="4399公司" placeholder="" id="aunit" name="aunit">
 			</div>
 		</div>
-	
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>身份证号码：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="350624199712123810" placeholder="" id="idCard" name="idCard">
+			</div>
+		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机号码：</label>
 			<div class="formControls col-xs-8 col-sm-9">
@@ -71,7 +90,47 @@
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text" value="2018-09-10" placeholder="" id="areStay" name="areStay">
 			</div>
-		</div>	
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>民族：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="汉" placeholder="" id="nationality" name="nationality">
+			</div>
+		</div>
+			<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>详细地址：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="汉" placeholder="" id="homeAddress" name="homeAddress">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>婚姻状况：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="未婚" placeholder="" id="maritalStatus" name="maritalStatus">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>居住类型：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="常住" placeholder="" id="residenceType" name="residenceType">
+			</div>
+		</div>
+		<div class="row cl">
+				<label for="tenementId" class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>请选择用户：</label>
+				<div class="formControls col-xs-4 col-sm-4">
+					<select class="form-control" name="userId" id="userId">
+
+					</select>
+				</div>
+			</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">备注：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<textarea name="remark" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" onKeyUp="textarealength(this,100)"></textarea>
+				<p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+			</div>
+		</div>-
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 				<input class="btn btn-primary radius" id="addBtn" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
@@ -109,13 +168,20 @@ $(function(){
 			url : "${pageContext.request.contextPath}/TenementBeanServlet?op=update",//url地址
 			type : "post",
 			data : {
-				"tenementId" : $('#tenementId').val(),
 				"tenementName" : $('#tenementName').val(),
-				"idCard" : $('#idCard').val(),
+				"sex" : $("input[type='radio']:checked").val(),
 				"aunit" : $('#aunit').val(),
+				"idCard" : $('#idCard').val(),
 				"mobilePhone" : $('#mobilePhone').val(),
 				"email" : $('#email').val(),
 				"areStay" : $('#areStay').val(),
+				"nationality" : $('#nationality').val(),
+				"homeAddress" : $('#homeAddress').val(),
+				"residenceType" : $('#residenceType').val(),
+				"maritalStatus" : $('#maritalStatus').val(),
+				"remark" : $('#remark').val(),
+				"userId" : $('#userId').val(),
+				"tenementId" : $('#tenementId').val()
 			},
 			//成功后执行的操作
 			success : function(data) {
@@ -147,7 +213,22 @@ $(function(){
 	});
 	
 });
-</script> 
+</script>
+<script type="text/javascript">
+		$(function() {
+			//ajax的 get请求
+			$.get("${pageContext.request.contextPath}/ReportBeanServlet?op=queryTenementBean", function(data, status) {
+				//使用js的内置对象JSON将返回的值转化为数组
+				/* array = JSON.parse(data); */
+				//遍历数组
+				$.each(data, function(index, tenement) {
+					$("#tenementId").append(
+							"<option value="+tenement.tenementId+">" + tenement.tenementName
+									+ "</option>");
+				});
+			});
+		});
+	</script> 
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>

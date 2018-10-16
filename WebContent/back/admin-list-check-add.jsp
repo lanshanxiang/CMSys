@@ -87,6 +87,12 @@
 				<input type="text" class="input-text" value="汉" placeholder="" id="nationality" name="nationality">
 			</div>
 		</div>
+			<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>详细地址：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="汉" placeholder="" id="homeAddress" name="homeAddress">
+			</div>
+		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>婚姻状况：</label>
 			<div class="formControls col-xs-8 col-sm-9">
@@ -99,20 +105,22 @@
 				<input type="text" class="input-text" value="常住" placeholder="" id="residenceType" name="residenceType">
 			</div>
 		</div>
-		
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>状态：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="0" placeholder="" id="status" name="status">
+				<label for="tenementId" class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>请选择用户：</label>
+				<div class="formControls col-xs-4 col-sm-4">
+					<select class="form-control" name="userId" id=""userId"">
+
+					</select>
+				</div>
 			</div>
-		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3">备注：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<textarea name="remark" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" onKeyUp="textarealength(this,100)"></textarea>
 				<p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
 			</div>
-		</div>
+		</div>-
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 				<input class="btn btn-primary radius" id="addBtn" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
@@ -152,17 +160,17 @@ $(function(){
 			data : {
 				"tenementName" : $('#tenementName').val(),
 				"sex" : $("input[type='radio']:checked").val(),
-				"idCard" : $('#idCard').val(),
 				"aunit" : $('#aunit').val(),
+				"idCard" : $('#idCard').val(),
 				"mobilePhone" : $('#mobilePhone').val(),
 				"email" : $('#email').val(),
 				"areStay" : $('#areStay').val(),
-				"createBy" : $('#createBy').val(),
 				"nationality" : $('#nationality').val(),
 				"homeAddress" : $('#homeAddress').val(),
 				"residenceType" : $('#residenceType').val(),
 				"maritalStatus" : $('#maritalStatus').val(),
-				"status" : $('#status').val(),
+				"remark" : $('#remark').val(),
+				"userId" : $('#userId').val()
 			},
 			//成功后执行的操作
 			success : function(data) {
@@ -195,6 +203,21 @@ $(function(){
 	
 });
 </script> 
+<script type="text/javascript">
+		$(function() {
+			//ajax的 get请求
+			$.get("${pageContext.request.contextPath}/ReportBeanServlet?op=queryTenementBean", function(data, status) {
+				//使用js的内置对象JSON将返回的值转化为数组
+				/* array = JSON.parse(data); */
+				//遍历数组
+				$.each(data, function(index, tenement) {
+					$("#tenementId").append(
+							"<option value="+tenement.tenementId+">" + tenement.tenementName
+									+ "</option>");
+				});
+			});
+		});
+	</script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>

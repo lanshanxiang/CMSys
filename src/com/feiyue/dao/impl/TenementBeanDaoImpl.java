@@ -20,10 +20,10 @@ public class TenementBeanDaoImpl implements TenementBeanDao {
 	@Override
 	public boolean insertTenementBean(TenementBean t) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO tb_tenement VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?)";
-		return DBUtil.execute(sql, t.getTenementName(), t.getSex(), t.getAunit(), t.getIdCard(), t.getMobilePhone(),
-				t.getEmail(), t.getAreStay(), t.getCreateBy(), t.getNationality(), t.getHomeAddress(),
-				t.getResidenceType(), t.getMaritalStatus(), t.getStatus(), t.getRemark()) > 0;
+		String sql = "INSERT INTO tb_tenement VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1,?)";
+		return DBUtil.execute(sql, t.getTenementName(),t.getSex(),t.getAunit(),t.getIdCard(),t.getMobilePhone(),
+				t.getEmail(),t.getAreStay(),t.getNationality(),t.getHomeAddress(),
+				t.getResidenceType(),t.getMaritalStatus(),t.getUserId(),t.getRemark()) > 0;
 	}
 
 	@Override
@@ -36,8 +36,8 @@ public class TenementBeanDaoImpl implements TenementBeanDao {
 	@Override
 	public boolean updateTenementBean(TenementBean t) {
 		// TODO Auto-generated method stub
-		String sql = "UPDATE tb_tenement SET tenementName=?,sex=?,aunit=?,idCard=?,mobilePhone=?,email=?,areStay=?,createBy=?,nationality=?,homeAddress=?,residenceType=?,maritalStatus=?,userId=?,status=?,remark=? WHERE tenementId=?";
-		return DBUtil.execute(sql,t.getTenementName(),t.getSex(),t.getAunit(),t.getIdCard(),t.getMobilePhone(),t.getEmail(),t.getAreStay(),t.getCreateBy(),t.getNationality(),t.getHomeAddress(),t.getResidenceType(),t.getMaritalStatus(),t.getUserId(),t.getStatus(),t.getRemark(),t.getTenementId()) > 0;
+		String sql = "UPDATE tb_tenement SET tenementName=?,sex=?,aunit=?,idCard=?,mobilePhone=?,email=?,areStay=?,nationality=?,homeAddress=?,residenceType=?,maritalStatus=?,userId=?,remark=? WHERE tenementId=?";
+		return DBUtil.execute(sql,t.getTenementName(),t.getSex(),t.getAunit(),t.getIdCard(),t.getMobilePhone(),t.getEmail(),t.getAreStay(),t.getNationality(),t.getHomeAddress(),t.getResidenceType(),t.getMaritalStatus(),t.getUserId(),t.getRemark(),t.getTenementId()) > 0;
 	}
 
 	@Override

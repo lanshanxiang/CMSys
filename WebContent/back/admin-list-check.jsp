@@ -89,6 +89,7 @@
 							<th>身份证</th>
 							<th>所属单位</th>
 							<th>手机号码</th>
+							<th>详细地址</th>
 							<th>邮箱</th>
 							<th>入住时间</th>
 							<th>操作</th>
@@ -110,6 +111,7 @@
 							<th>身份证</th>
 							<th>所属单位</th>
 							<th>手机号码</th>
+							<th>详细地址</th>
 							<th>邮箱</th>
 							<th>入住时间</th>
 							<th>操作</th>
@@ -131,6 +133,7 @@
 							<th>身份证</th>
 							<th>所属单位</th>
 							<th>手机号码</th>
+							<th>详细地址</th>
 							<th>邮箱</th>
 							<th>入住时间</th>
 							<th>操作</th>
@@ -152,6 +155,7 @@
 							<th>身份证</th>
 							<th>所属单位</th>
 							<th>手机号码</th>
+							<th>详细地址</th>
 							<th>邮箱</th>
 							<th>入住时间</th>
 							<th>操作</th>
@@ -533,6 +537,9 @@
 				},
 				{
 					"data" : "mobilePhone"
+				},
+				{
+					"data" : "homeAddress"
 				},
 				{
 					"data" : "email"
@@ -938,6 +945,9 @@
 				},
 				{
 					"data" : "mobilePhone"
+				},
+				{
+					"data" : "homeAddress"
 				},
 				{
 					"data" : "email"
@@ -1347,6 +1357,9 @@
 				},
 				{
 					"data" : "mobilePhone"
+				},
+				{
+					"data" : "homeAddress"
 				},
 				{
 					"data" : "email"
@@ -2037,6 +2050,9 @@
 				},
 				{
 					"data" : "mobilePhone"
+				},
+				{
+					"data" : "homeAddress"
 				},
 				{
 					"data" : "email"
