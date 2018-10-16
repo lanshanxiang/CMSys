@@ -35,43 +35,24 @@
 		<div class="navbar navbar-fixed-top">
 			<div class="container-fluid cl">
 				<a class="logo navbar-logo f-l mr-10 hidden-xs"
-					href="/aboutHui.shtml">H-ui.admin</a> <a
+					href="#">欢迎登录飞跃社区管理系统</a> <a
 					class="logo navbar-logo-m f-l mr-10 visible-xs"
-					href="/aboutHui.shtml">H-ui</a> <span
+					href="#"></a> <span
 					class="logo navbar-slogan f-l mr-10 hidden-xs">v2.4</span> <a
 					aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs"
 					href="javascript:;">&#xe667;</a>
 				<nav class="nav navbar-nav">
-					<ul class="cl">
-						<li class="dropDown dropDown_hover"><a href="javascript:;"
-							class="dropDown_A"><i class="Hui-iconfont">&#xe600;</i> 新增 <i
-								class="Hui-iconfont">&#xe6d5;</i></a>
-							<ul class="dropDown-menu menu radius box-shadow">
-								<li><a href="javascript:;"
-									onclick="article_add('添加资讯','article-add.html')"><i
-										class="Hui-iconfont">&#xe616;</i> 资讯</a></li>
-								<li><a href="javascript:;"
-									onclick="picture_add('添加资讯','picture-add.html')"><i
-										class="Hui-iconfont">&#xe613;</i> 图片</a></li>
-								<li><a href="javascript:;"
-									onclick="product_add('添加资讯','product-add.html')"><i
-										class="Hui-iconfont">&#xe620;</i> 产品</a></li>
-								<li><a href="javascript:;"
-									onclick="member_add('添加用户','member-add.html','','510')"><i
-										class="Hui-iconfont">&#xe60d;</i> 用户</a></li>
-							</ul></li>
-					</ul>
+					
 				</nav>
 				<nav id="Hui-userbar"
 					class="nav navbar-nav navbar-userbar hidden-xs">
 					<ul class="cl">
-						<li>超级管理员</li>
+						<li>管理员</li>
 						<li class="dropDown dropDown_hover"><a href="#"
-							class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+							class="dropDown_A">${users.mName} <i class="Hui-iconfont">&#xe6d5;</i></a>
 							<ul class="dropDown-menu menu radius box-shadow">
-								<li><a href="#">个人信息</a></li>
-								<li><a href="#">切换账户</a></li>
-								<li><a href="#">退出</a></li>
+								<li><a href="${pageContext.request.contextPath}/back/login.jsp">切换账户</a></li>
+								<li><a id="exit" href="#">退出</a></li>
 							</ul></li>
 						<li id="Hui-msg"><a href="#" title="消息"><span
 								class="badge badge-danger">1</span><i class="Hui-iconfont"
@@ -330,6 +311,12 @@
 				.write(unescape("%3Cscript src='"
 						+ _bdhmProtocol
 						+ "hm.baidu.com/h.js%3F080836300300be57b7f34f4b3e97d911' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+	      $("#exit").click(function(){
+	    	  location.href="${pageContext.request.contextPath}/ManagerServlet?op=exit";
+	      });
+	
 	</script>
 </body>
 </html>

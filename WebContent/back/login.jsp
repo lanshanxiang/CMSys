@@ -6,6 +6,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>管理员登录</title>
+			
 		<style>
 			.ie-warning {
 				position: fixed;
@@ -151,11 +152,11 @@
 					</div>
 					<div class="main___3vXQQ">
 						<div class="login___1MW8J">
-							<form class="ant-form ant-form-horizontal" action="${pageContext.request.contextPath}/ManagerServlet?op=login" method="post">
+							<form class="ant-form ant-form-horizontal">
 								<div class="ant-row ant-form-item">
 									<div class="ant-form-item-control-wrapper">
 										<div style="height: 50px;" class="ant-form-item-control has-success"><span class="ant-form-item-children"><span class="ant-input-affix-wrapper ant-input-affix-wrapper-lg" style="margin-top: 40px;"><span class="ant-input-prefix"><i class="anticon anticon-user prefixIcon___5euWy"></i></span>
-											<input placeholder="手机号码/邮箱" type="text" id="userName" name="mName" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" value=""></span>
+											<input placeholder="手机号码/邮箱" type="text" id="mName" name="mName" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" value=""></span>
 											</span>
 										</div>
 									</div>
@@ -163,7 +164,7 @@
 								<div class="ant-row ant-form-item">
 									<div class="ant-form-item-control-wrapper">
 										<div style="height: 50px;" class="ant-form-item-control has-success"><span class="ant-form-item-children"><span class="ant-input-affix-wrapper ant-input-affix-wrapper-lg"><span class="ant-input-prefix"><i class="anticon anticon-lock prefixIcon___5euWy"></i></span>
-											<input type="password" placeholder="密码" id="password" name="mPwd" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" value=""></span>
+											<input type="password" placeholder="密码" id="mPwd" name="mPwd" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" value=""></span>
 											</span>
 										</div>
 									</div>
@@ -176,7 +177,7 @@
 									<div class="ant-form-item-control-wrapper">
 										<div class="ant-form-item-control">
 										<span class="ant-form-item-children">
-										<button type="submit" class="ant-btn submit___3bWpy ant-btn-primary ant-btn-lg" style="height: 50px;">
+										<button id="btnLogin" type="button" class="ant-btn submit___3bWpy ant-btn-primary ant-btn-lg" style="height: 50px;">
 										<span>登 录</span>
 										</button>
 										</span>
@@ -195,7 +196,10 @@
 		</div>
 		<script src="https://hm.baidu.com/hm.js?bc7493bf7c88666cc89fc3c230ebcabd"></script>
 		<script src="//www.weixiaoqu.com/vip_analysis.js"></script>
-		<script language="javascript" src="http://127.0.0.1:8008/YOWOCloudRFIDReader.js"></script>
+		<script type="text/javascript"
+		src="${pageContext.request.contextPath}/lib/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript"
+		src="${pageContext.request.contextPath}/lib/layer/2.4/layer.js"></script>
 		<script>
 			function isIE() {
 				if(!!window.ActiveXObject || "ActiveXObject" in window) {
@@ -203,6 +207,39 @@
 				}
 			}
 			isIE()
+		</script>
+		<script type="text/javascript">
+		     $("#btnLogin").click(function(){
+		    	 $
+					.ajax({
+						url : "${pageContext.request.contextPath}/ManagerServlet?op=login",//url地址
+						type : "post",
+						data : {
+							"mName" : $("#mName").val(),
+							"mPwd" : $("#mPwd").val()
+						},
+						//成功后执行的操作
+						success : function(data) {
+							//判断用户名密码是否正确，正确的话则跳到前台首页
+							console.log(data);
+							if (data == false) {
+								layer.msg('登录失败!请重新登录',{
+									icon : 5,
+									time : 3000
+								});
+							} else {
+								layer.msg('登录成功!',{
+													icon : 1,
+													time : 1000
+								},
+								function() {
+										location.href="${pageContext.request.contextPath}/back/index.jsp";
+
+								});
+							}
+						}
+					});
+		     });
 		</script>
 	</body>
 

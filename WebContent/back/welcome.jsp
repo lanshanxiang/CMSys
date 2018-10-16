@@ -18,16 +18,15 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/static/h-ui/css/H-ui.min.css" />
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/static/h-ui/css/H-ui.admin.css" />
+	href="${pageContext.request.contextPath}/static1/h-ui/css/H-ui.admin.css" />
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/lib/Hui-iconfont/1.0.7/iconfont.css" />
+	href="${pageContext.request.contextPath}/lib1/Hui-iconfont/1.0.7/iconfont.css" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/lib/icheck/icheck.css" />
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/static/h-ui/skin/default/skin.css"
-	id="skin" />
+	href="${pageContext.request.contextPath}/static1/h-ui/skin/default/skin.css" />
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/static/h-ui/css/style.css" />
+	href="${pageContext.request.contextPath}/static1/h-ui/css/style.css" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/My.css" />
 <link rel="stylesheet"
@@ -66,13 +65,13 @@
 												<span
 													class="ant-avatar ant-avatar-lg ant-avatar-circle ant-avatar-image"
 													style="cursor: pointer;"><img
-													src="https://img.weixiaoqu.com/images/uploads/201803/eac552510eff73e5301fdbaac4678d69.jpg"></span>
+													src="${pageContext.request.contextPath}/assets/images/test-img1.jpg"></span>
 											</div>
 											<div class="content___sKI1t">
 												<div class="contentTitle___Jkbnh">
 													<div class="unrenz___3mVRV">
-														管理员<img
-															src="https://img.weixiaoqu.com/images/uploads/201806/596ab1260b681933c07689aa8a30cd5c.png">
+														${users.mName}<img
+															src="${pageContext.request.contextPath}/assets/images/menu-icon6.png">
 													</div>
 												</div>
 												<div>
@@ -148,8 +147,7 @@
 													</div>
 												</div>
 												<div class="projectItemContent___2igPb">
-													<a href="/data/xiaoqu-operation/add">添加小区</a><a
-														href="/data/xiaoqu/xiaoqu-buy">购买小区</a>
+													<a href="${pageContext.request.contextPath}/back/admin-list-village.jsp">管理小区</a>
 												</div>
 											</div>
 										</div>
@@ -172,7 +170,7 @@
 													</div>
 												</div>
 												<div class="projectItemContent___2igPb">
-													<a href="/data/building-operation/add">添加楼宇</a>
+													<a href="${pageContext.request.contextPath}/back/admin-list-house-Building.jsp">管理楼宇</a>
 												</div>
 											</div>
 										</div>
@@ -195,8 +193,7 @@
 													</div>
 												</div>
 												<div class="projectItemContent___2igPb">
-													<a href="/data/house-add/add">添加房屋</a><a
-														href="/data/import-data/house">导入房屋</a>
+													<a href="${pageContext.request.contextPath}/back/admin-list-house-room.jsp">添加房屋</a>
 												</div>
 											</div>
 										</div>
@@ -219,9 +216,7 @@
 													</div>
 												</div>
 												<div class="projectItemContent___2igPb">
-													<a href="/data/zhuhu-operation/add">添加住户</a><a
-														href="/data/import-data/zhuhu">导入住户</a><a
-														href="/data/zhuhu/checking">迁入审核</a>
+													<a href="${pageContext.request.contextPath}/back/admin-list-check.jsp">管理住户</a>
 												</div>
 											</div>
 										</div>
@@ -244,8 +239,7 @@
 													</div>
 												</div>
 												<div class="projectItemContent___2igPb">
-													<a href="/data/parking-operation/add">添加车位</a><a
-														href="/data/import-data/parking">导入车位</a>
+													<a href="${pageContext.request.contextPath}/back/parking-list.jsp">管理车位</a>
 												</div>
 											</div>
 										</div>
@@ -268,8 +262,7 @@
 													</div>
 												</div>
 												<div class="projectItemContent___2igPb">
-													<a href="/data/car-operation/add">添加用户</a><a
-														href="/data/import-data/car">导入用户</a>
+													<a href="/data/car-operation/add">添加用户</a>
 												</div>
 											</div>
 										</div>
@@ -317,8 +310,7 @@
 													</div>
 												</div>
 												<div class="projectItemContent___2igPb">
-													<a href="/shop/shop-ruzhu">入驻审核</a><a
-														href="/shop/shop-order">商家订单</a>
+													<a href="${pageContext.request.contextPath}/back/admin-list-business.jsp">入驻审核</a>
 												</div>
 											</div>
 										</div>
@@ -332,7 +324,7 @@
 									<div class="ant-card-head-wrapper">
 										<div class="ant-card-head-title">操作日志</div>
 										<div class="ant-card-extra">
-											<a href="/account/userlog">查看更多</a>
+											<a href="${pageContext.request.contextPath}/LogBeanServlet">查看更多</a>
 										</div>
 									</div>
 								</div>
@@ -341,58 +333,20 @@
 										<div class="ant-spin-nested-loading">
 											<div class="ant-spin-container">
 												<div class="activitiesList___1wmsJ">
+												<c:forEach items="${listLog.data}" var="log">
 													<div class="ant-list-item">
 														<div class="ant-list-item-meta">
 															<div class="ant-list-item-meta-content">
 																<h4 class="ant-list-item-meta-title">
 																	<div>
-																		<span class="m-l-sm">操作时间：2018-10-15 08:59:51</span><span
-																			class="m-l-md">操作员：</span><span class="m-l-md">操作内容：超级管理员
-																			2018-10-15 08:59:51登陆了系统</span>
+																		<span class="m-l-sm">操作时间：${log.logDate}</span><span
+																			class="m-l-md">操作员：${log.logName}</span><span class="m-l-md">操作内容：${log.logContent}</span>
 																	</div>
 																</h4>
 															</div>
 														</div>
 													</div>
-													<div class="ant-list-item">
-														<div class="ant-list-item-meta">
-															<div class="ant-list-item-meta-content">
-																<h4 class="ant-list-item-meta-title">
-																	<div>
-																		<span class="m-l-sm">操作时间：2018-10-14 14:25:33</span><span
-																			class="m-l-md">操作员：</span><span class="m-l-md">操作内容：超级管理员
-																			2018-10-14 14:25:33登陆了系统</span>
-																	</div>
-																</h4>
-															</div>
-														</div>
-													</div>
-													<div class="ant-list-item">
-														<div class="ant-list-item-meta">
-															<div class="ant-list-item-meta-content">
-																<h4 class="ant-list-item-meta-title">
-																	<div>
-																		<span class="m-l-sm">操作时间：2018-10-12 10:48:22</span><span
-																			class="m-l-md">操作员：</span><span class="m-l-md">操作内容：超级管理员
-																			2018-10-12 10:48:22登陆了系统</span>
-																	</div>
-																</h4>
-															</div>
-														</div>
-													</div>
-													<div class="ant-list-item">
-														<div class="ant-list-item-meta">
-															<div class="ant-list-item-meta-content">
-																<h4 class="ant-list-item-meta-title">
-																	<div>
-																		<span class="m-l-sm">操作时间：2018-10-12 10:45:38</span><span
-																			class="m-l-md">操作员：</span><span class="m-l-md">操作内容：超级管理员
-																			2018-10-12 10:45:38登陆了系统</span>
-																	</div>
-																</h4>
-															</div>
-														</div>
-													</div>
+												</c:forEach>	
 												</div>
 											</div>
 										</div>
@@ -454,9 +408,10 @@
 								</div>
 								<div class="ant-card-body" style="padding: 0px;">
 									<div class="linkGroup___1MbV0">
-										<a href="/cost/center">收银台</a><a href="/cost/unpay-list">未缴账单</a><a
-											href="/cost/payed-list/list">已缴账单</a><a
-											href="/cost/cost-notice">缴费通知</a><a href="/wuye/notice/list">小区公告</a>
+										<a href="${pageContext.request.contextPath}/back/admin-list-business.jsp">社区商家</a><a href="${pageContext.request.contextPath}/back/admin-list-water-electric-before.jsp">未缴账单</a><a
+											href="${pageContext.request.contextPath}/back/admin-list-water-electric-after.jsp">已缴账单</a><a
+											href="${pageContext.request.contextPath}/back/admin-list-paynotice.jsp">缴费通知</a><a href="${pageContext.request.contextPath}/back//wuye/notice/list">小区公告</a>
+											<a href="${pageContext.request.contextPath}/back/admin-list-complaint.jsp">投诉报表</a><a href="${pageContext.request.contextPath}/back/admin-list-repair.jsp">维修管理</a><a href="${pageContext.request.contextPath}/back/admin-list-check.jsp">住户管理</a>
 										<button type="button"
 											class="ant-btn ant-btn-primary ant-btn-sm ant-btn-background-ghost">
 											<i class="anticon anticon-plus"></i><span>添加</span>
@@ -479,13 +434,13 @@
 													<div class="ant-list-item-extra-wrap">
 														<div class="ant-list-item-main">
 															<div
-																class="ant-list-item-content ant-list-item-content-single">费用已超期:</div>
+																class="ant-list-item-content ant-list-item-content-single">今天有台风:</div>
 														</div>
 														<div class="ant-list-item-extra">
 															<span
 																class="badge_bg___BXSjv ant-badge ant-badge-not-a-wrapper"><sup
 																data-show="true"
-																class="ant-scroll-number ant-badge-count" title="0">0</sup></span>
+																class="ant-scroll-number ant-badge-count" title="0">请注意安全</sup></span>
 														</div>
 													</div>
 												</div>
@@ -494,13 +449,13 @@
 													<div class="ant-list-item-extra-wrap">
 														<div class="ant-list-item-main">
 															<div
-																class="ant-list-item-content ant-list-item-content-single">费用即将到期:</div>
+																class="ant-list-item-content ant-list-item-content-single">某位商家将要入驻我们社区:</div>
 														</div>
 														<div class="ant-list-item-extra">
 															<span
 																class="badge_bg___BXSjv ant-badge ant-badge-not-a-wrapper"><sup
 																data-show="true"
-																class="ant-scroll-number ant-badge-count" title="0">0</sup></span>
+																class="ant-scroll-number ant-badge-count" title="0">请审核</sup></span>
 														</div>
 													</div>
 												</div>
@@ -515,7 +470,7 @@
 															<span
 																class="badge_bg___BXSjv ant-badge ant-badge-not-a-wrapper"><sup
 																data-show="true"
-																class="ant-scroll-number ant-badge-count" title="0">0</sup></span>
+																class="ant-scroll-number ant-badge-count" title="0">请提醒</sup></span>
 														</div>
 													</div>
 												</div>
@@ -524,13 +479,13 @@
 													<div class="ant-list-item-extra-wrap">
 														<div class="ant-list-item-main">
 															<div
-																class="ant-list-item-content ant-list-item-content-single">住户即将到期:</div>
+																class="ant-list-item-content ant-list-item-content-single">住户拖欠房租:</div>
 														</div>
 														<div class="ant-list-item-extra">
 															<span
 																class="badge_bg___BXSjv ant-badge ant-badge-not-a-wrapper"><sup
 																data-show="true"
-																class="ant-scroll-number ant-badge-count" title="0">0</sup></span>
+																class="ant-scroll-number ant-badge-count" title="0">请提醒</sup></span>
 														</div>
 													</div>
 												</div>
@@ -553,7 +508,7 @@
 		src="${pageContext.request.contextPath}/lib/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/static/h-ui/js/H-ui.js"></script>
-	<script>
+	<script type="text/javascript" >
 		var _hmt = _hmt || [];
 		(function() {
 			var hm = document.createElement("script");

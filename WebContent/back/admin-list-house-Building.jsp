@@ -238,18 +238,14 @@
 													if (data == "false") {
 														layer.msg('删除失败');
 													} else {
-														layer
-																.msg(
-																		'删除成功!',
-																		{
+														layer.msg('删除成功!',{
 																			icon : 1,
 																			time : 1000
-																		},
-																		function() {
-																			eloancn.table.grid.ajax
-																					.reload();
+														},
+														function() {
+																eloancn.table.grid.ajax.reload();
 
-																		});
+														});
 													}
 												}
 											});

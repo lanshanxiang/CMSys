@@ -9,10 +9,14 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.feiyue.entiy.LogBean;
 import com.feiyue.entiy.ManagerBean;
 import com.feiyue.entiy.TenementBean;
+import com.feiyue.service.LogBeanService;
 import com.feiyue.service.ManagerService;
+import com.feiyue.service.impl.LogBeanServiceImpl;
 import com.feiyue.service.impl.ManagerServiceImpl;
 import com.feiyue.util.MyData;
 import com.google.gson.Gson;
@@ -24,7 +28,7 @@ import com.google.gson.Gson;
 public class ManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ManagerService msi = new ManagerServiceImpl();
-       
+    LogBeanService lbs=new LogBeanServiceImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -69,14 +73,14 @@ public class ManagerServlet extends HttpServlet {
 			// 先获取用户名和密码
 			String mName = request.getParameter("mName");
 			String mPwd = request.getParameter("mPwd");
-
 			ManagerBean m = msi.login(mName, mPwd);
 			if (m == null) {
 				// 用户名或者密码错误
-				out.print("<script>alert('登录失败');location.href='login.jsp'</script>");
+				out.print("false");
 			} else {
 				//1 登录成功，需要将用户登录的信息存储在session中.
 				//HttpSession session=request.getSession();
+				System.out.println(111);
 				request.getSession().setAttribute("users", m);
 				//将用户登录的信息存储在cookie
 				Cookie  cookie =new Cookie("userName",m.getmName());
@@ -84,10 +88,16 @@ public class ManagerServlet extends HttpServlet {
 				//使用response.addCookie
 				response.addCookie(cookie);
 				response.addCookie(cookie1);
-				
-				request.getRequestDispatcher("back/index.jsp").forward(request, response);
-				
+				String logName=m.getmName();
+				String logContent="登录飞跃社区管理系统";
+				LogBean lb=new LogBean(logName, logContent);
+				boolean flag=lbs.getAddLog(lb);
+				out.print("true");
 			}
+		}else if("exit".equals(op)) {
+			HttpSession session=request.getSession();
+			session.removeAttribute("users");
+			response.sendRedirect("back/login.jsp");
 		}
 	}
 
