@@ -30,7 +30,6 @@
 		        是否自动检索：<input type="checkbox" id="autoSearch">
 		        住户名称：<input type="text" class="form-controlSearch input-text " placeholder="输入住户名称" data-column="1" id="col1_filter" style="width:100px;">
 		   手机号：<input type="text" class="form-controlSearch input-text " placeholder="输入手机号" data-column="2" id="col2_filter" style="width:100px;">
-		     小区名称：<input type="text" class="form-controlSearch input-text " placeholder="输入小区名称" data-column="3" id="col3_filter" style="width:100px;">
    		 年：<input type="text" class="form-controlSearch input-text " placeholder="输入年" data-column="4" id="col4_filter" style="width:100px;">
    		  月：<input type="text" class="form-controlSearch input-text " placeholder="输入月" data-column="5" id="col5_filter" style="width:100px;">
    
@@ -43,7 +42,6 @@
 							<th width="25"><input type="checkbox" id="PaymentCheckAll" name="PaymentCheckAll"></th>
 							<th>住户名称</th>
          				    <th>手机号</th>
-          				    <th>小区名称</th>
            					<th>年</th>
            				  	<th>月</th>
            				    <th>总费用</th>
@@ -396,7 +394,6 @@ function member_del(obj,id){
         
         {"data": "tenementName"},
         {"data": "mobilePhone"},
-        {"data": "villageName"},
         {"data": "years"},
         {"data": "months"},
         {"data": "totalPay"},

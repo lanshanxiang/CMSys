@@ -11,7 +11,7 @@ public class UserBeanDaoImpl implements UserBeanDao {
 	@Override
 	public List<UserBean> queryUser() {
 		// TODO Auto-generated method stub
-		return (List<UserBean>) DBUtil.select("select * from tb_user", UserBean.class);
+		return (List<UserBean>) DBUtil.select("SELECT tb_user.userId,tb_user.userName,tb_user.userPwd,tb_user.useSex,tb_user.userAge,tb_tenement.tenementName,tb_user.register,tb_user.question,tb_user.answer,tb_user.state FROM tb_user INNER JOIN tb_tenement ON tb_user.tenementId = tb_tenement.tenementId", UserBean.class);
 	}
 
 	@Override
@@ -39,7 +39,8 @@ public class UserBeanDaoImpl implements UserBeanDao {
 	@Override
 	public boolean updateUser(UserBean ub) {
 		// TODO Auto-generated method stub
-		return DBUtil.execute("update tb_user set userName=?,userPwd=?,question=?,answer=? where userId=?", ub.getUserName(),ub.getUserPwd(),ub.getQuestion(),ub.getAnswer(),ub.getUserId())>0;
+		return DBUtil.execute("UPDATE tb_user SET userName=?,useSex=?,userAge=?,tenementId=?,register=?,question=?,answer=?,state=? WHERE useruserId=?", 
+				ub.getUserName(),ub.getUseSex(),ub.getUserAge(),ub.getTenementName(),ub.getRegister(),ub.getQuestion(),ub.getAnswer(),ub.getState(),ub.getUserId())>0;
 	}
 
 }

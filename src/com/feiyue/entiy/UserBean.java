@@ -6,50 +6,22 @@ package com.feiyue.entiy;
 
 
 public class UserBean {
-	private int userId;
-	private String account;// 账号
-	private String userName;// 用户姓名
-	private String userPwd;
-	private String question;// 提示问题
-	private String answer;// 答案
-	private String register;
-	
-	
-	
-	public UserBean(String userName, String userPwd, String question, String answer,int userId) {
-		super();
-		this.userId = userId;
-		this.userName = userName;
-		this.userPwd = userPwd;
-		this.question = question;
-		this.answer = answer;
-	}
-	
-	public UserBean() {
-		super();
-	}
-	public UserBean(int userId, String account, String userName, String userPwd, String question, String answer,
-			String register) {
-		super();
-		this.userId = userId;
-		this.account = account;
-		this.userName = userName;
-		this.userPwd = userPwd;
-		this.question = question;
-		this.answer = answer;
-		this.register = register;
-	}
+	private int userId;//用户ID
+	private String userName;//用户名称
+	private String userPwd;//用户密码
+	private String useSex;//用户性别
+	private int userAge;//用户年龄
+	private String tenementName;//住户名称
+	private String register;//账号
+	private String question;//密保问题
+	private String answer;//密保答案
+	private int state;//用户状态(1启用,0停用)
+	private String tenementId;//住户Id
 	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
-	}
-	public String getAccount() {
-		return account;
-	}
-	public void setAccount(String account) {
-		this.account = account;
 	}
 	public String getUserName() {
 		return userName;
@@ -63,6 +35,30 @@ public class UserBean {
 	public void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
 	}
+	public String getUseSex() {
+		return useSex;
+	}
+	public void setUseSex(String useSex) {
+		this.useSex = useSex;
+	}
+	public int getUserAge() {
+		return userAge;
+	}
+	public void setUserAge(int userAge) {
+		this.userAge = userAge;
+	}
+	public String getTenementName() {
+		return tenementName;
+	}
+	public void setTenementName(String tenementName) {
+		this.tenementName = tenementName;
+	}
+	public String getRegister() {
+		return register;
+	}
+	public void setRegister(String register) {
+		this.register = register;
+	}
 	public String getQuestion() {
 		return question;
 	}
@@ -75,19 +71,25 @@ public class UserBean {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-	public String getRegister() {
-		return register;
+	public int getState() {
+		return state;
 	}
-	public void setRegister(String register) {
-		this.register = register;
+	public void setState(int state) {
+		this.state = state;
 	}
+	public UserBean() {
+		super();
+	}
+	
 	@Override
 	public String toString() {
-		return "UserBean [userId=" + userId + ", account=" + account + ", userName=" + userName + ", userPwd=" + userPwd
-				+ ", question=" + question + ", answer=" + answer + ", register=" + register + "]";
+		return "UserBean [userId=" + userId + ", userName=" + userName + ", userPwd=" + userPwd + ", useSex=" + useSex
+				+ ", userAge=" + userAge + ", tenementName=" + tenementName + ", register=" + register + ", question="
+				+ question + ", answer=" + answer + ", state=" + state + ", tenementId=" + tenementId + "]";
 	}
-
-
+	
+	
+	
 	
 
 }
