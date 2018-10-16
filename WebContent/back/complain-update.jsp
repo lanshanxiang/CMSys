@@ -77,14 +77,7 @@
 						name="conplyTime" id="conplyTime">
 				</div>
 			</div>
-			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>家庭电话：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" value="SELLMAN"
-						placeholder="" name="conplyTel" id="conplyTel">
-				</div>
-			</div>
+			
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>手机：</label>
@@ -159,7 +152,6 @@
 						"conplyName" : $('#conplyName').val(),
 						"conplyQuestion" : $('#conplyQuestion').val(),//传值
 						"conplyTime" : $('#conplyTime').val(),
-						"conplyTel" : $('#conplyTel').val(),
 						"conplyPhone" : $('#conplyPhone').val(),
 						"conplyStatus" : $('#conplyStatus').val(),
 						"conplyRemark" : $('#conplyRemark').val()

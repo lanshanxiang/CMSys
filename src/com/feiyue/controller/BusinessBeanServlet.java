@@ -162,11 +162,10 @@ public class BusinessBeanServlet extends HttpServlet {
 				String bName = request.getParameter("bName");
 				String bPeopleName = request.getParameter("bPeopleName");
 				String bTel = request.getParameter("bTel");
-				int bState = Integer.parseInt(request.getParameter("bState"));
 				String bDate = request.getParameter("bDate");
 				int bId = Integer.parseInt(request.getParameter("bId"));
 				// 将获取到的信息存储到实体类中
-				BusinessBean bb = new BusinessBean(bName, bPeopleName, bTel, bState, bDate, bId);
+				BusinessBean bb = new BusinessBean(bName, bPeopleName, bTel, bDate, bId);
 				// 再进行数据库交互，返回一个boolean类型的值
 				boolean flag = bbs.getUpdateBusinessBean(bb);
 				// 在将返回值返回回页面

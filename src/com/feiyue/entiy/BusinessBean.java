@@ -19,7 +19,7 @@ public class BusinessBean {
 		this.bTel = bTel;
 	}
 	
-	public BusinessBean(String bName, String bPeopleName, String bTel, int bState,String bDate,int bId) {
+	public BusinessBean(String bName, String bPeopleName, String bTel,String bDate,int bId) {
 		super();
 		this.bId = bId;
 		this.bName = bName;

@@ -85,12 +85,11 @@ public class ComplainServlet extends HttpServlet {
 				String conplyName = request.getParameter("conplyName");
 				String conplyQuestion = request.getParameter("conplyQuestion");
 				String conplyTime = request.getParameter("conplyTime");
-				String conplyTel = request.getParameter("conplyTel");
 				String conplyPhone = request.getParameter("conplyPhone");
 				int conplyStatus = Integer.parseInt(request.getParameter("conplyStatus"));
 				String conplyRemark = request.getParameter("conplyRemark");
 				// 将获取到的信息存储到实体类中
-				ComplainBean c = new ComplainBean(conplyName, conplyQuestion, conplyTime, conplyTel, conplyPhone,
+				ComplainBean c = new ComplainBean(conplyName, conplyQuestion, conplyTime, conplyPhone,
 						conplyStatus, conplyRemark);
 				// 再进行数据库交互，返回一个boolean类型的值
 				boolean flag = csi.getAddComplain(c);
@@ -104,13 +103,12 @@ public class ComplainServlet extends HttpServlet {
 				String conplyName = request.getParameter("conplyName");
 				String conplyQuestion = request.getParameter("conplyQuestion");
 				String conplyTime = request.getParameter("conplyTime");
-				String conplyTel = request.getParameter("conplyTel");
 				String conplyPhone = request.getParameter("conplyPhone");
 				int conplyStatus = Integer.parseInt(request.getParameter("conplyStatus"));
 				String conplyRemark = request.getParameter("conplyRemark");
 				int conplyId = Integer.parseInt(request.getParameter("conplyId"));
 				// 将获取到的信息存储到实体类中
-				ComplainBean c = new ComplainBean(conplyName, conplyQuestion, conplyTime, conplyTel, conplyPhone,
+				ComplainBean c = new ComplainBean(conplyName, conplyQuestion, conplyTime, conplyPhone,
 						conplyStatus, conplyRemark, conplyId);
 				// 再进行数据库交互，返回一个boolean类型的值
 				boolean flag = csi.getUpdateComplain(c);

@@ -157,8 +157,7 @@
 							href="javascript:void(0)">报修管理</a></li>
 						<li><a _href="admin-list-report.jsp" data-title="维修管理"
 							href="javascript:void(0)">维修管理</a></li>
-						<li><a _href="admin-list-cis.jsp" data-title="生活导航"
-							href="javascript:void(0)">生活导航</a></li>
+
 					</ul>
 				</dd>
 			</dl>
@@ -176,22 +175,7 @@
 					</ul>
 				</dd>
 			</dl>			
-			<dl id="menu-admin">
-				<dt>
-					<i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i
-						class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
-				</dt>
-				<dd>
-					<ul>
-						<li><a _href="admin-role.jsp" data-title="角色管理"
-							href="javascript:void(0)">角色管理</a></li>
-						<li><a _href="admin-permission.jsp" data-title="权限管理"
-							href="javascript:void(0)">权限管理</a></li>
-						<li><a _href="admin-list.jsp" data-title="管理员列表"
-							href="javascript:void(0)">管理员列表</a></li>
-					</ul>
-				</dd>
-			</dl>
+			
 			<dl id="menu-system">
 				<dt>
 					<i class="Hui-iconfont">&#xe62e;</i> 用户管理<i

@@ -14,9 +14,7 @@ public class ComplainBean {
      
 	 //投诉时间
       private  String conplyTime;
-     
-	 //家庭电话
-      private  String conplyTel;
+  
      
 	 //手机
       private  String conplyPhone;
@@ -27,38 +25,35 @@ public class ComplainBean {
 	 //备注
       private  String conplyRemark;
       
-      public ComplainBean(String conplyName, String conplyQuestion, String conplyTime, String conplyTel,
+      public ComplainBean(String conplyName, String conplyQuestion, String conplyTime,
   			String conplyPhone, int conplyStatus, String conplyRemark,int conplyId) {
   		super();
   		this.conplyId = conplyId;
   		this.conplyName = conplyName;
   		this.conplyQuestion = conplyQuestion;
   		this.conplyTime = conplyTime;
-  		this.conplyTel = conplyTel;
   		this.conplyPhone = conplyPhone;
   		this.conplyStatus = conplyStatus;
   		this.conplyRemark = conplyRemark;
   	}
       
-      public ComplainBean(String conplyName, String conplyQuestion, String conplyTel,
+      public ComplainBean(String conplyName, String conplyQuestion,
     			String conplyPhone, int conplyStatus, String conplyRemark) {
     		super();
     		this.conplyName = conplyName;
     		this.conplyQuestion = conplyQuestion;
-    		this.conplyTel = conplyTel;
     		this.conplyPhone = conplyPhone;
     		this.conplyStatus = conplyStatus;
     		this.conplyRemark = conplyRemark;
     	}
       
       
-      public ComplainBean(String conplyName, String conplyQuestion, String conplyTime, String conplyTel,
+      public ComplainBean(String conplyName, String conplyQuestion, String conplyTime,
   			String conplyPhone, int conplyStatus, String conplyRemark) {
   		super();
   		this.conplyName = conplyName;
   		this.conplyQuestion = conplyQuestion;
   		this.conplyTime = conplyTime;
-  		this.conplyTel = conplyTel;
   		this.conplyPhone = conplyPhone;
   		this.conplyStatus = conplyStatus;
   		this.conplyRemark = conplyRemark;
@@ -67,14 +62,13 @@ public class ComplainBean {
       public ComplainBean() {
 		super();
 	  }
-	public ComplainBean(int conplyId, String conplyName, String conplyQuestion, String conplyTime, String conplyTel,
+	public ComplainBean(int conplyId, String conplyName, String conplyQuestion, String conplyTime,
 			String conplyPhone, int conplyStatus, String conplyRemark) {
 		super();
 		this.conplyId = conplyId;
 		this.conplyName = conplyName;
 		this.conplyQuestion = conplyQuestion;
 		this.conplyTime = conplyTime;
-		this.conplyTel = conplyTel;
 		this.conplyPhone = conplyPhone;
 		this.conplyStatus = conplyStatus;
 		this.conplyRemark = conplyRemark;
@@ -107,12 +101,7 @@ public class ComplainBean {
       	this.conplyTime=conplyTime;
       }  
      
-      public  String  getConplyTel(){
-      		return  this.conplyTel;
-      };
-      public  void  setConplyTel(String conplyTel){
-      	this.conplyTel=conplyTel;
-      }  
+     
      
       public  String  getConplyPhone(){
       		return  this.conplyPhone;
@@ -137,7 +126,7 @@ public class ComplainBean {
 	@Override
 	public String toString() {
 		return "Complain [conplyId=" + conplyId + ", conplyName=" + conplyName + ", conplyQuestion=" + conplyQuestion
-				+ ", conplyTime=" + conplyTime + ", conplyTel=" + conplyTel + ", conplyPhone=" + conplyPhone
+				+ ", conplyTime=" + conplyTime + ",  conplyPhone=" + conplyPhone
 				+ ", conplyStatus=" + conplyStatus + ", conplyRemark=" + conplyRemark + "]";
 	}  
      

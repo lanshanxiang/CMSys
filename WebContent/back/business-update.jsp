@@ -80,17 +80,6 @@
 				</div>
 			</div>
 			<div class="row cl">
-				<label for="prid" class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>是否已入驻：</label>
-				<div class="formControls col-xs-4 col-sm-4">
-					<select class="form-control" name="bState" id="bState">
-                        <option value="0">已入驻</option>
-                        <option value="1">审核中</option>
-                        <option value="2">入驻失败</option>
-					</select>
-				</div>
-			</div>
-			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>维修时间：</label>
 				<div class="formControls col-xs-8 col-sm-9">

@@ -21,13 +21,13 @@ public class ComplainDaoImpl implements ComplainDao {
 	@Override
 	public boolean addComplain(ComplainBean c) {
 		// TODO Auto-generated method stub
-		return DBUtil.execute("INSERT INTO tb_complain VALUES (null, ?, ?, ?, ?, ?, ?, ?)", c.getConplyName(),c.getConplyQuestion(),c.getConplyTime(),c.getConplyTel(),c.getConplyPhone(),c.getConplyStatus(),c.getConplyRemark())>0;
+		return DBUtil.execute("INSERT INTO tb_complain VALUES (null, ?, ?, ?, ?, ?, ?)", c.getConplyName(),c.getConplyQuestion(),c.getConplyTime(),c.getConplyPhone(),c.getConplyStatus(),c.getConplyRemark())>0;
 	}
     //修改
 	@Override
 	public boolean updateComplain(ComplainBean c) {
 		// TODO Auto-generated method stub
-		return DBUtil.execute("UPDATE tb_complain SET `conplyName`=?, `conplyQuestion`=?, `conplyTime`=?, `conplyTel`=?, `conplyPhone`=?, `conplyStatus`=?, `conplyRemark`=? WHERE (`conplyId`=?);", c.getConplyName(),c.getConplyQuestion(),c.getConplyTime(),c.getConplyTel(),c.getConplyPhone(),c.getConplyStatus(),c.getConplyRemark(),c.getConplyId())>0;
+		return DBUtil.execute("UPDATE tb_complain SET `conplyName`=?, `conplyQuestion`=?, `conplyTime`=?,  `conplyPhone`=?, `conplyStatus`=?, `conplyRemark`=? WHERE (`conplyId`=?);", c.getConplyName(),c.getConplyQuestion(),c.getConplyTime(),c.getConplyPhone(),c.getConplyPhone(),c.getConplyRemark(),c.getConplyId())>0;
 	}
     //删除
 	@Override

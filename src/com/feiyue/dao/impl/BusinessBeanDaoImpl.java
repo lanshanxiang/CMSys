@@ -23,7 +23,7 @@ public class BusinessBeanDaoImpl implements BusinessBeanDao {
 	@Override
 	public boolean updateBusinessBean(BusinessBean c) {
 		// TODO Auto-generated method stub
-		return DBUtil.execute("update tb_business set bName=?,bPeopleName=?,bTel=?,bState=?,bDate=? where bId=?", c.getbName(),c.getbPeopleName(),c.getbTel(),c.getbState(),c.getbDate(),c.getbId())>0;
+		return DBUtil.execute("update tb_business set bName=?,bPeopleName=?,bTel=?,bDate=? where bId=?", c.getbName(),c.getbPeopleName(),c.getbTel(),c.getbDate(),c.getbId())>0;
 	}
 
 	@Override
