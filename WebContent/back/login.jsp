@@ -114,31 +114,7 @@
 						<a href="https://www.weixiaoqu.com"><img src="https://vip.weixiaoqu.com/vipstatic/images/logo2016.png"></a>
 						<ul class="menu___2j7Ji">
 							<li>
-								<a href="https://www.weixiaoqu.com/" target="_blank">首页</a>
-							</li>
-							<li>
-								<a href="https://www.weixiaoqu.com/product" target="_blank">产品</a>
-							</li>
-							<li>
-								<a href="https://www.weixiaoqu.com/price" target="_blank">价格</a>
-							</li>
-							<li>
-								<a href="https://www.weixiaoqu.com/case" target="_blank">案例</a>
-							</li>
-							<li>
-								<a href="https://www.weixiaoqu.com/service" target="_blank">服务</a>
-							</li>
-							<li>
-								<a href="https://www.weixiaoqu.com/facilitator" target="_blank">渠道</a>
-							</li>
-							<li>
-								<a href="https://www.weixiaoqu.com/shop" target="_blank">商家</a>
-							</li>
-							<li>
-								<a href="http://docs.weixiaoqu.com/" target="_blank">帮助</a>
-							</li>
-							<li>
-								<a href="https://www.weixiaoqu.com/blog" target="_blank">博客</a>
+								<a href="../index.jsp">首页</a>
 							</li>
 						</ul>
 					</div>

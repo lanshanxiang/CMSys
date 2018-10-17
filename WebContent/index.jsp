@@ -44,7 +44,7 @@
 					},
 					anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8'],
 					navigation: true,
-					navigationTooltips: ['首页', '社区管理平台', '社区审批平台', '社区服务平台', '社区展示平台', '尾页']
+					navigationTooltips: ['首页', '社区简介', '社区管理平台', '社区服务平台', '关于我们', '尾页']
 				});
 			});
 		</script>
@@ -157,17 +157,14 @@
 				</div>
 				<div class="bg18">
 					<div class="button_float">
+					<!-- 暂时空着开始 -->
 						<ul>
-
 							<li>
-								<a href="http://wgh.0539.cn:50005/communityservicesys/login?loginSys=wggl" target="_blank">网格化信息<br />管理系统</a>
-
 							</li>
 							<li>
-
-								<a href="http://xxfb.0539.cn/" target="_blank">网上信息发布及<br />咨询办理系统</a>
 							</li>
 						</ul>
+					<!-- 暂时空着结束 -->
 					</div>
 				</div>
 			</div>
@@ -175,7 +172,7 @@
 			<div class="section section4" data-anchor="page3" style="height: 755px;">
 				<div class="bg" style="background:#ffffff;"></div>
 				<div class="bg03">
-					<!--			  随鼠标移动      -->
+					<!--  随鼠标移动      -->
 					<div class="content">
 						<div class="layerout moveu">
 							<div class="layer1"></div>
@@ -188,19 +185,10 @@
 				<div class="bg044"></div>
 				<div class="bg01">
 					<div class="button_shenpi">
+					<br/><br/>
 						<ul>
 							<li>
-								<a href="http://yzs.0539.cn:50005/communityservicesys/login?loginSys=ywsl " target="_blank">一站式受理业务系统</a>
-							</li>
-							<li>
-								<a href="javascript:void(0);" onclick="display()" onmouseout="disappear()" id="zizhu">自助服务系统</a>
-							</li>
-							<div id="box" onmouseover="display()" onmouseout="disappear()">
-								<a href="http://kfq.0539.cn:50005/communityservicesys/terminal" target="_blank">经济开发区</a>
-							</div>
-
-							<li>
-								<a href="http://fxbm.0539.cn:50005/communityservicesys/login?loginSys=fxdbpt" target="_blank">便民服务代办</a>
+								<a href="back/login.jsp">管理员登录</a>
 							</li>
 						</ul>
 					</div>
@@ -213,7 +201,7 @@
 				<div class="bg5_06"></div>
 				<div class="bg5_07"> </div>
 				<div class="bg5_08">
-					<!--     随鼠标移动     -->
+					<!--   随鼠标移动     -->
 					<div class="content">
 						<div class="layerout moveu">
 							<div class="layer1"></div>
@@ -223,8 +211,8 @@
 				</div>
 				<div class="bg5_19">
 					<div class="button_fuwu">
+					<br /><br /><br />
 						<ul>
-							<br /><br /><br />
 							<li>
 								<a href="http://0539.cn/tel.html" target="_blank">进入服务中心</a>
 							</li>
@@ -237,14 +225,14 @@
 				<div class="bg6_04"></div>
 				<div class="bg06_4">
 					<div class="button_float" id="zhanshi">
+					<!-- 暂时空着开始 -->
 						<ul>
 							<li>
-								<a href="http://sqwz.0539.cn/" target="_blank">社区网站展示系统</a>
 							</li>
 							<li>
-								<a href="http://wgh.0539.cn:50005/communityservicesys/login?loginSys=fzjc" target="_blank">数据分析系统</a>
 							</li>
 						</ul>
+					<!-- 暂时空着结束 -->
 					</div>
 				</div>
 			</div>
@@ -266,7 +254,7 @@
 					</div>
 				</div>
 
-				<!--  随鼠标移动            -->
+				<!--  随鼠标移动       -->
 				<div class="content">
 					<div class="layerout moveu">
 						<div class="layer1"></div>
@@ -276,7 +264,6 @@
 				</div>
 			</div>
 		</div>
-		<!--<script type='text/javascript' src="counter.php"></script>-->
 		<script>
 			var width = $(window).width();
 			if(width < 1024) {
