@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>
-<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>
-<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>
-<html class="no-js lt-ie9"> <![endif]-->
-<!--[if IE 9]>
-<html class="ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html xmlns:ng="http://angularjs.org">
 	<!--<![endif]-->
 
@@ -36,11 +29,16 @@
 			var examSystem = 'http://cloudexam.kingdee.com'; //
 			var userGuideObj = eval('({"novice_guidance_home":false,"novice_guidance_product":false,"novice_guidance_other":false,"page_tips_help":false,"page_tips_ucenter":false,"page_tips_synchronize":false,"page_tips_favorite":false,"guide_old_version":false})');
 		</script>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<link type="text/css" rel="stylesheet" href="front/css/base/common.css?v=4125e975">
 		<link type="text/css" rel="stylesheet" href="front/css/base/fonts.css?v=31ad3187">
 		<link rel="stylesheet" type="text/css" href="front/css/external/idangerous.swiper2.7.6.css?v=05042fdf">
 		<link rel="stylesheet" type="text/css" href="front/css/component/home.css?v=f5ec48c8">
 		<link rel="stylesheet" type="text/css" href="front/css/external/intro.css?v=31945761">
+		
+        <link rel="stylesheet" href="css/layui.css" media="all">
+		<script src="layer.js"></script>
+        <script src="layui.js"></script>
 
 		<script type="text/javascript" src="http://clubimg.kingdee.com/club/attachments/js/vendor/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript">
@@ -819,29 +817,29 @@
 				<div>
 					<ul class="product-list" data-step="2" data-intro="选择需要帮助的产品">
 						<li class="list-item">
-							<a class="list-item" href="#">我的电费</a>
+							<a class="list-item" href="know.jsp">我的电费</a>
 						</li>
 						<li class="list-item">
-							<a class="list-item" href="#">我的水费</a>
+							<a class="list-item" href="know.jsp">我的水费</a>
 						</li>
 						<li class="list-item">
-							<a class="list-item" href="#">其他费用</a>
+							<a class="list-item" href="know.jsp">其他费用</a>
 						</li>
 						<li class="list-item">
-							<a class="list-item" href="#">我的车位</a>
+							<a class="list-item" href="know.jsp">我的车位</a>
 						</li>
 						<br />
 						<li class="list-item">
-							<a class="list-item" href="#">维修记录</a>
+							<a class="list-item" href="know.jsp">维修记录</a>
 						</li>
 						<li class="list-item">
-							<a class="list-item" href="#">社区公告</a>
+							<a class="list-item" href="know.jsp">社区公告</a>
 						</li>
 						<li class="list-item">
-							<a class="list-item" href="#">失物招领</a>
+							<a class="list-item" href="know.jsp">失物招领</a>
 						</li>
 						<li class="list-item">
-							<a class="list-item" href="#">社区活动</a>
+							<a class="list-item" href="know.jsp">社区活动</a>
 						</li>
 					</ul>
 				</div>
@@ -974,40 +972,16 @@
 					</li>
 				</ul>
 			</div>
-			<div class="m-prod-professer">
-				<h2>产品专家</h2>
-				<h5>带来有价值的内容答疑分享</h5>
-				<div class="prod-professer-bg"></div>
-				<div class="prod-professer-list">
-
-				</div>
-			</div>
 			<div class="m-new-dynamic">
-				<h2>最新动态</h2>
-				<h5>展示最新鲜的产品服务动态</h5>
-				<ul class="new-dynamic-list">
-					<li class="new-dynamic-item">
-						<a target="_blank" href="/club/newclub/introduct/oneminute">
-							<img src="http://clubimg.kingdee.com/club/attachments/school/images/imgupload/201806067wx2yo2lXyVLQKvJ.png" alt="">
-							<div class="news-subject">一分钟了解金蝶社区</div>
-						</a>
-					</li>
-					<li class="new-dynamic-item">
-						<a target="_blank" href="http://club.kingdee.com/forum.php?mod=viewthread&amp;tid=1398032">
-							<img src="http://clubimg.kingdee.com/club/attachments/school/images/imgupload/20180926UnsvoZbecATcEfa8.png" alt="">
-							<div class="news-subject">金蝶社区返回旧版入口调整公告</div>
-						</a>
-					</li>
-					<li class="new-dynamic-item mr-0">
-						<a target="_blank" href="http://club.kingdee.com/forum.php?mod=viewthread&amp;tid=1400780&amp;page=1&amp;extra=#pid3957034">
-							<img src="http://clubimg.kingdee.com/club/attachments/school/images/imgupload/20180921GLimaQEpSnnGjfKl.jpg" alt="">
-							<div class="news-subject">智慧记接入贷款服务</div>
-						</a>
-					</li>
+				<h2>失物招领</h2>
+				<h5>展示最新的失物招领信息</h5>
+				<ul class="new-dynamic-list" id="swzl">
+				
+					
 				</ul>
 			</div>
 		</div>
-		<div class="g-footer">
+		<div class="g-footer" style="margin-top: 140px;">
 			<div class="_footer">
 				<div class="links">
 					<dl class="iblock">
@@ -1559,6 +1533,59 @@
 			/*百度统计代码 end*/
 		</script>
 		<!-- <script src="/club/js/monitor.js?v=eebdde39"></script> -->
+		
+		<script>
+	layui.use('flow', function(){
+		  var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+		  var flow = layui.flow;
+		  flow.load({
+		    elem: '#swzl' //指定列表容器
+		    ,isAuto: false
+		     ,isLazyimg: true
+		    ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+		      var lis = [];
+		      //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+		      $.ajax({
+     			 url:"${pageContext.request.contextPath}/FrontLostServlet",
+     			 type:"get",
+     			 data:{
+     				 "page":page
+     			 },
+     			 dataType:"text",
+     			 success:function(res){
+		        //假设你的列表返回在data集合中
+		          var one = res.lastIndexOf("]");
+		          var totalPage=res.substring(one+1);
+     			  var result=res.substring(0,one+1);
+     			  
+     			  console.log(result);
+     			 var array = JSON.parse(result);
+		          layui.each(array, function(index, lost){
+		        	  var text = "";
+		        	  text += "<li class=\"new-dynamic-item\" style=\"margin-bottom: 300px; width: 300px;\">";
+		        	  text += "						<a target=\"_blank\" href=\"#\">";
+		        	  text += "							<img src=\"img/1.png\" alt=\"\">";
+		        	  text += "							<div class=\"news-subject\">物品名称："+lost.lostGood+"</div>";
+		        	  text += "							<div class=\"news-subject\">捡取时间："+lost.lostDate+"</div>";
+		        	  text += "							<div class=\"news-subject\">捡取地点："+lost.lostArea+"</div>";
+		        	  text += "							<div class=\"news-subject\">捡取人："+lost.lostName+"</div>";
+		        	  text += "							<div class=\"news-subject\">捡取人联系电话："+lost.lostTel+"</div>";
+		        	  text += "						</a>";
+		        	  text += "					</li>";
+
+
+		            lis.push(text);
+		        }); 
+		        
+		        //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+		        //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+		        next(lis.join(''), page < totalPage);
+     			 }
+		      });
+		    }
+		  });
+		});
+</script>
 
 	</body>
 
