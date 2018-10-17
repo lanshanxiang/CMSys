@@ -7,4 +7,6 @@ import com.feiyue.util.PageData;
 
 public interface LostService {
 	public PageData<Lost> getQueryLost(int page,int pageSize);
+	
+	public boolean getAddLost(Lost l);
 }

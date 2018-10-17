@@ -63,6 +63,15 @@ public class FrontLostServlet extends HttpServlet {
 			String str = gs.toJson(pdLost.getData());
 			//将字符组传到页面
 			response.getWriter().print(str+pdLost.getTotalPage());
+		}else if("addLost".equals(op)) {
+			String lostGood=request.getParameter("lostGood");
+			String lostDate=request.getParameter("lostDate");
+			String lostArea=request.getParameter("lostArea");
+			String lostName=request.getParameter("lostName");
+			String lostTel=request.getParameter("lostTel");
+			Lost l=new Lost(lostGood, lostDate, lostArea, lostName, lostTel);
+			boolean flag=ls.getAddLost(l);
+			response.getWriter().print(flag);
 		}
 //		request.getRequestDispatcher("front/index.jsp").forward(request, response);
 		

@@ -17,4 +17,10 @@ public class LostServiceImpl implements LostService {
 		return ld.queryLost(page, pageSize);
 	}
 
+	@Override
+	public boolean getAddLost(Lost l) {
+		// TODO Auto-generated method stub
+		return ld.lostAdd(l);
+	}
+
 }

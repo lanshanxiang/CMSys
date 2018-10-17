@@ -22,7 +22,14 @@ public class Lost {
       private  String lostTel;
      
       
-      
+      public Lost(String lostGood, String lostDate, String lostArea, String lostName, String lostTel) {
+  		super();
+  		this.lostGood = lostGood;
+  		this.lostDate = lostDate;
+  		this.lostArea = lostArea;
+  		this.lostName = lostName;
+  		this.lostTel = lostTel;
+  	}
       
       
       public Lost() {
