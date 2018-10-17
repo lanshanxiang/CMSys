@@ -6,6 +6,7 @@ import com.feiyue.dao.VillageInfoBeanDao;
 import com.feiyue.dao.impl.VillageInfoBeanDaoImpl;
 import com.feiyue.entiy.VillageInfoBean;
 import com.feiyue.service.VillageInfoBeanService;
+import com.feiyue.util.PageData;
 
 public class VillageInfoBeanServiceImpl implements VillageInfoBeanService{
 	VillageInfoBeanDao  vibd=new VillageInfoBeanDaoImpl();
@@ -38,6 +39,12 @@ public class VillageInfoBeanServiceImpl implements VillageInfoBeanService{
 	public boolean getBatchDeleteVillageInfoBean(String sql) {
 		// TODO Auto-generated method stub
 		return vibd.batchDeleteTenementBean(sql);
+	}
+
+	@Override
+	public PageData<VillageInfoBean> getQueryVillageInfoBeanByPage(int page,int pageSize) {
+		// TODO Auto-generated method stub
+		return vibd.queryVillageInfoBeanByPage(page, pageSize);
 	}
 
 }

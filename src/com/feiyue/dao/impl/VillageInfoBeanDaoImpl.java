@@ -5,6 +5,7 @@ import java.util.List;
 import com.feiyue.dao.VillageInfoBeanDao;
 import com.feiyue.entiy.VillageInfoBean;
 import com.feiyue.util.DBUtil;
+import com.feiyue.util.PageData;
 /**
  * 小区管理的DAO 实现类
  * @author Administrator
@@ -42,6 +43,11 @@ public class VillageInfoBeanDaoImpl implements VillageInfoBeanDao {
 	public boolean batchDeleteTenementBean(String sql) {
 		// TODO Auto-generated method stub
 		return DBUtil.execute(sql)>0;
+	}
+	@Override
+	public PageData<VillageInfoBean> queryVillageInfoBeanByPage(int page, int pageSize) {
+		// TODO Auto-generated method stub
+		return DBUtil.getPage("select * from tb_villageinfo ORDER BY tb_villageinfo.villageId DESC", page, pageSize, VillageInfoBean.class);
 	}
 
 }
