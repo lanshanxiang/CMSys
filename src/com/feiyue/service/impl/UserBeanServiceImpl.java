@@ -40,4 +40,37 @@ public class UserBeanServiceImpl implements UserBeanService {
 		return ubd.stopUser(state, userId);
 	}
 
+	@Override
+	public boolean addUser(UserBean user) {
+		// TODO Auto-generated method stub
+		return ubd.addUser(user);
+	}
+/**
+ * 判断指定账号的用户是否已存在
+ */
+	@Override
+	public boolean isHaveUserByRegister(String register) {
+		// TODO Auto-generated method stub
+		if(ubd.getUserByRegister(register)!=null) {
+			return true;
+		}
+		return false;
+	}
+/**
+ * 修改用户密码
+ */
+@Override
+public boolean updatePwd(String register, String newPwd) {
+	// TODO Auto-generated method stub
+	return ubd.updatePwd(register, newPwd);
+}
+/**
+ * 得到指定账号的用户信息
+ */
+@Override
+public UserBean getUserByRegister(String register) {
+	// TODO Auto-generated method stub
+	return ubd.getUserByRegister(register);
+}
+
 }

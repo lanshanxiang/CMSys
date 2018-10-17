@@ -24,7 +24,7 @@ public class ManagerDaoImpl implements ManagerDao {
 			return list.get(0);
 		}
 		return null;
-	}
+	}                                                                                   
 
 	@Override
 	public List<ManagerBean> queryOnlyManager() {

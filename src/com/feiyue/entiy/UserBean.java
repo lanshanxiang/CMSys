@@ -9,14 +9,20 @@ public class UserBean {
 	private int userId;//用户ID
 	private String userName;//用户名称
 	private String userPwd;//用户密码
-	private String useSex;//用户性别
+	private String userSex;//用户性别
 	private int userAge;//用户年龄
 	private String tenementName;//住户名称
 	private String register;//账号
 	private String question;//密保问题
 	private String answer;//密保答案
 	private int state;//用户状态(1启用,0停用)
-	private String tenementId;//住户Id
+	private int tenementId;//住户Id
+	public int getTenementId() {
+		return tenementId;
+	}
+	public void setTenementId(int tenementId) {
+		this.tenementId = tenementId;
+	}
 	public int getUserId() {
 		return userId;
 	}
@@ -35,11 +41,11 @@ public class UserBean {
 	public void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
 	}
-	public String getUseSex() {
-		return useSex;
+	public String getUserSex() {
+		return userSex;
 	}
-	public void setUseSex(String useSex) {
-		this.useSex = useSex;
+	public void setUserSex(String userSex) {
+		this.userSex = userSex;
 	}
 	public int getUserAge() {
 		return userAge;
@@ -80,10 +86,39 @@ public class UserBean {
 	public UserBean() {
 		super();
 	}
+	/**
+	 * 带参构造，用于注册
+	 * @param userPwd 密码
+	 * @param register 自动生成的账号
+	 * @param question 密保问题
+	 * @param answer 密保答案
+	 */
+	public UserBean(String userPwd, String register, String question, String answer) {
+		super();
+		this.userPwd = userPwd;
+		this.register = register;
+		this.question = question;
+		this.answer = answer;
+	}
 	
+	
+	public UserBean(int userId, String userName, String userPwd, String userSex, int userAge, String register,
+			String question, String answer, int state, int tenementId) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userPwd = userPwd;
+		this.userSex = userSex;
+		this.userAge = userAge;
+		this.register = register;
+		this.question = question;
+		this.answer = answer;
+		this.state = state;
+		this.tenementId = tenementId;
+	}
 	@Override
 	public String toString() {
-		return "UserBean [userId=" + userId + ", userName=" + userName + ", userPwd=" + userPwd + ", useSex=" + useSex
+		return "UserBean [userId=" + userId + ", userName=" + userName + ", userPwd=" + userPwd + ", userSex=" + userSex
 				+ ", userAge=" + userAge + ", tenementName=" + tenementName + ", register=" + register + ", question="
 				+ question + ", answer=" + answer + ", state=" + state + ", tenementId=" + tenementId + "]";
 	}

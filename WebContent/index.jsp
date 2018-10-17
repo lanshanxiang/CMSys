@@ -214,7 +214,7 @@
 					<br /><br /><br />
 						<ul>
 							<li>
-								<a href="http://0539.cn/tel.html" target="_blank">进入服务中心</a>
+								<a href="front/user-login.jsp" target="_blank">进入服务中心</a>
 							</li>
 						</ul>
 					</div>
