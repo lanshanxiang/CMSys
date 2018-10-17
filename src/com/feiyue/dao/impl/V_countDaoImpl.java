@@ -13,7 +13,7 @@ public class V_countDaoImpl implements V_countDao {
 	@Override
 	public List<V_count> queryAll() {
 		// TODO Auto-generated method stub
-		return (List<V_count>) DBUtil.select("select * from tb_vCount ORDER BY tb_vCount.v_countMonth DESC", V_count.class);
+		return (List<V_count>) DBUtil.select("select * from tb_vCount ORDER BY tb_vCount.v_countMonth asc", V_count.class);
 	}
 
 }

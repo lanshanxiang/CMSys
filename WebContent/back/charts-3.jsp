@@ -28,10 +28,10 @@
 <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>区域图</title>
+<title>3D柱状图</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 统计管理 <span class="c-gray en">&gt;</span> 区域图 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 统计管理 <span class="c-gray en">&gt;</span> 3D柱状图 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 	<div id="container" style="min-width:700px;height:400px"></div>
 </div>
@@ -41,73 +41,82 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/static1/h-ui/js/H-ui.admin.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/lib1/Highcharts/4.1.7/js/highcharts.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/lib1/Highcharts/4.1.7/js/modules/exporting.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/lib1/Highcharts/4.1.7/js/highcharts-3d.js"></script>
 <script type="text/javascript">
-$(function () {
-    $('#container').highcharts({
+﻿$(function () {
+    // Set up the chart
+    var chart = new Highcharts.Chart({
         chart: {
-            type: 'area'
+            renderTo: 'container',
+            type: 'column',
+            margin: 75,
+            options3d: {
+                enabled: true,
+                alpha: 15,
+                beta: 15,
+                depth: 50,
+                viewDistance: 25
+            }
         },
         title: {
-            text: 'US and USSR nuclear stockpiles'
+            text: '用户统计表'
         },
         subtitle: {
-            text: 'Source: thebulletin.metapress.com'
+            text: '2017年'
         },
         xAxis: {
-            labels: {
-                formatter: function() {
-                    return this.value; // clean, unformatted number for year
-                }
-            }
+            categories: ['一月', '二月', '三月', '四月', '五月', '六月','七月', '八月', '九月', '十月', '十一月', '十二月']
         },
         yAxis: {
             title: {
-                text: 'Nuclear weapon states'
+                text: '数量 (个)'
             },
-            labels: {
-                formatter: function() {
-                    return this.value / 1000 +'k';
-                }
-            }
-        },
-        tooltip: {
-            pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
         },
         plotOptions: {
-            area: {
-                pointStart: 1940,
-                marker: {
-                    enabled: false,
-                    symbol: 'circle',
-                    radius: 2,
-                    states: {
-                        hover: {
-                            enabled: true
-                        }
-                    }
-                }
+            column: {
+                depth: 25
             }
         },
         series: [{
-            name: 'USA',
-            data: [null, null, null, null, null, 6 , 11, 32, 110, 235, 369, 640,1005, 1436,
-            		2063, 3057, 4618, 6444, 9822, 15468, 20434, 24126,27387, 29459, 31056, 31982,
-            		32040, 31233, 29224, 27342, 26662,26956, 27912, 28999, 28965, 27826, 25579,
-            		25722, 24826, 24605,24304, 23464, 23708, 24099, 24357, 24237, 24401, 24344,
-            		23586,22380, 21004, 17287, 14747, 13076, 12555, 12144, 11009, 10950,
-                10871, 10824, 10577, 10527, 10475, 10421, 10358, 10295, 10104 
-            ]
-        }, {
-            name: 'USSR/Russia',
-            data: [null, null, null, null, null, null, null , null , null ,null,5, 25, 50,
-            	120, 150, 200, 426, 660, 869, 1060, 1605, 2471, 3322,4238, 5221, 6129,
-            	7089, 8339, 9399, 10538, 11643, 13092, 14478,15915, 17385, 19055, 21205,
-            	23044, 25393, 27935, 30062, 32049,33952, 35804, 37431, 39197, 45000, 43000,
-            	41000, 39000, 37000,35000, 33000, 31000, 29000, 27000, 25000, 24000, 23000,
-            	22000,21000, 20000, 19000, 18000, 18000, 17000, 16000
-            ]
+        	name: '用户量',
+            data: [${userList[0].u_countAdd}-${userList[0].u_countDel},
+            	${userList[1].u_countAdd}-${userList[1].u_countDel},
+            	${userList[2].u_countAdd}-${userList[2].u_countDel},
+            	${userList[3].u_countAdd}-${userList[3].u_countDel},
+            	${userList[4].u_countAdd}-${userList[4].u_countDel},
+            	${userList[5].u_countAdd}-${userList[5].u_countDel},
+            	${userList[6].u_countAdd}-${userList[6].u_countDel}, 
+            	${userList[7].u_countAdd}-${userList[7].u_countDel},
+            	${userList[8].u_countAdd}-${userList[8].u_countDel}, 
+            	${userList[9].u_countAdd}-${userList[9].u_countDel}, 
+            	${userList[10].u_countAdd}-${userList[10].u_countDel},
+            	${userList[11].u_countAdd}-${userList[11].u_countDel} ]
         }]
     });
+    
+
+    // Activate the sliders
+    $('#R0').on('change', function(){
+        chart.options.chart.options3d.alpha = this.value;
+        showValues();
+        chart.redraw(false);
+    });
+    $('#R1').on('change', function(){
+        chart.options.chart.options3d.beta = this.value;
+        showValues();
+        chart.redraw(false);
+    });
+
+    function showValues() {
+        $('#R0-value').html(chart.options.chart.options3d.alpha);
+        $('#R1-value').html(chart.options.chart.options3d.beta);
+    }
+    showValues();
 });
 </script>
 </body>

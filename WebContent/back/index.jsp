@@ -205,11 +205,11 @@
 					<ul>
 						<li><a _href="${pageContext.request.contextPath}/CountServlet?op=brtp" data-title="楼房统计折线图"
 							href="javascript:void(0)">楼房统计折线图</a></li>
-						<li><a _href="charts-2.jsp" data-title="投诉统计"
+						<li><a _href="${pageContext.request.contextPath}/CountServlet?op=c" data-title="投诉统计"
 							href="javascript:void(0)">投诉统计</a></li>
-						<li><a _href="charts-3.jsp" data-title="用户统计"
+						<li><a _href="${pageContext.request.contextPath}/CountServlet?op=u" data-title="用户统计"
 							href="javascript:void(0)">用户统计</a></li>
-						<li><a _href="charts-4.jsp" data-title="商家统计"
+						<li><a _href="${pageContext.request.contextPath}/CountServlet?op=s" data-title="商家统计"
 							href="javascript:void(0)">商家统计</a></li>
 						<li><a _href="${pageContext.request.contextPath}/CountServlet?op=t" data-title="住户统计图"
 							href="javascript:void(0)">住户统计图</a></li>

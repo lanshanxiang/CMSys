@@ -12,19 +12,28 @@ import javax.servlet.http.HttpServletResponse;
 import com.feiyue.dao.B_countDao;
 import com.feiyue.dao.impl.B_countDaoImpl;
 import com.feiyue.entiy.B_count;
+import com.feiyue.entiy.C_count;
 import com.feiyue.entiy.P_count;
 import com.feiyue.entiy.R_count;
+import com.feiyue.entiy.S_count;
 import com.feiyue.entiy.T_count;
+import com.feiyue.entiy.U_count;
 import com.feiyue.entiy.V_count;
 import com.feiyue.service.B_countService;
+import com.feiyue.service.C_countService;
 import com.feiyue.service.P_countService;
 import com.feiyue.service.R_countService;
+import com.feiyue.service.S_countService;
 import com.feiyue.service.T_countService;
+import com.feiyue.service.U_countService;
 import com.feiyue.service.V_countService;
 import com.feiyue.service.impl.B_countServiceImpl;
+import com.feiyue.service.impl.C_countServiceImpl;
 import com.feiyue.service.impl.P_countServiceImpl;
 import com.feiyue.service.impl.R_countServiceImpl;
+import com.feiyue.service.impl.S_countServiceImpl;
 import com.feiyue.service.impl.T_countServiceImpl;
+import com.feiyue.service.impl.U_countServiceImpl;
 import com.feiyue.service.impl.V_countServiceImpl;
 
 /**
@@ -38,6 +47,9 @@ public class CountServlet extends HttpServlet {
 	V_countService vs=new V_countServiceImpl();  
 	P_countService ps=new P_countServiceImpl(); 
 	T_countService ts=new T_countServiceImpl(); 
+	C_countService cs=new C_countServiceImpl(); 
+	S_countService ss=new S_countServiceImpl(); 
+	U_countService us=new U_countServiceImpl(); 
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -82,6 +94,21 @@ public class CountServlet extends HttpServlet {
 				List<T_count> tenementList=ts.getQueryAll();
 				request.setAttribute("tenementList", tenementList);
 				request.getRequestDispatcher("back/charts-6.jsp").forward(request, response);
+			}else if("c".equals(op)) {
+				//投诉
+				List<C_count> complaintList=cs.getQueryAll();
+				request.setAttribute("complaintList", complaintList);
+				request.getRequestDispatcher("back/charts-2.jsp").forward(request, response);
+			}else if("s".equals(op)) {
+				//商家
+				List<S_count> businessList=ss.getQueryAll();
+				request.setAttribute("businessList", businessList);
+				request.getRequestDispatcher("back/charts-4.jsp").forward(request, response);
+			}else if("u".equals(op)) {
+				//用户
+				List<U_count> userList=us.getQueryAll();
+				request.setAttribute("userList", userList);
+				request.getRequestDispatcher("back/charts-3.jsp").forward(request, response);
 			}
 			
 		} else {

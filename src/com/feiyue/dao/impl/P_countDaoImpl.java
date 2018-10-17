@@ -13,7 +13,7 @@ public class P_countDaoImpl implements P_countDao {
 	@Override
 	public List<P_count> queryAll() {
 		// TODO Auto-generated method stub
-		return (List<P_count>) DBUtil.select("select * from tb_pCount ORDER BY tb_pCount.p_countMonth DESC", P_count.class);
+		return (List<P_count>) DBUtil.select("select * from tb_pCount ORDER BY tb_pCount.p_countMonth asc", P_count.class);
 	}
 
 }
