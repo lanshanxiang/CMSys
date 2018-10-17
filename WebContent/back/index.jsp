@@ -203,20 +203,16 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="charts-1.jsp" data-title="折线图"
-							href="javascript:void(0)">折线图</a></li>
-						<li><a _href="charts-2.jsp" data-title="时间轴折线图"
-							href="javascript:void(0)">时间轴折线图</a></li>
-						<li><a _href="charts-3.jsp" data-title="区域图"
-							href="javascript:void(0)">区域图</a></li>
-						<li><a _href="charts-4.jsp" data-title="柱状图"
-							href="javascript:void(0)">柱状图</a></li>
-						<li><a _href="charts-5.jsp" data-title="饼状图"
-							href="javascript:void(0)">饼状图</a></li>
-						<li><a _href="charts-6.jsp" data-title="3D柱状图"
-							href="javascript:void(0)">3D柱状图</a></li>
-						<li><a _href="charts-7.jsp" data-title="3D饼状图"
-							href="javascript:void(0)">3D饼状图</a></li>
+						<li><a _href="${pageContext.request.contextPath}/CountServlet?op=brtp" data-title="楼房统计折线图"
+							href="javascript:void(0)">楼房统计折线图</a></li>
+						<li><a _href="charts-2.jsp" data-title="投诉统计"
+							href="javascript:void(0)">投诉统计</a></li>
+						<li><a _href="charts-3.jsp" data-title="用户统计"
+							href="javascript:void(0)">用户统计</a></li>
+						<li><a _href="charts-4.jsp" data-title="商家统计"
+							href="javascript:void(0)">商家统计</a></li>
+						<li><a _href="${pageContext.request.contextPath}/CountServlet?op=t" data-title="住户统计图"
+							href="javascript:void(0)">住户统计图</a></li>
 					</ul>
 				</dd>
 			</dl>
