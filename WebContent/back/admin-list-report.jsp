@@ -43,19 +43,8 @@
 	</nav>
 	<div class="page-container">
 		<article class="cl pd-20">
-			<div class="text-c">
-				根据内容搜索相应的内容：<input type="checkbox" id="autoSearch"> <br>
-				          设备名称：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="2" id="col2_filter" style="width: 100px;"> 
-					住户名：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="3" id="col3_filter" style="width: 100px;"> 
-					 报修人：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="4" id="col4_filter" style="width: 100px;">
-					 维修时间：<input type="text" class="form-controlSearch input-text Wdate" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})" placeholder="输入入职时间" data-column="5" id="col5_filter" style="width: 100px;">
-					 维修状态：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="6" id="col6_filter" style="width: 100px;">
-					备注：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="7" id="col7_filter" style="width: 100px;">
-			</div>
 			<div class="cl pd-5 bg-1 bk-gray mt-20">
-				<span class="l"><a href="javascript:;" id="plsc"
-					class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i>
-						批量删除</a> <a href="javascript:;"
+				<span class="l"> <a href="javascript:;"
 					onclick="member_add('添加用户','report-add.jsp','','510')"
 					class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i>
 						添加报修</a></span> <span class="r">共有数据：<strong><span
@@ -91,7 +80,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div id="menu2" class="tab-pane fade">
+				<div id="menu2" class="tab-pane fade in active" style="display: none;">
 					<table id="example2"
 						class="table table-border table-bordered table-hover table-bg table-sort">
 						<thead>
@@ -112,7 +101,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div id="menu3" class="tab-pane fade">
+				<div id="menu3" class="tab-pane fade in active" style="display: none;">
 					<table id="example3"
 						class="table table-border table-bordered table-hover table-bg table-sort">
 						<thead>
@@ -199,6 +188,15 @@
 					$(this).addClass('selected');
 				}
 			});
+			//表格问题
+	        $("#reportYN").click(function(){
+	        	$("#menu2").css("display","block");
+	        	$("#menu3").css("display","none");
+	        });
+	        $("#reportN").click(function(){
+	        	$("#menu2").css("display","none");
+	        	$("#menu3").css("display","block");
+	        });
 		});
 		$("#plsc").click(function(){
 			batchIds();
@@ -1748,6 +1746,28 @@
 		});
 		$(document).ready(function() {
 			$('table.display').dataTable();
+		});
+	</script>
+	<script>
+		$(function() {
+
+			/* $(document).on("click",'a[data-toggle="tab"]',function(){
+				console.log("click"+$(this));
+			
+				$.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
+				//$($.fn.dataTable.tables( true ) ).DataTable().columns.adjust().draw();
+			}); */
+
+			$('a[data-toggle="tab"]').on("click", function(e) {
+				console.log("click..  " + e.target);
+
+				$.fn.dataTable.tables({
+					visible : true,
+					api : true
+				}).columns.adjust();
+				//$($.fn.dataTable.tables( true ) ).DataTable().columns.adjust().draw();
+			});
+
 		});
 	</script>
 </body>
