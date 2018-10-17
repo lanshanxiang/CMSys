@@ -46,7 +46,7 @@ public class FrontActiveServlet extends HttpServlet {
 					op = request.getParameter("op");
 				}
 				int page=1;
-				int pageSize=5;
+				int pageSize=10;
 				if(null!=request.getParameter("page")) {
 					page=Integer.parseInt(request.getParameter("page"));
 				}if(null!=request.getParameter("pageSize")) {
@@ -62,7 +62,7 @@ public class FrontActiveServlet extends HttpServlet {
 					//通过Gson对象的tojson方法将pd.getData（）转成字符串
 					String str = gs.toJson(pdActive.getData());
 					//将字符组传到页面
-					response.getWriter().print(str);
+					response.getWriter().print(str+pdActive.getTotalPage());
 				}
 	}
 

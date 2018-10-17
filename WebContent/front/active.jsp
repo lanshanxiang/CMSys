@@ -240,6 +240,7 @@
 						<li class="list-item">
 							<a class="list-item" href="active.jsp">社区活动</a>
 						</li>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -276,50 +277,13 @@
 			</ul>
 		</div>
 		<div class="m-new-dynamic">
-			<h1 style="font-size: 60px">我掉东西啦！！</h1>
+			<h1 style="font-size: 60px">社区活动列表！！</h1>
 			<hr>
-			<form class="form-horizontal" style="position: relative; left: 500px;">
-				<div class="form-group">
-					<label for="lostGood" class="col-sm-2 control-label">物品</label>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" id="lostGood" name="lostGood"
-							placeholder="物品">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="lostArea" class="col-sm-2 control-label">地点</label>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" id="lostArea" name="lostArea"
-							placeholder="地点">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="lostDate" class="col-sm-2 control-label">时间</label>
-					<div class="col-sm-2">
-						<input type="datetime-local" class="form-control" id="lostDate" name="lostDate"
-							placeholder="时间">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="lostName" class="col-sm-2 control-label">您的名字</label>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" id="lostName" name="lostName"
-							placeholder="您的名字">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="lostTel" class="col-sm-2 control-label">您的联系人电话</label>
-					<div class="col-sm-2">
-						<input type="tel" class="form-control" id="lostTel" name="lostTel"
-							placeholder="您的联系人电话">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-2">
-						<button style="width: 100px;" id="addLost" type="button" class="btn btn-success">提交</button>
-					</div>
-				</div>
-			</form>
+			<ul class="new-dynamic-list" id="active">
+				
+					
+			</ul>
+			
 		</div>
 	</div>
 	<div class="g-footer">
@@ -428,41 +392,54 @@
 	<!-- <script src="/club/js/monitor.js?v=eebdde39"></script> -->
 
 	<script>
-		 $("#addLost").click(function(){
-			 console.log(111);
-			 $
-				.ajax({
-					url : "${pageContext.request.contextPath}/FrontLostServlet?op=addLost",//url地址
-					type : "post",
-					data : {
-						"lostGood" : $(
-								'#lostGood').val(),
-						"lostDate" : $('#lostDate').val(),
-						"lostArea" : $('#lostArea').val(),
-						"lostName" : $('#lostName').val(),
-						"lostTel" : $('#lostTel').val()
-					},
-					//成功后执行的操作
-					success : function(data) {
-						//判断用户名密码是否正确，正确的话则跳到前台首页
-						location.href="index.jsp";
-						/* if (data == "false") {
-							alert("失败");
-						} else {
-							layer
-									.msg(
-											'增加成功!将会跳到首页查看您的提交的信息',
-											{
-												icon : 1,
-												time : 1000
-											},
-											function() {
-												location.href="front/index.jsp";
-											});
-						} */
-					}
-				});
-		 });
+	layui.use('flow', function(){
+		  var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+		  var flow = layui.flow;
+		  flow.load({
+		    elem: '#active' //指定列表容器
+		    ,isAuto: false
+		     ,isLazyimg: true
+		    ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+		      var lis = [];
+		      //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+		      $.ajax({
+   			 url:"${pageContext.request.contextPath}/FrontActiveServlet",
+   			 type:"get",
+   			 data:{
+   				 "page":page
+   			 },
+   			 dataType:"text",
+   			 success:function(res){
+		        //假设你的列表返回在data集合中
+		          var one = res.lastIndexOf("]");
+		          var totalPage=res.substring(one+1);
+   			  var result=res.substring(0,one+1);
+   			  
+   			  console.log(result);
+   			 var array = JSON.parse(result);
+		          layui.each(array, function(index, active){
+		        	  var text = "";
+		        	  text += "<li class=\"new-dynamic-item\" style=\" width: 100%;\">";
+		        	  text += "					<img style=\"width: 250px; height: 200px; float: left;\" src=\"img/1.png\" alt=\"\">";
+		        	  text += "					<h3 style=\"display: inline; float: left; width: 900px; text-align: left;\">活动名称:"+active.activeName+"</h3>";
+		        	  text += "					<h6 style=\"float: left; width: 900px; text-align: left;\">活动时间："+active.activeDate+"</h6>";
+		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">内容："+active.activeContent+"</h4>";
+		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">地点:"+active.activePlace+"</h4>";
+		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">联系我加入活动："+active.activeJoinTel+"</h4>";
+		        	  text += "			    </li>";
+
+
+		            lis.push(text);
+		        }); 
+		        
+		        //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+		        //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+		        next(lis.join(''), page < totalPage);
+   			 }
+		      });
+		    }
+		  });
+		});
 	</script>
 
 </body>
