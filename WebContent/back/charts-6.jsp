@@ -59,10 +59,23 @@
             }
         },
         title: {
-            text: 'Chart rotation demo'
+            text: '住户总迁入数统计表（迁入-迁出）'
         },
         subtitle: {
-            text: 'Test options by dragging the sliders below'
+            text: '2017年'
+        },
+        xAxis: {
+            categories: ['一月', '二月', '三月', '四月', '五月', '六月','七月', '八月', '九月', '十月', '十一月', '十二月']
+        },
+        yAxis: {
+            title: {
+                text: '数量 (个)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
         },
         plotOptions: {
             column: {
@@ -70,7 +83,19 @@
             }
         },
         series: [{
-            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+        	name: '住户迁入量',
+            data: [${tenementList[0].t_countAdd}-${tenementList[0].t_countDel},
+            	${tenementList[1].t_countAdd}-${tenementList[1].t_countDel},
+            	${tenementList[2].t_countAdd}-${tenementList[2].t_countDel},
+            	${tenementList[3].t_countAdd}-${tenementList[3].t_countDel},
+            	${tenementList[4].t_countAdd}-${tenementList[4].t_countDel},
+            	${tenementList[5].t_countAdd}-${tenementList[5].t_countDel},
+            	${tenementList[6].t_countAdd}-${tenementList[6].t_countDel}, 
+            	${tenementList[7].t_countAdd}-${tenementList[7].t_countDel},
+            	${tenementList[8].t_countAdd}-${tenementList[8].t_countDel}, 
+            	${tenementList[9].t_countAdd}-${tenementList[9].t_countDel}, 
+            	${tenementList[10].t_countAdd}-${tenementList[10].t_countDel},
+            	${tenementList[11].t_countAdd}-${tenementList[11].t_countDel} ]
         }]
     });
     

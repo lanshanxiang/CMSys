@@ -3,11 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<%
-	if (null == request.getSession().getAttribute("users")) {
-		request.getRequestDispatcher("login.jsp").forward(request, response);
-	}
-%>
+
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -29,6 +25,11 @@
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 <title>折线图</title>
+<%
+	if (null == request.getSession().getAttribute("users")) {
+		request.getRequestDispatcher("login.jsp").forward(request, response);
+	}
+%>
 </head>
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 统计管理 <span class="c-gray en">&gt;</span> 折线图 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
@@ -45,11 +46,11 @@
 $(function () {
     $('#container').highcharts({
         title: {
-            text: 'Monthly Average Temperature',
+            text: '楼房，房屋，小区，车位统计图',
             x: -20 //center
         },
         subtitle: {
-            text: 'Source: WorldClimate.com',
+            text: '2017年',
             x: -20
         },
         xAxis: {
@@ -57,7 +58,7 @@ $(function () {
         },
         yAxis: {
             title: {
-                text: 'Temperature (°C)'
+                text: '数量 (个)'
             },
             plotLines: [{
                 value: 0,
@@ -66,7 +67,7 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
+            valueSuffix: '个'
         },
         legend: {
             layout: 'vertical',
@@ -75,18 +76,62 @@ $(function () {
             borderWidth: 0
         },
         series: [{
-            name: 'Tokyo',
-            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+            name: '新增楼房',
+            data: [${buildingList[0].b_countAdd}-${buildingList[0].b_countDel},
+            	${buildingList[1].b_countAdd}-${buildingList[1].b_countDel},
+            	${buildingList[2].b_countAdd}-${buildingList[2].b_countDel},
+            	${buildingList[3].b_countAdd}-${buildingList[3].b_countDel},
+            	${buildingList[4].b_countAdd}-${buildingList[4].b_countDel},
+            	${buildingList[5].b_countAdd}-${buildingList[5].b_countDel},
+            	${buildingList[6].b_countAdd}-${buildingList[6].b_countDel}, 
+            	${buildingList[7].b_countAdd}-${buildingList[7].b_countDel},
+            	${buildingList[8].b_countAdd}-${buildingList[8].b_countDel}, 
+            	${buildingList[9].b_countAdd}-${buildingList[9].b_countDel}, 
+            	${buildingList[10].b_countAdd}-${buildingList[10].b_countDel},
+            	${buildingList[11].b_countAdd}-${buildingList[11].b_countDel} ]
         }, {
-            name: 'New York',
-            data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+            name: '新增房屋',
+            data: [${roomList[0].r_countAdd}-${roomList[0].r_countDel},
+            	${roomList[1].r_countAdd}-${roomList[1].r_countDel},
+            	${roomList[2].r_countAdd}-${roomList[2].r_countDel},
+            	${roomList[3].r_countAdd}-${roomList[3].r_countDel},
+            	${roomList[4].r_countAdd}-${roomList[4].r_countDel},
+            	${roomList[5].r_countAdd}-${roomList[5].r_countDel},
+            	${roomList[6].r_countAdd}-${roomList[6].r_countDel}, 
+            	${roomList[7].r_countAdd}-${roomList[7].r_countDel},
+            	${roomList[8].r_countAdd}-${roomList[8].r_countDel}, 
+            	${roomList[9].r_countAdd}-${roomList[9].r_countDel}, 
+            	${roomList[10].r_countAdd}-${roomList[10].r_countDel},
+            	${roomList[11].r_countAdd}-${roomList[11].r_countDel} ]
         }, {
-            name: 'Berlin',
-            data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+            name: '新增小区',
+            data: [${villageList[0].v_countAdd}-${villageList[0].v_countDel},
+            	${villageList[1].v_countAdd}-${villageList[1].v_countDel},
+            	${villageList[2].v_countAdd}-${villageList[2].v_countDel},
+            	${villageList[3].v_countAdd}-${villageList[3].v_countDel},
+            	${villageList[4].v_countAdd}-${villageList[4].v_countDel},
+            	${villageList[5].v_countAdd}-${villageList[5].v_countDel},
+            	${villageList[6].v_countAdd}-${villageList[6].v_countDel}, 
+            	${villageList[7].v_countAdd}-${villageList[7].v_countDel},
+            	${villageList[8].v_countAdd}-${villageList[8].v_countDel}, 
+            	${villageList[9].v_countAdd}-${villageList[9].v_countDel}, 
+            	${villageList[10].v_countAdd}-${villageList[10].v_countDel},
+            	${villageList[11].v_countAdd}-${villageList[11].v_countDel} ]
         }, {
-            name: 'London',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }]
+            name: '新增车位',
+            data: [${parkingList[0].p_countAdd}-${parkingList[0].p_countDel},
+            	${parkingList[1].p_countAdd}-${parkingList[1].p_countDel},
+            	${parkingList[2].p_countAdd}-${parkingList[2].p_countDel},
+            	${parkingList[3].p_countAdd}-${parkingList[3].p_countDel},
+            	${parkingList[4].p_countAdd}-${parkingList[4].p_countDel},
+            	${parkingList[5].p_countAdd}-${parkingList[5].p_countDel},
+            	${parkingList[6].p_countAdd}-${parkingList[6].p_countDel}, 
+            	${parkingList[7].p_countAdd}-${parkingList[7].p_countDel},
+            	${parkingList[8].p_countAdd}-${parkingList[8].p_countDel}, 
+            	${parkingList[9].p_countAdd}-${parkingList[9].p_countDel}, 
+            	${parkingList[10].p_countAdd}-${parkingList[10].p_countDel},
+            	${parkingList[11].p_countAdd}-${parkingList[11].p_countDel} ]
+        }],
     });
 });
 </script>

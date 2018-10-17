@@ -37,36 +37,9 @@
 	</nav>
 	<div class="page-container">
 		<article class="cl pd-20">
-			<div class="text-c">
-				是否自动检索：<input type="checkbox" id="autoSearch"> 姓名：<input
-					type="text" class="form-controlSearch input-text "
-					placeholder="输入姓名" data-column="2" id="col2_filter"
-					style="width: 100px;"> 岗位：<input type="text"
-					class="form-controlSearch input-text " placeholder="输入岗位"
-					data-column="3" id="col3_filter" style="width: 100px;">
-				入职时间：<input type="text" class="form-controlSearch input-text Wdate"
-					onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})"
-					placeholder="输入入职时间" data-column="4" id="col4_filter"
-					style="width: 100px;">
-
-			</div>
-			<div class="text-c">
-				入职时间范围： <input type="text"
-					onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})"
-					id="datemin" class="input-text Wdate" style="width: 120px;">
-				- <input type="text"
-					onfocus="WdatePicker({minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d'})"
-					id="datemax" class="input-text Wdate" style="width: 120px;">
-				<input type="text" class="input-text" style="width: 250px"
-					placeholder="输入员工姓名、岗位、部门" id="" name="">
-				<button type="submit" class="btn btn-success radius" id="" name="">
-					<i class="Hui-iconfont">&#xe665;</i> 搜用户
-				</button>
-			</div>
+			
 			<div class="cl pd-5 bg-1 bk-gray mt-20">
-				<span class="l"><a href="javascript:;" onclick="datadel()"
-					class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i>
-						批量删除</a> <a href="javascript:;"
+				<span class="l"><a href="javascript:;"
 					onclick="member_add('添加用户','admin-list-check-add.jsp','','510')"
 					class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i>
 						添加用户</a></span> <span class="r">共有数据：<strong><span
@@ -104,7 +77,7 @@
 					</tbody>
 				</table>
 				</div>
-				<div id="menu2" class="tab-pane fade">
+				<div id="menu2" class="tab-pane fade in active" style="display: none;">
 				<table id="example2"
 					class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>
@@ -126,7 +99,7 @@
 					</tbody>
 				</table>
 				</div>
-				<div id="menu3" class="tab-pane fade">
+				<div id="menu3" class="tab-pane fade in active" style="display: none;">
 				<table id="example3"
 					class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>
@@ -148,7 +121,7 @@
 					</tbody>
 				</table>
 				</div>
-				<div id="menu4" class="tab-pane fade">
+				<div id="menu4" class="tab-pane fade in active" style="display: none;">
 				<table id="example4"
 					class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>
@@ -219,6 +192,22 @@
 					$(this).addClass('selected');
 				}
 			});
+			//表格问题
+	        $("#checkYN").click(function(){
+	        	$("#menu2").css("display","block");
+	        	$("#menu3").css("display","none");
+	        	$("#menu4").css("display","none");
+	        });
+	        $("#checkN").click(function(){
+	        	$("#menu2").css("display","none");
+	        	$("#menu3").css("display","block");
+	        	$("#menu4").css("display","none");
+	        });
+	        $("#checkYR").click(function(){
+	        	$("#menu2").css("display","none");
+	        	$("#menu3").css("display","none");
+	        	$("#menu4").css("display","block");
+	        });
 		});
 		/*用户-添加*/
 		function member_add(title, url, w, h) {
@@ -2419,6 +2408,28 @@
 		});
 		$(document).ready(function() {
 			$('table.display').dataTable();
+		});
+	</script>
+	<script>
+		$(function() {
+
+			/* $(document).on("click",'a[data-toggle="tab"]',function(){
+				console.log("click"+$(this));
+			
+				$.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
+				//$($.fn.dataTable.tables( true ) ).DataTable().columns.adjust().draw();
+			}); */
+
+			$('a[data-toggle="tab"]').on("click", function(e) {
+				console.log("click..  " + e.target);
+
+				$.fn.dataTable.tables({
+					visible : true,
+					api : true
+				}).columns.adjust();
+				//$($.fn.dataTable.tables( true ) ).DataTable().columns.adjust().draw();
+			});
+
 		});
 	</script>
 
