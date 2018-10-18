@@ -292,9 +292,9 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="sdate" class="col-sm-2 control-label">请输入要增加的时间</label>
+					<label for="lostdate" class="col-sm-2 control-label">请输入要增加的时间</label>
 					<div class="col-sm-2">
-						<input type="text" class="layui-input" id="sdate" name="sdate"
+						<input type="text" class="layui-input" id="sdate" name="lostdate"
 							placeholder="请输入年月日">
 					</div>
 				</div>
@@ -445,8 +445,8 @@
 										//成功后执行的操作
 										success : function(data) {
 											//判断用户名密码是否正确，正确的话则跳到前台首页
-											location.href = "index.jsp";
-											/* if (data == "false") {
+											
+											if (data == "false") {
 												alert("失败");
 											} else {
 												layer
@@ -457,9 +457,9 @@
 																	time : 1000
 																},
 																function() {
-																	location.href="front/index.jsp";
+																	location.href="index.jsp";
 																});
-											} */
+											}
 										}
 									});
 						});
@@ -471,7 +471,7 @@
 
 			//常规用法
 			laydate.render({
-				elem : '#adate',
+				elem : '#lostdate',
 				type : 'datetime'
 			});
 		});

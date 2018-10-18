@@ -25,6 +25,5 @@ public interface PaymentDao {
      //批量删除
     public boolean batchDeletePayment(String sql);
     //前台查询
-    public PageData<PaymentBean> getFrontPayment(int  tenementId,double years,double months,int page, int pageSize);
-    
+    public PageData<PaymentBean> getFrontPayment(int  tenementId,String years,String months,int page, int pageSize);
 }

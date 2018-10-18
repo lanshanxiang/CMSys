@@ -34,8 +34,7 @@
 <link rel="stylesheet" href="css/layui.css" media="all">
 <script src="layer.js"></script>
 <script src="layui.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script src="js/bootstrap.min.js"></script>
 
 <script type="text/javascript"
@@ -234,24 +233,75 @@
 					</li>
 					<li class="list-item"><a class="list-item" href="know.jsp">社区公告</a>
 					</li>
-					<li class="list-item">
-							<a class="list-item" href="addLost.jsp">失物招领</a>
-						</li>
-						<li class="list-item">
-							<a class="list-item" href="active.jsp">社区活动</a>
-						</li>
+					<li class="list-item"><a class="list-item" href="addLost.jsp">失物招领</a>
+					</li>
+					<li class="list-item"><a class="list-item" href="active.jsp">社区活动</a>
 					</li>
 				</ul>
 			</div>
 		</div>
+		<div class="m-club-hover">
+			<ul class="hover-list">
+				<li class="hover-item w-272">
+					<div class="hover-num">
+						<ul class="hover-num-value hover-help-num" data-num="29738"></ul>
+						<span>&nbsp;条</span>
+					</div>
+					<div class="hover-field">官方知识</div>
+				</li>
+				<li class="hover-item w-318">
+					<div class="hover-num">
+						<ul class="hover-num-value hover-course-num" data-num="846"></ul>
+						<span>&nbsp;门</span>
+					</div>
+					<div class="hover-field">视频课程</div>
+				</li>
+				<li class="hover-item w-318">
+					<div class="hover-num">
+						<ul class="hover-num-value hover-post-num" data-num="700877"></ul>
+						<span>&nbsp;条</span>
+					</div>
+					<div class="hover-field">分享内容</div>
+				</li>
+				<li class="hover-item w-272">
+					<div class="hover-num">
+						<ul class="hover-num-value hover-specialist-num" data-num="218"></ul>
+						<span>&nbsp;位</span>
+					</div>
+					<div class="hover-field">产品专家</div>
+				</li>
+			</ul>
+		</div>
 		<div class="m-new-dynamic">
-			<h1 style="font-size: 60px">所有小区！！</h1>
+			<h1 style="font-size: 60px">我捡到东西啦！！</h1>
 			<hr>
-			<ul class="new-dynamic-list" id="village">
+			<form class="form-horizontal"
+				style="position: relative; left: 500px;">
+				<div class="form-group">
+					<label for="years" class="col-sm-2 control-label">年</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="years" name="years"
+							placeholder="请输入年份">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="months" class="col-sm-2 control-label">月</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="months" name="months"
+							placeholder="请输入月份">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-2">
+						<button style="width: 100px;" onclick="queryWater()" type="button"
+							class="btn btn-success">提交</button>
+					</div>
+				</div>
+			</form>
+			<ul class="new-dynamic-list" id="water">
 				
 					
 			</ul>
-			
 		</div>
 	</div>
 	<div class="g-footer">
@@ -336,7 +386,7 @@
 			</div>
 		</div>
 
-		
+
 	</div>
 	<div id="g-guide" class="g-guide"></div>
 
@@ -358,57 +408,63 @@
 		/*百度统计代码 end*/
 	</script>
 	<!-- <script src="/club/js/monitor.js?v=eebdde39"></script> -->
+    <script type="text/javascript">
+           function queryWater(){
+        	   layui.use('flow', function(){
+        			  var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+        			  var flow = layui.flow;
+        			  flow.load({
+        			    elem: '#water' //指定列表容器
+        			    ,isAuto: false
+        			     ,isLazyimg: true
+        			    ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+        			      var lis = [];
+        			      //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+        			      $.ajax({
+        	   			 url:"${pageContext.request.contextPath}/FrontPaymentServlet?op=myWater",
+        	   			 type:"get",
+        	   			 data:{
+        	   				 "page":page,
+        	   				 "years":$("#years").val(),
+        	   				 "months":$("#months").val()
+        	   			 },
+        	   			 dataType:"text",
+        	   			 success:function(res){
+        			        //假设你的列表返回在data集合中
+        			          var one = res.lastIndexOf("]");
+        			          var totalPage=res.substring(one+1);
+        	   			  var result=res.substring(0,one+1);
+        	   			  
+        	   			  console.log(result);
+        	   			 var array = JSON.parse(result);
+        			          layui.each(array, function(index, water){
+        			        	  var text = "";
+									text += "<li class=\"new-dynamic-item\" style=\"margin-bottom: 300px; width: 300px;\">";
+									text += "						<a target=\"_blank\" href=\"#\">";
+									text += "						<img src=\"img/1.png\" alt=\"\">";
+									text += "						<div class=\"news-subject\">住户名称："+ water.tenementName+ "</div>";
+									text += "						<div class=\"news-subject\">年份："+ water.years+ "</div>";
+									text += "						<div class=\"news-subject\">月份："+ water.months+ "</div>";
+									text += "						<div class=\"news-subject\">应缴费："+ water.payable+ "</div>";
+									text += "						<div class=\"news-subject\">实缴费："+ water.practical+ "</div>";
+									text += "						</a>";
+									text += "					</li>";
 
-	<script>
-	layui.use('flow', function(){
-		  var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
-		  var flow = layui.flow;
-		  flow.load({
-		    elem: '#village' //指定列表容器
-		    ,isAuto: false
-		     ,isLazyimg: true
-		    ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
-		      var lis = [];
-		      //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
-		      $.ajax({
-   			 url:"${pageContext.request.contextPath}/FrontVillageInfoBeanServlet",
-   			 type:"get",
-   			 data:{
-   				 "page":page
-   			 },
-   			 dataType:"text",
-   			 success:function(res){
-		        //假设你的列表返回在data集合中
-		          var one = res.lastIndexOf("]");
-		          var totalPage=res.substring(one+1);
-   			  var result=res.substring(0,one+1);
-   			  
-   			  console.log(result);
-   			 var array = JSON.parse(result);
-		          layui.each(array, function(index, village){
-		        	  var text = "";
-		        	  text += "<li class=\"new-dynamic-item\" style=\" width: 100%;\">";
-		        	  text += "					<img style=\"width: 250px; height: 200px; float: left;\" src=\"img/1.png\" alt=\"\">";
-		        	  text += "					<h3 style=\"display: inline; float: left; width: 900px; text-align: left;\">小区名字:"+village.villageName+"</h3>";
-		        	  text += "					<h6 style=\"float: left; width: 900px; text-align: left;\">建立时间："+village.setUpTime+"</h6>";
-		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">占地面积："+village.floorArea+"</h4>";
-		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">地点:"+village.location+"</h4>";
-		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">管理人电话："+village.phone+"</h4>";
-		        	  text += "			    </li>";
 
-
-		            lis.push(text);
-		        }); 
-		        
-		        //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
-		        //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
-		        next(lis.join(''), page < totalPage);
-   			 }
-		      });
-		    }
-		  });
-		});
-	</script>
+        			            lis.push(text);
+        			        }); 
+        			        
+        			        //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+        			        //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+        			        next(lis.join(''), page < totalPage);
+        	   			 }
+        			      });
+        			    }
+        			  });
+        			});
+           }
+    </script>
+	
 
 </body>
 

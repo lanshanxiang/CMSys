@@ -3,6 +3,7 @@ package com.feiyue.service;
 import java.util.List;
 
 import com.feiyue.entiy.BusinessBean;
+import com.feiyue.util.PageData;
 
 public interface BusinessBeanService {
 	//查询所有方法
@@ -23,4 +24,6 @@ public interface BusinessBeanService {
     public boolean getDeleteBusinessBean(int bId);
   //批量删除
     public boolean getBatchDeleteBusinessBean(String sql);
+    //前台查询全部
+    public PageData<BusinessBean> getSelectAllBusinessBean(int page, int pageSize);
 }

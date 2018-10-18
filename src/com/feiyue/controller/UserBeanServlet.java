@@ -64,7 +64,7 @@ public class UserBeanServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
             //将jsonString返回到页面
 			out.print(jsonString);
-			System.out.println(jsonString);
+			
             //释放资源
 			out.close();
 		//登录
@@ -85,37 +85,28 @@ public class UserBeanServlet extends HttpServlet {
 			out.print(flag);
 		//修改
 		}else if("updateUser".equals(op)) {
-			/*String userName=request.getParameter("userName");
-			String userPwdNo=request.getParameter("userPwd");
-			String userPwd=MD5Util.getEncodeByMd5(userPwdNo);
+			int userId=Integer.parseInt(request.getParameter("userId"));
+			String userName=request.getParameter("userName");
+			String userSex=request.getParameter("userSex");
+			int userAge=Integer.parseInt(request.getParameter("userAge"));
+			int tenementId=Integer.parseInt(request.getParameter("tenementId"));
 			String question=request.getParameter("question");
 			String answer=request.getParameter("answer");
-			int userId=Integer.parseInt(request.getParameter("userId"));
-			UserBean ub=new UserBean(userName, userPwd, question, answer, userId);
+			int state=Integer.parseInt(request.getParameter("state"));
+			UserBean ub=new UserBean(userId, userName, userSex, userAge, question, answer, state, tenementId);
 			boolean flag=ubs.getUpdateUser(ub);
 			PrintWriter out = response.getWriter();
-			out.print(flag);*/
+			out.print(flag);
 		//停用或启用用户
 		}
 		//用户注册
 		else if("register".equals(op)) {
-			System.out.println(11111);
+		
 			
-			String register="";
+			String register=doGetRegisterNo();
 			String userPwd=MD5Util.getEncodeByMd5(request.getParameter("password"));
 			String question=request.getParameter("question");
 			String answer=request.getParameter("answer");
-			
-			//生成一个账号，判断该账号是否已被注册，如果被注册过了，则重新生成
-			do {
-				register="";
-				for(int i=0;i<10;i++ ) {
-
-					register += (int)(10*(Math.random()));
-
-			      }
-			}while(ubs.isHaveUserByRegister(register)==true);
-			System.out.println(register);
 			UserBean ub=new UserBean(userPwd, register, question, answer);
 			boolean flag=ubs.addUser(ub);
 			PrintWriter out = response.getWriter();
@@ -125,33 +116,35 @@ public class UserBeanServlet extends HttpServlet {
 		}
 		//管理员添加用户
 				else if("addUser".equals(op)) {
-					System.out.println(11111);
 					
-					String register="";
-					String userPwd=MD5Util.getEncodeByMd5(request.getParameter("password"));
+					
+					String register=doGetRegisterNo();
+					String userName=request.getParameter("userName");
+					String userPwd=MD5Util.getEncodeByMd5(request.getParameter("userPwd"));
 					String userSex=request.getParameter("userSex");
-					String userAge=request.getParameter("userAge");
+					int userAge=0;
+					int tenementId=0;
+					if(!request.getParameter("userAge").isEmpty()) {
+						userAge=Integer.parseInt(request.getParameter("userAge"));
+					}
+					if(!request.getParameter("tenementId").isEmpty()) {
+						tenementId=Integer.parseInt(request.getParameter("tenementId"));
+					}
+					
+
 					String question=request.getParameter("question");
 					String answer=request.getParameter("answer");
+					int state=0;
 					
-					//生成一个账号，判断该账号是否已被注册，如果被注册过了，则重新生成
-					do {
-						register="";
-						for(int i=0;i<10;i++ ) {
-
-							register += (int)(10*(Math.random()));
-
-					      }
-					}while(ubs.isHaveUserByRegister(register)==true);
-					System.out.println(register);
-					UserBean ub=new UserBean(userPwd, register, question, answer);
-					boolean flag=ubs.addUser(ub);
+					
+					UserBean ub=new UserBean(userName, userPwd, userSex, userAge, register, question, answer, state, tenementId);
+					boolean flag=ubs.addUserByAdmin(ub);
 					PrintWriter out = response.getWriter();
 					out.print(flag);
 					
 					
 				}
-		//修改用户密码
+		//用户忘记密码
 		else if("updatePwd".equals(op)) {
 			UserBean user=null;
 			PrintWriter out = response.getWriter();
@@ -170,6 +163,14 @@ public class UserBeanServlet extends HttpServlet {
 			
 			
 			
+		}//管理员通过userID重置用户密码
+		else if("resetPwd".equals(op)) {
+			PrintWriter out = response.getWriter();
+			int userId=Integer.valueOf(request.getParameter("userId"));
+			
+			String userPwd=MD5Util.getEncodeByMd5("123456");
+			out.print(ubs.resetPwd(userId, userPwd));
+	
 		}
 		
 		else if("stopStartUser".equals(op)) {
@@ -182,20 +183,29 @@ public class UserBeanServlet extends HttpServlet {
 		//删除
 		}else if("deleteUserBean".equals(op)) {
 			int userId=Integer.parseInt(request.getParameter("userId"));
-			System.out.println("delete");
+			
 			boolean flag=ubs.getDeleteUser(userId);
 			PrintWriter out = response.getWriter();
 			out.print(flag);
 		}
+		else if("deleteUserBeans".equals(op)) {
+			
+			String[] userId = request.getParameterValues("userId");
+			PrintWriter out = response.getWriter();
+			
+			boolean flag = ubs.deleteUsers(userId);
+			out.print(flag);
+		}
+	
 		//得到指定账号的密保问题
 		else if("getQuestion".equals(op)) {
 			UserBean user=null;
 			String register=request.getParameter("register");
-			System.out.println(register);
+			
 			user=ubs.getUserByRegister(register);
 			PrintWriter out = response.getWriter();
 			if(user!=null) {
-				System.out.println(user.getQuestion());
+				
 				//out.print(user.getQuestion());
 				out.print(true);
 			}else {
@@ -211,6 +221,30 @@ public class UserBeanServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	/**
+	 * 生成一个账号，判断该账号是否已被注册，如果被注册过了，则重新生成
+	 */
+	public String doGetRegisterNo() {
+		// TODO Auto-generated method stub
+		String register="";
+		String[] arr= {"a","b","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+		//生成一个账号，判断该账号是否已被注册，如果被注册过了，则重新生成
+		do {
+			register="";
+			for(int i=0;i<10;i++ ) {
+				if(i==0) {
+					register+=arr[(int)(26*(Math.random()))];
+				}else {
+					register += (int)(10*(Math.random()));
+				}
+
+				
+
+		      }
+		}while(ubs.isHaveUserByRegister(register)==true);
+		
+		return register;
 	}
 
 }

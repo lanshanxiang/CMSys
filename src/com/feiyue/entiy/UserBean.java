@@ -102,7 +102,7 @@ public class UserBean {
 	}
 	
 	
-	public UserBean(int userId, String userName, String userPwd, String userSex, int userAge, String register,
+	public UserBean(int userId, String userName, String userPwd, String userSex, int userAge, 
 			String question, String answer, int state, int tenementId) {
 		super();
 		this.userId = userId;
@@ -110,7 +110,34 @@ public class UserBean {
 		this.userPwd = userPwd;
 		this.userSex = userSex;
 		this.userAge = userAge;
+		
+		this.question = question;
+		this.answer = answer;
+		this.state = state;
+		this.tenementId = tenementId;
+	}
+	
+	
+	public UserBean(String userName, String userPwd, String userSex, int userAge, String register, String question,
+			String answer, int state, int tenementId) {
+		super();
+		this.userName = userName;
+		this.userPwd = userPwd;
+		this.userSex = userSex;
+		this.userAge = userAge;
 		this.register = register;
+		this.question = question;
+		this.answer = answer;
+		this.state = state;
+		this.tenementId = tenementId;
+	}
+	public UserBean(int userId, String userName, String userSex, int userAge, String question, String answer, int state,
+			int tenementId) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userSex = userSex;
+		this.userAge = userAge;
 		this.question = question;
 		this.answer = answer;
 		this.state = state;

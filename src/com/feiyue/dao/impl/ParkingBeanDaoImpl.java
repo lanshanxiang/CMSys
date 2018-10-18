@@ -64,4 +64,14 @@ public class ParkingBeanDaoImpl implements ParkingBeanDao {
 		return DBUtil.getPage(sql, page, pageSize, ParkingBean.class,tenementId);
 	}
 
+	/**
+	 * 前台查询所有车辆
+	 */
+	@Override
+	public PageData<ParkingBean> selectAllParkingBean(int page, int pageSize) {
+		// TODO Auto-generated method stub
+		String sql="SELECT tb_parktype.ptName ,tb_parkings.parkingId, tb_villageinfo.villageName, tb_parkings.area, tb_parksrtype.parkSRName, tb_parkings.timeEnd FROM tb_parkings INNER JOIN tb_tenement ON tb_parkings.tenementId = tb_tenement.tenementId INNER JOIN tb_villageinfo ON tb_parkings.villageId = tb_villageinfo.villageId INNER JOIN tb_parksrtype ON tb_parkings.parkSRId = tb_parksrtype.parkSRId INNER JOIN tb_parktype ON tb_parktype.ptId = tb_parktype.ptId";
+		return DBUtil.getPage(sql, page, pageSize, ParkingBean.class);
+	}
+
 }

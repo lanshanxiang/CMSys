@@ -183,16 +183,11 @@
 				</dt>
 				<dd>
 					<ul>
-						<li><a _href="system-base.jsp" data-title="系统设置"
-							href="javascript:void(0)">系统设置</a></li>
-						<li><a _href="system-category.jsp" data-title="栏目管理"
-							href="javascript:void(0)">栏目管理</a></li>
-						<li><a _href="system-data.jsp" data-title="数据字典"
-							href="javascript:void(0)">数据字典</a></li>
-						<li><a _href="system-shielding.jsp" data-title="屏蔽词"
-							href="javascript:void(0)">屏蔽词</a></li>
-						<li><a _href="system-log.jsp" data-title="系统日志"
-							href="javascript:void(0)">系统日志</a></li>
+						<li><a _href="user-add.jsp" data-title="添加用户"
+							href="javascript:void(0)">添加用户</a></li>
+						<li><a _href="admin-list-user.jsp" data-title="用户列表"
+							href="javascript:void(0)">用户列表</a></li>
+						
 					</ul>
 				</dd>
 			</dl>

@@ -46,6 +46,12 @@ public class ParkingBeanServiceImpl implements ParkingBeanService {
 		// TODO Auto-generated method stub
 		return pbd.queryParkingBean(page, pageSize, tenementId);
 	}
+
+	@Override
+	public PageData<ParkingBean> getSelectAllParkingBean(int page, int pageSize) {
+		// TODO Auto-generated method stub
+		return pbd.selectAllParkingBean(page, pageSize);
+	}
 	
 	
 	

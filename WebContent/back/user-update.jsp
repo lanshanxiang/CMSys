@@ -4,11 +4,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<%
+<%-- <%
 	if (null == request.getSession().getAttribute("users")) {
 		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
-%>
+%> --%>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -34,11 +34,11 @@
 		src="${pageContext.request.contextPath}/lib/jquery/1.9.1/jquery.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<title>添加用户 - H-ui.admin v2.3</title>
+<title>修改用户 - H-ui.admin v2.3</title>
 <meta name="keywords" content="H-ui.admin v2.3,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v2.3，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
-<body>
+<body onload="fun()">
 
 
 <!--   表单开始     -->
@@ -48,13 +48,24 @@
 	<form class="form form-horizontal" id="form-member-add">
 		<div class="row cl">
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="hidden" class="input-text"   id="userId" name="userId">
+				<input type="hidden" class="input-text u"   id="userId" name="userId">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户账号：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text u"  id="register" name="register" readonly="readonly">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名称：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="李友惠" placeholder="请输入用户名称" id="userName" name="userName">
+				<input type="text" class="input-text u"  placeholder="请输入用户名称" id="userName" name="userName">
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="hidden" class="input-text u"   id="userSexH" name="userSexH">
 			</div>
 		</div>
 		<div class="row cl">
@@ -74,32 +85,47 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>年龄：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text"  placeholder="请输入年龄" id="userAge" name="userAge">
+				<input type="text" class="input-text u"  placeholder="请输入年龄" id="userAge" name="userAge">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>绑定住户编号：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text"  placeholder="输入要绑定住户编号" id="tenementId" name="tenementId">
+				<input type="text" class="input-text u"  placeholder="输入要绑定住户编号" id="tenementId" name="tenementId">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>密保问题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text"  placeholder="请输入密保问题" id="question" name="question">
+				<input type="text" class="input-text u" value="test" placeholder="请输入密保问题" id="question" name="question">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>密保答案：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text"  placeholder="请输入密保答案" id="answer" name="answer">
+				<input type="text" class="input-text u"   placeholder="请输入密保答案" id="answer" name="answer">
 			</div>
 		</div>
+		<div class="row cl">
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="hidden" class="input-text u"   id="userState" name="userState">
+			</div>
+		</div>
+		<div class="row cl">
+				<label for="prid" class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>用户状态：</label>
+				<div class="formControls col-xs-4 col-sm-4">
+					<select class="form-control" name="state" id="state">
+						<option value="1">启用</option>
+						<option value="0">禁用</option>
+					</select>
+				</div>
+			</div>
 		
 		
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-				<input class="btn btn-primary radius" id="addBtn" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+				<input class="btn btn-primary radius" id="updateBtn" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
 			</div>
 		</div>
 	</form>
@@ -129,24 +155,28 @@
 <!--请在下方写此页面业务相关的脚本--> 
 <script type="text/javascript">
 $(function(){
+	
+	
 	$('.skin-minimal input').iCheck({
 		checkboxClass: 'icheckbox-blue',
 		radioClass: 'iradio-blue',
 		increaseArea: '20%'
 	});
-	$("#addBtn").click(function(){
+	$("#updateBtn").click(function(){
 		console.log(111);
 		//ajax请求
 		$.ajax({
-			url : "${pageContext.request.contextPath}/TenementBeanServlet?op=addUser",//url地址
+			url : "${pageContext.request.contextPath}/UserBeanServlet?op=updateUser",//url地址
 			type : "post",
 			data : {
+				"userId" : $('#userId').val(),
 				"userName" : $('#userName').val(),
-				"sex" : $("input[type='radio']:checked").val(),
+				"userSex" : $("input[type='radio']:checked").val(),
 				"userAge" : $('#userAge').val(),
 				"tenementId" : $('#tenementId').val(),
 				"question" : $('#question').val(),
 				"answer" : $('#answer').val(),
+				"state" : $('#state').val(),
 			},
 			//成功后执行的操作
 			success : function(data) {
@@ -156,7 +186,7 @@ $(function(){
 				} else {
 					layer
 					.msg(
-							'增加成功!',
+							'修改成功!',
 							{
 								icon : 1,
 								time : 1000
@@ -175,9 +205,15 @@ $(function(){
 				}
 			}
 		});
+		
+		
 	});
 	
+	
+	
+	
 });
+
 </script> 
 
 <!--/请在上方写此页面业务相关的脚本-->

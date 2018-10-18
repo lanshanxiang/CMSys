@@ -6,6 +6,7 @@ import com.feiyue.dao.BusinessBeanDao;
 import com.feiyue.dao.impl.BusinessBeanDaoImpl;
 import com.feiyue.entiy.BusinessBean;
 import com.feiyue.service.BusinessBeanService;
+import com.feiyue.util.PageData;
 
 public class BusinessBeanServiceImpl implements BusinessBeanService {
 	BusinessBeanDao bbd=new BusinessBeanDaoImpl();
@@ -62,6 +63,12 @@ public class BusinessBeanServiceImpl implements BusinessBeanService {
 	public boolean getBatchDeleteBusinessBean(String sql) {
 		// TODO Auto-generated method stub
 		return bbd.batchDeleteBusinessBean(sql);
+	}
+
+	@Override
+	public PageData<BusinessBean> getSelectAllBusinessBean(int page, int pageSize) {
+		// TODO Auto-generated method stub
+		return bbd.selectAllBusinessBean(page, pageSize);
 	}
 
 }
