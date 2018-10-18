@@ -196,7 +196,7 @@
 											time : 1000
 						},
 						function() {
-								location.href="index.html";
+								location.href="index.jsp";
 								
 
 						});

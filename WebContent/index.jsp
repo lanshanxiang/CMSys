@@ -119,7 +119,9 @@
 					<div class="box_min js-actor">
 						<div class="banner">
 							<!--轮播图开始-->
-							
+							<div class="fl">
+								<embed src="img/top20151121.swf" width="1300" height="366" style="display:block;margin:0 auto;background:none;" wmode="transparent" quality="high" title="Adobe Flash Player">
+						    </div>
 							<!--轮播图结束 -->
 							<ul>
 								<li>

@@ -2,7 +2,9 @@ package com.feiyue.service;
 
 import java.util.List;
 
+import com.feiyue.entiy.Active;
 import com.feiyue.entiy.ParkingBean;
+import com.feiyue.util.PageData;
 
 public interface ParkingBeanService {
 	//得到全部车位信息
@@ -15,4 +17,6 @@ public interface ParkingBeanService {
 	    public boolean deleteParkingBean(int pId);
 	  //批量删除
 	     public boolean getBatchDeleteParkingBean(String sql);
+	     //查询用户车位
+	     public PageData<ParkingBean> getQueryParkingBean(int page,int pageSize,int tenementId);
 }

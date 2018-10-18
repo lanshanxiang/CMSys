@@ -19,6 +19,10 @@ public class ParkingBean {
 	private int parkSRId;//  出售状态编号
 	private String parkSRName;//  状态名称 出售出租
 	private double area;//车位面积
+	private int tenementId;//租户编号
+	//private String tenementName;//住户姓名
+	private String timeStart;//租户编号
+	private String timeEnd;//租户编号
 	private String remarks;// 备注
 	
 	
@@ -83,15 +87,31 @@ public int getParkingId() {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
+	
+	
+	
+public int getTenementId() {
+		return tenementId;
+	}
+	public void setTenementId(int tenementId) {
+		this.tenementId = tenementId;
+	}
+	public String getTimeStart() {
+		return timeStart;
+	}
+	public void setTimeStart(String timeStart) {
+		this.timeStart = timeStart;
+	}
+	public String getTimeEnd() {
+		return timeEnd;
+	}
+	public void setTimeEnd(String timeEnd) {
+		this.timeEnd = timeEnd;
+	}
 public ParkingBean() {
 	// TODO Auto-generated constructor stub
 }
-@Override
-public String toString() {
-	return "ParkingBean [parkingId=" + parkingId + ", parkingNo=" + parkingNo + ", ptId=" + ptId + ", ptName=" + ptName
-			+ ", villageId=" + villageId + ", villageName=" + villageName + ", parkSRId=" + parkSRId + ", parkSRName="
-			+ parkSRName + ", area=" + area + ", remarks=" + remarks + "]";
-}
+
 /**
  * 带参构造 增加时用
  * @param parkingNo
@@ -157,6 +177,14 @@ public ParkingBean(int parkingId, String parkingNo, int ptId, int villageId, int
 	this.parkSRId = parkSRId;
 	this.area = area;
 	this.remarks = remarks;
+}
+
+@Override
+public String toString() {
+	return "ParkingBean [parkingId=" + parkingId + ", parkingNo=" + parkingNo + ", ptId=" + ptId + ", ptName=" + ptName
+			+ ", villageId=" + villageId + ", villageName=" + villageName + ", parkSRId=" + parkSRId + ", parkSRName="
+			+ parkSRName + ", area=" + area + ", tenementId=" + tenementId + ", timeStart=" + timeStart + ", timeEnd="
+			+ timeEnd + ", remarks=" + remarks + "]";
 }
 
 
