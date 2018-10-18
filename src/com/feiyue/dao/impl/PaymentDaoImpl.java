@@ -70,10 +70,10 @@ public class PaymentDaoImpl implements PaymentDao{
 		// TODO Auto-generated method stub
 		return DBUtil.execute(sql)>0;
 	}
-	
 	@Override
 	public PageData<PaymentBean> getFrontPayment(int  tenementId,double years,double months,int page, int pageSize) {
 		// TODO Auto-generated method stub
 		return  DBUtil.getPage("SELECT tb_tenement.tenementName,tb_payment.years,tb_payment.months,tb_payment.lastHalf,tb_payment.thisMonth,tb_payment.quantity,tb_payment.payable,tb_payment.practical FROM tb_payment INNER JOIN tb_tenement ON tb_payment.tenementId = tb_tenement.tenementId WHERE tb_tenement.tenementId =? AND tb_payment.years LIKE ? AND tb_payment.months LIKE ?", page, pageSize, PaymentBean.class,tenementId,"%"+years+"%","%"+months+"%");
 	}
+	
 }
