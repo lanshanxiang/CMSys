@@ -14,7 +14,7 @@
 	href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/inputEffect.css" />
 <link rel="stylesheet" href="css/tooltips.css" />
-<link rel="stylesheet" href="css/spop.min.css" />
+<link rel="stylesheet" href="css/spop.css" />
 
 <script src="js/jquery.min.js"></script>
 <script src="js/snow.js"></script>
@@ -22,7 +22,7 @@
 <script src="js/spop.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/lib/layer/2.4/layer.js"></script>
-<script>	
+<script>
 	(function() {
 		// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
 		if (!String.prototype.trim) {
@@ -35,29 +35,30 @@
 			})();
 		}
 
-		[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
-			// in case the input is already filled..
-			if( inputEl.value.trim() !== '' ) {
-				classie.add( inputEl.parentNode, 'input--filled' );
-			}
+		[].slice.call(document.querySelectorAll('input.input__field')).forEach(
+				function(inputEl) {
+					// in case the input is already filled..
+					if (inputEl.value.trim() !== '') {
+						classie.add(inputEl.parentNode, 'input--filled');
+					}
 
-			// events:
-			inputEl.addEventListener( 'focus', onInputFocus );
-			inputEl.addEventListener( 'blur', onInputBlur );
-		} );
+					// events:
+					inputEl.addEventListener('focus', onInputFocus);
+					inputEl.addEventListener('blur', onInputBlur);
+				});
 
-		function onInputFocus( ev ) {
-			classie.add( ev.target.parentNode, 'input--filled' );
+		function onInputFocus(ev) {
+			classie.add(ev.target.parentNode, 'input--filled');
 		}
 
-		function onInputBlur( ev ) {
-			if( ev.target.value.trim() === '' ) {
-				classie.remove( ev.target.parentNode, 'input--filled' );
+		function onInputBlur(ev) {
+			if (ev.target.value.trim() === '') {
+				classie.remove(ev.target.parentNode, 'input--filled');
 			}
 		}
 	})();
-	
-	$(function() {	
+
+	$(function() {
 		$('#login #login-password').focus(function() {
 			$('.login-owl').addClass('password');
 		}).blur(function() {
@@ -78,202 +79,207 @@
 		}).blur(function() {
 			$('.forget-owl').removeClass('password');
 		});
-		$('#forget-username').blur(function() {
-			
-			$.ajax({
-				
-				url : "${pageContext.request.contextPath}/UserBeanServlet?op=getQuestion",//url地址
-				type : "post",
-				data : {
-					"register" : $('#forget-username').val()
-					
-				},
-				//成功后执行的操作
-				success : function(data) {
-					//判断用户名密码是否正确，正确的话则跳到前台首页
-					console.log(data);
-					if (data == false) {
-						layer.msg('该用户不存在!请重新输入',{
-							icon : 5,
-							time : 3000
+		$('#forget-username')
+				.blur(
+						function() {
+
+							$
+									.ajax({
+
+										url : "${pageContext.request.contextPath}/UserBeanServlet?op=getQuestion",//url地址
+										type : "post",
+										data : {
+											"register" : $('#forget-username')
+													.val()
+
+										},
+										//成功后执行的操作
+										success : function(data) {
+											//判断用户名密码是否正确，正确的话则跳到前台首页
+											console.log(data);
+											if (data == false) {
+												layer.msg('该用户不存在!请重新输入', {
+													icon : 5,
+													time : 3000
+												});
+											} else {
+												console.log("234");
+												$("#forget-question")
+														.val("123");
+											}
+										}
+									});
+
 						});
-					} else {
-						console.log("234");
-						$("#forget-question").val("123");
-					}
-				}
-			});
-			
-		});
 	});
-	
-	function goto_register(){		
+
+	function goto_register() {
 		$("#register-password").val("");
 		$("#register-repassword").val("");
 		$("#register-question").val("");
 		$("#register-answer").val("");
-		$("#tab-2").prop("checked",true);
+		$("#tab-2").prop("checked", true);
 	}
-	
-	function goto_login(){
+
+	function goto_login() {
 		$("#login-username").val("");
 		$("#login-password").val("");
-		$("#tab-1").prop("checked",true);
+		$("#tab-1").prop("checked", true);
 	}
-	
-	function goto_forget(){
+	function goto_login(v) {
+		$("#login-username").val(v);
+		$("#login-password").val("");
+		$("#tab-1").prop("checked", true);
+	}
+
+	function goto_forget() {
 		$("#forget-username").val("");
 		$("#forget-password").val("");
 		$("#forget-question").val("");
 		$("#forget-answer").val("");
-		$("#tab-3").prop("checked",true);
+		$("#tab-3").prop("checked", true);
 	}
-	
-	function login(){//登录
-		var username = $("#login-username").val(),
-			password = $("#login-password").val(),
-			validatecode = null,
-			flag = false;
+
+	function login() {//登录
+		var username = $("#login-username").val(), password = $(
+				"#login-password").val(), validatecode = null, flag = false;
 		//判断用户名密码是否为空
-		if(username == ""){
+		if (username == "") {
 			$.pt({
-        		target: $("#login-username"),
-        		position: 'r',
-        		align: 't',
-        		width: 'auto',
-        		height: 'auto',
-        		content:"用户名不能为空"
-        	});
+				target : $("#login-username"),
+				position : 'r',
+				align : 't',
+				width : 'auto',
+				height : 'auto',
+				content : "用户名不能为空"
+			});
 			flag = true;
 		}
-		if(password == ""){
+		if (password == "") {
 			$.pt({
-        		target: $("#login-password"),
-        		position: 'r',
-        		align: 't',
-        		width: 'auto',
-        		height: 'auto',
-        		content:"密码不能为空"
-        	});
+				target : $("#login-password"),
+				position : 'r',
+				align : 't',
+				width : 'auto',
+				height : 'auto',
+				content : "密码不能为空"
+			});
 			flag = true;
 		}
 		//用户名只能是15位以下的字母或数字
-		var regExp = new RegExp("^[a-zA-Z0-9_]{1,15}$");
-		if(!regExp.test(username)){
+		var regExp = new RegExp("^[a-zA-Z0-9_]{6,11}$");
+		if (!regExp.test(username)) {
 			$.pt({
-        		target: $("#login-username"),
-        		position: 'r',
-        		align: 't',
-        		width: 'auto',
-        		height: 'auto',
-        		content:"用户名必须为长度为10的数字"
-        	});
+				target : $("#login-username"),
+				position : 'r',
+				align : 't',
+				width : 'auto',
+				height : 'auto',
+				content : "用户名必须为长度为6-11位的数字或字母"
+			});
 			flag = true;
 		}
-		
-		if(flag){
-			return false;
-		}else{//登录
-			$.ajax({
-				url : "${pageContext.request.contextPath}/UserBeanServlet?op=login",//url地址
-				type : "post",
-				data : {
-					"username" : username,
-					"password" : password
-				},
-				//成功后执行的操作
-				success : function(data) {
-					//判断用户名密码是否正确，正确的话则跳到前台首页
-					console.log(data);
-					if (data == false) {
-						layer.msg('登录失败!请重新登录',{
-							icon : 5,
-							time : 3000
-						});
-					} else {
-						layer.msg('登录成功!',{
-											icon : 1,
-											time : 1000
-						},
-						function() {
-								location.href="index.jsp";
-								
 
-						});
-					}
-				}
-			});
-			
+		if (flag) {
+			return false;
+		} else {//登录
+			$
+					.ajax({
+						url : "${pageContext.request.contextPath}/UserBeanServlet?op=login",//url地址
+						type : "post",
+						data : {
+							"username" : username,
+							"password" : password
+						},
+						//成功后执行的操作
+						success : function(data) {
+							//判断用户名密码是否正确，正确的话则跳到前台首页
+							console.log(data);
+							if (data == false) {
+								layer.msg('登录失败!请重新登录', {
+									icon : 5,
+									time : 3000
+								});
+							} else {
+								layer.msg('登录成功!', {
+									icon : 1,
+									time : 1000
+								}, function() {
+									location.href = "index.jsp";
+
+								});
+							}
+						}
+					});
+
 			//调用后台登录验证的方法
 			//alert('登录成功');
 			//return false;
 		}
 	}
-	
+
 	//注册
-	function register(){
-		var password = $("#register-password").val(),
-			repassword = $("#register-repassword").val(),
-			question = $("#register-question").val(),
-			answer = $("#register-answer").val(),
-		
-			flag = false;
-			
+	function register() {
+		var password = $("#register-password").val(), repassword = $(
+				"#register-repassword").val(), question = $(
+				"#register-question").val(), answer = $("#register-answer")
+				.val(),
+
+		flag = false;
+
 		//判断用户名密密保是否为空
-		if(question == ""){
+		if (question == "") {
 			$.pt({
-        		target: $("#register-question"),
-        		position: 'r',
-        		align: 't',
-        		width: 'auto',
-        		height: 'auto',
-        		content:"密保问题不能为空"
-        	});
+				target : $("#register-question"),
+				position : 'r',
+				align : 't',
+				width : 'auto',
+				height : 'auto',
+				content : "密保问题不能为空"
+			});
 			flag = true;
 		}
 		//判断用户名密密保是否为空
-		if(answer == ""){
+		if (answer == "") {
 			$.pt({
-        		target: $("#register-answer"),
-        		position: 'r',
-        		align: 't',
-        		width: 'auto',
-        		height: 'auto',
-        		content:"答案不能为空"
-        	});
+				target : $("#register-answer"),
+				position : 'r',
+				align : 't',
+				width : 'auto',
+				height : 'auto',
+				content : "答案不能为空"
+			});
 			flag = true;
 		}
-		if(password == ""){
+		if (password == "") {
 			$.pt({
-        		target: $("#register-password"),
-        		position: 'r',
-        		align: 't',
-        		width: 'auto',
-        		height: 'auto',
-        		content:"密码不能为空"
-        	});
+				target : $("#register-password"),
+				position : 'r',
+				align : 't',
+				width : 'auto',
+				height : 'auto',
+				content : "密码不能为空"
+			});
 			flag = true;
-		}else{
-			if(password != repassword){
+		} else {
+			if (password != repassword) {
 				$.pt({
-	        		target: $("#register-repassword"),
-	        		position: 'r',
-	        		align: 't',
-	        		width: 'auto',
-	        		height: 'auto',
-	        		content:"两次输入的密码不一致"
-	        	});
+					target : $("#register-repassword"),
+					position : 'r',
+					align : 't',
+					width : 'auto',
+					height : 'auto',
+					content : "两次输入的密码不一致"
+				});
 				flag = true;
 			}
 		}
-		
-		
-		
-		if(flag){
+
+		if (flag) {
 			return false;
-		}else{//注册
-			
-			$.ajax({
+		} else {//注册
+
+			 $.ajax({
 				url : "${pageContext.request.contextPath}/UserBeanServlet?op=register",//url地址
 				type : "post",
 				data : {
@@ -281,174 +287,153 @@
 					"question" : question,
 					"answer" : answer
 				},
+				datatype:"text",
 				//成功后执行的操作
 				success : function(data) {
 					//判断用户名密码是否正确，正确的话则跳到前台首页
-					console.log(data);
-					if (data == false) {
+				
+					 if (data == false) {
 						layer.msg('注册失败!请确认信息是否填写有误',{
 							icon : 5,
 							time : 1000
 						});
 					} else {
-						layer.msg('注册成功!',{
-											icon : 1,
+						 layer.msg('注册成功!您的账号为：'+data,{
+											icon : 3,
 											time : 1000
 						},
 						function() {
-							spop({			
-								template: '<h4 class="spop-title">注册成功</h4>即将于3秒后返回登录',
-								position: 'top-center',
-								style: 'success',
-								autoclose: 1000,
-								onOpen : function(){
-									var second = 1;
-									var showPop = setInterval(function(){
-										if(second == 0){
-											clearInterval(showPop);
-										}
-										$('.spop-body').html('<h4 class="spop-title">注册成功</h4>即将于'+second+'秒后返回登录');
-										second--;
-									},1000);
-								},
-								onClose : function(){
-									goto_login();
-								}
-							});
+							goto_login(data);
 								
 
-						});
-					}
-				}
+						 }); 
+					} 
+				}//success
 			});
-					
 			
+
 		}
 	}
-	
+
 	//重置密码
-	function forget(){
-		var username = $("#forget-username").val(),
-			password = $("#forget-password").val(),
-			question = $("#forget-question").val(),
-			answer = $("#forget-answer").val(),
-			flag = false,
-			validatecode = null;
+	function forget() {
+		var username = $("#forget-username").val(), password = $(
+				"#forget-password").val(), question = $("#forget-question")
+				.val(), answer = $("#forget-answer").val(), flag = false, validatecode = null;
 		//判断用户名密码是否为空
-		if(username == ""){
+		if (username == "") {
 			$.pt({
-        		target: $("#forget-username"),
-        		position: 'r',
-        		align: 't',
-        		width: 'auto',
-        		height: 'auto',
-        		content:"用户名不能为空"
-        	});
+				target : $("#forget-username"),
+				position : 'r',
+				align : 't',
+				width : 'auto',
+				height : 'auto',
+				content : "用户名不能为空"
+			});
 			flag = true;
 		}
 		//判断用户名密码是否为空
-		if(answer == ""){
+		if (answer == "") {
 			$.pt({
-        		target: $("#forget-answer"),
-        		position: 'r',
-        		align: 't',
-        		width: 'auto',
-        		height: 'auto',
-        		content:"答案不能为空"
-        	});
+				target : $("#forget-answer"),
+				position : 'r',
+				align : 't',
+				width : 'auto',
+				height : 'auto',
+				content : "答案不能为空"
+			});
 			flag = true;
 		}
-		if(password == ""){
+		if (password == "") {
 			$.pt({
-        		target: $("#forget-password"),
-        		position: 'r',
-        		align: 't',
-        		width: 'auto',
-        		height: 'auto',
-        		content:"密码不能为空"
-        	});
+				target : $("#forget-password"),
+				position : 'r',
+				align : 't',
+				width : 'auto',
+				height : 'auto',
+				content : "密码不能为空"
+			});
 			flag = true;
 		}
 		//用户名只能是15位以下的字母或数字
 		var regExp = new RegExp("^[a-zA-Z0-9_]{10}$");
-		if(!regExp.test(username)){
+		if (!regExp.test(username)) {
 			$.pt({
-        		target: $("#forget-username"),
-        		position: 'r',
-        		align: 't',
-        		width: 'auto',
-        		height: 'auto',
-        		content:"用户名必须为10位的数字"
-        	});
+				target : $("#forget-username"),
+				position : 'r',
+				align : 't',
+				width : 'auto',
+				height : 'auto',
+				content : "用户名为6-11位的数字或字母"
+			});
 			flag = true;
 		}
 		//检查用户名是否存在
 		//调后台方法
-	
-		
-		
-		
-		if(flag){
-			return false;
-		}else{//重置密码
-			$.ajax({
-				url : "${pageContext.request.contextPath}/UserBeanServlet?op=updatePwd",//url地址
-				type : "post",
-				data : {
-					"register" : username,
-					"password" : password,
-					"answer" : answer
-				},
-				//成功后执行的操作
-				success : function(data) {
-					//判断用户名密码是否正确，正确的话则跳到前台首页
-					console.log(data);
-					if (data == false) {
-						layer.msg('密码修改失败!请确认信息是否填写有误',{
-							icon : 5,
-							time : 1000
-						});
-					} else {
-						layer.msg('密码修改成功!',{
-											icon : 1,
-											time : 1000
-						},
-						function() {
-							spop({			
-								template: '<h4 class="spop-title">注册成功</h4>即将于3秒后返回登录',
-								position: 'top-center',
-								style: 'success',
-								autoclose: 1000,
-								onOpen : function(){
-									var second = 1;
-									var showPop = setInterval(function(){
-										if(second == 0){
-											clearInterval(showPop);
-										}
-										$('.spop-body').html('<h4 class="spop-title">注册成功</h4>即将于'+second+'秒后返回登录');
-										second--;
-									},1000);
-								},
-								onClose : function(){
-									goto_login();
-								}
-							});
-								
 
-						});
-					}
-				}
-			});
-			
+		if (flag) {
+			return false;
+		} else {//重置密码
+			$
+					.ajax({
+						url : "${pageContext.request.contextPath}/UserBeanServlet?op=updatePwd",//url地址
+						type : "post",
+						data : {
+							"register" : username,
+							"password" : password,
+							"answer" : answer
+						},
+						//成功后执行的操作
+						success : function(data) {
+							//判断用户名密码是否正确，正确的话则跳到前台首页
+							console.log(data);
+							if (data == false) {
+								layer.msg('密码修改失败!请确认信息是否填写有误', {
+									icon : 5,
+									time : 1000
+								});
+							} else {
+								layer
+										.msg(
+												'密码修改成功!',
+												{
+													icon : 1,
+													time : 1000
+												},
+												function() {
+													spop({
+														template : '<h4 class="spop-title">注册成功</h4>即将于3秒后返回登录',
+														position : 'top-center',
+														style : 'success',
+														autoclose : 1000,
+														onOpen : function() {
+															var second = 1;
+															var showPop = setInterval(
+																	function() {
+																		if (second == 0) {
+																			clearInterval(showPop);
+																		}
+																		$(
+																				'.spop-body')
+																				.html(
+																						'<h4 class="spop-title">注册成功</h4>即将于'
+																								+ second
+																								+ '秒后返回登录');
+																		second--;
+																	}, 1000);
+														},
+														onClose : function() {
+															goto_login();
+														}
+													});
+
+												});
+							}
+						}
+					});
+
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
 </script>
 <style type="text/css">
 html {
@@ -501,8 +486,8 @@ body {
 						<section class="content"> <span
 							class="input input--hideo"> <input
 							class="input__field input__field--hideo" type="text"
-							id="login-username" autocomplete="off"
-							placeholder="请输入账号(10位数字)" tabindex="1" maxlength="10" /> <label
+							id="login-username" autocomplete="off" placeholder="请输入账号(10位数字)"
+							tabindex="1" maxlength="10" /> <label
 							class="input__label input__label--hideo" for="login-username">
 								<i class="fa fa-fw fa-user icon icon--hideo"></i> <span
 								class="input__label-content input__label-content--hideo"></span>
@@ -510,9 +495,9 @@ body {
 						</span> <span class="input input--hideo"> <input
 							class="input__field input__field--hideo" type="password"
 							id="login-password" placeholder="请输入密码" tabindex="2"
-							maxlength="15" /> <label class="input__label input__label--hideo"
-							for="login-password"> <i
-								class="fa fa-fw fa-lock icon icon--hideo"></i> <span
+							maxlength="15" /> <label
+							class="input__label input__label--hideo" for="login-password">
+								<i class="fa fa-fw fa-lock icon icon--hideo"></i> <span
 								class="input__label-content input__label-content--hideo"></span>
 						</label>
 						</span> </section>
@@ -554,7 +539,7 @@ body {
 								<i class="fa fa-fw fa-wifi icon icon--hideo"></i> <span
 								class="input__label-content input__label-content--hideo"></span>
 						</label>
-						
+
 						</span> <span class="input input--hideo"> <input
 							class="input__field input__field--hideo" type="text"
 							id="forget-answer" autocomplete="off" placeholder="请输入密保答案" /> <label
@@ -592,19 +577,15 @@ body {
 						</div>
 					</div>
 					<div class="pad input-container">
-						<section class="content"> 
-						<span
+						<section class="content"> <span
 							class="input input--hideo"> <input
 							class="input__field input__field--hideo" type="password"
 							id="register-password" placeholder="请输入密码" maxlength="15" /> <label
-							class="input__label input__label--hideo"
-							for="register-password"> <i
-								class="fa fa-fw fa-lock icon icon--hideo"></i> <span
+							class="input__label input__label--hideo" for="register-password">
+								<i class="fa fa-fw fa-lock icon icon--hideo"></i> <span
 								class="input__label-content input__label-content--hideo"></span>
 						</label>
-						</span>
-						<span
-							class="input input--hideo"> <input
+						</span> <span class="input input--hideo"> <input
 							class="input__field input__field--hideo" type="password"
 							id="register-repassword" placeholder="请确认密码" maxlength="15" /> <label
 							class="input__label input__label--hideo"

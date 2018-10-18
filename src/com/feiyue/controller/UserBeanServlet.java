@@ -42,13 +42,14 @@ public class UserBeanServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		//设置返回的为json格式
-		response.setContentType("application/json");
+		
 		//获取op
 		String op = "";
 		if (request.getParameter("op") != null) {
 			op = request.getParameter("op");
 		}
 		 if("".equals(op)) {
+			 response.setContentType("application/json");
 			//调用service实现数据库的访问
 			List<UserBean> list = ubs.getQueryUser();
 			// Ajax来实现
@@ -102,7 +103,7 @@ public class UserBeanServlet extends HttpServlet {
 		//用户注册
 		else if("register".equals(op)) {
 		
-			
+			Gson gson = new Gson();
 			String register=doGetRegisterNo();
 			String userPwd=MD5Util.getEncodeByMd5(request.getParameter("password"));
 			String question=request.getParameter("question");
@@ -110,7 +111,18 @@ public class UserBeanServlet extends HttpServlet {
 			UserBean ub=new UserBean(userPwd, register, question, answer);
 			boolean flag=ubs.addUser(ub);
 			PrintWriter out = response.getWriter();
-			out.print(flag);
+			
+			if(flag==false) {
+				
+				out.print("");
+				
+			}else {
+				
+				out.print(register);
+				
+				
+			}
+			
 			
 			
 		}
