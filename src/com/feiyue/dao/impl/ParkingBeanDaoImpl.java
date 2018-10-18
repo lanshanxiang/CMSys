@@ -5,6 +5,7 @@ import java.util.List;
 import com.feiyue.dao.ParkingBeanDao;
 import com.feiyue.entiy.ParkingBean;
 import com.feiyue.util.DBUtil;
+import com.feiyue.util.PageData;
 /**
  * 
 	PardingSpaceDao接口的实现类
@@ -52,6 +53,15 @@ public class ParkingBeanDaoImpl implements ParkingBeanDao {
 	public boolean batchDeleteParkingBean(String sql) {
 		// TODO Auto-generated method stub
 		return DBUtil.execute(sql)>0;
+	}
+	/**
+	 * 显示户主的全部车位
+	 */
+	@Override
+	public PageData<ParkingBean> queryParkingBean(int page, int pageSize, int tenementId) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT tb_parkings.parkingId, tb_villageinfo.villageName, tb_parkings.area, tb_parksrtype.parkSRName, tb_parkings.timeEnd FROM tb_parkings INNER JOIN tb_tenement ON tb_parkings.tenementId = tb_tenement.tenementId INNER JOIN tb_villageinfo ON tb_parkings.villageId = tb_villageinfo.villageId INNER JOIN tb_parksrtype ON tb_parkings.parkSRId = tb_parksrtype.parkSRId where tb_parkings.tenementId=?";
+		return DBUtil.getPage(sql, page, pageSize, ParkingBean.class,tenementId);
 	}
 
 }

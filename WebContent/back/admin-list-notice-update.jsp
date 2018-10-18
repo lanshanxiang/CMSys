@@ -72,10 +72,10 @@
 			
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>通知公告类别编号：</label>
+					class="c-red">*</span>公告类别：</label>
 				<div class="formControls col-xs-8 col-sm-9">
 					<input type="text" class="input-text" value="1"
-						placeholder="" name="typeId" id="typeId">
+						placeholder="" name="typeName" id="typeName" >
 				</div>
 			</div>
 			
@@ -140,7 +140,7 @@
 						"noticeId" : $('#noticeId').val(),
 						"titles" : $('#titles').val(),
 						"contents" : $('#contents').val(),//传值
-						"typeId" : $('#typeId').val(),
+						"typeName" : $('#typeName').val(),
 						"releaseTime" : $('#releaseTime').val(),
 						"extent" : $('#extent').val()
 						

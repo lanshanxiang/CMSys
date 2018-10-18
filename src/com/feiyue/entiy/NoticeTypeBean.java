@@ -5,7 +5,7 @@ public class NoticeTypeBean {
 
 	private int typeId;//类型编号
 	private String typeName;//类型名称
-	private String extent;//备注
+	private String remark;//备注
 	
 	public NoticeTypeBean() {
 		super();
@@ -14,11 +14,7 @@ public class NoticeTypeBean {
 	
 	
 	
-	public NoticeTypeBean(String typeName, String extent) {
-		super();
-		this.typeName = typeName;
-		this.extent = extent;
-	}
+	
 
 
 
@@ -27,12 +23,38 @@ public class NoticeTypeBean {
 
 
 
-	public NoticeTypeBean(int typeId, String typeName, String extent) {
+	public NoticeTypeBean(String typeName, String remark) {
+		super();
+		this.typeName = typeName;
+		this.remark = remark;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	public NoticeTypeBean(int typeId, String typeName, String remark) {
 		super();
 		this.typeId = typeId;
 		this.typeName = typeName;
-		this.extent = extent;
+		this.remark = remark;
 	}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -65,15 +87,18 @@ public class NoticeTypeBean {
 
 
 
-	public String getExtent() {
-		return extent;
+	
+
+
+	public String getRemark() {
+		return remark;
 	}
 
 
 
 
-	public void setExtent(String extent) {
-		this.extent = extent;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 
@@ -81,8 +106,13 @@ public class NoticeTypeBean {
 
 	@Override
 	public String toString() {
-		return "NoticeTypeBean [typeId=" + typeId + ", typeName=" + typeName + ", extent=" + extent + "]";
+		return "NoticeTypeBean [typeId=" + typeId + ", typeName=" + typeName + ", remark=" + remark + "]";
 	}
+
+
+
+
+
 	
 	
 }

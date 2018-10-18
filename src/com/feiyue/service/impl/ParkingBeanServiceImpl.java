@@ -6,6 +6,7 @@ import com.feiyue.dao.ParkingBeanDao;
 import com.feiyue.dao.impl.ParkingBeanDaoImpl;
 import com.feiyue.entiy.ParkingBean;
 import com.feiyue.service.ParkingBeanService;
+import com.feiyue.util.PageData;
 
 public class ParkingBeanServiceImpl implements ParkingBeanService {
 	ParkingBeanDao pbd = new ParkingBeanDaoImpl();
@@ -38,6 +39,12 @@ public class ParkingBeanServiceImpl implements ParkingBeanService {
 	public boolean getBatchDeleteParkingBean(String sql) {
 		// TODO Auto-generated method stub
 		return pbd.batchDeleteParkingBean(sql);
+	}
+
+	@Override
+	public PageData<ParkingBean> getQueryParkingBean(int page, int pageSize,int tenementId) {
+		// TODO Auto-generated method stub
+		return pbd.queryParkingBean(page, pageSize, tenementId);
 	}
 	
 	

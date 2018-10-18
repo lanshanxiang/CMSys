@@ -826,7 +826,7 @@
 							<a class="list-item" href="know.jsp">其他费用</a>
 						</li>
 						<li class="list-item">
-							<a class="list-item" href="know.jsp">我的车位</a>
+							<a class="list-item" href="packing.jsp">我的车位</a>
 						</li>
 						<br />
 						<li class="list-item">

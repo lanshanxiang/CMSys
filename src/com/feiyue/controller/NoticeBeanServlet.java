@@ -82,11 +82,10 @@ public class NoticeBeanServlet extends HttpServlet {
 					int noticeId= Integer.parseInt(request.getParameter("noticeId"));//通知公告编号
 					 String titles=request.getParameter("titles");//通知公告标题
 					 String contents=request.getParameter("contents");//通知公告内容
-					 
-					 int typeId= Integer.parseInt(request.getParameter("typeId")); //通知公告类型编号
+					 String  typeName = request.getParameter("typeName");//通知类型
 					 String releaseTime=request.getParameter("releaseTime");//通知公告发布时间
-					 String Extent=request.getParameter("Extent");//扩展
-					NoticeBean  nt=new NoticeBean(noticeId,titles,contents,typeId,releaseTime,Extent);
+					 String extent=request.getParameter("extent");//扩展
+					NoticeBean  nt=new NoticeBean(noticeId, titles, contents, typeName, releaseTime, extent);
 					//再进行数据库交互，返回一个boolean类型的值
 					boolean flag=nbs.updateNotice(nt);
 					//在将返回值返回回页面
@@ -103,11 +102,11 @@ public class NoticeBeanServlet extends HttpServlet {
 					 String titles=request.getParameter("titles");//通知公告标题
 					 String contents=request.getParameter("contents");//通知公告内容
 					 
-					 int typeId= Integer.parseInt(request.getParameter("typeId")); //通知公告类型编号
+					int  typeId= Integer.parseInt(request.getParameter("typeId")); //公告类型编号
 					 String releaseTime=request.getParameter("releaseTime");//通知公告发布时间
-					 String Extent=request.getParameter("Extent");//扩展
+					 String extent=request.getParameter("extent");//扩展
 					//将获取到的信息存储到实体类中
-					NoticeBean  nt=new NoticeBean(titles, contents,typeId,releaseTime,Extent);
+					NoticeBean  nt=new NoticeBean(titles, contents, typeId, releaseTime, extent);
 					//再进行数据库交互，返回一个boolean类型的值
 					boolean flag=nbs.addNotice(nt);
 					//在将返回值返回回页面

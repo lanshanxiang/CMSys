@@ -41,7 +41,7 @@
 			id="form-member-add">
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>通知公告类型名称：</label>
+					class="c-red">*</span>通知公告类型：</label>
 				<div class="formControls col-xs-8 col-sm-9">
 					<input type="text" class="input-text" value="新闻资讯" placeholder=""
 						id="typeName" name="typeName">
@@ -53,7 +53,7 @@
 					class="c-red">*</span>备注：</label>
 				<div class="formControls col-xs-8 col-sm-9">
 					<input type="text" class="input-text" placeholder="" value=""
-						name="extent" id="extent">
+						name="remark" id="remark">
 				</div>
 			</div>
 			
@@ -100,7 +100,7 @@
 					type : "post",
 					data : {
 						"typeName" : $('#typeName').val(),
-						"extent" : $('#extent').val()
+						"remark" : $('#remark').val()
 					},
 					// 成功后执行的操作
 					success : function(data) {
