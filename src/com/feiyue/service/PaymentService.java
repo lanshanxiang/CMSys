@@ -24,4 +24,6 @@ public interface PaymentService {
 	    public List<PaymentBean> selectPayment(String keyword);
 	  //批量删除
 	     public boolean getBatchDeletePayment(String sql);
+	     //前台查询
+	     public PageData<PaymentBean> getFrontPayment(int  tenementId,double years,double months,int page, int pageSize);
 }

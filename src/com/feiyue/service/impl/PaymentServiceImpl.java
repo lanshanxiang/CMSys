@@ -58,5 +58,9 @@ public class PaymentServiceImpl implements PaymentService{
 		return pd.batchDeletePayment(sql);
 	}
 	 
-	
+	@Override
+	public PageData<PaymentBean> getFrontPayment(int tenementId, double years, double months, int page, int pageSize) {
+		// TODO Auto-generated method stub
+		return pd.getFrontPayment(tenementId, years, months, page, pageSize);
+	}
 }
