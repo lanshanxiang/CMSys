@@ -7,7 +7,7 @@
 
 <head>
 <title>金蝶云&middot;星空</title>
-<style type="text/css">
+<!-- <style type="text/css">
 .g-prod-search {
 	height: 320px;
 	background-image: url(img/22.png);
@@ -16,7 +16,7 @@
 	-ms-behavior: url(../../front/css/backgroundsize.min.htc);
 	behavior: url(../../front/css/backgroundsize.min.htc)
 }
-</style>
+</style> -->
 <meta charset="utf-8">
 <meta name="description"
 	content="金蝶社区是金蝶产品官方服务互动门户，为金蝶产品用户提供官方服务及产品知识，是用户互动交流的主要平台及国内领先的企业管理软件垂直社区。" />
@@ -29,45 +29,8 @@
 	content="金蝶社区是金蝶产品官方服务互动门户，为金蝶产品用户提供官方服务及产品知识，是用户互动交流的主要平台及国内领先的企业管理软件垂直社区。" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="renderer" content="webkit|ie-compile|ie-stand">
-<!-- <meta name="viewport" content="width=device-width"> -->
-<!--[if lte IE 8]>
-    <script src="/club/js/vendor/html5shiv.min.js?v=40bd440d"></script>
-    <script src="/club/js/vendor/json3.min.js?v=846b9f2c"></script>
-    <script src="/club/js/vendor/angular-ie67.js?v=f3f117c3"></script>
-    <script>
 
-        window.myCustomTags = ['qrcode', 'autoscroll', 'chooseli', 'paging', 'timeline', 'timeline-node', 'timeline-badge', 'timeline-panel', 'timeline-heading', 'timeline-title', 'timeline-content'];
 
-        document.createElement('paging');
-        document.createElement('loading');
-        document.createElement('qrcode');
-        document.createElement('autoscroll');
-        document.createElement('ng-include');
-        document.createElement('ng-pluralize');
-        document.createElement('ng-view');
-        document.createElement('ng-model');
-        document.createElement('ng-show');
-        document.createElement('ng-hide');
-        document.createElement('ng-click');
-        // Optionally these for CSS
-        document.createElement('ng:include');
-        document.createElement('ng:pluralize');
-        document.createElement('ng:view');
-        document.createElement('ng:model');
-        document.createElement('ng:show');
-        document.createElement('ng:hide');
-        document.createElement('ng:click');
-
-        if (!window.console || !console.firebug) {
-            var consoleList = ["log", "debug", "info", "warn", "error", "assert", "dir", "dirxml", "group", "groupEnd", "time", "timeEnd", "count", "trace", "profile", "profileEnd"];
-            window.console = {};
-            for (var i = 0; i < consoleList.length; ++i) {
-                window.console[consoleList[i]] = function () {
-                }
-            }
-        }
-    </script>
-    <![endif]-->
 <script type="text/javascript">
       var Host = 'club.kingdee.com';   //当前域名
       var clubHost = 'http://club.kingdee.com/club/';    //社区应用的路径
@@ -83,12 +46,15 @@
       var examSystem = 'http://cloudexam.kingdee.com';   //
       var userGuideObj = eval('({"novice_guidance_home":false,"novice_guidance_product":false,"novice_guidance_other":false,"page_tips_help":false,"page_tips_ucenter":false,"page_tips_synchronize":false,"page_tips_favorite":false,"guide_old_version":false})');
     </script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <link type="text/css" rel="stylesheet" href="front/css/base/common.css">
 <link type="text/css" rel="stylesheet" href="front/css/base/fonts.css">
 <link type="text/css" rel="stylesheet"
 	href="front/css/templates/product/product.css?v=9efc496a">
+
+<script src="js/bootstrap.min.js"></script>
 <script type="text/javascript"
-	src="club/attachments/js/vendor/jquery-1.10.2.min.js"></script>
+	src="http://clubimg.kingdee.com/club/attachments/js/vendor/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
       if (typeof jQuery == 'undefined') {
         document.write(unescape('%3Cscript src=\'club/js/vendor/jquery-1.10.2.min.js\' type=\'text/javascript\'%3E%3C/script%3E'));
@@ -98,6 +64,7 @@
 	src="club/js/vendor/modernizr-2.6.2.min.js?v=42306a27"></script>
 <script type="text/javascript"
 	src="club/attachments/js/vendor/angular.min.js"></script>
+
 <script type="text/javascript">
       if (typeof angular == 'undefined') {
         document.write(unescape('%3Cscript src=\'club/js/vendor/angular.min.js\' type=\'text/javascript\'%3E%3C/script%3E'));
@@ -131,11 +98,15 @@
 <style type="text/css">
 .g-prod-search  {
 	height:  320px;
-	background-image:  url(// clubimg.kingdee.com/ club/ attachments/ school/ images/
-		imgupload/ 20180109QigPHcF0ZyMNTZdS .png);
+	background-image:  url(front/img/22.png);
 }
 </style>
 
+<link rel="stylesheet" href="css/layui.css" media="all">
+<script src="layer.js"></script>
+<script src="layui.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js"></script>
 
 </head>
 <body class="ng-app:clubApp" id="ng-app" ng-app="clubApp">
@@ -551,6 +522,7 @@
 
   }());
 </script>
+	
 	<div class="v2_login_container">
 		<div class="v2_login_box">
 			<div class="v2_icon icon-close v2_close"></div>
@@ -622,7 +594,6 @@
 				</div>
 				<div class="tc" style="margin-top: 30px; font-size: 12px">
 					快速安全登录</div>
-				<iframe frameBorder="0" src="" class="cqrcode"></iframe>
 				<div class="tc" style="margin-top: 24px">请使用云之家APP扫描二维码</div>
 			</div>
 		</div>
@@ -772,20 +743,61 @@
         window.g_currentProd = null;
     }
 </script>
-		<div class="g-prod-search">
+		<div class="g-prod-search" style="background-image:  url(img/22.png);">
 			<div class="u-prod-welcome">欢迎使用金蝶云&middot;星空服务</div>
 			<div class="m-prod-search">
-				<div class="search-input-area">
-					<input id="search-input" type="text" placeholder="请输入您的问题"
-						maxlength="32">
-					<button id="search-btn">搜索</button>
-					<input type="text" autocomplete="off"
-						style="width: 1px; height: 1px; position: absolute; border: 0px; padding: 0px; opacity: 0;" />
-				</div>
+				
 				<div id="search-input-list" class="search-input-list"></div>
 			</div>
 		</div>
-
+        <div class="m-new-dynamic">
+			<h1 style="font-size: 40px; text-align: center;">我捡到东西啦！！</h1>
+			<hr>
+			<form class="form-horizontal"
+				style="position: relative; left: 500px;">
+				<div class="form-group">
+					<label for="lostGood" class="col-sm-2 control-label">物品</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="lostGood"
+							name="lostGood" placeholder="物品">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lostArea" class="col-sm-2 control-label">地点</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="lostArea"
+							name="lostArea" placeholder="地点">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="sdate" class="col-sm-2 control-label">请输入要增加的时间</label>
+					<div class="col-sm-2">
+						<input type="text" class="layui-input" id="sdate" name="sdate"
+							placeholder="请输入年月日">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lostName" class="col-sm-2 control-label">您的名字</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="lostName"
+							name="lostName" placeholder="您的名字">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lostTel" class="col-sm-2 control-label">您的联系人电话</label>
+					<div class="col-sm-2">
+						<input type="tel" class="form-control" id="lostTel" name="lostTel"
+							placeholder="您的联系人电话">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-2">
+						<button style="width: 100px;" id="addLost" type="button"
+							class="btn btn-success">提交</button>
+					</div>
+				</div>
+			</form>
+		</div>
 
 	</div>
 	<div class="g-footer">
@@ -1360,13 +1372,57 @@ avatarManager.reload();
 		src="front/js/templates/product/product.js?v=233dec00"></script>
 	<script type="text/javascript"
 		src="front/js/component/service_tools.js?v=4398839e"></script>
+<script>
+		$("#addLost")
+				.click(
+						function() {
+							console.log(111);
+							$
+									.ajax({
+										url : "${pageContext.request.contextPath}/FrontLostServlet?op=addLost",//url地址
+										type : "post",
+										data : {
+											"lostGood" : $('#lostGood').val(),
+											"lostDate" : $('#lostDate').val(),
+											"lostArea" : $('#lostArea').val(),
+											"lostName" : $('#lostName').val(),
+											"lostTel" : $('#lostTel').val()
+										},
+										//成功后执行的操作
+										success : function(data) {
+											//判断用户名密码是否正确，正确的话则跳到前台首页
+											location.href = "index.jsp";
+											/* if (data == "false") {
+												alert("失败");
+											} else {
+												layer
+														.msg(
+																'增加成功!将会跳到首页查看您的提交的信息',
+																{
+																	icon : 1,
+																	time : 1000
+																},
+																function() {
+																	location.href="front/index.jsp";
+																});
+											} */
+										}
+									});
+						});
+	</script>
+	<script>
+	    //使用layui插件将选择日期变美观
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
 
-	<script type="text/javascript">
-  /*百度统计代码 start*/
-  var _bdhmProtocol = (('https:' == document.location.protocol) ? ' https://' : ' http://');
-  document.write(unescape('%3Cscript src=\'' + _bdhmProtocol + 'hm.baidu.com/h.js%3F65e708a86ef5df894af1fcf5a9120d13\'  type=\'text/javascript\'%3E%3C/script%3E'));
-  /*百度统计代码 end*/
-</script>
+			//常规用法
+			laydate.render({
+				elem : '#sdate',
+				type : 'datetime'
+			});
+		});
+	</script>
+
 	<!-- <script src="/club/js/monitor.js?v=eebdde39"></script> -->
 
 </body>
