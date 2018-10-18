@@ -9,6 +9,12 @@
 		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 %>
+<style type="text/css">
+   body{
+       background-image: url("../img/bgr7.jpg"); ;
+
+   }
+ </style>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -45,32 +51,33 @@
 	content="H-ui.admin v2.3，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
 <body>
+    
 	<article class="cl pd-20">
-		<form class="form form-horizontal" id="form-member-add">
+		<form class="form form-horizontal" id="form-member-add" style="margin-top: 290px;margin-left: 200px;">
 
 			
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>商家名称：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="蓝翔技校"
-						name="bName" id="bName">
+					<input type="text" class="input-text" placeholder="请输入商家名称" value=""
+						name="bName" id="bName" style="width: 200px;">
 				</div>
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>联系人：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder=""
-						value="蓝善翔" name="bPeopleName" id="bPeopleName">
+					<input type="text" class="input-text" placeholder="请输入联系人"
+						value="" name="bPeopleName" id="bPeopleName" style="width: 200px;">
 				</div>
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>联系电话：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="15396586373"
-						name="bTel" id="bTel">
+					<input type="text" class="input-text" placeholder="请输入联系方式" value=""
+						name="bTel" id="bTel" style="width: 200px;">
 				</div>
 			</div>
 			<div class="row cl">

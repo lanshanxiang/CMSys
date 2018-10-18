@@ -12,14 +12,14 @@ public class NoticeBeanDaoImpl implements NoticeBeanDao{
 	@Override
 	public boolean addNotice(NoticeBean n) {
 		// TODO Auto-generated method stub
-	return DBUtil.execute("insert into tb_notice   values (null,?,?,?,?,?)",
+	return DBUtil.execute("INSERT INTO tb_notice (noticeId, titles, contents, typeId, releaseTime, extent) VALUES (null, ?, ?, ?, ?, ?) ",
 		        n.getTitles(),n.getContents(),n.getTypeId(),n.getReleaseTime(),n.getExtent())>0;
 	}
 	//修改
 	@Override
 	public boolean updateNotice(NoticeBean n) {
 		// TODO Auto-generated method stub
-		return DBUtil.execute("UPDATE tb_notice SET titles=?,contents=?,typeId=?,releaseTime=?,extent=? where noticeId=?",n.getTitles(),n.getContents(),n.getTypeId(),n.getReleaseTime(),n.getExtent(),n.getNoticeId())>0;
+		return DBUtil.execute("UPDATE tb_notice,tb_noticetype SET titles=?, contents=?, typeName=?, releaseTime=?, extent=? WHERE (tb_notice.typeId=tb_noticetype.typeId and noticeId=?)",n.getTitles(),n.getContents(),n.getTypeName(),n.getReleaseTime(),n.getExtent(),n.getNoticeId())>0;
 	}
 	//删除
 	@Override
@@ -32,7 +32,7 @@ public class NoticeBeanDaoImpl implements NoticeBeanDao{
 	@Override
 	public List<NoticeBean> getNotice() {
 		// TODO Auto-generated method stub
-		return (List<NoticeBean>) DBUtil.select("SELECT * FROM tb_notice ", NoticeBean.class);
+		return (List<NoticeBean>) DBUtil.select("SELECT noticeId , titles ,contents,tb_noticetype.typeId,releaseTime,tb_notice.extent,typeName from tb_notice,tb_noticetype where  tb_notice.typeId= tb_noticetype.typeId ", NoticeBean.class);
 	}
 	
 	//分页
@@ -51,7 +51,7 @@ public class NoticeBeanDaoImpl implements NoticeBeanDao{
 	@Override
 	public List<NoticeBean> selectNotice(String keyword) {
 		// TODO Auto-generated method stub
-		return (List<NoticeBean>) DBUtil.select("SELECT * FROM tb_notice WHERE NoticeName=? ", NoticeBean.class,"%"+keyword+"%");
+		return (List<NoticeBean>) DBUtil.select("SELECT noticeId , titles ,contents,tb_noticetype.typeId,releaseTime,tb_notice.extent,typeName from tb_notice,tb_noticetype where  tb_notice.typeId= tb_noticetype.typeId and NoticeName=? ", NoticeBean.class,"%"+keyword+"%");
 	}
 	
 	

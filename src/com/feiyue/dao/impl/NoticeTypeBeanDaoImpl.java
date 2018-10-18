@@ -13,15 +13,15 @@ public class NoticeTypeBeanDaoImpl implements NoticeTypeBeanDao {
 	@Override
 	public boolean addNoticeType(NoticeTypeBean nt) {
 		// TODO Auto-generated method stub
-		return DBUtil.execute("insert into tb_noticetype  values (null,?,?)", nt.getTypeName(), nt.getExtent()) > 0;
+		return DBUtil.execute("insert into tb_noticetype  values (null,?,?)", nt.getTypeName(), nt.getRemark()) > 0;
 	}
 
 	// 修改
 	@Override
 	public boolean updateNoticeType(NoticeTypeBean nt) {
 		// TODO Auto-generated method stub
-		return DBUtil.execute("UPDATE tb_noticetype SET typeName=?,extent=?" + "where typeId=?", nt.getTypeName(),
-				nt.getExtent(), nt.getTypeId()) > 0;
+		return DBUtil.execute("UPDATE tb_noticetype SET typeName=?,remark=?" + "where typeId=?", nt.getTypeName(),
+				nt.getRemark(), nt.getTypeId()) > 0;
 	}
 
 	// 删除

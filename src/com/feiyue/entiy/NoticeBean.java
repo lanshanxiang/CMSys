@@ -9,7 +9,8 @@ public class NoticeBean {
 	private String contents;//通知公告内容
 	private int typeId; //通知公告类型编号
 	private String releaseTime;//通知公告发布时间
-	private String Extent;//扩展
+	private String extent;//备注
+	private String  typeName;//类型名
 	
 	public NoticeBean() {
 		super();
@@ -21,7 +22,7 @@ public class NoticeBean {
 		this.contents = contents;
 		this.typeId = typeId;
 		this.releaseTime = releaseTime;
-		Extent = extent;
+		this.extent = extent;
 	}
 
 	public NoticeBean(int noticeId, String titles, String contents, int typeId, String releaseTime, String extent) {
@@ -31,12 +32,56 @@ public class NoticeBean {
 		this.contents = contents;
 		this.typeId = typeId;
 		this.releaseTime = releaseTime;
-		Extent = extent;
+		this.extent = extent;
+	}
+	//noticeId,titles,contents,typeName,releaseTime,Extent
+	
+	
+	
+	
+	public NoticeBean(int noticeId, String titles, String contents, int typeId, String releaseTime, String extent,
+			String typeName) {
+		super();
+		this.noticeId = noticeId;
+		this.titles = titles;
+		this.contents = contents;
+		this.typeId = typeId;
+		this.releaseTime = releaseTime;
+		this.extent = extent;
+		this.typeName = typeName;
+	}
+	//
+
+	public NoticeBean(int noticeId, String titles, String contents, String typeName, String releaseTime,
+			String extent) {
+		super();
+		this.noticeId = noticeId;
+		this.titles = titles;
+		this.contents = contents;
+		this.typeName = typeName;
+		this.releaseTime = releaseTime;
+		this.extent = extent;
 	}
 	
 	
-	
-	
+
+	public String getTypeName() {
+		return typeName;
+	}
+
+	public NoticeBean(String titles, String contents, String typeName, String releaseTime, String extent) {
+		super();
+		this.titles = titles;
+		this.contents = contents;
+		this.typeName = typeName;
+		this.releaseTime = releaseTime;
+		this.extent = extent;
+	}
+
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
+
 	public int getNoticeId() {
 		return noticeId;
 	}
@@ -77,19 +122,23 @@ public class NoticeBean {
 		this.releaseTime = releaseTime;
 	}
 
+	
+
 	public String getExtent() {
-		return Extent;
+		return extent;
 	}
 
 	public void setExtent(String extent) {
-		Extent = extent;
+		this.extent = extent;
 	}
 
 	@Override
 	public String toString() {
 		return "NoticeBean [noticeId=" + noticeId + ", titles=" + titles + ", contents=" + contents + ", typeId="
-				+ typeId + ", releaseTime=" + releaseTime + ", Extent=" + Extent + "]";
+				+ typeId + ", releaseTime=" + releaseTime + ", extent=" + extent + ", typeName=" + typeName + "]";
 	}
+
+	
 	
 	
 	

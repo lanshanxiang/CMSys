@@ -53,7 +53,7 @@
 					class="c-red">*</span>备注：</label>
 				<div class="formControls col-xs-8 col-sm-9">
 					<input type="text" class="input-text" placeholder="" value=""
-						name="extent" id="extent">
+						name="remark" id="remark">
 				</div>
 			</div>
 			<div class="row cl">
@@ -99,7 +99,7 @@
 					data : {
 						"typeId" : $('#typeId').val(),
 						"typeName" : $('#typeName').val(),
-						"extent" : $('#extent').val()
+						"remark" : $('#remark').val()
 					},
 					//成功后执行的操作
 					success : function(data) {

@@ -80,8 +80,8 @@ public class NoticeTypeBeanServlet extends HttpServlet {
 				//增加
 				}else if("addNoticeType".equals(op)) {
 					String typeName = request.getParameter("typeName");
-					String extent = request.getParameter("extent");
-					NoticeTypeBean noticeType=new NoticeTypeBean(typeName, extent);
+					String remark = request.getParameter("remark");
+					NoticeTypeBean noticeType=new NoticeTypeBean(typeName, remark);
 					boolean flag=ntbs.addNoticeType(noticeType);
 					PrintWriter out =response.getWriter();
 					out.print(flag);
@@ -91,8 +91,8 @@ public class NoticeTypeBeanServlet extends HttpServlet {
 				}else if("updateNoticeType".equals(op)) {
 					int typeId=Integer.parseInt(request.getParameter("typeId"));
 					String typeName = request.getParameter("typeName");
-					String extent = request.getParameter("extent");
-					NoticeTypeBean noticeType=new NoticeTypeBean(typeId,typeName, extent);
+					String remark = request.getParameter("remark");
+					NoticeTypeBean noticeType=new NoticeTypeBean(typeId,typeName,remark);
 					PrintWriter out =response.getWriter();
 					boolean flag=ntbs.updateNoticeType(noticeType);
 					if(flag) {
