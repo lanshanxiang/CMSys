@@ -34,8 +34,7 @@
 <link rel="stylesheet" href="css/layui.css" media="all">
 <script src="layer.js"></script>
 <script src="layui.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script src="js/bootstrap.min.js"></script>
 
 <script type="text/javascript"
@@ -234,12 +233,10 @@
 					</li>
 					<li class="list-item"><a class="list-item" href="know.jsp">社区公告</a>
 					</li>
-					<li class="list-item">
-							<a class="list-item" href="addLost.jsp">失物招领</a>
-						</li>
-						<li class="list-item">
-							<a class="list-item" href="active.jsp">社区活动</a>
-						</li>
+					<li class="list-item"><a class="list-item" href="addLost.jsp">失物招领</a>
+					</li>
+					<li class="list-item"><a class="list-item" href="active.jsp">社区活动</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -276,35 +273,36 @@
 			</ul>
 		</div>
 		<div class="m-new-dynamic">
-			<h1 style="font-size: 60px">我掉东西啦！！</h1>
+			<h1 style="font-size: 60px">我捡到东西啦！！</h1>
 			<hr>
-			<form class="form-horizontal" style="position: relative; left: 500px;">
+			<form class="form-horizontal"
+				style="position: relative; left: 500px;">
 				<div class="form-group">
 					<label for="lostGood" class="col-sm-2 control-label">物品</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" id="lostGood" name="lostGood"
-							placeholder="物品">
+						<input type="text" class="form-control" id="lostGood"
+							name="lostGood" placeholder="物品">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="lostArea" class="col-sm-2 control-label">地点</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" id="lostArea" name="lostArea"
-							placeholder="地点">
+						<input type="text" class="form-control" id="lostArea"
+							name="lostArea" placeholder="地点">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="lostDate" class="col-sm-2 control-label">时间</label>
+					<label for="sdate" class="col-sm-2 control-label">请输入要增加的时间</label>
 					<div class="col-sm-2">
-						<input type="datetime-local" class="form-control" id="lostDate" name="lostDate"
-							placeholder="时间">
+						<input type="text" class="layui-input" id="sdate" name="sdate"
+							placeholder="请输入年月日">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="lostName" class="col-sm-2 control-label">您的名字</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" id="lostName" name="lostName"
-							placeholder="您的名字">
+						<input type="text" class="form-control" id="lostName"
+							name="lostName" placeholder="您的名字">
 					</div>
 				</div>
 				<div class="form-group">
@@ -316,7 +314,8 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-2">
-						<button style="width: 100px;" id="addLost" type="button" class="btn btn-success">提交</button>
+						<button style="width: 100px;" id="addLost" type="button"
+							class="btn btn-success">提交</button>
 					</div>
 				</div>
 			</form>
@@ -404,7 +403,7 @@
 			</div>
 		</div>
 
-		
+
 	</div>
 	<div id="g-guide" class="g-guide"></div>
 
@@ -428,41 +427,54 @@
 	<!-- <script src="/club/js/monitor.js?v=eebdde39"></script> -->
 
 	<script>
-		 $("#addLost").click(function(){
-			 console.log(111);
-			 $
-				.ajax({
-					url : "${pageContext.request.contextPath}/FrontLostServlet?op=addLost",//url地址
-					type : "post",
-					data : {
-						"lostGood" : $(
-								'#lostGood').val(),
-						"lostDate" : $('#lostDate').val(),
-						"lostArea" : $('#lostArea').val(),
-						"lostName" : $('#lostName').val(),
-						"lostTel" : $('#lostTel').val()
-					},
-					//成功后执行的操作
-					success : function(data) {
-						//判断用户名密码是否正确，正确的话则跳到前台首页
-						location.href="index.jsp";
-						/* if (data == "false") {
-							alert("失败");
-						} else {
-							layer
-									.msg(
-											'增加成功!将会跳到首页查看您的提交的信息',
-											{
-												icon : 1,
-												time : 1000
-											},
-											function() {
-												location.href="front/index.jsp";
-											});
-						} */
-					}
-				});
-		 });
+		$("#addLost")
+				.click(
+						function() {
+							console.log(111);
+							$
+									.ajax({
+										url : "${pageContext.request.contextPath}/FrontLostServlet?op=addLost",//url地址
+										type : "post",
+										data : {
+											"lostGood" : $('#lostGood').val(),
+											"lostDate" : $('#lostDate').val(),
+											"lostArea" : $('#lostArea').val(),
+											"lostName" : $('#lostName').val(),
+											"lostTel" : $('#lostTel').val()
+										},
+										//成功后执行的操作
+										success : function(data) {
+											//判断用户名密码是否正确，正确的话则跳到前台首页
+											location.href = "index.jsp";
+											/* if (data == "false") {
+												alert("失败");
+											} else {
+												layer
+														.msg(
+																'增加成功!将会跳到首页查看您的提交的信息',
+																{
+																	icon : 1,
+																	time : 1000
+																},
+																function() {
+																	location.href="front/index.jsp";
+																});
+											} */
+										}
+									});
+						});
+	</script>
+	<script>
+	    //使用layui插件将选择日期变美观
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
+
+			//常规用法
+			laydate.render({
+				elem : '#sdate',
+				type : 'datetime'
+			});
+		});
 	</script>
 
 </body>
