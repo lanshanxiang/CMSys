@@ -836,7 +836,7 @@
 							<a class="list-item" href="know.jsp">社区公告</a>
 						</li>
 						<li class="list-item">
-							<a class="list-item" href="addLost2.0.jsp">失物招领</a>
+							<a class="list-item" href="addLost1.0.jsp">失物招领</a>
 						</li>
 						<li class="list-item">
 							<a class="list-item" href="active.jsp">社区活动</a>
@@ -882,12 +882,10 @@
 				<ul class="tool-list">
 					<li class="tool-xgmm">
 						<a onclick="serviceTool.modifiPwd()">
-							<span class="icon-mima icon-tool">
-                    <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
-							</span>
-							<h3>修改服务密码</h3>
-							<div>服务密码用于拨打金蝶热线服务4008-836-836时使用</div>
+							<img src="img/2.jpg">
+							<h3>我要报修</h3>
 						</a>
+						<a style="position: relative; top: -90px;">报修查询</a>
 					</li>
 					<li class="tool-xkxz">
 						<a href="/club/newclub/servicetools/licence/download" target="_blank">
