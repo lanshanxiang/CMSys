@@ -42,6 +42,11 @@
 	content="H-ui.admin v2.3,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description"
 	content="H-ui.admin v2.3，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+	<link rel="stylesheet" href="../front/css/layui.css" media="all">
+<script src="../front/layer.js"></script>
+<script src="../front/layui.js"></script>
+<link rel="stylesheet" type="text/css" href="../front/css/bootstrap.min.css">
+<script src="../front/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<article class="cl pd-20">
@@ -79,12 +84,20 @@
 						name="bTel" id="bTel">
 				</div>
 			</div>
-			<div class="row cl">
+			<!-- <div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>维修时间：</label>
 				<div class="formControls col-xs-8 col-sm-9">
 					<input type="datetime-local" class="input-text" placeholder=""
 						name="bDate" id="bDate">
+				</div> -->
+				<div class="row cl">
+					<label for="bDate" class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>入驻时间：</label>
+					<div class="form-label col-xs-4 col-sm-3">
+						<input type="text" class="layui-input" id="bDate" name="bDate"
+							placeholder="请输入年月日"  style="width: 300px;">
+					</div>
 				</div>
 			</div>
 			<div class="row cl">
@@ -174,6 +187,18 @@
 							});
 			/*validate验证和 ajax 的方式完成表单提交 */
 
+		});
+	</script>
+	<script>
+	    //使用layui插件将选择日期变美观
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
+
+			//常规用法
+			laydate.render({
+				elem : '#bDate',
+				type : 'datetime'
+			});
 		});
 	</script>
 

@@ -37,6 +37,11 @@
 <title>添加用户 - H-ui.admin v2.3</title>
 <meta name="keywords" content="H-ui.admin v2.3,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v2.3，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+<link rel="stylesheet" href="../front/css/layui.css" media="all">
+<script src="../front/layer.js"></script>
+<script src="../front/layui.js"></script>
+<link rel="stylesheet" type="text/css" href="../front/css/bootstrap.min.css">
+<script src="../front/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -93,12 +98,20 @@
 				<input type="text" class="input-text" value="177@qq.com" placeholder="" id="email" name="email">
 			</div>
 		</div>
-		<div class="row cl">
+		<!-- <div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>入住时间：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text" value="2018-09-10" placeholder="" id="areStay" name="areStay">
 			</div>
-		</div>
+		</div> -->
+		<div class="row cl">
+					<label for="areStay" class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>入住时间：</label>
+					<div class="form-label col-xs-4 col-sm-3">
+						<input type="text" class="layui-input" id="areStay" name="areStay"
+							placeholder="请输入年月日"  style="width: 300px;">
+					</div>
+				</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>民族：</label>
 			<div class="formControls col-xs-8 col-sm-9">
@@ -240,6 +253,18 @@ $(function(){
 							"<option value="+user.userId+">" + user.userName
 									+ "</option>");
 				});
+			});
+		});
+	</script>
+	<script>
+	    //使用layui插件将选择日期变美观
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
+
+			//常规用法
+			laydate.render({
+				elem : '#areStay',
+				type : 'datetime'
 			});
 		});
 	</script>
