@@ -216,7 +216,7 @@
 					<br /><br /><br />
 						<ul>
 							<li>
-								<a href="front/user-login.jsp" target="_blank">进入服务中心</a>
+								<a href="front/index.jsp" target="_blank">进入服务中心</a>
 							</li>
 						</ul>
 					</div>

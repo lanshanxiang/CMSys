@@ -151,7 +151,7 @@
 					<ul>
 						<li><a _href="admin-list-notice.jsp" data-title="小区公告"
 							href="javascript:void(0)">小区公告</a></li>
-							<li><a _href="admin-list-noticetype.jsp" data-title="小区公告"
+							<li><a _href="admin-list-noticetype.jsp" data-title="公告设置"
 							href="javascript:void(0)">公告设置</a></li>
 						<li><a _href="admin-list-repair.jsp" data-title="报修管理"
 							href="javascript:void(0)">报修管理</a></li>
