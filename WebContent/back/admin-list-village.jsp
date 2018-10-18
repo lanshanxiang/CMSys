@@ -41,18 +41,27 @@
 	<div class="page-container">
 		<article class="cl pd-20">
 			<div class="text-c">
-				根据内容搜索相应的内容：<input type="checkbox" id="autoSearch"> <br>
-				          小区名称：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="2" id="col2_filter" style="width: 100px;"> 
-					负责人：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="3" id="col3_filter" style="width: 100px;"> 
-					 建立时间：<input type="text" class="form-controlSearch input-text Wdate" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})" placeholder="输入入职时间" data-column="4" id="col4_filter" style="width: 100px;">
-					 联系电话：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="5" id="col5_filter" style="width: 100px;">
-					 移动电话：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="6" id="col6_filter" style="width: 100px;">
-                                                  占地面积：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="7" id="col7_filter" style="width: 100px;">
-					建筑面积：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="8" id="col8_filter" style="width: 100px;">
-					车库面积：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="9" id="col9_filter" style="width: 100px;">
-					车位数：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="10" id="col10_filter" style="width: 100px;">
-					绿化面积：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="11" id="col11_filter" style="width: 100px;"><br>
-					小区说明：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="12" id="col12_filter" style="width: 100px;">
+				根据内容搜索相应的内容：<input type="checkbox" id="autoSearch"> <br><br>
+				小区名称：<input type="text" class="form-controlSearch input-text "
+					placeholder="" data-column="2" id="col2_filter"
+					style="width: 100px;"> 负责人：<input type="text"
+					class="form-controlSearch input-text " placeholder=""
+					data-column="3" id="col3_filter" style="width: 100px;">
+				建立时间：<input type="text" class="form-controlSearch input-text Wdate"
+					onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})"
+					placeholder="输入入职时间" data-column="4" id="col4_filter"
+					style="width: 100px;"> 占地面积：<input type="text"
+					class="form-controlSearch input-text " placeholder=""
+					data-column="7" id="col7_filter" style="width: 100px;">
+				建筑面积：<input type="text" class="form-controlSearch input-text "
+					placeholder="" data-column="8" id="col8_filter"
+					style="width: 100px;"> 车库面积：<input type="text"
+					class="form-controlSearch input-text " placeholder=""
+					data-column="9" id="col9_filter" style="width: 100px;">
+				车位数：<input type="text" class="form-controlSearch input-text "
+					placeholder="" data-column="10" id="col10_filter"
+					style="width: 100px;">
+
 			</div>
 			<div class="cl pd-5 bg-1 bk-gray mt-20">
 				<span class="l"><a href="javascript:;" id="plsc"
@@ -112,17 +121,7 @@
 		src="${pageContext.request.contextPath}/lib/laypage/1.2/laypage.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			/*暂时注释掉hui自带的dt访问	
-			$('.table-sort').dataTable({
-				"aaSorting": [[ 1, "desc" ]],//默认第几个排序
-				"bStateSave": true,//状态保存
-				"aoColumnDefs": [
-				  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-				  {"orderable":false,"aTargets":[0,8,9]}// 制定列不参与排序
-				]
-			});
-			 */
-			/*单击数据行 被选中，再次单击取消选中*/
+			
 			$('.table-sort tbody').on('click', 'tr', function() {
 				if ($(this).hasClass('selected')) {
 					$(this).removeClass('selected');
@@ -132,92 +131,14 @@
 				}
 			});
 		});
-		$("#plsc").click(function(){
+		$("#plsc").click(function() {
 			batchIds();
 		});
 		/*用户-添加*/
 		function member_add(title, url, w, h) {
 			layer_show(title, url, w, h);
 		}
-		/*用户-查看*/
-		function member_show(title, url, id, w, h) {
-			layer_show(title, url, w, h);
-		}
-		/*用户-停用*/
-		function member_stop(obj, id) {
-			layer
-					.confirm(
-							'确认要停用吗？',
-							function(index) {
-								$(obj)
-										.parents("tr")
-										.find(".td-manage")
-										.prepend(
-												'<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a>');
-								$(obj)
-										.parents("tr")
-										.find(".td-status")
-										.html(
-												'<span class="label label-defaunt radius">已停用</span>');
-								$(obj).remove();
-								layer.msg('已停用!', {
-									icon : 5,
-									time : 1000
-								});
-							});
-		}
-
-		/*用户-启用*/
-		function member_start(obj, id) {
-			layer
-					.confirm(
-							'确认要启用吗？',
-							function(index) {
-								$(obj)
-										.parents("tr")
-										.find(".td-manage")
-										.prepend(
-												'<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>');
-								$(obj)
-										.parents("tr")
-										.find(".td-status")
-										.html(
-												'<span class="label label-success radius">已启用</span>');
-								$(obj).remove();
-								layer.msg('已启用!', {
-									icon : 6,
-									time : 1000
-								});
-							});
-		}
-		/*用户-编辑*/
-		function member_edit(title, url, id, w, h) {
-			layer_show(title, url, w, h);
-		}
-		/*密码-修改*/
-		function change_password(title, url, id, w, h) {
-			//layer_show(title,url,w,h);	
-
-			layer.open({
-				type : 2,
-				area : [ '600px', '270px' ],
-				fix : false, //不固定
-				maxmin : true,
-				shade : 0.4,
-				title : title,
-				content : url,
-				success : function(layero, index) {
-					var body = layer.getChildFrame('body', index);//建立父子联系
-					var iframeWin = window[layero.find('iframe')[0]['name']];
-					// console.log(arr); //得到iframe页的body内容
-					// console.log(body.find('input'));
-					var inputList = body.find('input');
-					for (var j = 0; j < inputList.length; j++) {
-						$(inputList[j]).val(arr[j]);
-					}
-				}
-			});
-		}
+		
 		/*用户-删除*/
 		function member_del(obj, id) {
 			layer
@@ -351,46 +272,7 @@
 
 		});
 	</script>
-	<!--/请在上方写此页面业务相关的脚本-->
-
-
-	<!-- 从之前datatable案例中移植过来的代码  头部检索以及表格头部信息-->
-	<!-- <div class="container">
-    是否自动检索：<input type="checkbox" id="autoSearch">
-    <br>
-    员工编号：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="1" id="col1_filter">
-    <br>
-    姓名：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="2" id="col2_filter">
-    <br>
-    岗位：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="3" id="col3_filter">
-    <br>
-    入职时间：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="4" id="col4_filter">
-    <br>
-    部门编号：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="5" id="col5_filter">
-    <br>
-    编号：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="6" id="col6_filter">
-    <br>
-    <hr>
-    <table id="example" class="display">
-        <thead>
-        <tr>
-            <th><input type="checkbox" id="employeeCheckAll"></th>
-            <th>员工编号</th>
-            <th>姓名</th>
-            <th>岗位</th>
-            <th>入职时间</th>
-            <th>部门编号</th>
-        </tr>
-        </thead>
-    </table>
-</div> -->
-	<!-- 头部检索以及表格标题头结束 -->
-	<!-- <link rel="stylesheet" type="text/css" href="plugin/datatables/jquery.dataTables.min.css"/> -->
-
-	<!-- <style>
-  .paginate_button{box-sizing:content-box}
-</style> -->
-
+	
 
 	<script
 		src="${pageContext.request.contextPath}/plugin/datatables/jquery.dataTables.min.js"></script>
@@ -535,7 +417,6 @@
 
 		//导航按钮操作
 		employee.buttons = '<button class="btn btn-default"  type="button" id="reload" data-toggle="modal" data-target="#employeeModal">刷新表格</button>'
-
 	</script>
 
 	<script>
@@ -789,32 +670,33 @@
 					villageId.push(uuids[i]['villageId']);
 				}
 				//这里进行ajax
-				$.ajax({
-					type : 'POST',
-					url : '${pageContext.request.contextPath}/VillageInfoBeanServlet?op=batchDelete',
-					// 传递数组
-					data : {
-						'villageId' : villageId
-					},
-					// 设置traditional属性: true后才能将集合传到servlet里面去
-					traditional : true,
-					dataType : 'text',//接受数据类型为文本类型
-					success : function(data) {
-						layer.msg('删除成功!', {
-							icon : 1,
-							time : 1000
-						});
-						//成功之后重新加载页面
-						reload();
+				$
+						.ajax({
+							type : 'POST',
+							url : '${pageContext.request.contextPath}/VillageInfoBeanServlet?op=batchDelete',
+							// 传递数组
+							data : {
+								'villageId' : villageId
+							},
+							// 设置traditional属性: true后才能将集合传到servlet里面去
+							traditional : true,
+							dataType : 'text',//接受数据类型为文本类型
+							success : function(data) {
+								layer.msg('删除成功!', {
+									icon : 1,
+									time : 1000
+								});
+								//成功之后重新加载页面
+								reload();
 
-					},
-					error : function(data) {
-						layer.msg('删除失败!', {
-							icon : 1,
-							time : 1000
+							},
+							error : function(data) {
+								layer.msg('删除失败!', {
+									icon : 1,
+									time : 1000
+								});
+							},
 						});
-					},
-				});
 
 			}
 		}
@@ -856,5 +738,6 @@
 			dataTablesInit(employee);
 		});
 	</script>
+	<!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>

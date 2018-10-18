@@ -1,25 +1,17 @@
 package com.feiyue.controller;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.feiyue.entiy.ParkingBean;
-import com.feiyue.entiy.RoomBean;
-import com.feiyue.entiy.VillageInfoBean;
 import com.feiyue.service.ParkingBeanService;
-import com.feiyue.service.RoomBeanService;
 import com.feiyue.service.impl.ParkingBeanServiceImpl;
-import com.feiyue.service.impl.RoomBeanServiceImpl;
 import com.feiyue.util.MyData;
 import com.google.gson.Gson;
-
 /**
  * Servlet implementation class ParkingSpaceServlet
  */
@@ -47,7 +39,6 @@ public class ParkingBeanServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
-
 		String op = "";
 		if (request.getParameter("op") != null) {
 			op = request.getParameter("op");

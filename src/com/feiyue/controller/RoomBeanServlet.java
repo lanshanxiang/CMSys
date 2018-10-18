@@ -1,15 +1,12 @@
 package com.feiyue.controller;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.feiyue.entiy.RoomBean;
 import com.feiyue.service.RoomBeanService;
 import com.feiyue.service.impl.RoomBeanServiceImpl;
@@ -54,10 +51,8 @@ public class RoomBeanServlet extends HttpServlet {
 			if ("load".equals(op)) {
 				List<RoomBean> list = rbs.getQueryOnlyRoomBean();
 				PrintWriter out = response.getWriter();
-
 				Gson gson = new Gson();
 				out.println(gson.toJson(list));
-
 				out.close();
 				// 展示所有功能
 			} else if ("".equals(op)) {
@@ -76,7 +71,6 @@ public class RoomBeanServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				// 将jsonString返回到页面
 				out.print(jsonString);
-				System.out.println(jsonString);
 				// 释放资源
 				out.close();
 				// 增加功能

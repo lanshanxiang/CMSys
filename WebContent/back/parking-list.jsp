@@ -13,8 +13,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
 <LINK rel="Bookmark" href="/favicon.ico">
 <LINK rel="Shortcut Icon" href="/favicon.ico" />
 <link rel="stylesheet" type="text/css"
@@ -28,7 +26,6 @@
 	id="skin" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/static/h-ui.admin/css/style.css" />
-
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui/css/H-ui.min.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/h-ui/css/H-ui.admin.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/Hui-iconfont/1.0.8/iconfont.css" />
@@ -41,7 +38,7 @@
 <div class="page-container">
 	<article class="cl pd-20"> 
 		<div class="text-c">
-				根据内容搜索相应的内容：<input type="checkbox" id="autoSearch"> <br>
+				根据内容搜索相应的内容：<input type="checkbox" id="autoSearch"> <br><br>
 				          车位号：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="2" id="col2_filter" style="width: 100px;"> 
 					车位类型：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="3" id="col3_filter" style="width: 100px;"> 
 					 所属小区：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="4" id="col4_filter" style="width: 100px;">
@@ -59,9 +56,7 @@
 						<th width="20">编号</th>						
 						<th width="30">车位号</th>
 						<th width="40">车位类型</th>
-						
 						<th width="50">所属小区</th>						
-						
 						<th width="50">车位状态</th>
 						<th width="50">车位面积</th>
 						<th width="50">备注</th>
@@ -88,16 +83,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
 $(function(){
-	//暂时注释掉hui自带的dt访问	
-	/* $('.table-sort').dataTable({
-		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
-		"bStateSave": true,//状态保存
-		"aoColumnDefs": [
-		  {"bVisible": false, "aTargets": [ 4 ]} //控制列的隐藏显示
-		  {"orderable":false,"aTargets":[0,8,9]}// 制定列不参与排序
-		]
-	}); */
-	
     /*单击数据行 被选中，再次单击取消选中*/
 	$('.table-sort tbody').on( 'click', 'tr', function () {
 		if ( $(this).hasClass('selected') ) {
@@ -116,57 +101,12 @@ $("#plsc").click(function(){
 function member_add(title,url,w,h){
 	layer_show(title,url,w,h);
 }
-/*车位-查看*/
-function member_show(title,url,id,w,h){
-	layer_show(title,url,w,h);
-}
-/*车位-停用*/
-function member_stop(obj,id){
-	layer.confirm('确认要停用吗？',function(index){
-		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
-		$(obj).remove();
-		layer.msg('已停用!',{icon: 5,time:1000});
-	});
-}
 
-/*用户-启用*/
-function member_start(obj,id){
-	layer.confirm('确认要启用吗？',function(index){
-		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
-		$(obj).remove();
-		layer.msg('已启用!',{icon: 6,time:1000});
-	});
-}
 /*用户-编辑*/
 function member_edit(title,url,id,w,h){
 	layer_show(title,url,w,h);
 }
-/*密码-修改*/
-function change_password(title,url,id,w,h){
-	//layer_show(title,url,w,h);	
 
-	layer.open({
-		type: 2,
-		area: ['600px', '270px'],
-		fix: false, //不固定
-		maxmin: true,
-		shade:0.4,
-		title: title,
-		content: url,
-		success: function(layero, index){
-            var body = layer.getChildFrame('body',index);//建立父子联系
-            var iframeWin = window[layero.find('iframe')[0]['name']];
-            // console.log(arr); //得到iframe页的body内容
-            // console.log(body.find('input'));
-            var inputList = body.find('input');
-            for(var j = 0; j< inputList.length; j++){
-                $(inputList[j]).val(arr[j]);
-            }
-        }
-	});
-}
 /*用户-删除*/
 function member_del(obj,id){
 	layer
@@ -246,13 +186,8 @@ function member_del(obj,id){
 	             $(_ename).html(arr[1]);
 	            
 	         }
-	 	});
-		 
-		 
+	 	}); 
 	 });
-	  
-	  
-	  
 	 //修改车位信息的超链接单击事件
 	 $(document).on("click",'.empedit',function()
 	 {
@@ -311,9 +246,7 @@ function member_del(obj,id){
 	            	 }
 	            	 else {
 	            		 $(inputList[j]).val(arr[j]); //arr[j] 数组中的值 赋值给  $(inputList[j]) 
-	            	 }
-	                
-	               
+	            	 }  
 
 	             }
 	         }
@@ -325,11 +258,7 @@ function member_del(obj,id){
 	  
   });
 </script>
-
-
-
 <script src="${pageContext.request.contextPath}/plugin/datatables/jquery.dataTables.min.js"></script>
-
 <script>
 
     var employee = {};
@@ -422,20 +351,12 @@ function member_del(obj,id){
         	{
         		//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
         		$(nTd).html(' <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a><a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
-        		//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
-        		//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
-        		//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");
+        		
         	}
         }
     ];
 
-     //导航按钮操作
-  /*   employee.buttons =
-            '<button class="btn btn-default"  type="button" id="reload" data-toggle="modal" data-target="#employeeModal">刷新表格</button>'+
-            '<button class="btn btn-primary" type="button" id="batchIds" style="margin-left:20px;" data-toggle="modal" >多选</button>'+
-            '<button class="btn btn-success" type="button" id="selection" style="margin-left:20px;" data-toggle="modal" >单选</button>'+
-            '<button class="btn btn-success" type="button" id="search" style="margin-left:20px;" data-toggle="modal" >查询</button>'+
-            '<button class="btn btn-success" type="button" id="clearSearch" style="margin-left:20px;" data-toggle="modal" >重置</button>'; */
+    
 
 </script>
 
@@ -722,7 +643,6 @@ function member_del(obj,id){
         var dttable =  $('#'+tableId).DataTable();
         dttable.destroy();
     }
-
 
 </script>
 
