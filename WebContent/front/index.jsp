@@ -879,93 +879,60 @@
 			<div class="m-service-tool">
 				<p class="tool-title">服务工具</p>
 				<h5>提供最全面的系统管理工具</h5>
-				<ul class="tool-list">
+				<ul class="tool-list" style="text-align: center;">
 					<li class="tool-xgmm">
 						<a onclick="serviceTool.modifiPwd()">
 							<img src="img/2.jpg">
 							<h3>我要报修</h3>
 						</a>
-						<a style="position: relative; top: -90px;">报修查询</a>
+						<a href="repair.jsp" style="position: relative; top: -90px;">维修记录</a>
 					</li>
 					<li class="tool-xkxz">
-						<a href="/club/newclub/servicetools/licence/download" target="_blank">
-							<span class="icon-xiazai icon-tool">
-                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span>
-							</span>
-							<h3>许可下载</h3>
-							<div>如损坏或误删除许可可通过此通道重新下载</div>
+						<a onclick="serviceTool.modifiPwd()">
+							<img src="img/2.jpg">
+							<h3>我要买房</h3>
 						</a>
+						<a href="room.jsp" style="position: relative; top: -90px;">查看房屋信息</a>
 					</li>
 					<li class="tool-qypt">
-						<a target="_blank" onclick="thirdPart(this)" data-href="https://api.kingdee.com/auth/user/onelogin?redirect_uri=http://cloud.kingdee.com/qy">
-							<span class="icon-pingtai icon-tool">
-                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span>
-							</span>
-							<h3>企业平台</h3>
-							<div>金蝶云企业平台提供在线企业注册及用户注册服务</div>
+						<a onclick="serviceTool.modifiPwd()">
+							<img src="img/2.jpg">
+							<h3>我要卖房</h3>
 						</a>
+						<a href="room.jsp" style="position: relative; top: -90px;">查看房屋信息</a>
 					</li>
 					<li class="tool-cpzc">
-						<a href="http://reg.kingdee.com/" target="_blank">
-							<span class="icon-cpzc icon-tool">
-                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span>
-							</span>
-							<h3>产品注册</h3>
-							<div>激活产品成为金蝶正式用户</div>
+						<a onclick="serviceTool.modifiPwd()">
+							<img src="img/2.jpg">
+							<h3>申请车位</h3>
 						</a>
+						<a href="parkingAll.jsp" style="position: relative; top: -90px;">查看所有车位</a>
 					</li>
 					<li class="item-last tool-cxzc">
-						<a href="http://reg.kingdee.com/rvc/user/rereg/rereginfo" target="_blank">
-							<span class="icon-cxzc icon-tool">
-                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span>
-							</span>
-							<h3>重新注册</h3>
-							<div>如更换中间层服务器或中间层服务器硬盘损坏需要进行重新注册</div>
+						<a onclick="serviceTool.modifiPwd()">
+							<img src="img/2.jpg">
+							<h3>商家入驻</h3>
 						</a>
+						<a href="business.jsp" style="position: relative; top: -90px;">查看商家</a>
 					</li>
 					<li class="tool-zhkey">
-						<a href="/club/newclub/servicetools/find/cdkey" target="_blank">
-							<span class="icon-cdkey icon-tool">
-                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span>
-							</span>
-							<h3>找回CDKEY</h3>
-							<div>CDKEY（序列号）是您购买产品的密码，此通道含邮箱重置</div>
+						<a onclick="serviceTool.modifiPwd()">
+							<img src="img/2.jpg">
+							<h3>购买小区</h3>
 						</a>
+						<a href="village.jsp" style="position: relative; top: -90px;">查看小区</a>
 					</li>
 					<li class="tool-zbyz">
-						<a onclick="serviceTool.validate()">
-							<span class="icon-yanzheng icon-tool">
-                <span class="path1"></span><span class="path2"></span><span class="path3"></span>
-							</span>
-							<h3>正版验证</h3>
-							<div>查询您所使用的金蝶产品是否正版</div>
+						<a onclick="serviceTool.modifiPwd()">
+							<img src="img/2.jpg">
+							<h3>缴费</h3>
 						</a>
+						<a style="position: relative; top: -90px;">缴费记录</a>
 					</li>
 					<li class="tool-xkhb">
-						<a onclick="serviceTool.licencePage()">
-							<span class="icon-xuke icon-tool">
-                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span>
-							</span>
-							<h3>许可合并与拆分</h3>
-							<div>支持多个产品合并使用同一个许可文件</div>
-						</a>
-					</li>
-					<li class="tool-ycxz">
-						<a target="_blank" href="http://csrc.kingdee.com">
-							<span class="icon-yuancheng icon-tool">
-                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span>
-							</span>
-							<h3>远程协助</h3>
-							<div>通过电脑界面演示指导或远程控制的方式提供服务支持</div>
-						</a>
-					</li>
-					<li class="item-last tool-dsf">
-						<a href="/club/newclub/servicetools/thirdParty" target="_blank">
-							<span class="icon-sanfang icon-tool">
-                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span>
-							</span>
-							<h3>第三方产品加站加模</h3>
-							<div>此功能仅适用于天翼和CTBS产品</div>
+						<a onclick="serviceTool.modifiPwd()">
+							<img src="img/2.jpg">
+							<h3>社区福利</h3>
 						</a>
 					</li>
 				</ul>

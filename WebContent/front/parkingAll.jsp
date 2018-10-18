@@ -244,10 +244,11 @@
 				</ul>
 			</div>
 		</div>
+		
 		<div class="m-new-dynamic">
-			<h1 style="font-size: 60px">所有小区！！</h1>
+			<h1 style="font-size: 60px">所有车位！！</h1>
 			<hr>
-			<ul class="new-dynamic-list" id="village">
+			<ul class="new-dynamic-list" id="park">
 				
 					
 			</ul>
@@ -364,14 +365,14 @@
 		  var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
 		  var flow = layui.flow;
 		  flow.load({
-		    elem: '#village' //指定列表容器
+		    elem: '#park' //指定列表容器
 		    ,isAuto: false
 		     ,isLazyimg: true
 		    ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
 		      var lis = [];
 		      //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
 		      $.ajax({
-   			 url:"${pageContext.request.contextPath}/FrontVillageInfoBeanServlet",
+   			 url:"${pageContext.request.contextPath}/FrontPackingServlet",
    			 type:"get",
    			 data:{
    				 "page":page
@@ -385,15 +386,15 @@
    			  
    			  console.log(result);
    			 var array = JSON.parse(result);
-		          layui.each(array, function(index, village){
+		          layui.each(array, function(index, park){
 		        	  var text = "";
 		        	  text += "<li class=\"new-dynamic-item\" style=\" width: 100%;\">";
 		        	  text += "					<img style=\"width: 250px; height: 200px; float: left;\" src=\"img/1.png\" alt=\"\">";
-		        	  text += "					<h3 style=\"display: inline; float: left; width: 900px; text-align: left;\">小区名字:"+village.villageName+"</h3>";
-		        	  text += "					<h6 style=\"float: left; width: 900px; text-align: left;\">建立时间："+village.setUpTime+"</h6>";
-		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">占地面积："+village.floorArea+"</h4>";
-		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">地点:"+village.location+"</h4>";
-		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">管理人电话："+village.phone+"</h4>";
+		        	  text += "					<h3 style=\"display: inline; float: left; width: 900px; text-align: left;\">车位号："+park.parkingId+"</h3>";
+		        	  text += "					<h6 style=\"float: left; width: 900px; text-align: left;\">车位类型："+park.ptName+"</h6>";
+		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">车位面积："+park.area+"</h4>";
+		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">车位状态:"+park.parkSRName+"</h4>";
+		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">车位所在地址："+park.villageName+"</h4>";
 		        	  text += "			    </li>";
 
 

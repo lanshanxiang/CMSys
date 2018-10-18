@@ -53,7 +53,7 @@ public class RoomBeanDaoImpl implements RoomBeanDao {
 	@Override
 	public PageData<RoomBean> selectAllRoomBean(int page, int pageSize) {
 		// TODO Auto-generated method stub
-		String sql= "";
+		String sql= "select * from tb_room";
 		return DBUtil.getPage(sql, page, pageSize, RoomBean.class);
 	}
 

@@ -244,38 +244,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="m-club-hover">
-			<ul class="hover-list">
-				<li class="hover-item w-272">
-					<div class="hover-num">
-						<ul class="hover-num-value hover-help-num" data-num="29738"></ul>
-						<span>&nbsp;条</span>
-					</div>
-					<div class="hover-field">官方知识</div>
-				</li>
-				<li class="hover-item w-318">
-					<div class="hover-num">
-						<ul class="hover-num-value hover-course-num" data-num="846"></ul>
-						<span>&nbsp;门</span>
-					</div>
-					<div class="hover-field">视频课程</div>
-				</li>
-				<li class="hover-item w-318">
-					<div class="hover-num">
-						<ul class="hover-num-value hover-post-num" data-num="700877"></ul>
-						<span>&nbsp;条</span>
-					</div>
-					<div class="hover-field">分享内容</div>
-				</li>
-				<li class="hover-item w-272">
-					<div class="hover-num">
-						<ul class="hover-num-value hover-specialist-num" data-num="218"></ul>
-						<span>&nbsp;位</span>
-					</div>
-					<div class="hover-field">产品专家</div>
-				</li>
-			</ul>
-		</div>
+		
 		<div class="m-new-dynamic">
 			<h1 style="font-size: 60px">社区活动列表！！</h1>
 			<hr>

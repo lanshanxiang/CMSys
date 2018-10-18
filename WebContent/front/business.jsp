@@ -244,10 +244,11 @@
 				</ul>
 			</div>
 		</div>
+		
 		<div class="m-new-dynamic">
-			<h1 style="font-size: 60px">所有小区！！</h1>
+			<h1 style="font-size: 60px">入驻商家列表！！</h1>
 			<hr>
-			<ul class="new-dynamic-list" id="village">
+			<ul class="new-dynamic-list" id="business">
 				
 					
 			</ul>
@@ -313,7 +314,7 @@
 					<div class="contact">
 						<span class="contact_me">联系我们</span> <span class="hotline">4008
 							836 836（服务）</span> <span class="hotline">4008 830 830（销售）</span> <span
-							class="hotline">4008 836 836-9（投诉）</span> <a id="business"
+							class="hotline">4008 836 836-9（投诉）</span> <a id="business1"
 							data-href="http://icrmcloud.kingdee.com:81/xt/opportunity/outSource/index.jsp"
 							target="_blank" needLogin>我有商机</a>
 						<!--<span class="hotline last">rm@kingdee.com（邮箱）</span>-->
@@ -364,14 +365,14 @@
 		  var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
 		  var flow = layui.flow;
 		  flow.load({
-		    elem: '#village' //指定列表容器
+		    elem: '#business' //指定列表容器
 		    ,isAuto: false
 		     ,isLazyimg: true
 		    ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
 		      var lis = [];
 		      //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
 		      $.ajax({
-   			 url:"${pageContext.request.contextPath}/FrontVillageInfoBeanServlet",
+   			 url:"${pageContext.request.contextPath}/FrontBusinessBeanServlet",
    			 type:"get",
    			 data:{
    				 "page":page
@@ -385,15 +386,14 @@
    			  
    			  console.log(result);
    			 var array = JSON.parse(result);
-		          layui.each(array, function(index, village){
+		          layui.each(array, function(index, business){
 		        	  var text = "";
 		        	  text += "<li class=\"new-dynamic-item\" style=\" width: 100%;\">";
 		        	  text += "					<img style=\"width: 250px; height: 200px; float: left;\" src=\"img/1.png\" alt=\"\">";
-		        	  text += "					<h3 style=\"display: inline; float: left; width: 900px; text-align: left;\">小区名字:"+village.villageName+"</h3>";
-		        	  text += "					<h6 style=\"float: left; width: 900px; text-align: left;\">建立时间："+village.setUpTime+"</h6>";
-		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">占地面积："+village.floorArea+"</h4>";
-		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">地点:"+village.location+"</h4>";
-		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">管理人电话："+village.phone+"</h4>";
+		        	  text += "					<h3 style=\"display: inline; float: left; width: 900px; text-align: left;\">商家名称:"+business.bName+"</h3>";
+		        	  text += "					<h6 style=\"float: left; width: 900px; text-align: left;\">入驻时间："+business.bDate+"</h6>";
+		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">商家联系人："+business.bPeopleName+"</h4>";
+		        	  text += "					<h4 style=\"display: inline; float: left; width: 900px; text-align: left;\">联系人电话:"+business.bTel+"</h4>";
 		        	  text += "			    </li>";
 
 
