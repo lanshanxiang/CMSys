@@ -4,11 +4,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<%
+<%-- <%
 	if (null == request.getSession().getAttribute("users")) {
 		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
-%>
+%> --%>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -54,7 +54,19 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名称：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="李友惠" placeholder="请输入用户名称" id="userName" name="userName">
+				<input type="text" class="input-text"  placeholder="请输入用户名称" id="userName" name="userName">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户密码：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="password" class="input-text"  placeholder="请输入用户密码" id="userPwd" name="userPwd"">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">确认密码：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="password" class="input-text"  placeholder="请输入确认密码" id="rUserPwd"" name="rUserPwd">
 			</div>
 		</div>
 		<div class="row cl">
@@ -72,13 +84,13 @@
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>年龄：</label>
+			<label class="form-label col-xs-4 col-sm-3">年龄：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text"  placeholder="请输入年龄" id="userAge" name="userAge">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>绑定住户编号：</label>
+			<label class="form-label col-xs-4 col-sm-3">绑定住户编号：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text"  placeholder="输入要绑定住户编号" id="tenementId" name="tenementId">
 			</div>
@@ -134,47 +146,101 @@ $(function(){
 		radioClass: 'iradio-blue',
 		increaseArea: '20%'
 	});
+	$("#userPwd").blur(function(){
+		if($(this).val()==""){
+			layer.msg(
+					'密码不能为空!',
+					{
+						icon : 1,
+						time : 1000
+					});
+		}
+	});
+	$("#rUserPwd").blur(function(){
+		if($(this).val()==""){
+			layer.msg(
+					'确认密码不能为空!',
+					{
+						icon : 1,
+						time : 1000
+					});
+		}else if($(this).val()!=$("#userPwd").val()){
+			layer.msg(
+					'两次密码不一致!',
+					{
+						icon : 1,
+						time : 1000
+					});
+		}
+	});
+	
 	$("#addBtn").click(function(){
-		console.log(111);
-		//ajax请求
-		$.ajax({
-			url : "${pageContext.request.contextPath}/TenementBeanServlet?op=addUser",//url地址
-			type : "post",
-			data : {
-				"userName" : $('#userName').val(),
-				"sex" : $("input[type='radio']:checked").val(),
-				"userAge" : $('#userAge').val(),
-				"tenementId" : $('#tenementId').val(),
-				"question" : $('#question').val(),
-				"answer" : $('#answer').val(),
-			},
-			//成功后执行的操作
-			success : function(data) {
-				//判断用户名密码是否正确，正确的话则跳到前台首页
-				if (data == "false") {
-					alert("失败");
-				} else {
-					layer
-					.msg(
-							'增加成功!',
+			if($("#userPwd").val()==""){
+				layer.msg(
+						'密码不能为空!',
+						{
+							icon : 1,
+							time : 1000
+						});
+			}else if($("#rUserPwd").val()==""){
+					layer.msg(
+							'确认密码不能为空!',
 							{
 								icon : 1,
 								time : 1000
-							},
-							function() {
-								//获取父层					
-								var index = parent.layer
-										.getFrameIndex(window.name);
-								//刷新父层					
-								parent.location
-										.reload();
-								//关闭弹出层			
-								parent.layer
-										.close(index);
 							});
-				}
+			}else if($("#rUserPwd").val()!=$("#userPwd").val()){
+					layer.msg(
+							'两次密码不一致!',
+							{
+								icon : 1,
+								time : 1000
+							});
+			}else{
+				//ajax请求
+				$.ajax({
+					url : "${pageContext.request.contextPath}/UserBeanServlet?op=addUser",//url地址
+					type : "post",
+					data : {
+						"userName" : $('#userName').val(),
+						"userPwd" : $('#userPwd').val(),
+						"userSex" : $("input[type='radio']:checked").val(),
+						"userAge" : $('#userAge').val(),
+						"tenementId" : $('#tenementId').val(),
+						"question" : $('#question').val(),
+						"answer" : $('#answer').val()
+					},
+					//成功后执行的操作
+					success : function(data) {
+						//判断用户名密码是否正确，正确的话则跳到前台首页
+						if (data == "false") {
+							alert("失败");
+						} else {
+							layer
+							.msg(
+									'增加成功!',
+									{
+										icon : 1,
+										time : 1000
+									},
+									function() {
+										//获取父层					
+										var index = parent.layer
+												.getFrameIndex(window.name);
+										//刷新父层					
+										parent.location
+												.reload();
+										//关闭弹出层			
+										parent.layer
+												.close(index);
+									});
+						}
+					}
+				});
 			}
-		});
+			
+		
+		
 	});
 	
 });

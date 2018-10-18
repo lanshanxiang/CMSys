@@ -42,14 +42,24 @@
 		<article class="cl pd-20">
 			<div class="text-c">
 				根据内容搜索相应的内容：<input type="checkbox" id="autoSearch"> <br>
-				          用户编号名称：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="2" id="col2_filter" style="width: 100px;"> 
-					用户账号：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="3" id="col3_filter" style="width: 100px;"> 
-					用户名称：<input type="text" class="form-controlSearch input-text Wdate" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})" placeholder="输入入职时间" data-column="4" id="col4_filter" style="width: 100px;">
-					 性别：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="5" id="col5_filter" style="width: 100px;">
-					年龄：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="6" id="col6_filter" style="width: 100px;">
-                                                 关联的住户编号：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="7" id="col7_filter" style="width: 100px;">
-					状态：<input type="text" class="form-controlSearch input-text " placeholder="" data-column="8" id="col8_filter" style="width: 100px;">
-					
+				用户编号：<input type="text" class="form-controlSearch input-text "
+					placeholder="" data-column="1" id="col1_filter"
+					style="width: 100px;"> 用户账号：<input type="text"
+					class="form-controlSearch input-text " placeholder=""
+					data-column="2" id="col2_filter" style="width: 100px;">
+				用户名称：<input type="text" class="form-controlSearch input-text "
+					data-column="3" id="col3_filter" style="width: 100px;"> 性别：<input
+					type="text" class="form-controlSearch input-text "
+					placeholder="男/女" data-column="4" id="col4_filter"
+					style="width: 100px;"> 年龄：<input type="text"
+					class="form-controlSearch input-text " placeholder=""
+					data-column="5" id="col5_filter" style="width: 100px;">
+				关联的住户编号：<input type="text" class="form-controlSearch input-text "
+					placeholder="" data-column="6" id="col6_filter"
+					style="width: 100px;"> 状态：<input type="text"
+					class="form-controlSearch input-text " placeholder=""
+					data-column="10" id="col8_filter" style="width: 100px;">
+
 			</div>
 			<div class="cl pd-5 bg-1 bk-gray mt-20">
 				<span class="l"><a href="javascript:;" id="plsc"
@@ -189,34 +199,10 @@
 		function member_edit(title, url, id, w, h) {
 			layer_show(title, url, w, h);
 		}
-		/*密码-修改*/
-		function change_password(title, url, id, w, h) {
-			//layer_show(title,url,w,h);	
-
-			layer.open({
-				type : 2,
-				area : [ '600px', '270px' ],
-				fix : false, //不固定
-				maxmin : true,
-				shade : 0.4,
-				title : title,
-				content : url,
-				success : function(layero, index) {
-					var body = layer.getChildFrame('body', index);//建立父子联系
-					var iframeWin = window[layero.find('iframe')[0]['name']];
-					// console.log(arr); //得到iframe页的body内容
-					// console.log(body.find('input'));
-					var inputList = body.find('input');
-					for (var j = 0; j < inputList.length; j++) {
-						$(inputList[j]).val(arr[j]);
-					}
-				}
-			});
-		}
+		
 		/*用户-删除*/
 		function member_del(obj, id) {
-			layer
-					.prompt(
+			layer.prompt(
 							{
 								title : '请输入删除口令，并确认',
 								formType : 1
@@ -273,34 +259,40 @@
 					function() {
 						var _this = $(this);
 						data = _this.parent().siblings();
-						var arr = [];
-						for (var i = 1; i < data.length; i++) {
-							// console.log($(data[i]).text());
-							arr.push($(data[i]).text());//拿到点击按钮的当前那条信息的内容 放到一个数组里
-						}
-						console.log(arr);
-						//change-em-password.html
+						var userId = $(data[1]).text();
 
 						layer
-								.open({
-									type : 2,
-									area : [ '600px', '270px' ],
-									fix : false, //不固定
-									maxmin : true,
-									shade : 0.4,
-									title : '修改密码',
-									content : 'village-update.jsp',
-									success : function(layero, index) {
-										var body = layer.getChildFrame('body',
-												index);//建立父子联系
-										var iframeWin = window[layero
-												.find('iframe')[0]['name']];
+						.confirm(
+								'确认要重置该用户的密码吗？',
+								function(index) {
+									$
+									.ajax({
+										url : "${pageContext.request.contextPath}/UserBeanServlet?op=resetPwd",//url地址
+										type : "post",
+										data : {
+											"userId" : userId
+										},
+										//成功后执行的操作
+										success : function(data) {
+											//判断用户名密码是否正确，正确的话则跳到前台首页
+											if (data == "false") {
+												layer.msg('重置失败');
+											} else {
+												layer
+														.msg(
+																'重置成功!',
+																{
+																	icon : 1,
+																	time : 1000
+																},
+																function() {
+																	eloancn.table.grid.ajax
+																			.reload();
 
-										var _ename = body.find('#ename');
-										console.log(_ename + "," + arr[1]);
-										$(_ename).html(arr[1]);
-
-									}
+																});
+											}
+										}
+									});
 								});
 
 					});
@@ -314,11 +306,14 @@
 						data = _this.parent().siblings(); //_this.parent() 得到td   siblings(); 当前行的其他td
 						var arr = [];
 						for (var i = 1; i < data.length; i++) { //1 从1开始 从姓名开始
-							arr.push($(data[i]).text());//每一个td中的内容() 放到一个数组里
+							
+							if(i!=7){
+								arr.push($(data[i]).text());//拿到点击按钮的当前那条信息的内容 放到一个数组里
+							}
+							
 						}
-						// console.log(arr);
-						//change-password.html
-
+						
+						
 						//打开新窗口 编辑窗口
 						layer
 								.open({
@@ -335,7 +330,7 @@
 										var iframeWin = window[layero
 												.find('iframe')[0]['name']];
 
-										var inputList = body.find('input'); //找所有的input
+										var inputList = body.find('.u'); //找所有的input
 										for (var j = 0; j < arr.length; j++) {
 											$(inputList[j]).val(arr[j]); //arr[j] 数组中的值 赋值给  $(inputList[j])
 										}
@@ -413,7 +408,8 @@
 			isTest : "是",
 			noTest : "否",
 			banned : "禁用",
-			enable : "启用"
+			enable : "启用",
+			
 		};
 
 		//初始化配置
@@ -444,30 +440,25 @@
 			uuid : ""
 		};
 
-		employee.status = [ {
-			"searchable" : false,
-			"orderable" : false,
-			"targets" : 0
-		},//第一行不进行排序和搜索
-		//        {"targets": [12], "visible": false},    //设置第13列隐藏/显示
-		//        {"width": "10%", "targets": [1]},  //设置第2列宽度
-		//        {
-		//            对第7列内容进行替换处理
-		//            targets: 6,
-		//            render: function (data, type, row, meta) {
-		//                if (data == "1") {
-		//                    return employee.table.sexMan;
-		//                }
-		//                if (data == "0") {
-		//                    return employee.table.sexWoman;
-		//                }
-		//            }
-		//        },
-		{
-			defaultContent : '',
-			targets : [ '_all' ]
-		} //所有列设置默认值为空字符串
-		];
+		 employee.status = [
+		        {"searchable": false, "orderable": false, "targets": 0},//第一行不进行排序和搜索
+//		        {"targets": [12], "visible": false},    //设置第13列隐藏/显示
+//		        {"width": "10%", "targets": [1]},  //设置第2列宽度
+		        {
+//		            对第7列内容进行替换处理
+	            targets: 10,
+	            render: function (data, type, row, meta) {
+	            	
+	                if (data == "1") {
+		                    return employee.property.enable;
+		                }
+		                if (data == "0") {
+		                    return employee.property.banned;
+		                }
+		            }
+		        },
+		        {defaultContent: '',targets: ['_all']} //所有列设置默认值为空字符串
+		    ];
 		//对应的返回数据格式
 
 		employee.filed = [
@@ -517,7 +508,7 @@
 						//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
 						$(nTd)
 								.html(
-										'<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="changepwd ml-5"  href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class=\"ml-5 \"del\"\" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
+										'<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="changepwd ml-5"  href="javascript:;" title="重置 密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class=\"ml-5 \"del\"\" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
 						//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
 						//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
 						//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");
@@ -525,11 +516,7 @@
 				} ];
 
 		//导航按钮操作
-		employee.buttons = '<button class="btn btn-default"  type="button" id="reload" data-toggle="modal" data-target="#employeeModal">刷新表格</button>'
-				+ '<button class="btn btn-primary" type="button" id="batchIds" style="margin-left:20px;" data-toggle="modal" >多选</button>'
-				+ '<button class="btn btn-success" type="button" id="selection" style="margin-left:20px;" data-toggle="modal" >单选</button>'
-				+ '<button class="btn btn-success" type="button" id="search" style="margin-left:20px;" data-toggle="modal" >查询</button>'
-				+ '<button class="btn btn-success" type="button" id="clearSearch" style="margin-left:20px;" data-toggle="modal" >重置</button>';
+		employee.buttons = '<button class="btn btn-default"  type="button" id="reload" data-toggle="modal" data-target="#employeeModal">刷新表格</button>';
 	</script>
 
 	<script>
@@ -777,18 +764,18 @@
 				// 上面是自带的语句,大概意思就是判断有没有选数据,没有的话进行提示
 				// 下面是选中数据后
 				// 创建一个数组commentId的数组进行存放选中行所对应要操作的commentId
-				var villageId = new Array();
+				var userId = new Array();
 				// 循环往数组里添加数据
 				for (var i = 0; i < uuids.length; i++) {
-					villageId.push(uuids[i]['villageId']);
+					userId.push(uuids[i]['userId']);
 				}
 				//这里进行ajax
 				$.ajax({
 					type : 'POST',
-					url : '${pageContext.request.contextPath}/VillageInfoBeanServlet?op=batchDelete',
+					url : '${pageContext.request.contextPath}/UserBeanServlet?op=deleteUserBeans',
 					// 传递数组
 					data : {
-						'villageId' : villageId
+						'userId' : userId
 					},
 					// 设置traditional属性: true后才能将集合传到servlet里面去
 					traditional : true,

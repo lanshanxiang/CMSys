@@ -73,4 +73,28 @@ public UserBean getUserByRegister(String register) {
 	return ubd.getUserByRegister(register);
 }
 
+@Override
+public boolean addUserByAdmin(UserBean user) {
+	// TODO Auto-generated method stub
+	return ubd.addUserByAdmin(user);
+}
+
+@Override
+public boolean updateState(int userId, int newState) {
+	// TODO Auto-generated method stub
+	return ubd.updateState(userId, newState);
+}
+
+@Override
+public boolean deleteUsers(String[] userId) {
+	// TODO Auto-generated method stub
+	return ubd.deleteUsers(userId);
+}
+
+@Override
+public boolean resetPwd(int userId,String userPwd) {
+	// TODO Auto-generated method stub
+	return ubd.resetPwd(userId,userPwd);
+}
+
 }
