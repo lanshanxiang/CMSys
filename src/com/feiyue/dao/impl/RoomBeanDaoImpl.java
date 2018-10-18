@@ -5,6 +5,7 @@ import java.util.List;
 import com.feiyue.dao.RoomBeanDao;
 import com.feiyue.entiy.RoomBean;
 import com.feiyue.util.DBUtil;
+import com.feiyue.util.PageData;
 /**
  * 房间管理的DAO实现类
  * @author Administrator
@@ -48,6 +49,12 @@ public class RoomBeanDaoImpl implements RoomBeanDao {
 	public boolean batchDeleteRoomBean(String sql) {
 		// TODO Auto-generated method stub
 		return DBUtil.execute(sql)>0;
+	}
+	@Override
+	public PageData<RoomBean> selectAllRoomBean(int page, int pageSize) {
+		// TODO Auto-generated method stub
+		String sql= "";
+		return DBUtil.getPage(sql, page, pageSize, RoomBean.class);
 	}
 
 }

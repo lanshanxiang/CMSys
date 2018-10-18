@@ -5,6 +5,7 @@ import java.util.List;
 import com.feiyue.dao.BusinessBeanDao;
 import com.feiyue.entiy.BusinessBean;
 import com.feiyue.util.DBUtil;
+import com.feiyue.util.PageData;
 
 public class BusinessBeanDaoImpl implements BusinessBeanDao {
 
@@ -60,6 +61,13 @@ public class BusinessBeanDaoImpl implements BusinessBeanDao {
 	public boolean batchDeleteBusinessBean(String sql) {
 		// TODO Auto-generated method stub
 		return DBUtil.execute(sql)>0;
+	}
+
+	@Override
+	public PageData<BusinessBean> selectAllBusinessBean(int page, int pageSize) {
+		// TODO Auto-generated method stub
+		String sql="";
+		return DBUtil.getPage(sql,page, pageSize, BusinessBean.class);
 	}
 
 }

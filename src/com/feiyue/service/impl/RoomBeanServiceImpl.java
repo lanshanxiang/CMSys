@@ -6,7 +6,12 @@ import com.feiyue.dao.RoomBeanDao;
 import com.feiyue.dao.impl.RoomBeanDaoImpl;
 import com.feiyue.entiy.RoomBean;
 import com.feiyue.service.RoomBeanService;
-
+import com.feiyue.util.PageData;
+/**
+ * 房屋信息服务类
+ * @author lansh
+ *
+ */
 public class RoomBeanServiceImpl implements RoomBeanService  {
 	RoomBeanDao rbd=new RoomBeanDaoImpl();
 
@@ -44,6 +49,12 @@ public class RoomBeanServiceImpl implements RoomBeanService  {
 	public boolean getBatchDeleteRoomBean(String sql) {
 		// TODO Auto-generated method stub
 		return rbd.batchDeleteRoomBean(sql);
+	}
+
+	@Override
+	public PageData<RoomBean> getselectAllRoomBean(int page, int pageSize) {
+		// TODO Auto-generated method stub
+		return rbd.selectAllRoomBean(page, pageSize);
 	}
 
 }

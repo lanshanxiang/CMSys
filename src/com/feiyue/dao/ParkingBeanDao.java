@@ -12,8 +12,6 @@ import com.feiyue.util.PageData;
 public interface ParkingBeanDao {
 	//得到全部车位信息
 	public List<ParkingBean> getAllParkingBean();
-	//前台我的车位全部信息
-	public PageData<ParkingBean> queryParkingBean(int page,int pageSize,int tenementId);
 	//增加车位
 	public boolean addParkingBean(ParkingBean pb);
     //修改指定车位
@@ -22,5 +20,9 @@ public interface ParkingBeanDao {
     public boolean deleteParkingBean(int pId);
     //批量删除
     public boolean batchDeleteParkingBean(String sql);
+    //前台我的车位全部信息
+  	public PageData<ParkingBean> queryParkingBean(int page,int pageSize,int tenementId);
+    //前台查询车位全部信息
+  	public PageData<ParkingBean> selectAllParkingBean(int page,int pageSize);
 
 }

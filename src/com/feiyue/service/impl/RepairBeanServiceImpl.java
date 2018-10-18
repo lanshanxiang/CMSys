@@ -6,6 +6,7 @@ import com.feiyue.dao.RepairBeanDao;
 import com.feiyue.dao.impl.RepairBeanDaoImpl;
 import com.feiyue.entiy.RepairBean;
 import com.feiyue.service.RepairBeanService;
+import com.feiyue.util.PageData;
 
 public class RepairBeanServiceImpl implements RepairBeanService {
 	RepairBeanDao rbd=new RepairBeanDaoImpl();
@@ -44,6 +45,12 @@ public class RepairBeanServiceImpl implements RepairBeanService {
 	public boolean getBatchDeleteRepairBean(String sql) {
 		// TODO Auto-generated method stub
 		return rbd.batchDeleteRepairBean(sql);
+	}
+
+	@Override
+	public PageData<RepairBean> getSelectAllRepairBean(int page, int pageSize) {
+		// TODO Auto-generated method stub
+		return rbd.selectAllRepairBean(page, pageSize);
 	}
 
 }

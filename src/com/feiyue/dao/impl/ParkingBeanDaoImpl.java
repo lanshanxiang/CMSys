@@ -64,4 +64,14 @@ public class ParkingBeanDaoImpl implements ParkingBeanDao {
 		return DBUtil.getPage(sql, page, pageSize, ParkingBean.class,tenementId);
 	}
 
+	/**
+	 * 前台查询所有车辆
+	 */
+	@Override
+	public PageData<ParkingBean> selectAllParkingBean(int page, int pageSize) {
+		// TODO Auto-generated method stub
+		String sql="";
+		return DBUtil.getPage(sql, page, pageSize, ParkingBean.class);
+	}
+
 }

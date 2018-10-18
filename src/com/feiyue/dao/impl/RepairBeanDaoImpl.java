@@ -5,7 +5,13 @@ import java.util.List;
 import com.feiyue.dao.RepairBeanDao;
 import com.feiyue.entiy.RepairBean;
 import com.feiyue.util.DBUtil;
+import com.feiyue.util.PageData;
 
+/**
+ * Dao实现类
+ * @author lansh
+ *
+ */
 public class RepairBeanDaoImpl implements RepairBeanDao {
 
 	@Override
@@ -46,6 +52,16 @@ public class RepairBeanDaoImpl implements RepairBeanDao {
 	public boolean batchDeleteRepairBean(String sql) {
 		// TODO Auto-generated method stub
 		return DBUtil.execute(sql)>0;
+	}
+
+	/**
+	 * 前台查询所有维修记录
+	 */
+	@Override
+	public PageData<RepairBean> selectAllRepairBean(int page, int pageSize) {
+		// TODO Auto-generated method stub
+		String sql ="select tb_repair.repairId,tb_report.equipment,tb_report.reportName,tb_report.isReport,tb_repair.injureReason,tb_repair.repairUnit,tb_repair.repairTime,tb_repair.prid,tb_repair.payment,tb_repair.extent from tb_repair,tb_report where tb_repair.reportId=tb_report.reportId ORDER BY tb_repair.repairTime DESC";
+		return DBUtil.getPage(sql, page, pageSize, RepairBean.class);
 	}
 
 }

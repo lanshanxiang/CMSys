@@ -67,8 +67,17 @@ public class FrontPackingServlet extends HttpServlet {
 			String str = gs.toJson(listPark.getData());
 			//将字符组传到页面
 			response.getWriter().print(str+listPark.getTotalPage());
+		}else if("".equals(op)) {
+			PageData<ParkingBean> listParkingBean = pbs.getSelectAllParkingBean(page, pageSize);
+			//将查询到的返回值存起来
+			request.setAttribute("listParkingBean", listParkingBean);
+			//创建一个Gson对象
+			Gson gs = new Gson();
+			//通过Gson对象的tojson方法将pd.getData（）转成字符串
+			String str = gs.toJson(listParkingBean.getData());
+			//将字符组传到页面
+			response.getWriter().print(str+listParkingBean.getTotalPage());
 		}
-//		request.getRequestDispatcher("front/index.jsp").forward(request, response);
 		
 	}
 

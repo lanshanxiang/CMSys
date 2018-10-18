@@ -15,8 +15,10 @@ public interface ParkingBeanService {
 	    public boolean updateParkingBean(ParkingBean pb);
 	    //删除指定车位
 	    public boolean deleteParkingBean(int pId);
-	  //批量删除
+	    //批量删除
 	     public boolean getBatchDeleteParkingBean(String sql);
-	     //查询用户车位
+	     //前台查询用户车位
 	     public PageData<ParkingBean> getQueryParkingBean(int page,int pageSize,int tenementId);
+	     //前台查询全部车位
+	     public PageData<ParkingBean> getSelectAllParkingBean(int page,int pageSize);
 }
