@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import com.feiyue.entiy.PaymentBean;
 import com.feiyue.service.PaymentService;
@@ -65,8 +66,8 @@ public class FrontPaymentServlet extends HttpServlet {
 
 		} else if ("myWater".equals(op)) {
 			int tenementId = 5;
-			double years = Double.parseDouble(request.getParameter("years"));
-			double months = Double.parseDouble(request.getParameter("months"));
+			String years = request.getParameter("years");
+			String months = request.getParameter("months");
 			// 使用Gson对象
 			Gson gson = new Gson();
 			// 得到费用信息
