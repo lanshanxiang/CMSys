@@ -471,7 +471,7 @@
 
 			//常规用法
 			laydate.render({
-				elem : '#sdate',
+				elem : '#adate',
 				type : 'datetime'
 			});
 		});

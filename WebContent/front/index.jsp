@@ -836,7 +836,7 @@
 							<a class="list-item" href="know.jsp">社区公告</a>
 						</li>
 						<li class="list-item">
-							<a class="list-item" href="addLost.jsp">失物招领</a>
+							<a class="list-item" href="addLost2.0.jsp">失物招领</a>
 						</li>
 						<li class="list-item">
 							<a class="list-item" href="active.jsp">社区活动</a>
