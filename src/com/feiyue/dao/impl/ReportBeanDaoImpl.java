@@ -83,4 +83,12 @@ public class ReportBeanDaoImpl implements ReportBeanDao {
 	}
 
 
+	@Override
+	public boolean addReportBeanNow(ReportBean rb) {
+		// TODO Auto-generated method stub
+		return DBUtil.execute("insert into tb_report values (null,?,?,?,now(),1,?)",
+				rb.getEquipment(),rb.getTenementId(),rb.getReportName(),rb.getExtent())>0;
+	}
+
+
 }

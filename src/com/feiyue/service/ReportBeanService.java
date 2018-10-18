@@ -29,4 +29,6 @@ public interface ReportBeanService {
     public boolean getUpdateReportBeanByIsReport(int isReport,int reportId);
   //批量删除
     public boolean getBatchDeleteReportBean(String sql);
+  //增加
+    public boolean getAddReportBeanNow(ReportBean rb);
 }
