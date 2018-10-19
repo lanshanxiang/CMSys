@@ -68,13 +68,51 @@ public class FrontPaymentServlet extends HttpServlet {
 			int tenementId = 5;
 			String years = request.getParameter("years");
 			String months = request.getParameter("months");
+			int costId=2;
 			// 使用Gson对象
 			Gson gson = new Gson();
 			// 得到费用信息
-			PageData<PaymentBean> pdWater = psi.getFrontPayment(tenementId, years, months, page, pageSize);
+			PageData<PaymentBean> pdWater = psi.getFrontPayment(tenementId,costId, years, months, page, pageSize);
 
 			// 把list转为Gson
 			String jsonStr = gson.toJson(pdWater.getData());
+			// 创建out对象
+			PrintWriter out = response.getWriter();
+			// 输出jsonStr
+			out.print(jsonStr+pdWater.getTotalPage());
+			// 关闭
+			out.close();
+		}else if ("myElectric".equals(op)) {
+			int tenementId = 5;
+			String years = request.getParameter("years");
+			String months = request.getParameter("months");
+			int costId=5;
+			// 使用Gson对象
+			Gson gson = new Gson();
+			// 得到费用信息
+			PageData<PaymentBean> pdWater = psi.getFrontPayment(tenementId,costId, years, months, page, pageSize);
+
+			// 把list转为Gson
+			String jsonStr = gson.toJson(pdWater.getData());
+			System.out.println(jsonStr);
+			// 创建out对象
+			PrintWriter out = response.getWriter();
+			// 输出jsonStr
+			out.print(jsonStr+pdWater.getTotalPage());
+			// 关闭
+			out.close();
+		}else if ("myOther".equals(op)) {
+			int tenementId = 5;
+			String years = request.getParameter("years");
+			String months = request.getParameter("months");
+			// 使用Gson对象
+			Gson gson = new Gson();
+			// 得到费用信息
+			PageData<PaymentBean> pdWater = psi.getFrontOtherPayment(tenementId, years, months, page, pageSize);
+
+			// 把list转为Gson
+			String jsonStr = gson.toJson(pdWater.getData());
+			System.out.println(jsonStr);
 			// 创建out对象
 			PrintWriter out = response.getWriter();
 			// 输出jsonStr

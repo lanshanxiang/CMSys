@@ -44,14 +44,13 @@ public class FrontReportBeanServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		// 设置返回的为json格式
-		response.setContentType("application/json");
 		// 获取op
 		String op = "";
 		if (request.getParameter("op") != null) {
 			op = request.getParameter("op");
 		}
-		Object obj = request.getSession().getAttribute("users");
-		if (obj != null) {
+//		Object obj = request.getSession().getAttribute("users");
+//		if (obj != null) {
 			if ("load".equals(op)) {
 				List<ReportBean> list = rbs.getQueryOnlyReportBean();
 				PrintWriter out = response.getWriter();
@@ -152,10 +151,10 @@ public class FrontReportBeanServlet extends HttpServlet {
 				// 将获取到的信息存储到实体类中
 				ReportBean rb = new ReportBean(equipment, tenementId, reportName, extent);
 				// 再进行数据库交互，返回一个boolean类型的值
-				boolean flag = rbs.getAddReportBean(rb);
+				boolean flag = rbs.getAddReportBeanNow(rb);
 				// 在将返回值返回回页面
+				System.out.println(flag);
 				PrintWriter out = response.getWriter();
-				out.print(flag);
 				out.close();
 				// 修改功能
 			} else if ("updateReportBean".equals(op)) {
@@ -217,10 +216,11 @@ public class FrontReportBeanServlet extends HttpServlet {
 				boolean flag = rbs.getBatchDeleteReportBean(sql);
 				out.print(flag);
 			}
-		} else {
-			request.getRequestDispatcher("back/login.jsp").forward(request, response);
 		}
-	}
+//	else {
+//			request.getRequestDispatcher("back/login.jsp").forward(request, response);
+//		}
+//	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

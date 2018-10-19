@@ -71,9 +71,14 @@ public class PaymentDaoImpl implements PaymentDao{
 		return DBUtil.execute(sql)>0;
 	}
 	@Override
-	public PageData<PaymentBean> getFrontPayment(int  tenementId,String years,String months,int page, int pageSize) {
+	public PageData<PaymentBean> getFrontPayment(int  tenementId,int costId,String years,String months,int page, int pageSize) {
 		// TODO Auto-generated method stub
-		return  DBUtil.getPage("SELECT tb_tenement.tenementName,tb_payment.years,tb_payment.months,tb_payment.lastHalf,tb_payment.thisMonth,tb_payment.quantity,tb_payment.payable,tb_payment.practical FROM tb_payment INNER JOIN tb_tenement ON tb_payment.tenementId = tb_tenement.tenementId WHERE tb_tenement.tenementId =? AND tb_payment.years LIKE ? AND tb_payment.months LIKE ?", page, pageSize, PaymentBean.class,tenementId,"%"+years+"%","%"+months+"%");
+		return  DBUtil.getPage("SELECT tb_tenement.tenementName,tb_payment.years,tb_payment.months,tb_payment.lastHalf,tb_payment.thisMonth,tb_payment.quantity,tb_payment.payable,tb_payment.practical FROM tb_payment INNER JOIN tb_tenement ON tb_payment.tenementId = tb_tenement.tenementId WHERE tb_tenement.tenementId =? AND tb_payment.costId = ? AND tb_payment.years LIKE ? AND tb_payment.months LIKE ?", page, pageSize, PaymentBean.class,tenementId,costId,"%"+years+"%","%"+months+"%");
+	}
+	@Override
+	public PageData<PaymentBean> getFrontOtherPayment(int tenementId, String years, String months, int page, int pageSize) {
+		// TODO Auto-generated method stub
+		return DBUtil.getPage("SELECT tb_tenement.tenementName, tb_payment.years, tb_payment.months, tb_payment.lastHalf, tb_payment.thisMonth, tb_cost.costName, tb_payment.quantity, tb_payment.payable, tb_payment.practical FROM tb_payment INNER JOIN tb_tenement ON tb_payment.tenementId = tb_tenement.tenementId INNER JOIN tb_cost ON tb_payment.costId = tb_cost.costId WHERE tb_payment.tenementId = ? AND tb_payment.costId NOT IN (2, 5) AND tb_payment.years LIKE ? AND tb_payment.months LIKE ? ", page, pageSize, PaymentBean.class,tenementId,"%"+years+"%","%"+months+"%");
 	}
 	
 }

@@ -23,7 +23,9 @@ public interface PaymentService {
 	    //查询
 	    public List<PaymentBean> selectPayment(String keyword);
 	    //批量删除
-	     public boolean getBatchDeletePayment(String sql);
-	     //前台查询
-	     public PageData<PaymentBean> getFrontPayment(int  tenementId,String years,String months,int page, int pageSize);
+	    public boolean getBatchDeletePayment(String sql);
+	    //前台查询
+	    public PageData<PaymentBean> getFrontPayment(int  tenementId,int costId,String years,String months,int page, int pageSize);
+	    //前台查询其他费用
+	    public PageData<PaymentBean> getFrontOtherPayment(int  tenementId,String years,String months,int page, int pageSize);
 }

@@ -59,8 +59,13 @@ public class PaymentServiceImpl implements PaymentService{
 	}
 
 	@Override
-	public PageData<PaymentBean> getFrontPayment(int tenementId, String years, String months, int page, int pageSize) {
+	public PageData<PaymentBean> getFrontPayment(int tenementId,int costId, String years, String months, int page, int pageSize) {
 		// TODO Auto-generated method stub
-		return pd.getFrontPayment(tenementId, years, months, page, pageSize);
+		return pd.getFrontPayment(tenementId,costId, years, months, page, pageSize);
+	}
+	@Override
+	public PageData<PaymentBean> getFrontOtherPayment(int tenementId, String years, String months, int page, int pageSize) {
+		// TODO Auto-generated method stub
+		return pd.getFrontOtherPayment(tenementId, years, months, page, pageSize);
 	}
 }

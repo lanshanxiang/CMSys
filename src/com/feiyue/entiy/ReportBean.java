@@ -2,13 +2,13 @@ package com.feiyue.entiy;
 
 
 public class ReportBean {
-	private int reportId;
+	private int reportId;//报修id
 	private String equipment; // 设备名称
-	private int tenementId;
+	private int tenementId;//住户id
 	private String reportName; // 报修人
 	private String reportTime; // 维修时间
 	private int isReport; // 是否维修
-	private String extent;
+	private String extent;//备注
 	private String tenementName;
 
 	
