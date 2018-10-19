@@ -48,19 +48,18 @@
 	<article class="cl pd-20">
 		<form class="form form-horizontal" id="form-member-add">
 
-            <div class="row cl" style="display: none;">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>编号：</label>
+          <div class="row cl">
+			
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="100"
+					<input type="hidden" class="input-text u" placeholder="" value=""
 						name="roomId" id="roomId">
 				</div>
-			</div>
+				</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>房间名称：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="B-1幢"
+					<input type="text" class="input-text u" placeholder="" value=""
 						name="roomName" id="roomName">
 				</div>
 			</div>
@@ -68,7 +67,7 @@
 				<label for="buildingId" class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>请选择楼房：</label>
 				<div class="formControls col-xs-4 col-sm-4">
-					<select class="form-control" name="buildingId" id="buildingId">
+					<select class="form-control u" name="buildingId" id="buildingId">
 
 					</select>
 				</div>
@@ -77,23 +76,23 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>单元号：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder=""
-						value="100" name="unitNum" id="unitNum">
+					<input type="text" class="input-text u" placeholder=""
+						value="" name="unitNum" id="unitNum">
 				</div>
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>房间简介：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder=""
-						value="10" name="eApartment" id="eApartment">
+					<input type="text" class="input-text u" placeholder=""
+						value="" name="eApartment" id="eApartment">
 				</div>
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>建筑面积：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="200"
+					<input type="text" class="input-text u" placeholder="如：250" value=""
 						name="buildArea" id="buildArea">
 				</div>
 			</div>
@@ -101,7 +100,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>使用面积：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="门面"
+					<input type="text" class="input-text u" placeholder="如：250" value=""
 						name="usingArea" id="usingArea">
 				</div>
 			</div>
@@ -109,7 +108,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>朝向：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="门面"
+					<input type="text" class="input-text u" placeholder="如：北" value=""
 						name="face" id="face">
 				</div>
 			</div>
@@ -117,7 +116,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>备注：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="100"
+					<input type="text" class="input-text u" placeholder="" value=""
 						name="extent" id="extent">
 				</div>
 			</div>
@@ -125,7 +124,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>户型：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="100"
+					<input type="text" class="input-text u" placeholder="如：两室一厅" value=""
 						name="housetype" id="housetype">
 				</div>
 			</div>
@@ -133,7 +132,7 @@
 				<label for="lease" class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>是否租赁：</label>
 				<div class="formControls col-xs-4 col-sm-4">
-					<select class="form-control" name="lease" id="lease">
+					<select class="form-control u" name="lease" id="lease">
                          <option value="已租赁">已租赁</option>
                          <option value="未租赁">未租赁</option>
 					</select>
@@ -143,14 +142,12 @@
 
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-					<input class="btn btn-primary radius" id="btnAdd" type="button"
+					<input class="btn btn-primary radius u" id="btnUpdate" type="button"
 						value="提交" />
 				</div>
 			</div>
 		</form>
 	</article>
-
-	<!--_footer 作为公共模版分离出去-->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/lib/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript"
@@ -177,7 +174,7 @@
 				radioClass : 'iradio-blue',
 				increaseArea : '20%'
 			});
-			$("#btnAdd")
+			$("#btnUpdate")
 					.click(
 							function() {
 								//ajax请求

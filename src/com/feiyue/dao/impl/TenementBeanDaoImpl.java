@@ -36,6 +36,7 @@ public class TenementBeanDaoImpl implements TenementBeanDao {
 	@Override
 	public boolean updateTenementBean(TenementBean t) {
 		// TODO Auto-generated method stub
+		//UPDATE tb_tenement SET tenementName = ?, sex = ?, aunit = ?, idCard = ?, mobilePhone = ?, email = ?, areStay = ?, nationality = ?, homeAddress = ?, residenceType = ?, maritalStatus = ?, userId = ?, STATUS = ?, remark = ? WHERE (tenementId = ?)
 		String sql = "UPDATE tb_tenement SET tenementName=?,sex=?,aunit=?,idCard=?,mobilePhone=?,email=?,areStay=?,nationality=?,homeAddress=?,residenceType=?,maritalStatus=?,userId=?,remark=? WHERE tenementId=?";
 		return DBUtil.execute(sql,t.getTenementName(),t.getSex(),t.getAunit(),t.getIdCard(),t.getMobilePhone(),t.getEmail(),t.getAreStay(),t.getNationality(),t.getHomeAddress(),t.getResidenceType(),t.getMaritalStatus(),t.getUserId(),t.getRemark(),t.getTenementId()) > 0;
 	}

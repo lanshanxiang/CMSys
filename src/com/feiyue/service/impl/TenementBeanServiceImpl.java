@@ -25,6 +25,7 @@ public class TenementBeanServiceImpl implements TenementBeanService{
 		// TODO Auto-generated method stub
 		return tbd.deleteTenementBean(tenementId);
 	}
+	//修改
 	@Override
 	public boolean updateTenementBean(TenementBean t) {
 		// TODO Auto-generated method stub

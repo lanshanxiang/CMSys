@@ -53,7 +53,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>房间名称：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="B101"
+					<input type="text" class="input-text" placeholder="" value=""
 						name="roomName" id="roomName">
 				</div>
 			</div>
@@ -71,7 +71,7 @@
 					class="c-red">*</span>单元号：</label>
 				<div class="formControls col-xs-8 col-sm-9">
 					<input type="text" class="input-text" placeholder=""
-						value="2单元" name="unitNum" id="unitNum">
+						value="" name="unitNum" id="unitNum">
 				</div>
 			</div>
 			<div class="row cl">
@@ -79,14 +79,14 @@
 					class="c-red">*</span>房间简介：</label>
 				<div class="formControls col-xs-8 col-sm-9">
 					<input type="text" class="input-text" placeholder=""
-						value="两室一厅" name="eApartment" id="eApartment">
+						value="" name="eApartment" id="eApartment">
 				</div>
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>建筑面积：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="200"
+					<input type="text" class="input-text" placeholder="如：250" value=""
 						name="buildArea" id="buildArea">
 				</div>
 			</div>
@@ -94,7 +94,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>使用面积：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="250"
+					<input type="text" class="input-text" placeholder="如：250" value=""
 						name="usingArea" id="usingArea">
 				</div>
 			</div>
@@ -102,7 +102,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>朝向：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="北"
+					<input type="text" class="input-text" placeholder="如：北" value=""
 						name="face" id="face">
 				</div>
 			</div>
@@ -110,7 +110,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>备注：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="这个房间不错"
+					<input type="text" class="input-text" placeholder="" value=""
 						name="extent" id="extent">
 				</div>
 			</div>
@@ -118,7 +118,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>户型：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="不详"
+					<input type="text" class="input-text" placeholder="如：两室一厅" value=""
 						name="housetype" id="housetype">
 				</div>
 			</div>

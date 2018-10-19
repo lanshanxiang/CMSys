@@ -26,7 +26,7 @@ public class RoomBeanServiceImpl implements RoomBeanService  {
 		// TODO Auto-generated method stub
 		return rbd.queryOnlyRoomBean();
 	}
-
+   //增加 
 	@Override
 	public boolean getAddRoomBean(RoomBean rb) {
 		// TODO Auto-generated method stub
