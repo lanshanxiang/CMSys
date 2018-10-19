@@ -15,6 +15,7 @@ import com.feiyue.entiy.UserBean;
 import com.feiyue.service.UserBeanService;
 import com.feiyue.service.impl.UserBeanServiceImpl;
 import com.feiyue.util.MD5Util;
+import com.feiyue.util.MessageSend;
 import com.feiyue.util.MyData;
 import com.google.gson.Gson;
 
@@ -103,28 +104,17 @@ public class UserBeanServlet extends HttpServlet {
 		//用户注册
 		else if("register".equals(op)) {
 		
-			Gson gson = new Gson();
-			String register=doGetRegisterNo();
+			
+			String register=request.getParameter("register");
 			String userPwd=MD5Util.getEncodeByMd5(request.getParameter("password"));
-			String question=request.getParameter("question");
-			String answer=request.getParameter("answer");
-			UserBean ub=new UserBean(userPwd, register, question, answer);
+			
+			UserBean ub=new UserBean(userPwd, register);
 			boolean flag=ubs.addUser(ub);
 			PrintWriter out = response.getWriter();
-			
-			if(flag==false) {
 				
-				out.print("");
+				out.print(flag);
 				
-			}else {
-				
-				out.print(register);
-				
-				
-			}
-			
-			
-			
+		
 		}
 		//管理员添加用户
 				else if("addUser".equals(op)) {
@@ -210,12 +200,13 @@ public class UserBeanServlet extends HttpServlet {
 		}
 	
 		//得到指定账号的密保问题
-		else if("getQuestion".equals(op)) {
+		else if("isHaveUser".equals(op)) {
 			UserBean user=null;
 			String register=request.getParameter("register");
-			
+			System.out.println(register);
 			user=ubs.getUserByRegister(register);
 			PrintWriter out = response.getWriter();
+			System.out.println(user);
 			if(user!=null) {
 				
 				//out.print(user.getQuestion());
@@ -223,6 +214,16 @@ public class UserBeanServlet extends HttpServlet {
 			}else {
 				out.print(false);
 			}
+			
+		}
+		//得到指定账号的密保问题
+		else if("getCode".equals(op)) {
+			PrintWriter out = response.getWriter();
+			String tel=request.getParameter("tel");
+			StringBuilder codestr=MessageSend.getTel(tel);
+			
+				out.print(codestr);
+			
 			
 		}
 	}

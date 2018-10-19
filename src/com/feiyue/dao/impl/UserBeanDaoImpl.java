@@ -53,8 +53,8 @@ public class UserBeanDaoImpl implements UserBeanDao {
 	@Override
 	public boolean addUser(UserBean user) {
 		// TODO Auto-generated method stub
-		String sql="insert into tb_user(register,userPwd,question,answer)VALUES(?,?,?,?)";
-		return DBUtil.execute(sql, user.getRegister(),user.getUserPwd(),user.getQuestion(),user.getAnswer())>0  ;
+		String sql="insert into tb_user(register,userPwd)VALUES(?,?)";
+		return DBUtil.execute(sql, user.getRegister(),user.getUserPwd())>0  ;
 	}
 
 	@Override

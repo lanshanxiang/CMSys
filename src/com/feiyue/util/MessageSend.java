@@ -129,9 +129,9 @@ public class MessageSend {
 		}
 	}
 	/**
-	 * 自己写的方法
+	 * 自己写的方法发送验证码到指定手机并 得到产生的验证码
 	 */
-	public void getTel(String tel) {
+	public static StringBuilder getTel(String tel) {
 		TreeMap<String, Object> requestData = new TreeMap<String, Object>();
 		/**
 		 * --------------------------------参数配置------------------------------------
@@ -154,7 +154,7 @@ public class MessageSend {
 		String appid = "28486";
 		String appkey = "95ea533e72149c7e980ae0c9ccb85b9e";
 		String to = tel;
-		String content = "【七里香】感谢您注册本网站，您的验证码是："+code;
+		String content = "【飞跃社区】感谢您注册本网站，您的验证码是："+code;
 		String signtype = "md5";
 		/**
 		 *  ---------------------------------------------------------------------------
@@ -205,13 +205,14 @@ public class MessageSend {
 			HttpEntity httpEntity = response.getEntity();
 			if(httpEntity != null){
 				String jsonStr = EntityUtils.toString(httpEntity, "UTF-8");
-				System.out.println(jsonStr);
+				
 			}
 		}catch(ClientProtocolException e){
 			e.printStackTrace();
 		}catch(IOException e){
 			e.printStackTrace();
 		}
+		return code;
 	}
 	
 	
@@ -240,9 +241,9 @@ public class MessageSend {
 		return null;
 	}
 	public static StringBuilder getCode() {
-		String str="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		StringBuilder sb=new StringBuilder(4);
-		for(int i=0;i<4;i++)
+		String str="0123456789";
+		StringBuilder sb=new StringBuilder(6);
+		for(int i=0;i<6;i++)
 		{
 		char ch=str.charAt(new Random().nextInt(str.length()));
 		sb.append(ch);

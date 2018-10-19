@@ -89,16 +89,14 @@ public class UserBean {
 	/**
 	 * 带参构造，用于注册
 	 * @param userPwd 密码
-	 * @param register 自动生成的账号
-	 * @param question 密保问题
-	 * @param answer 密保答案
+	 * @param register 账号
+	
 	 */
-	public UserBean(String userPwd, String register, String question, String answer) {
+	public UserBean(String userPwd, String register) {
 		super();
 		this.userPwd = userPwd;
 		this.register = register;
-		this.question = question;
-		this.answer = answer;
+		
 	}
 	
 	

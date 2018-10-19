@@ -17,11 +17,13 @@ import com.feiyue.util.MyData;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class PaymentServlet
+ * 处理费用的servlet类
+ * 
  */
 @WebServlet("/PaymentServlet")
 public class PaymentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	//定义PaymentServiceImpl实现类，获得对数据库费用表处理的各种方法
 	private PaymentService psi = new PaymentServiceImpl();
 
 	/**
@@ -29,29 +31,34 @@ public class PaymentServlet extends HttpServlet {
 	 */
 	public PaymentServlet() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see doGET方法 处理各种请求
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//设置相响应的编码格式
 		request.setCharacterEncoding("utf-8");
+		//设置响应的编码格式
 		response.setCharacterEncoding("utf-8");
+		//设置响应的返回的内用类型为application/json
 		response.setContentType("application/json");
-		String op = "";
+		String op = "";//op为页面请求的操作类型
+		//如果op不为空得到页面传来的op参数
 		if (request.getParameter("op") != null) {
 			op = request.getParameter("op");
 		}
+		//得到session的user对象  登录的用户信息的
 		Object obj = request.getSession().getAttribute("users");
 		if (obj != null) {
+			//页面加载时得到费用表中的信息
 			if ("load".equals(op)) {
 				List<PaymentBean> list = psi.getPayment();
 				PrintWriter out = response.getWriter();
-
+				//将得到的list集合转换为json对象传回请求的页面
 				Gson gson = new Gson();
 				out.println(gson.toJson(list));
 
@@ -72,10 +79,12 @@ public class PaymentServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				// 输出jsonStr
 				out.print(jsonStr);
-				System.out.println("[jsonStr]:" + jsonStr);
+				
 				// 关闭
 				out.close();
-			} else if ("before".equals(op)) {
+			}
+			//得到未缴费的费用记录 
+			else if ("before".equals(op)) {
 				// 使用Gson对象
 				Gson gson = new Gson();
 				// 得到费用信息
@@ -93,7 +102,9 @@ public class PaymentServlet extends HttpServlet {
 				System.out.println("[jsonStr]:" + jsonStr);
 				// 关闭
 				out.close();
-			} else if ("after".equals(op)) {
+			}
+			//得到已缴费的费用记录 
+			else if ("after".equals(op)) {
 				// 使用Gson对象
 				Gson gson = new Gson();
 				// 得到费用信息
@@ -111,7 +122,10 @@ public class PaymentServlet extends HttpServlet {
 				System.out.println("[jsonStr]:" + jsonStr);
 				// 关闭
 				out.close();
-			} else if ("add".equals(op)) {
+			}
+			//添加缴费记录 
+			else if ("add".equals(op)) {
+				//得到表单输入的数据
 				int tenementId = Integer.parseInt(request.getParameter("tenementId"));
 				String years = request.getParameter("years");
 				String months = request.getParameter("months");
@@ -123,17 +137,23 @@ public class PaymentServlet extends HttpServlet {
 				double practical = Double.parseDouble(request.getParameter("practical"));
 				String payDate = request.getParameter("payDate");
 				String extent = request.getParameter("extent");
+				//创建PaymentBean对象存储得到的数据
 				PaymentBean payment = new PaymentBean(tenementId, years, months, lastHalf, thisMonth, costId, quantity,
 						payable, practical, payDate, extent);
+				//调用方法，将新数据添加到数据库中
 				boolean flag = psi.addPayment(payment);
+				//返回给页面添加结果 true 添加成功 false 添加失败
 				PrintWriter out = response.getWriter();
 				if (flag) {
 					out.print(true);
 				} else {
 					out.print(false);
 				}
-
-			} else if ("update".equals(op)) {
+			
+				
+			} 
+			//更新费用信息
+			else if ("update".equals(op)) {
 				int payId = Integer.parseInt(request.getParameter("payId"));
 				int tenementId = Integer.parseInt(request.getParameter("tenementId"));
 				String years = request.getParameter("years");

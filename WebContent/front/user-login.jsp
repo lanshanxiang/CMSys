@@ -23,6 +23,7 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/lib/layer/2.4/layer.js"></script>
 <script>
+
 	(function() {
 		// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
 		if (!String.prototype.trim) {
@@ -59,6 +60,7 @@
 	})();
 
 	$(function() {
+		
 		$('#login #login-password').focus(function() {
 			$('.login-owl').addClass('password');
 		}).blur(function() {
@@ -86,7 +88,7 @@
 							$
 									.ajax({
 
-										url : "${pageContext.request.contextPath}/UserBeanServlet?op=getQuestion",//url地址
+										url : "${pageContext.request.contextPath}/UserBeanServlet?op=isHaveUser",//url地址
 										type : "post",
 										data : {
 											"register" : $('#forget-username')
@@ -96,17 +98,13 @@
 										//成功后执行的操作
 										success : function(data) {
 											//判断用户名密码是否正确，正确的话则跳到前台首页
-											console.log(data);
+											
 											if (data == false) {
 												layer.msg('该用户不存在!请重新输入', {
 													icon : 5,
 													time : 3000
 												});
-											} else {
-												console.log("234");
-												$("#forget-question")
-														.val("123");
-											}
+											} 
 										}
 									});
 
@@ -116,8 +114,8 @@
 	function goto_register() {
 		$("#register-password").val("");
 		$("#register-repassword").val("");
-		$("#register-question").val("");
-		$("#register-answer").val("");
+		$("#register-username").val("");
+		$("#register-code").val("");
 		$("#tab-2").prop("checked", true);
 	}
 
@@ -167,7 +165,7 @@
 			flag = true;
 		}
 		//用户名只能是15位以下的字母或数字
-		var regExp = new RegExp("^[a-zA-Z0-9_]{6,11}$");
+		var regExp = new RegExp("^[0-9]{11}$");
 		if (!regExp.test(username)) {
 			$.pt({
 				target : $("#login-username"),
@@ -175,7 +173,7 @@
 				align : 't',
 				width : 'auto',
 				height : 'auto',
-				content : "用户名必须为长度为6-11位的数字或字母"
+				content : "用户名必须为长度为11位的数字"
 			});
 			flag = true;
 		}
@@ -217,102 +215,179 @@
 			//return false;
 		}
 	}
+	var codestr;
+	//获取验证码
+	function getCode(){
+		$
+		.ajax({
+			url : "${pageContext.request.contextPath}/UserBeanServlet?op=getCode",//url地址
+			type : "post",
+			data : {
+				"tel" : $("#register-username").val()
+				
+			},
+			//成功后执行的操作
+			success : function(data) {
+				//判断用户名密码是否正确，正确的话则跳到前台首页
+				codestr=data;
+				
+			}
+		});
+
+		
+	}
 
 	//注册
 	function register() {
-		var password = $("#register-password").val(), repassword = $(
-				"#register-repassword").val(), question = $(
-				"#register-question").val(), answer = $("#register-answer")
-				.val(),
-
+		var password = $("#register-password").val(),
+		repassword = $("#register-repassword").val(), 
+		username = $("#register-username").val(), 
+		registercode = $("#register-code").val(),
+		
 		flag = false;
-
-		//判断用户名密密保是否为空
-		if (question == "") {
+		if(username==""){
 			$.pt({
-				target : $("#register-question"),
+				target : $("#register-username"),
 				position : 'r',
 				align : 't',
 				width : 'auto',
 				height : 'auto',
-				content : "密保问题不能为空"
+				content : "账号不能为空"
 			});
 			flag = true;
-		}
-		//判断用户名密密保是否为空
-		if (answer == "") {
-			$.pt({
-				target : $("#register-answer"),
-				position : 'r',
-				align : 't',
-				width : 'auto',
-				height : 'auto',
-				content : "答案不能为空"
-			});
-			flag = true;
-		}
-		if (password == "") {
-			$.pt({
-				target : $("#register-password"),
-				position : 'r',
-				align : 't',
-				width : 'auto',
-				height : 'auto',
-				content : "密码不能为空"
-			});
-			flag = true;
-		} else {
-			if (password != repassword) {
-				$.pt({
-					target : $("#register-repassword"),
-					position : 'r',
-					align : 't',
-					width : 'auto',
-					height : 'auto',
-					content : "两次输入的密码不一致"
-				});
-				flag = true;
-			}
-		}
+		}else{
+			
+			$
+			.ajax({
 
-		if (flag) {
-			return false;
-		} else {//注册
-
-			 $.ajax({
-				url : "${pageContext.request.contextPath}/UserBeanServlet?op=register",//url地址
+				url : "${pageContext.request.contextPath}/UserBeanServlet?op=isHaveUser",//url地址
 				type : "post",
 				data : {
-					"password" : password,
-					"question" : question,
-					"answer" : answer
+					"register" : username
 				},
-				datatype:"text",
 				//成功后执行的操作
 				success : function(data) {
-					//判断用户名密码是否正确，正确的话则跳到前台首页
-				
-					 if (data == false) {
-						layer.msg('注册失败!请确认信息是否填写有误',{
+					
+					if (data == "true") {
+						layer.msg('该账号已被注册过!请重新输入', {
 							icon : 5,
-							time : 1000
+							time : 3000
 						});
-					} else {
-						 layer.msg('注册成功!您的账号为：'+data,{
-											icon : 3,
-											time : 1000
-						},
-						function() {
-							goto_login(data);
+						flag=true;
+					} else{
+						
+						if (password == "") {
+							$.pt({
+								target : $("#register-password"),
+								position : 'r',
+								align : 't',
+								width : 'auto',
+								height : 'auto',
+								content : "密码不能为空"
+							});
+							flag = true;
+						} else {
+							if (password != repassword) {
+								$.pt({
+									target : $("#register-repassword"),
+									position : 'r',
+									align : 't',
+									width : 'auto',
+									height : 'auto',
+									content : "两次输入的密码不一致"
+								});
+								flag = true;
+							}else{
 								
+								//判断验证码是否为空
+								if (registercode == "") {
+									$.pt({
+										target : $("#register-code"),
+										position : 'r',
+										align : 't',
+										width : 'auto',
+										height : 'auto',
+										content : "验证码不能为空"
+									});
+									flag = true;
+								}else{
+									//判断验证码是否为空
+									if (registercode != codestr) {
+										$.pt({
+											target : $("#register-code"),
+											position : 'r',
+											align : 't',
+											width : 'auto',
+											height : 'auto',
+											content : "验证码不正确"
+										});
+										flag = true;
+									}else{
+										
 
-						 }); 
-					} 
-				}//success
+										if (flag) {
+											return false;
+										} else {//注册
+
+											 $.ajax({
+												url : "${pageContext.request.contextPath}/UserBeanServlet?op=register",//url地址
+												type : "post",
+												data : {
+													"password" : password,
+													"register" : username
+													
+												},
+												datatype:"text",
+												//成功后执行的操作
+												success : function(data) {
+													//判断用户名密码是否正确，正确的话则跳到前台首页
+												
+													 if (data == false) {
+														layer.msg('注册失败!请确认信息是否填写有误',{
+															icon : 5,
+															time : 1000
+														});
+													} else {
+														 layer.msg('注册成功!',{
+																			icon : 3,
+																			time : 1000
+														},
+														function() {
+															goto_login(username);
+																
+
+														 }); 
+													} 
+												}//success
+											});
+											
+
+										}
+										
+									}
+									
+								}
+								
+							}
+							
+							
+						}
+						
+						
+					}
+					
+					
+				}
 			});
 			
-
+			
+			
 		}
+		
+		
+		
+		
+		
 	}
 
 	//重置密码
@@ -356,7 +431,7 @@
 			flag = true;
 		}
 		//用户名只能是15位以下的字母或数字
-		var regExp = new RegExp("^[a-zA-Z0-9_]{10}$");
+		var regExp = new RegExp("^[0-9]{11}$");
 		if (!regExp.test(username)) {
 			$.pt({
 				target : $("#forget-username"),
@@ -364,7 +439,7 @@
 				align : 't',
 				width : 'auto',
 				height : 'auto',
-				content : "用户名为6-11位的数字或字母"
+				content : "请输入长度为11位的手机号"
 			});
 			flag = true;
 		}
@@ -486,7 +561,7 @@ body {
 						<section class="content"> <span
 							class="input input--hideo"> <input
 							class="input__field input__field--hideo" type="text"
-							id="login-username" autocomplete="off" placeholder="请输入账号(10位数字)"
+							id="login-username" autocomplete="off" placeholder="请输入手机号"
 							tabindex="1" maxlength="10" /> <label
 							class="input__label input__label--hideo" for="login-username">
 								<i class="fa fa-fw fa-user icon icon--hideo"></i> <span
@@ -577,45 +652,45 @@ body {
 						</div>
 					</div>
 					<div class="pad input-container">
-						<section class="content"> <span
-							class="input input--hideo"> <input
-							class="input__field input__field--hideo" type="password"
-							id="register-password" placeholder="请输入密码" maxlength="15" /> <label
-							class="input__label input__label--hideo" for="register-password">
-								<i class="fa fa-fw fa-lock icon icon--hideo"></i> <span
-								class="input__label-content input__label-content--hideo"></span>
-						</label>
-						</span> <span class="input input--hideo"> <input
-							class="input__field input__field--hideo" type="password"
-							id="register-repassword" placeholder="请确认密码" maxlength="15" /> <label
-							class="input__label input__label--hideo"
-							for="register-repassword"> <i
-								class="fa fa-fw fa-lock icon icon--hideo"></i> <span
-								class="input__label-content input__label-content--hideo"></span>
-						</label>
-						</span> <span class="input input--hideo"> <input
-							class="input__field input__field--hideo" type="text"
-							id="register-question" autocomplete="off" placeholder="请输入密保问题" />
-							<label class="input__label input__label--hideo"
-							for="register-question"> <i
-								class="fa fa-fw fa-wifi icon icon--hideo"></i> <span
-								class="input__label-content input__label-content--hideo"></span>
-						</label>
-						</span> <span class="input input--hideo"> <input
-							class="input__field input__field--hideo" type="text"
-							id="register-answer" autocomplete="off" placeholder="请输入密保答案" />
-							<label class="input__label input__label--hideo"
-							for="register-answer"> <i
-								class="fa fa-fw fa-wifi icon icon--hideo"></i> <span
-								class="input__label-content input__label-content--hideo"></span>
-						</label>
-						</span> </section>
+						<section class="content">
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" type="text" id="register-username" 
+									autocomplete="off" placeholder="请输入用户名" maxlength="15"/>
+								<label class="input__label input__label--hideo" for="register-username">
+									<i class="fa fa-fw fa-user icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" type="password" id="register-password" placeholder="请输入密码" maxlength="15"/>
+								<label class="input__label input__label--hideo" for="register-password">
+									<i class="fa fa-fw fa-lock icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" type="password" id="register-repassword" placeholder="请确认密码" maxlength="15"/>
+								<label class="input__label input__label--hideo" for="register-repassword">
+									<i class="fa fa-fw fa-lock icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+							<span class="input input--hideo" style="width: 200px; float: left;">
+								<input class="input__field input__field--hideo" type="text" id="register-code"  autocomplete="off" style="" placeholder="请输入注册码"/>
+								<label  class="input__label input__label--hideo" for="register-code">
+									<i class="fa fa-fw fa-wifi icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo" ></span>
+								</label>	
+							</span>
+							<span class="input--hideo" style="position: relative; top: 18px;">
+								<input class="btn btn-info" type="button" onClick="getCode()" value="获取验证码" style="color:white;"/>
+							</span>
+						</section>
 					</div>
 					<div class="form-actions">
-						<a class="btn pull-left btn-link text-muted"
-							onClick="goto_login()">返回登录</a> <input class="btn btn-primary"
-							type="button" onClick="register()" value="注册"
-							style="color: white;" />
+						<a class="btn pull-left btn-link text-muted" onClick="goto_login()">返回登录</a>
+						<input class="btn btn-primary" type="button" onClick="register()" value="注册" 
+							style="color:white;"/>
 					</div>
 				</form>
 			</div>
