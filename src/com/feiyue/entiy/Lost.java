@@ -4,23 +4,13 @@ package com.feiyue.entiy;
 public class Lost {
 	   
 	
-      private  int lostId;
-     
-	
-      private  String lostGood;
-     
-	
-      private  String lostDate;
-     
-	
-      private  String lostArea;
-     
-	
-      private  String lostName;
-     
-	
-      private  String lostTel;
-      private  String sDate;
+      private  int lostId;//编号   
+      private  String lostGood;//捡到物品  
+      private  String lostDate;//捡到时间 
+      private  String lostArea;//捡到地址
+      private  String lostName;//捡到者
+      private  String lostTel;//捡到者电话
+      private  String sDate;  //提交日期
      
       
       public Lost(String lostGood, String lostDate, String lostArea, String lostName, String lostTel) {

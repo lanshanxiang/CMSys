@@ -54,6 +54,16 @@ public class NoticeBeanDaoImpl implements NoticeBeanDao{
 		return (List<NoticeBean>) DBUtil.select("SELECT noticeId , titles ,contents,tb_noticetype.typeId,releaseTime,tb_notice.extent,typeName from tb_notice,tb_noticetype where  tb_notice.typeId= tb_noticetype.typeId and NoticeName=? ", NoticeBean.class,"%"+keyword+"%");
 	}
 	
+	/**
+	 * 前台查询所有公告
+	 */
+	@Override
+	public PageData<NoticeBean> selectAllNotice(int page, int pageSize) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * from tb_notice";
+		return DBUtil.getPage(sql, page, pageSize, NoticeBean.class);
+	}
+	
 	
 	
 	

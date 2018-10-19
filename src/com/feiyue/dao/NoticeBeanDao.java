@@ -22,6 +22,8 @@ public interface NoticeBeanDao {
 	    public PageData<NoticeBean> queryNoticeByPage(int page, int pageSize, String keywords);
 	    //查询
 	    public List<NoticeBean> selectNotice(String keyword);
+	    //前台查询所有公告
+	    public PageData<NoticeBean> selectAllNotice(int page, int pageSize);
 	    
 	   
 	

@@ -52,5 +52,11 @@ public class NoticeBeanServiceImpl implements NoticeBeanService {
 			// TODO Auto-generated method stub
 			return nbd.selectNotice(keyword);
 		}
+
+		@Override
+		public PageData<NoticeBean> getSelectAllNotice(int page, int pageSize) {
+			// TODO Auto-generated method stub
+			return nbd.selectAllNotice(page, pageSize);
+		}
 	
 }

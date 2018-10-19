@@ -23,4 +23,6 @@ public interface NoticeBeanService {
     public PageData<NoticeBean> queryNoticeByPage(int page, int pageSize, String keywords);
     //查询
     public List<NoticeBean> selectNotice(String keyword);
+    //前台查询所有的公告
+    public PageData<NoticeBean> getSelectAllNotice(int page, int pageSize);
 }
