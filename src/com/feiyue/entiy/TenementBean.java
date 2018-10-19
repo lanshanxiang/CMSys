@@ -204,6 +204,26 @@ public class TenementBean {
 	}
 	
 	
+	public TenementBean(String tenementName, String sex, String aunit, String idCard, String mobilePhone, String email,
+			String areStay, String nationality, String homeAddress, String residenceType, String maritalStatus,
+			int userId, int status, String remark) {
+		super();
+		this.tenementName = tenementName;
+		this.sex = sex;
+		this.aunit = aunit;
+		this.idCard = idCard;
+		this.mobilePhone = mobilePhone;
+		this.email = email;
+		this.areStay = areStay;
+		this.nationality = nationality;
+		this.homeAddress = homeAddress;
+		this.residenceType = residenceType;
+		this.maritalStatus = maritalStatus;
+		this.userId = userId;
+		this.status = status;
+		this.remark = remark;
+	}
+
 	/**
 	 * 增加居民的构造函数
 	 * @param tenementName
@@ -258,6 +278,27 @@ public class TenementBean {
 		this.maritalStatus = maritalStatus;
 		this.userId = userId;
 		this.remark = remark;
+	}
+
+	public TenementBean(String tenementName, String sex, String aunit, String idCard, String mobilePhone, String email,
+			String areStay, String nationality, String homeAddress, String residenceType, String maritalStatus,
+			int userId, int status, String remark, int tenementId) {
+		super();
+		this.tenementName = tenementName;
+		this.sex = sex;
+		this.aunit = aunit;
+		this.idCard = idCard;
+		this.mobilePhone = mobilePhone;
+		this.email = email;
+		this.areStay = areStay;
+		this.nationality = nationality;
+		this.homeAddress = homeAddress;
+		this.residenceType = residenceType;
+		this.maritalStatus = maritalStatus;
+		this.userId = userId;
+		this.status = status;
+		this.remark = remark;
+		this.tenementId = tenementId;
 	}
 
 	/**

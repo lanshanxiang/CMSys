@@ -56,7 +56,7 @@
 				<span class="l"><a href="javascript:;" id="plsc"
 					class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i>
 						批量删除</a> <a href="javascript:;"
-					onclick="member_add('添加用户','house-building-add.jsp','','510')"
+					onclick="member_add('添加楼房','house-building-add.jsp','','510')"
 					class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i>
 						添加楼房</a></span> <span class="r">共有数据：<strong><span
 						id="datarowcount"></span></strong> 条
@@ -241,7 +241,7 @@
 									fix : false, //不固定
 									maxmin : true,
 									shade : 0.4,
-									title : '编辑小区信息', //显示的标题
+									title : '编辑楼房信息', //显示的标题
 									content : 'house-building-update.jsp', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
 									success : function(layero, index) { //success可以不写
 										var body = layer.getChildFrame('body',

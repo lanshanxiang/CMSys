@@ -110,8 +110,7 @@ public class RoomBeanServlet extends HttpServlet {
 				String lease = request.getParameter("lease");
 				int roomId = Integer.parseInt(request.getParameter("roomId"));
 				// 将获取到的信息存储到实体类中
-				RoomBean rb = new RoomBean(roomName, buildingId, unitNum, eApartment, buildArea, usingArea, face,
-						extent, housetype, lease, roomId);
+				RoomBean rb = new RoomBean(roomName, buildingId, unitNum, eApartment, buildArea, usingArea, face, extent, housetype, lease, roomId);
 				// 再进行数据库交互，返回一个boolean类型的值
 				boolean flag = rbs.getUpdateRoomBean(rb);
 				// 在将返回值返回回页面

@@ -28,7 +28,8 @@ public class RoomBeanDaoImpl implements RoomBeanDao {
 	@Override
 	public boolean addRoomBean(RoomBean rb) {
 		// TODO Auto-generated method stub
-		return DBUtil.execute("insert into tb_room values (null,?,?,?,?,?,?,?,?,?,?)",
+		//INSERT INTO tb_room  VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+		return DBUtil.execute("INSERT INTO tb_room(roomId, roomName, buildingId, unitNum, eApartment, buildArea, usingArea, face, extent, housetype, lease)  VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 				rb.getRoomName(),rb.getBuildingId(),rb.getUnitNum(),rb.geteApartment(),rb.getBuildArea(),rb.getUsingArea(),rb.getFace(),rb.getExtent(),rb.getHousetype(),rb.getLease())>0;
 	}
     //修改

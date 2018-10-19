@@ -54,7 +54,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>姓名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="李友惠" placeholder="请输入业主姓名" id="tenementName" name="tenementName">
+				<input type="text" class="input-text" value="" placeholder="请输入业主姓名" id="tenementName" name="tenementName">
 			</div>
 		</div>
 		<div class="row cl">
@@ -77,25 +77,25 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>工作单位：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="4399公司" placeholder="" id="aunit" name="aunit">
+				<input type="text" class="input-text" value="" placeholder="" id="aunit" name="aunit">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>身份证号码：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="350624199712123810" placeholder="" id="idCard" name="idCard">
+				<input type="text" class="input-text" value="" placeholder="" id="idCard" name="idCard">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机号码：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="17720153123" placeholder="" id="mobilePhone" name="mobilePhone">
+				<input type="text" class="input-text" value="" placeholder="" id="mobilePhone" name="mobilePhone">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邮箱：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="177@qq.com" placeholder="" id="email" name="email">
+				<input type="text" class="input-text" value="" placeholder="" id="email" name="email">
 			</div>
 		</div>
 		<!-- <div class="row cl">
@@ -136,7 +136,7 @@
 				<input type="text" class="input-text" value="常住" placeholder="" id="residenceType" name="residenceType">
 			</div>
 		</div>
-		<div class="row cl">
+		<!-- <div class="row cl">
 				<label for="userId" class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>请选择用户：</label>
 				<div class="formControls col-xs-4 col-sm-4">
@@ -144,7 +144,7 @@
 
 					</select>
 				</div>
-			</div>
+			</div> -->
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3">备注：</label>
 			<div class="formControls col-xs-8 col-sm-9">

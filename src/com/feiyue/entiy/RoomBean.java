@@ -19,7 +19,7 @@ public class RoomBean {
 	private String lease;//是否租赁
 	private String buildingName; //楼房名称
 	
-	
+
 	public RoomBean(String roomName, int buildingId, String unitNum, String eApartment, double buildArea,
 			double usingArea, String face, String extent, String housetype, String lease,int roomId) {
 		super();
