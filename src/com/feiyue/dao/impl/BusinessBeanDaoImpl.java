@@ -66,7 +66,7 @@ public class BusinessBeanDaoImpl implements BusinessBeanDao {
 	@Override
 	public PageData<BusinessBean> selectAllBusinessBean(int page, int pageSize) {
 		// TODO Auto-generated method stub
-		String sql="select * from tb_business";
+		String sql="select * from tb_business where bState = 0";
 		return DBUtil.getPage(sql,page, pageSize, BusinessBean.class);
 	}
 

@@ -59,7 +59,7 @@ public class FrontBusinessBeanServlet extends HttpServlet {
 		if (null != request.getParameter("pageSize")) {
 			pageSize = Integer.parseInt(request.getParameter("pageSize"));
 		}
-		// 查询所有！ 流加载
+		// 查询所有！ 流加载,前台查询所有已入住商家
 		if ("".equals(op)) {
 			PageData<BusinessBean> listBusinessBean = bbs.getSelectAllBusinessBean(page, pageSize);
 			// 将查询到的返回值存起来

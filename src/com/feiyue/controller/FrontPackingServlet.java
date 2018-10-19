@@ -55,7 +55,7 @@ public class FrontPackingServlet extends HttpServlet {
 		}if(null!=request.getParameter("pageSize")) {
 			pageSize=Integer.parseInt(request.getParameter("pageSize"));
 		}
-		//查询所有！ 流加载
+		//查询所有！ 流加载 ,前台查询我的车位
 		if("".equals(op)) {
 			//int tenementId = Integer.parseInt(request.getParameter("tenementId"));
 			PageData<ParkingBean> listPark = pbs.getQueryParkingBean(page, pageSize, 10);
@@ -67,7 +67,7 @@ public class FrontPackingServlet extends HttpServlet {
 			String str = gs.toJson(listPark.getData());
 			//将字符组传到页面
 			response.getWriter().print(str+listPark.getTotalPage());
-		}else if("".equals(op)) {
+		}else if("selectAllParking".equals(op)) {
 			PageData<ParkingBean> listParkingBean = pbs.getSelectAllParkingBean(page, pageSize);
 			//将查询到的返回值存起来
 			request.setAttribute("listParkingBean", listParkingBean);
