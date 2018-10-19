@@ -30,4 +30,6 @@ public interface ReportBeanDao {
     public boolean deleteReportBean(int reportId);
     //批量删除
     public boolean batchDeleteReportBean(String sql);
+  //增加操作（当前时间）
+    public boolean addReportBeanNow(ReportBean rb);
 }

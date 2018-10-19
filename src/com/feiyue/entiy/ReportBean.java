@@ -25,6 +25,14 @@ public class ReportBean {
 		this.reportId = reportId;
 	}
 	
+	public ReportBean(String equipment, int tenementId, String reportName, String extent) {
+		super();
+		this.equipment = equipment;
+		this.tenementId = tenementId;
+		this.reportName = reportName;
+		this.extent = extent;
+	}
+	
 	public ReportBean(String equipment, int tenementId, String reportName, String reportTime, String extent) {
 		super();
 		this.equipment = equipment;
