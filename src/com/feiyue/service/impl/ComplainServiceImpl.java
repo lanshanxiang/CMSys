@@ -43,5 +43,10 @@ public class ComplainServiceImpl implements ComplainService {
 		// TODO Auto-generated method stub
 		return cd.batchDeleteComplain(sql);
 	}
+	@Override
+	public boolean addFrontComplain(ComplainBean c) {
+		// TODO Auto-generated method stub
+		return cd.addFrontComplain(c);
+	}
 
 }

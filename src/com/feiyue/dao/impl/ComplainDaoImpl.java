@@ -40,5 +40,10 @@ public class ComplainDaoImpl implements ComplainDao {
 		// TODO Auto-generated method stub
 		return DBUtil.execute(sql)>0;
 	}
+	@Override
+	public boolean addFrontComplain(ComplainBean c) {
+		// TODO Auto-generated method stub
+		return  DBUtil.execute("INSERT INTO tb_complain VALUES (null, ?,?,NOW(),?,?,?)", c.getConplyName(),c.getConplyQuestion(),c.getConplyPhone(),c.getConplyStatus(),c.getConplyRemark())>0;
+	}
 
 }

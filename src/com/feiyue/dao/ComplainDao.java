@@ -20,4 +20,6 @@ public interface ComplainDao {
      public boolean deleteComplain(int conplyId);
      //批量删除
      public boolean batchDeleteComplain(String sql);
+     //前台添加(固定时间)
+     public boolean addFrontComplain(ComplainBean c);
 }
