@@ -170,7 +170,7 @@
 								<a href="index.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> 快速导航</span> <i class="fa fa-bars" aria-hidden="true"></i> </a>
 								<ul class="dropdown-menu dropdownhover-bottom all-open" role="menu">
 									<li class="dropdown">
-										<a href="index.html"><img src="assets/images/menu-icon1.png" alt="menu-icon1" /> 我要报修 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+										<a href="addReport.jsp"><img src="assets/images/menu-icon1.png" alt="menu-icon1" /> 我要报修 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 									</li>
 									<li class="dropdown">
 										<a href="#"><img src="assets/images/menu-icon2.png" alt="menu-icon2" /> 我要买房 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
@@ -206,7 +206,7 @@
 									</li>
 									
 									<li>
-										<a href="#"><img src="assets/images/menu-icon11.png" alt="menu-icon2" />申请失物招领</a>
+										<a href="addLost.jsp"><img src="assets/images/menu-icon11.png" alt="menu-icon2" />申请失物招领</a>
 									</li>
 								</ul>
 							</li>
@@ -217,8 +217,9 @@
 							<li><a href="business.jsp">商家</a></li>
 							<li><a href="village.jsp">小区</a></li>
 							<li><a href="welfare.jsp">福利</a></li>
-							<li><a href="activity.html">社区活动</a></li>
-							<li><a href="building.html">失物招领</a></li>
+							<li><a href="active.jsp">社区活动</a></li>
+							<li><a href="lost.jsp">失物招领</a></li>
+							<li><a href="payment.jsp">缴费记录</a></li>
 							<li><a href="complain.html">社区公告</a></li>
 						</ul>
 						<!-- /.navbar-collapse -->
@@ -697,11 +698,7 @@
 <!-- sticky-socia -->
 <aside id="sticky-social">
 	<ul>
-		<li><a href="#" class="fa fa-facebook" target="_blank"><span><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</span></a></li>
-		<li><a href="#" class="fa fa-twitter" target="_blank"><span><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</span></a></li>
-		<li><a href="#" class="fa fa-rss" target="_blank"><span><i class="fa fa-rss" aria-hidden="true"></i> RSS</span></a></li>
-		<li><a href="#" class="fa fa-pinterest-p" target="_blank"><span><i class="fa fa-pinterest-p" aria-hidden="true"></i> Pinterest</span></a></li>
-		<li><a href="#" class="fa fa-share-alt" target="_blank"><span><i class="fa fa-share-alt" aria-hidden="true"></i> Flickr</span></a></li>
+		<li><a href="addComplain.jsp" class="fa fa-pinterest-p" target="_blank"><span><i class="fa fa-pinterest-p" aria-hidden="true"></i>我要投诉</span></a></li>
 	</ul>
 </aside>
 <!-- /sticky-socia -->

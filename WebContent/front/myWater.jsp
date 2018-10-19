@@ -146,8 +146,7 @@
 				<div class="col-md-6">
 					<div class="top-header-right">
 						<ul>
-							<li><i class="icon-location-pin icons" aria-hidden="true"></i>
-								社区地址</li>
+							<li><a href="user-login.jsp" style="color: white;">登录</a></li>
 							<li><i class="icon-note icons" aria-hidden="true"></i> 快速发布</li>
 							<li>
 								<div class="dropdown">
@@ -205,46 +204,20 @@
 					<!-- Search box End -->
 				</div>
 				<div class="col-sm-3">
-					<!-- cart-menu -->
-					<div class="cart-menu">
-						<ul>
-							<li><a href="#"><i class="icon-heart icons"
-									aria-hidden="true"></i></a><span class="subno">1</span><strong>您的爱心</strong></li>
-							<li class="dropdown"><a href="#" data-toggle="dropdown"
-								data-hover="dropdown"><i class="icon-basket-loaded icons"
-									aria-hidden="true"></i></a><span class="subno">2</span><strong>您的车位</strong>
-								<div class="dropdown-menu  cart-outer">
-									<div class="cart-content">
-										<div class="col-sm-4 col-md-4">
-											<img src="assets/images/elec-img4.jpg" alt="13">
-										</div>
-										<div class="col-sm-8 col-md-8">
-											<div class="pro-text">
-												<a href="#">飞跃社区北方车位 </a>
-												<div class="close">x</div>
-												<strong>1 × $290.00</strong>
-											</div>
-										</div>
-									</div>
-									<div class="cart-content">
-										<div class="col-sm-4 col-md-4">
-											<img src="assets/images/elec-img3.jpg" alt="13">
-										</div>
-										<div class="col-sm-8 col-md-8">
-											<div class="pro-text">
-												<a href="#">飞跃社区东方车位 </a>
-												<div class="close">x</div>
-												<strong>1 × $290.00</strong>
-											</div>
-										</div>
-									</div>
-									<a href="shopping-cart.html" class="cart-btn">增加车位 </a> <a
-										href="checkout.html" class="cart-btn">删除车位</a>
-								</div></li>
-						</ul>
-					</div>
-					<!-- cart-menu End -->
+				<!-- cart-menu -->
+				<div class="cart-menu">
+					<ul>
+						
+						<li class="dropdown">
+							<a href="#" data-toggle="dropdown" data-hover="dropdown"><i class="icon-basket-loaded icons" aria-hidden="true"></i></a><span class="subno">2</span><strong>我的车位</strong>
+							<div class="dropdown-menu  cart-outer" id="park">
+								
+							</div>
+						</li>
+					</ul>
 				</div>
+				<!-- cart-menu End -->
+			</div>
 				<div class="main-menu">
 					<!--  nav  -->
 					<nav class="navbar navbar-inverse navbar-default">
@@ -269,13 +242,13 @@
 										class="fa fa-bars" aria-hidden="true"></i> </a>
 									<ul class="dropdown-menu dropdownhover-bottom" role="menu">
 										<li class="dropdown"><a href="index.html"><img
-												src="assets/images/menu-icon1.png" alt="menu-icon1" /> 分类信息
+												src="assets/images/menu-icon1.png" alt="menu-icon1" /> 我要报修
 												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
 											<li><a href="grid.html">Electronic 01</a></li>
 											<li><a href="list.html">Electronic 02</a></li>
 										</ul>--></li>
 										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon2.png" alt="menu-icon2" /> 飞跃资讯
+												src="assets/images/menu-icon2.png" alt="menu-icon2" /> 我要买房
 												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
 											<li><a href="grid.html">Iphone 05</a></li>
 											<li><a href="list.html">Iphone 06</a></li>
@@ -284,97 +257,48 @@
 											<li><a href="grid.html">Bettery</a></li>
 										</ul>--></li>
 										<li><a href="#"><img
-												src="assets/images/menu-icon3.png" alt="menu-icon3" /> 招聘求职
+												src="assets/images/menu-icon3.png" alt="menu-icon3" /> 我要租房
 												<sup class="bg-red">hot!</sup></a></li>
 										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon4.png" alt="menu-icon4" /> 分类信息
+												src="assets/images/menu-icon4.png" alt="menu-icon4" /> 申请车位
 												<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-											<div class="dropdown-menu dropdownhover-bottom mega-menu"
-												role="menu">
-
-												<div class="col-sm-8 col-md-8">
-													<!--<ul>
-											<li><strong>Women’s Fashion</strong></li>
-											<li><a href="#">Flip-Flops</a></li>
-											<li><a href="#">Fashion Scarves</a></li>
-											<li><a href="#">Wallets</a></li>
-											<li><a href="#">Evening Handbags</a></li>
-											<li><a href="#">Wrist Watches</a></li>
-										</ul>
-										<ul>
-											<li><strong>Women’s Accessories</strong></li>
-											<li><a href="#">Flip-Flops</a></li>
-											<li><a href="#">Fashion Scarves</a></li>
-											<li><a href="#">Wallets</a></li>
-											<li><a href="#">Evening Handbags</a></li>
-											<li><a href="#">Wrist Watches</a></li>
-										</ul>
-										<ul>
-											<li><strong>Men’s Fashion</strong></li>
-											<li><a href="#">Flip-Flops</a></li>
-											<li><a href="#">Fashion Scarves</a></li>
-											<li><a href="#">Wallets</a></li>
-											<li><a href="#">Evening Handbags</a></li>
-											<li><a href="#">Wrist Watches</a></li>
-										</ul>
-										<ul>
-											<li><strong>Men’s Accessories</strong></li>
-											<li><a href="#">Flip-Flops</a></li>
-											<li><a href="#">Fashion Scarves</a></li>
-											<li><a href="#">Wallets</a></li>
-											<li><a href="#">Evening Handbags</a></li>
-											<li><a href="#">Wrist Watches</a></li>
-										</ul>-->
-												</div>
-
-											</div></li>
+											
 										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon5.png" alt="menu-icon2" /> 飞跃房产
+												src="assets/images/menu-icon5.png" alt="menu-icon2" /> 申请商家入驻
 												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Sport 05</a></li>
-											<li><a href="list.html">Sport 06</a></li>
-											<li><a href="list.html">Outdoors 02</a></li>
-											<li><a href="grid.html">Outdoors 01</a></li>
+										
 										</ul>--></li>
 										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon6.png" alt="menu-icon2" /> 飞跃团购
+												src="assets/images/menu-icon6.png" alt="menu-icon2" /> 购买小区
 												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
 											<li><a href="grid.html">Jewelry 05</a></li>
 											<li><a href="grid.html">Watches 07</a></li>
 											<li><a href="list.html">Watches 02</a></li>
 										</ul>--></li>
 										<li><a href="#"><img
-												src="assets/images/menu-icon7.png" alt="menu-icon2" /> 飞跃商家
+												src="assets/images/menu-icon7.png" alt="menu-icon2" /> 我要缴费
 												<sup class="bg-blue">NEW</sup></a></li>
 										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon8.png" alt="menu-icon2" /> 飞跃商城
+												src="assets/images/menu-icon8.png" alt="menu-icon2" /> 申请失物招领
 												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
 											<li><a href="grid.html">Toys 05</a></li>
 											<li><a href="list.html">Hobbies 02</a></li>
 											<li><a href="grid.html">Toys 01</a></li>
 										</ul>--></li>
-										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon9.png" alt="menu-icon2" /> 装修建材
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Book 05</a></li>
-											<li><a href="list.html">Book 06</a></li>
-											<li><a href="list.html">Office 02</a></li>
-											<li><a href="grid.html">Office 01</a></li>
-										</ul>--></li>
-										<li><a href="#"><img
-												src="assets/images/menu-icon10.png" alt="menu-icon2" />
-												飞跃搜-视频</a></li>
-										<li><a href="#"><img
-												src="assets/images/menu-icon11.png" alt="menu-icon2" />飞跃搜-图库</a>
-										</li>
-									</ul></li>
-								<li><a href="index.html">首页</a></li>
-								<li><a href="activity.html">活动</a></li>
-								<li class="active"><a href="building.html">楼盘</a></li>
-								<li><a href="complain.html">投诉</a></li>
-								<li><a href="payment.html">缴费</a></li>
-								<li><a href="repair.html">报修</a></li>
-								<li><a href="vehicle.html">车位</a></li>
+										
+									</ul>
+								</li>
+								<li class="active"><a href="index.jsp">首页</a></li>
+							<li><a href="queryRepair.jsp">住户维修记录</a></li>
+							<li><a href="room.jsp">房屋</a></li>
+							<li><a href="parking.jsp">车位</a></li>
+							<li><a href="business.jsp">商家</a></li>
+							<li><a href="village.jsp">小区</a></li>
+							<li><a href="welfare.jsp">福利</a></li>
+							<li><a href="active.jsp">社区活动</a></li>
+							<li><a href="lost.jsp">失物招领</a></li>
+							<li><a href="payment.jsp">缴费记录</a></li>
+							<li><a href="complain.html">社区公告</a></li>
 							</ul>
 							<!-- /.navbar-collapse -->
 						</div>
