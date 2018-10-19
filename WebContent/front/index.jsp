@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +28,9 @@
 <!-- Owl Carousel Assets -->
 <link href="assets/owl-carousel/owl.carousel.css" rel="stylesheet">
 <link href="assets/owl-carousel/owl.theme.css" rel="stylesheet">
+<script src="layer.js"></script>
+<script src="layui.js"></script>
+<link rel="stylesheet" href="css/layui.css" media="all">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -34,7 +38,9 @@
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-
+<c:if test="${pdVillage==null}">
+     <jsp:forward page="../FrontHomeServlet"></jsp:forward>
+</c:if>
 <body>
 <!--  Preloader  -->
 <div id="preloader">
@@ -80,7 +86,7 @@
 			<div class="col-md-6">
 				<div class="top-header-right">
 					<ul>
-						<li><i class="icon-location-pin icons" aria-hidden="true"></i> 社区地址</li>
+						<li><a href="user-login.jsp" style="color: white;">登录</a></li>
 						<li><i class="icon-note icons" aria-hidden="true"></i> 快速发布</li>
 						<li>
 							<div class="dropdown">
@@ -90,7 +96,6 @@
 								<ul class="dropdown-menu">
 									<li><a href="#">我的信息</a></li>
 									<li><a href="#">修改密码</a></li>
-									<li><a href="#">修改地址</a></li>
 								</ul>
 							</div>
 						</li>
@@ -135,31 +140,11 @@
 				<!-- cart-menu -->
 				<div class="cart-menu">
 					<ul>
-						<li><a href="#"><i class="icon-heart icons" aria-hidden="true"></i></a><span class="subno">1</span><strong>您的爱心</strong></li>
+						
 						<li class="dropdown">
-							<a href="#" data-toggle="dropdown" data-hover="dropdown"><i class="icon-basket-loaded icons" aria-hidden="true"></i></a><span class="subno">2</span><strong>您的车位</strong>
-							<div class="dropdown-menu  cart-outer">
-								<div class="cart-content">
-									<div class="col-sm-4 col-md-4"><img src="assets/images/elec-img4.jpg" alt="13"></div>
-									<div class="col-sm-8 col-md-8">
-										<div class="pro-text">
-											<a href="#">飞跃社区北方车位 </a>
-											<div class="close">x</div>
-											<strong>1 × $290.00</strong>
-										</div>
-									</div>
-								</div>
-								<div class="cart-content">
-									<div class="col-sm-4 col-md-4"><img src="assets/images/elec-img3.jpg" alt="13"></div>
-									<div class="col-sm-8 col-md-8">
-										<div class="pro-text">
-											<a href="#">飞跃社区东方车位 </a>
-											<div class="close">x</div>
-											<strong>1 × $290.00</strong>
-										</div>
-									</div>
-								</div>
-								<a href="shopping-cart.html" class="cart-btn">增加车位 </a> <a href="checkout.html" class="cart-btn">删除车位</a>
+							<a href="#" data-toggle="dropdown" data-hover="dropdown"><i class="icon-basket-loaded icons" aria-hidden="true"></i></a><span class="subno">2</span><strong>我的车位</strong>
+							<div class="dropdown-menu  cart-outer" id="park">
+								
 							</div>
 						</li>
 					</ul>
@@ -185,68 +170,22 @@
 								<a href="index.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> 快速导航</span> <i class="fa fa-bars" aria-hidden="true"></i> </a>
 								<ul class="dropdown-menu dropdownhover-bottom all-open" role="menu">
 									<li class="dropdown">
-										<a href="index.html"><img src="assets/images/menu-icon1.png" alt="menu-icon1" /> 分类信息 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-										<!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Electronic 01</a></li>
-											<li><a href="list.html">Electronic 02</a></li>
-										</ul>-->
+										<a href="index.html"><img src="assets/images/menu-icon1.png" alt="menu-icon1" /> 我要报修 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 									</li>
 									<li class="dropdown">
-										<a href="#"><img src="assets/images/menu-icon2.png" alt="menu-icon2" /> 飞跃资讯 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-										<!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Iphone 05</a></li>
-											<li><a href="list.html">Iphone 06</a></li>
-											<li><a href="grid.html">Iphone 07</a></li>
-											<li><a href="list.html">Handfree</a></li>
-											<li><a href="grid.html">Bettery</a></li>
-										</ul>-->
+										<a href="#"><img src="assets/images/menu-icon2.png" alt="menu-icon2" /> 我要买房 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 									</li>
 									<li>
-										<a href="#"><img src="assets/images/menu-icon3.png" alt="menu-icon3" /> 招聘求职 <sup class="bg-red">hot!</sup></a>
+										<a href="#"><img src="assets/images/menu-icon3.png" alt="menu-icon3" /> 我要租房 <sup class="bg-red">hot!</sup></a>
 									</li>
 									<li class="dropdown">
-										<a href="#"><img src="assets/images/menu-icon4.png" alt="menu-icon4" /> 分类信息  <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+										<a href="#"><img src="assets/images/menu-icon4.png" alt="menu-icon4" /> 申请车位 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 										<div class="dropdown-menu dropdownhover-bottom mega-menu" role="menu">
-
-									<div class="col-sm-8 col-md-8">
-										<!--<ul>
-											<li><strong>Women’s Fashion</strong></li>
-											<li><a href="#">Flip-Flops</a></li>
-											<li><a href="#">Fashion Scarves</a></li>
-											<li><a href="#">Wallets</a></li>
-											<li><a href="#">Evening Handbags</a></li>
-											<li><a href="#">Wrist Watches</a></li>
-										</ul>
-										<ul>
-											<li><strong>Women’s Accessories</strong></li>
-											<li><a href="#">Flip-Flops</a></li>
-											<li><a href="#">Fashion Scarves</a></li>
-											<li><a href="#">Wallets</a></li>
-											<li><a href="#">Evening Handbags</a></li>
-											<li><a href="#">Wrist Watches</a></li>
-										</ul>
-										<ul>
-											<li><strong>Men’s Fashion</strong></li>
-											<li><a href="#">Flip-Flops</a></li>
-											<li><a href="#">Fashion Scarves</a></li>
-											<li><a href="#">Wallets</a></li>
-											<li><a href="#">Evening Handbags</a></li>
-											<li><a href="#">Wrist Watches</a></li>
-										</ul>
-										<ul>
-											<li><strong>Men’s Accessories</strong></li>
-											<li><a href="#">Flip-Flops</a></li>
-											<li><a href="#">Fashion Scarves</a></li>
-											<li><a href="#">Wallets</a></li>
-											<li><a href="#">Evening Handbags</a></li>
-											<li><a href="#">Wrist Watches</a></li>
-										</ul>-->
-									</div>
 
 								</div>
 									</li>
 									<li class="dropdown">
-										<a href="#"><img src="assets/images/menu-icon5.png" alt="menu-icon2" /> 飞跃房产 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+										<a href="#"><img src="assets/images/menu-icon5.png" alt="menu-icon2" /> 申请商家入驻 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 										<!--<ul class="dropdown-menu right">
 											<li><a href="grid.html">Sport 05</a></li>
 											<li><a href="list.html">Sport 06</a></li>
@@ -255,7 +194,7 @@
 										</ul>-->
 									</li>
 									<li class="dropdown">
-										<a href="#"><img src="assets/images/menu-icon6.png" alt="menu-icon2" /> 飞跃团购 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+										<a href="#"><img src="assets/images/menu-icon6.png" alt="menu-icon2" /> 购买小区 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 										<!--<ul class="dropdown-menu right">
 											<li><a href="grid.html">Jewelry 05</a></li>
 											<li><a href="grid.html">Watches 07</a></li>
@@ -263,40 +202,24 @@
 										</ul>-->
 									</li>
 									<li>
-										<a href="#"><img src="assets/images/menu-icon7.png" alt="menu-icon2" /> 飞跃商家 <sup class="bg-blue">NEW</sup></a>
+										<a href="#"><img src="assets/images/menu-icon7.png" alt="menu-icon2" /> 我要缴费 <sup class="bg-blue">NEW</sup></a>
 									</li>
-									<li class="dropdown">
-										<a href="#"><img src="assets/images/menu-icon8.png" alt="menu-icon2" /> 飞跃商城 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-										<!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Toys 05</a></li>
-											<li><a href="list.html">Hobbies 02</a></li>
-											<li><a href="grid.html">Toys 01</a></li>
-										</ul>-->
-									</li>
-									<li class="dropdown">
-										<a href="#"><img src="assets/images/menu-icon9.png" alt="menu-icon2" /> 装修建材 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-										<!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Book 05</a></li>
-											<li><a href="list.html">Book 06</a></li>
-											<li><a href="list.html">Office 02</a></li>
-											<li><a href="grid.html">Office 01</a></li>
-										</ul>-->
-									</li>
+									
 									<li>
-										<a href="#"><img src="assets/images/menu-icon10.png" alt="menu-icon2" /> 飞跃搜-视频</a>
-									</li>
-									<li>
-										<a href="#"><img src="assets/images/menu-icon11.png" alt="menu-icon2" />飞跃搜-图库</a>
+										<a href="#"><img src="assets/images/menu-icon11.png" alt="menu-icon2" />申请失物招领</a>
 									</li>
 								</ul>
 							</li>
-							<li class="active"><a href="index.html">首页</a></li>
-							<li><a href="activity.html">活动</a></li>
-							<li><a href="building.html">楼盘</a></li>
-							<li><a href="complain.html">投诉</a></li>
-							<li><a href="payment.html">缴费</a></li>
-							<li><a href="repair.html">报修</a></li>
-							<li><a href="vehicle.html">车位</a></li>
+							<li class="active"><a href="index.jsp">首页</a></li>
+							<li><a href="queryRepair.jsp">住户维修记录</a></li>
+							<li><a href="room.jsp">房屋</a></li>
+							<li><a href="parking.jsp">车位</a></li>
+							<li><a href="business.jsp">商家</a></li>
+							<li><a href="village.jsp">小区</a></li>
+							<li><a href="welfare.jsp">福利</a></li>
+							<li><a href="activity.html">社区活动</a></li>
+							<li><a href="building.html">失物招领</a></li>
+							<li><a href="complain.html">社区公告</a></li>
 						</ul>
 						<!-- /.navbar-collapse -->
 					</div>
@@ -397,152 +320,49 @@
 	</section>
 	<!-- /header-outer -->
 </header>
-<!-- banner -->
-<section class="banner">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12 col-sm-4 col-md-4">
-				<!-- banner-img -->
-				<a href="#" class="banner-img">
-					<!-- banner-text -->
-					<div class="banner-text">
-						<h3>飞跃商城</h3>
-						<h2>电脑</h2>
-						<span class="price">价格: $720</span>
-					</div>
-					<!-- /banner-text -->
-				</a>
-				<!-- /banner-img -->
-			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4">
-				<!-- banner-img -->
-				<a href="#" class="banner-img banner-img2">
-					<!-- banner-text -->
-					<div class="banner-text">
-						<h3>飞跃商城</h3>
-						<h2>手表</h2>
-						<span class="price">价格: $220</span>
-					</div>
-					<!-- /banner-text -->
-				</a>
-				<!-- /banner-img -->
-			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4">
-				<!-- banner-img -->
-				<a href="#" class="banner-img banner-img3">
-					<!-- banner-text -->
-					<div class="banner-text">
-						<h3>飞跃商城</h3>
-						<h2>耳机</h2>
-						<span class="price">价格: $150</span>
-					</div>
-					<!-- /banner-text -->
-				</a>
-				<!-- /banner-img -->
-			</div>
-		</div>
-	</div>
-</section>
-<!-- /banner -->
 <!-- deal-outer -->
 <section class="deal-section">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-4" style="float: right;">
 				<div class="deal-week">
 					<div class="title">
-						<h2>失物招领</h2>
+						<h2 style="display: inline;">失物招领(最新)</h2><span style="float: right; cursor: pointer;">查看更多</span>
 					</div>
 					<div class="owl-demo-outer">
 						<!-- #owl-demo -->
+						<div id="owl-demo" class="deals-wk" style="margin-bottom: 60px; margin-top: 30px;">
+							<div class="item">
+								<div class="col-md-12">	
+									<div class="pro-text text-center">
+										<!-- /.pro-img -->
+										<img alt="" src="">
+										<div class="text-text">
+											<h1>物品：${pdLost.data[0].lostGood}</h1>
+											<h4>捡到时间：${pdLost.data[0].lostDate}</h4>
+											<p>在${pdLost.data[0].lostArea}捡到</p>
+											<p class="availalbe">捡到者: <span>${pdLost.data[0].lostName}</span></p>
+											<p class="availalbe">联系电话: <span>${pdLost.data[0].lostTel}</span></p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /#owl-demo -->
+						</div>
 						<div id="owl-demo" class="deals-wk">
 							<div class="item">
-								<div class="col-md-12">
-									<!-- .pro-text -->
+								<div class="col-md-12">	
 									<div class="pro-text text-center">
-										<!-- .pro-img -->
-										<div class="pro-img">
-											<img src="assets/images/wk-deal-img.jpg" alt="2" />
-										</div>
 										<!-- /.pro-img -->
+										<img alt="" src="">
 										<div class="text-text">
-											<span>耳机一只</span>
-											<h4> 在飞跃小区飞跃路23号飞跃花园中捡到 </h4>
-											<p>请失主尽快到飞跃小区服务中心领取，领取时请提供您的凭证！！</p>
-											<p class="wk-price">价值 <span>$290.00</span> </p>
-											<p class="availalbe">捡到者: <span>小三</span></p>
-										</div>
-										<!-- clockdiv -->
-										<div id="clockdiv">
-											<h4>赶快来收回你的物品！！</h4>
-											<div>
-												<span class="days">14</span>
-												<div class="smalltext">Days</div>
-											</div>
-											<div>
-												<span class="hours">23</span>
-												<div class="smalltext">Hours</div>
-											</div>
-											<div>
-												<span class="minutes">59</span>
-												<div class="smalltext">Minutes</div>
-											</div>
-											<div>
-												<span class="seconds">47</span>
-												<div class="smalltext">Seconds</div>
-											</div>
-										</div>
-										<!-- /clockdiv -->
-									</div>
-									<!-- /.pro-text -->
-								</div>
-							</div>
-							<div class="item">
-								<div class="col-md-12">
-									<!-- .pro-text -->
-									<div class="pro-text text-center">
-										<!-- .pro-img -->
-										<div class="pro-img">
-											<img src="assets/images/wk-deal-img.jpg" alt="2" />
-										</div>
-										<!-- /.pro-img -->
-										<div class="text-text">
-											<a href="#" class="add-btn">查看更多</a>
+											<h1>物品：${pdLost.data[1].lostGood}</h1>
+											<h4>捡到时间：${pdLost.data[1].lostDate}</h4>
+											<p>在${pdLost.data[1].lostArea}捡到</p>
+											<p class="availalbe">捡到者: <span>${pdLost.data[1].lostName}</span></p>
+											<p class="availalbe">联系电话: <span>${pdLost.data[1].lostTel}</span></p>
 										</div>
 									</div>
-									<!-- /.pro-text -->
-								</div>
-							</div>
-							<div class="item">
-								<div class="col-md-12">
-									<!-- .pro-text -->
-									<div class="pro-text text-center">
-										<!-- .pro-img -->
-										<div class="pro-img">
-											<img src="assets/images/wk-deal-img.jpg" alt="2" />
-										</div>
-										<!-- /.pro-img -->
-										<div class="text-text">
-											<a href="#" class="add-btn">查看更多</a>
-										</div>
-									</div>
-									<!-- /.pro-text -->
-								</div>
-							</div>
-							<div class="item">
-								<div class="col-md-12">
-									<!-- .pro-text -->
-									<div class="pro-text text-center">
-										<!-- .pro-img -->
-										<div class="pro-img">
-											<img src="assets/images/wk-deal-img.jpg" alt="2" />
-										</div>
-										<!-- /.pro-img -->
-										<div class="text-text">
-											<a href="#" class="add-btn">查看更多</a>
-										</div>
-									</div>
-									<!-- /.pro-text -->
 								</div>
 							</div>
 							<!-- /#owl-demo -->
@@ -557,9 +377,9 @@
 				<!-- new-arrivals -->
 				<div class="new-arrivals">
 					<ul class="nav nav-tabs">
-						<li class="active"><a data-toggle="tab" href="#home">社区图说资讯</a></li>
-						<li><a data-toggle="tab" href="#menu1">社区热门小吃</a></li>
-						<li><a data-toggle="tab" href="#menu2">社区活动</a></li>
+						<li class="active"><a data-toggle="tab" href="#home">社区分布</a></li>
+						<li><a data-toggle="tab" href="#menu1">社区车位</a></li>
+						<li><a data-toggle="tab" href="#menu2">社区房屋</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -568,6 +388,7 @@
 								<!-- #owl-demo -->
 								<div id="owl-demo8" class="deals-wk2">
 									<div class="item">
+									<c:forEach items="${pdVillage.data}" var="village">
 										<div class="col-xs-12 col-sm-6 col-md-4">
 											<!-- .pro-text -->
 											<div class="pro-text text-center">
@@ -575,6 +396,7 @@
 												<div class="pro-img">
 													<img src="img/20131262143085ke2v3_120x120.jpg" alt="2" />
 												</div>
+												<p>${village.villageName}</p>
 												<!-- /.pro-img -->
 												<div class="pro-text-outer">
 													<a href="#" class="add-btn">查看更多</a>
@@ -582,168 +404,9 @@
 											</div>
 											<!-- /.pro-text -->
 										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/201410915569130ict1v_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/201411405294338bf69_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/2014114111753128y4ibk_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/2014162028141254iy09_200x0_145x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/20141702798875v0c2_200x0_145x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-
+								</c:forEach>
 									</div>
-									<div class="item">
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/2014411212029225tyi6z_120x60.png" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/201441716134292158j6d_120x60.png" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/20146150541278j5e0z_160x160.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/2014121810222898791j58_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="assets/images/ghm-img4.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/201411405294338bf69_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-
-									</div>
-
-
-									<!-- /#owl-demo -->
+									
 								</div>
 							</div>
 						</div>
@@ -752,6 +415,7 @@
 								<!-- #owl-demo -->
 								<div id="owl-demo7" class="deals-wk2">
 									<div class="item">
+									<c:forEach items="${pdPark.data}" var="park">
 										<div class="col-xs-12 col-sm-6 col-md-4">
 											<!-- .pro-text -->
 											<div class="pro-text text-center">
@@ -759,6 +423,7 @@
 												<div class="pro-img">
 													<img src="img/2014162028141254iy09_200x0_145x120.jpg" alt="2" />
 												</div>
+												<p>${park.ptName}</p>
 												<!-- /.pro-img -->
 												<div class="pro-text-outer">
 													<a href="#" class="add-btn">查看更多</a>
@@ -766,164 +431,7 @@
 											</div>
 											<!-- /.pro-text -->
 										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/20141702798875v0c2_200x0_145x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/201411405294338bf69_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/2014411212029225tyi6z_120x60.png" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/201410915569130ict1v_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/20131262143085ke2v3_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-
-									</div>
-									<div class="item">
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/20144132131462349djb4_120x60.png" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/201477183520953itka9_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/20151782242610fd252_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/201489115537765u96au_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/20151024221332149ek6uf_120x90.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/20153151315513959fcvu_120x90.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-
+                                    </c:forEach>
 									</div>
 
 
@@ -935,7 +443,9 @@
 							<div class="owl-demo-outer">
 								<!-- #owl-demo -->
 								<div id="owl-demo6" class="deals-wk2">
+								
 									<div class="item">
+									<c:forEach items="${pdRoom.data}" var="room">
 										<div class="col-xs-12 col-sm-6 col-md-4">
 											<!-- .pro-text -->
 											<div class="pro-text text-center">
@@ -943,6 +453,7 @@
 												<div class="pro-img">
 													<img src="img/20153151317315713da3j_120x90.jpg" alt="2" />
 												</div>
+												<p>${room.roomName}</p>
 												<!-- /.pro-img -->
 												<div class="pro-text-outer">
 													<a href="#" class="add-btn">查看更多</a>
@@ -950,167 +461,8 @@
 											</div>
 											<!-- /.pro-text -->
 										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/20148182636937b4dtj_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/201481815053169vc7hf_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/20148231430547986g5b2_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/2014162028141254iy09_200x0_145x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/201411405294338bf69_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-
+                                 </c:forEach>
 									</div>
-									<div class="item">
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/2014411212029225tyi6z_120x60.png" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/20148822359593azk18_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/20146150541278j5e0z_160x160.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/2014813910459064g54c_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/20141901017125hedaz_200x0_145x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-										<div class="col-xs-12 col-sm-6 col-md-4">
-											<!-- .pro-text -->
-											<div class="pro-text text-center">
-												<!-- .pro-img -->
-												<div class="pro-img">
-													<img src="img/2014821195247981tvck_120x120.jpg" alt="2" />
-												</div>
-												<!-- /.pro-img -->
-												<div class="pro-text-outer">
-													<a href="#" class="add-btn">查看更多</a>
-												</div>
-											</div>
-											<!-- /.pro-text -->
-										</div>
-
-									</div>
-
-
 									<!-- /#owl-demo -->
 								</div>
 							</div>
@@ -1131,45 +483,14 @@
 			<!-- title -->
 			<div class="title">
 				<h2>
-					社区生活服务					
+					社区福利					
 				</h2>
-				<ul class="nav nav-tabs etabs">
-						<li class="active"><a data-toggle="tab" href="#phones">福利</a></li>
-						<!--<li><a data-toggle="tab" href="#laptop">招聘</a></li>
-						<li><a data-toggle="tab" href="#desktop">教育</a></li>
-						<li><a data-toggle="tab" href="#tV">搬家</a></li>
-						<li><a data-toggle="tab" href="#tablets">算命</a></li>-->
-					</ul>
 			</div>
 			<!-- /title -->
 			<!-- electonics -->
 			<div class="electonics">
 
-				<div class="brd2 col-xs-12 col-sm-3 col-md-3">
-					<div id="home-slider2" class="carousel slide carousel-fade" data-ride="carousel">
-						<!-- .home-slider -->
-						<div class="carousel-inner">
-							<div class="item active">
-								<a class="ads" href="#">
-									<img src="img/201462607391069hb1a_160x160.jpg" alt="add-banner" />
-								</a>
-							</div>
-							<div class="item">
-								<a class="ads" href="#">
-									<img src="img/20148115442831dv6db_120x120.jpg" alt="add-banner" />
-								</a>
-							</div>
-						</div>
-						<!-- indicators -->
-						<ol class="carousel-indicators">
-							<li data-target="#home-slider2" data-slide-to="0" class="active"></li>
-							<li data-target="#home-slider2" data-slide-to="1"></li>
-						</ol>
-						<!-- /indicators -->
-						<!-- /.home-slider -->
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-9 col-md-9">
+				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="row">
 						<!-- tab-content -->
 						<div class="tab-content">
@@ -1179,7 +500,8 @@
 									<!-- #owl-demo -->
 									<div id="owl-demo3" class="deals-wk2">
 										<div class="item">
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
+										<c:forEach items="${pdWelfare.data}" var="welfare">	
+											<div class="bdr col-xs-12 col-sm-12 col-md-4">
 												<!-- e-product -->
 												<div class="e-product">
 													<div class="pro-img">
@@ -1189,11 +511,11 @@
 														</div>
 													</div>
 													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
+														<span>${welfare.welfareDate}</span>
 														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
+															<h4>${welfare.welfareTitle} </h4>
 														</a>
-														<p class="wk-price">$290.00 </p>
+														<p class="wk-price">${welfare.welfareTel}</p>
 														<a href="#" class="add-btn">查看更多</a>
 														<a href="#" class="add-btn2"><i class="icon-heart icons" aria-hidden="true"></i></a>
 														<a href="#" class="add-btn2"><i class="icon-refresh icons"></i></a>
@@ -1201,155 +523,9 @@
 												</div>
 												<!-- /e-product -->
 											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<sup class="sale-tag">sale!</sup>
-														<img src="img/201411405294338bf69_120x120.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<sup class="sale-tag">sale!</sup>
-														<img src="img/20141702798875v0c2_200x0_145x120.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<sup class="new-tag">NEW</sup>
-														<img src="img/2014411212029225tyi6z_120x60.png" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
+										 </c:forEach>	
 										</div>
-										<div class="item">
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<sup class="sale-tag">sale!</sup>
-														<img src="img/201410915569130ict1v_120x120.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-														<a href="#" class="add-btn2"><i class="icon-heart icons" aria-hidden="true"></i></a>
-														<a href="#" class="add-btn2"><i class="icon-refresh icons"></i></a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<img src="img/2014114111753128y4ibk_120x120.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<img src="img/2014418831125310ut6d_120x120.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<img src="img/20141901017125hedaz_200x0_145x120.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-										</div>
+										
 									</div>
 								</div>
 
@@ -1360,360 +536,10 @@
 							
 							<!-- /tab-pane -->
 							<!-- tab-pane -->
-							<div id="desktop" class="tab-pane fade in">
-								<div id="owl-demo14" class="deals-wk2">
-										<div class="item">
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<img src="assets/images/elec-img1.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-														<a href="#" class="add-btn2"><i class="icon-heart icons" aria-hidden="true"></i></a>
-														<a href="#" class="add-btn2"><i class="icon-refresh icons"></i></a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<sup class="sale-tag">sale!</sup>
-														<img src="assets/images/elec-img2.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<sup class="sale-tag">sale!</sup>
-														<img src="assets/images/elec-img3.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<sup class="new-tag">NEW</sup>
-														<img src="assets/images/elec-img4.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-										</div>
-										<div class="item">
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<sup class="sale-tag">sale!</sup>
-														<img src="assets/images/elec-img1.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-														<a href="#" class="add-btn2"><i class="icon-heart icons" aria-hidden="true"></i></a>
-														<a href="#" class="add-btn2"><i class="icon-refresh icons"></i></a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<img src="assets/images/elec-img2.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<img src="assets/images/elec-img3.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<img src="assets/images/elec-img4.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-										</div>
-									</div>
-							</div>
+							
 							
 							<!-- tab-pane -->
-							<div id="tablets" class="tab-pane fade in">
-								<div id="owl-demo16" class="deals-wk2">
-										<div class="item">
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<img src="assets/images/elec-img1.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-														<a href="#" class="add-btn2"><i class="icon-heart icons" aria-hidden="true"></i></a>
-														<a href="#" class="add-btn2"><i class="icon-refresh icons"></i></a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<sup class="sale-tag">sale!</sup>
-														<img src="assets/images/elec-img2.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<sup class="sale-tag">sale!</sup>
-														<img src="assets/images/elec-img3.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<sup class="new-tag">NEW</sup>
-														<img src="assets/images/elec-img4.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-										</div>
-										<div class="item">
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<sup class="sale-tag">sale!</sup>
-														<img src="assets/images/elec-img1.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-														<a href="#" class="add-btn2"><i class="icon-heart icons" aria-hidden="true"></i></a>
-														<a href="#" class="add-btn2"><i class="icon-refresh icons"></i></a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<img src="assets/images/elec-img2.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<img src="assets/images/elec-img3.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-											<div class="bdr col-xs-12 col-sm-12 col-md-6">
-												<!-- e-product -->
-												<div class="e-product">
-													<div class="pro-img">
-														<img src="assets/images/elec-img4.jpg" alt="2">
-														<div class="hover-icon">
-															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-														</div>
-													</div>
-													<div class="pro-text-outer">
-														<span>Macbook, Laptop</span>
-														<a href="#">
-															<h4> Apple Macbook Retina 23’ </h4>
-														</a>
-														<p class="wk-price">$290.00 </p>
-														<a href="#" class="add-btn">查看更多</a>
-													</div>
-												</div>
-												<!-- /e-product -->
-											</div>
-										</div>
-									</div>
-							</div>
+							
 							<!-- /tab-pane -->
 						</div>
 						<!-- /tab-content -->
@@ -1725,7 +551,7 @@
 			<!-- title -->
 			<div class="title">
 				<h2>
-					飞跃社区风景
+					社区风景
 				</h2>
 			</div>
 			<!-- /title -->
@@ -1738,38 +564,38 @@
 							<div id="owl-demo2" class="deals-wk2">
 								<!-- item -->
 								<div class="item">
-									<div class="bdr col-xs-12 col-sm-6 col-md-4">
+									<div class="bdr col-xs-12 col-sm-12 col-md-4">
 										<!-- blog-outer -->
 										<div class="blog-outer">
 											<div class="blog-img">
-												<img src="img/2014162028141254iy09_200x0_145x120.jpg" alt="lt-blog-img1">
+												<img src="img/c2.jpg" alt="lt-blog-img1">
 											</div>
 											<div class="blog-img">
-												<img src="img/20141702798875v0c2_200x0_145x120.jpg" alt="lt-blog-img1">
+												<img src="img/c2.jpg" alt="lt-blog-img1">
 											</div>
 										</div>
 										<!-- /blog-outer -->
 									</div>
-									<div class="bdr col-xs-12 col-sm-6 col-md-4">
+									<div class="bdr col-xs-12 col-sm-12 col-md-4">
 										<!-- blog-outer -->
 										<div class="blog-outer">
 											<div class="blog-img">
-												<img src="img/20141901017125hedaz_200x0_145x120.jpg" alt="lt-blog-img1">
+												<img src="img/c2.jpg" alt="lt-blog-img1">
 											</div>
 											<div class="blog-img">
-												<img src="img/20151782242610fd252_120x120.jpg" alt="lt-blog-img1">
+												<img src="img/c2.jpg" alt="lt-blog-img1">
 											</div>
 										</div>
 										<!-- /blog-outer -->
 									</div>
-									<div class="bdr col-xs-12 col-sm-6 col-md-4">
+									<div class="bdr col-xs-12 col-sm-12 col-md-4">
 										<!-- blog-outer -->
 										<div class="blog-outer">
 											<div class="blog-img">
-												<img src="img/201410915569130ict1v_120x120.jpg" alt="lt-blog-img1">
+												<img src="img/c2.jpg" alt="lt-blog-img1">
 											</div>
 											<div class="blog-img">
-												<img src="img/20148822359593azk18_120x120.jpg" alt="lt-blog-img1">
+												<img src="img/c2.jpg" alt="lt-blog-img1">
 											</div>
 										</div>
 										<!-- /blog-outer -->
@@ -1784,47 +610,7 @@
 			</div>
 			
 			<!-- .free-shipping -->
-			<div class="free-shipping">
-				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<div class="icon-shipping">
-							<i class="icon-rocket icons"></i>
-						</div>
-						<div class="shipping-text">
-							<h4>免费送货</h4>
-							<p>全部免费送货</p>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<div class="icon-shipping">
-							<i class="icon-earphones-alt icons"></i>
-						</div>
-						<div class="shipping-text">
-							<h4>在线支持24/7</h4>
-							<p>在线支持24/7</p>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<div class="icon-shipping">
-							<i class="icon-refresh icons"></i>
-						</div>
-						<div class="shipping-text">
-							<h4>退款保证 </h4>
-							<p>30天退款</p>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<div class="icon-shipping">
-							<i class="icon-badge icons"></i>
-						</div>
-						<div class="shipping-text">
-							<h4>会员折扣</h4>
-							<p>会员折扣</p>
-						</div>
-					</div>
-
-				</div>
-			</div>
+			
 			<!-- /.free-shipping -->
 		</div>
 	</div>
@@ -1952,6 +738,57 @@
 		</div>
 	</div>
 </div>
+<script>
+	layui.use('flow', function(){
+		  var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+		  var flow = layui.flow;
+		  flow.load({
+		    elem: '#park' //指定列表容器
+		    ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+		      var lis = [];
+		      //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+		      $.ajax({
+     			 url:"${pageContext.request.contextPath}/FrontPackingServlet",
+     			 type:"get",
+     			 data:{
+     				 "page":page
+     			 },
+     			 dataType:"text",
+     			 success:function(res){
+		        //假设你的列表返回在data集合中
+		          var one = res.lastIndexOf("]");
+		          var totalPage=res.substring(one+1);
+     			  var result=res.substring(0,one+1);
+     			  console.log(result);
+     			 console.log(1111);
+     			  var array = JSON.parse(result);
+		          layui.each(array, function(index, park){
+		        	  var text = "";
+		        	  text += "<div class=\"cart-content\">";
+		        	  text += "									<div class=\"col-sm-4 col-md-4\"><img src=\"img/c2.jpg\" alt=\"13\"></div>";
+		        	  text += "									<div class=\"col-sm-8 col-md-8\">";
+		        	  text += "										<div class=\"pro-text\">";
+		        	  text += "											<a href=\"#\">位置："+park.villageName+"</a>";
+		        	  text += "											<div class=\"close\"></div>";
+		        	  text += "											<strong>车位面积："+park.area+"</strong>";
+		        	  text += "										</div>";
+		        	  text += "									</div>";
+		        	  text += "								</div>";
+		        	  text += "								<a href=\"shopping-cart.html\" class=\"cart-btn\">增加车位 </a> <a href=\"checkout.html\" class=\"cart-btn\">删除车位</a>";
+
+
+		            lis.push(text);
+		        }); 
+		        
+		        //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+		        //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+		        next(lis.join(''), page < totalPage);
+     			 }
+		      });
+		    }
+		  });
+		});
+</script>
 <!-- /Get Our Email Letter popup -->
 <p id="back-top">
 	<a href="#top"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>

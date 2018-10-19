@@ -20,6 +20,7 @@ public class Lost {
      
 	
       private  String lostTel;
+      private  String sDate;
      
       
       public Lost(String lostGood, String lostDate, String lostArea, String lostName, String lostTel) {
@@ -44,6 +45,19 @@ public class Lost {
 		this.lostName = lostName;
 		this.lostTel = lostTel;
 	}
+	
+	
+	
+	public String getsDate() {
+		return sDate;
+	}
+
+
+	public void setsDate(String sDate) {
+		this.sDate = sDate;
+	}
+
+
 	public  int  getLostId(){
       		return  this.lostId;
       };
@@ -88,7 +102,7 @@ public class Lost {
 	@Override
 	public String toString() {
 		return "Lost [lostId=" + lostId + ", lostGood=" + lostGood + ", lostDate=" + lostDate + ", lostArea=" + lostArea
-				+ ", lostName=" + lostName + ", lostTel=" + lostTel + "]";
+				+ ", lostName=" + lostName + ", lostTel=" + lostTel + ", sDate=" + sDate + "]";
 	}  
      
     

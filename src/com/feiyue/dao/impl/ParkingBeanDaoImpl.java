@@ -70,7 +70,7 @@ public class ParkingBeanDaoImpl implements ParkingBeanDao {
 	@Override
 	public PageData<ParkingBean> selectAllParkingBean(int page, int pageSize) {
 		// TODO Auto-generated method stub
-		String sql="SELECT tb_parktype.ptName ,tb_parkings.parkingId, tb_villageinfo.villageName, tb_parkings.area, tb_parksrtype.parkSRName, tb_parkings.timeEnd FROM tb_parkings INNER JOIN tb_tenement ON tb_parkings.tenementId = tb_tenement.tenementId INNER JOIN tb_villageinfo ON tb_parkings.villageId = tb_villageinfo.villageId INNER JOIN tb_parksrtype ON tb_parkings.parkSRId = tb_parksrtype.parkSRId INNER JOIN tb_parktype ON tb_parktype.ptId = tb_parktype.ptId";
+		String sql="SELECT tb_parkings.parkingId, tb_parkings.parkingNo, tb_parkings.area, tb_parkings.remarks, tb_parkings.timeStart, tb_parkings.timeEnd, tb_parksrtype.parkSRName, tb_parktype.ptName FROM tb_parkings INNER JOIN tb_parksrtype ON tb_parkings.parkSRId = tb_parksrtype.parkSRId INNER JOIN tb_parktype ON tb_parkings.ptId = tb_parktype.ptId";
 		return DBUtil.getPage(sql, page, pageSize, ParkingBean.class);
 	}
 
