@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.feiyue.entiy.BuildingBean;
 import com.feiyue.service.BuildingBeanService;
 import com.feiyue.service.impl.BuildingBeanServiceImpl;
@@ -76,7 +75,7 @@ public class BuildingBeanServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				// 将jsonString返回到页面
 				out.print(jsonString);
-				System.out.println(jsonString);
+				//System.out.println(jsonString);
 				// 释放资源
 				out.close();
 				// 增加功能
