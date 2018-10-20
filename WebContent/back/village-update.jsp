@@ -28,18 +28,8 @@
 	id="skin" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/static/h-ui.admin/css/style.css" />
-<!--[if IE 6]>
-<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
-<script>DD_belatedPNG.fix('*');</script>
-<![endif]-->
-<!--/meta 作为公共模版分离出去-->
-
-<title>新增文章 - 资讯管理 - H-ui.admin v2.3</title>
-<meta name="keywords"
-	content="H-ui.admin v2.3,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
-<meta name="description"
-	content="H-ui.admin v2.3，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
-	<link rel="stylesheet" href="../front/css/layui.css" media="all">
+<title>小区信息更新</title>
+<link rel="stylesheet" href="../front/css/layui.css" media="all">
 <script src="../front/layer.js"></script>
 <script src="../front/layui.js"></script>
 <link rel="stylesheet" type="text/css" href="../front/css/bootstrap.min.css">
@@ -49,7 +39,6 @@
 	<article class="cl pd-20">
 		<form class="form form-horizontal"
 			id="form-member-add">
-
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>小区编号：</label>
@@ -74,14 +63,6 @@
 						name="linkman" id="linkman">
 				</div>
 			</div>
-			<!-- <div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>建立日期：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="datetime-local" class="input-text" placeholder=""
-						name="setUpTime" id="setUpTime">
-				</div>
-			</div> -->
 			<div class="row cl">
 					<label for="setUpTime" class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>建立日期：</label>
@@ -170,7 +151,6 @@
 						name="extent" id="extent">
 				</div>
 			</div>
-
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 					<input class="btn btn-primary radius" id="btnAdd" type="button" value="提交" />
@@ -256,8 +236,7 @@
 					}
 				});
 			});
-			/*validate验证和 ajax 的方式完成表单提交 */
-			
+			/*validate验证和 ajax 的方式完成表单提交 */		
 		});
 	</script>
 	<script>
@@ -272,8 +251,6 @@
 			});
 		});
 	</script>
-
-
 	<!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>

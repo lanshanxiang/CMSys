@@ -106,7 +106,6 @@
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/static/h-ui.admin/js/H-ui.admin.page.js"></script>
 	<!--/_footer /作为公共模版分离出去-->
-
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/lib/My97DatePicker/4.8/WdatePicker.js"></script>
@@ -192,46 +191,8 @@
 
 	<script>
 		$(function() {
-			//修改密码的超链接单击事件
-			$(document).on(
-					"click",
-					'.changepwd',
-					function() {
-						var _this = $(this);
-						data = _this.parent().siblings();
-						var arr = [];
-						for (var i = 1; i < data.length; i++) {
-							// console.log($(data[i]).text());
-							arr.push($(data[i]).text());//拿到点击按钮的当前那条信息的内容 放到一个数组里
-						}
-						console.log(arr);
-						//change-em-password.html
-
-						layer
-								.open({
-									type : 2,
-									area : [ '600px', '270px' ],
-									fix : false, //不固定
-									maxmin : true,
-									shade : 0.4,
-									title : '修改密码',
-									content : 'village-update.jsp',
-									success : function(layero, index) {
-										var body = layer.getChildFrame('body',
-												index);//建立父子联系
-										var iframeWin = window[layero
-												.find('iframe')[0]['name']];
-
-										var _ename = body.find('#ename');
-										console.log(_ename + "," + arr[1]);
-										$(_ename).html(arr[1]);
-
-									}
-								});
-
-					});
-
-			//修改员工信息的超链接单击事件
+			
+			//修改房屋信息的超链接单击事件
 			$(document).on(
 					"click",
 					'.empedit',
@@ -242,9 +203,6 @@
 						for (var i = 1; i < data.length - 1; i++) { //1 从1开始 从姓名开始
 							arr.push($(data[i]).text());//每一个td中的内容() 放到一个数组里
 						}
-						// console.log(arr);
-						//change-password.html
-
 						//打开新窗口 编辑窗口
 						layer
 								.open({
@@ -273,46 +231,6 @@
 		});
 	</script>
 	<!--/请在上方写此页面业务相关的脚本-->
-
-
-	<!-- 从之前datatable案例中移植过来的代码  头部检索以及表格头部信息-->
-	<!-- <div class="container">
-    是否自动检索：<input type="checkbox" id="autoSearch">
-    <br>
-    员工编号：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="1" id="col1_filter">
-    <br>
-    姓名：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="2" id="col2_filter">
-    <br>
-    岗位：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="3" id="col3_filter">
-    <br>
-    入职时间：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="4" id="col4_filter">
-    <br>
-    部门编号：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="5" id="col5_filter">
-    <br>
-    编号：<input type="text" class="form-controlSearch" placeholder="请输入关键字查询" data-column="6" id="col6_filter">
-    <br>
-    <hr>
-    <table id="example" class="display">
-        <thead>
-        <tr>
-            <th><input type="checkbox" id="employeeCheckAll"></th>
-            <th>员工编号</th>
-            <th>姓名</th>
-            <th>岗位</th>
-            <th>入职时间</th>
-            <th>部门编号</th>
-        </tr>
-        </thead>
-    </table>
-</div> -->
-	<!-- 头部检索以及表格标题头结束 -->
-	<!-- <link rel="stylesheet" type="text/css" href="plugin/datatables/jquery.dataTables.min.css"/> -->
-
-	<!-- <style>
-  .paginate_button{box-sizing:content-box}
-</style> -->
-
-
 	<script
 		src="${pageContext.request.contextPath}/plugin/datatables/jquery.dataTables.min.js"></script>
 
@@ -374,21 +292,7 @@
 			"searchable" : false,
 			"orderable" : false,
 			"targets" : 0
-		},//第一行不进行排序和搜索
-		//        {"targets": [12], "visible": false},    //设置第13列隐藏/显示
-		//        {"width": "10%", "targets": [1]},  //设置第2列宽度
-		//        {
-		//            对第7列内容进行替换处理
-		//            targets: 6,
-		//            render: function (data, type, row, meta) {
-		//                if (data == "1") {
-		//                    return employee.table.sexMan;
-		//                }
-		//                if (data == "0") {
-		//                    return employee.table.sexWoman;
-		//                }
-		//            }
-		//        },
+		},
 		{
 			defaultContent : '',
 			targets : [ '_all' ]
@@ -445,9 +349,6 @@
 						$(nTd)
 								.html(
 										'<a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>  <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class=\"ml-5 \"del\"\" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
-						//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
-						//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
-						//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");
 					}
 				} ];
 
@@ -762,12 +663,10 @@
 
 		//销毁table
 		function destroyDataTable(tableId) {
-
 			var dttable = $('#' + tableId).DataTable();
 			dttable.destroy();
 		}
 	</script>
-
 	<script>
 		// 初始化数据
 		$(document).ready(function() {

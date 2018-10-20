@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -34,9 +33,7 @@
 		src="${pageContext.request.contextPath}/lib/jquery/1.9.1/jquery.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<title>添加用户 - H-ui.admin v2.3</title>
-<meta name="keywords" content="H-ui.admin v2.3,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
-<meta name="description" content="H-ui.admin v2.3，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+<title>新增住户</title>
 <link rel="stylesheet" href="../front/css/layui.css" media="all">
 <script src="../front/layer.js"></script>
 <script src="../front/layui.js"></script>
@@ -44,11 +41,7 @@
 <script src="../front/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-
 <!--   表单开始     -->
-
-
 <article class="page-container">
 	<form class="form form-horizontal" id="form-member-add">
 		<div class="row cl">
@@ -98,12 +91,6 @@
 				<input type="text" class="input-text" value="" placeholder="" id="email" name="email">
 			</div>
 		</div>
-		<!-- <div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>入住时间：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="2018-09-10" placeholder="" id="areStay" name="areStay">
-			</div>
-		</div> -->
 		<div class="row cl">
 					<label for="areStay" class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>入住时间：</label>
@@ -136,15 +123,6 @@
 				<input type="text" class="input-text" value="常住" placeholder="" id="residenceType" name="residenceType">
 			</div>
 		</div>
-		<!-- <div class="row cl">
-				<label for="userId" class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>请选择用户：</label>
-				<div class="formControls col-xs-4 col-sm-4">
-					<select class="form-control" name="userId" id="userId">
-
-					</select>
-				</div>
-			</div> -->
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3">备注：</label>
 			<div class="formControls col-xs-8 col-sm-9">
@@ -162,7 +140,6 @@
 
 <!--   表单结束     -->
 
-
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/lib/layer/2.4/layer.js"></script>
 	<script type="text/javascript"
@@ -170,7 +147,6 @@
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/static/h-ui.admin/js/H-ui.admin.page.js"></script>
 	<!--/_footer /作为公共模版分离出去-->
-
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/lib/My97DatePicker/4.8/WdatePicker.js"></script>
@@ -207,8 +183,8 @@ $(function(){
 				"homeAddress" : $('#homeAddress').val(),
 				"residenceType" : $('#residenceType').val(),
 				"maritalStatus" : $('#maritalStatus').val(),
-				"remark" : $('#remark').val(),
-				"userId" : $('#userId').val()
+				"remark" : $('#remark').val()
+				/* "userId" : $('#userId').val() */
 			},
 			//成功后执行的操作
 			success : function(data) {

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -32,23 +31,11 @@
 	href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 <script
 	src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<!--[if IE 6]>
-<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
-<script>DD_belatedPNG.fix('*');</script>
-<![endif]-->
-<!--/meta 作为公共模版分离出去-->
-
-<title>新增文章 - 资讯管理 - H-ui.admin v2.3</title>
-<meta name="keywords"
-	content="H-ui.admin v2.3,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
-<meta name="description"
-	content="H-ui.admin v2.3，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+<title>房屋增加</title>
 </head>
 <body>
 	<article class="cl pd-20">
 		<form class="form form-horizontal" id="form-member-add">
-
-
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>房间名称：</label>
@@ -62,7 +49,6 @@
 					class="c-red">*</span>请选择楼房：</label>
 				<div class="formControls col-xs-4 col-sm-4">
 					<select class="form-control" name="buildingId" id="buildingId">
-
 					</select>
 				</div>
 			</div>
@@ -132,8 +118,6 @@
 					</select>
 				</div>
 			</div>
-
-
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 					<input class="btn btn-primary radius" id="btnAdd" type="button"
@@ -153,7 +137,6 @@
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/static/h-ui.admin/js/H-ui.admin.page.js"></script>
 	<!--/_footer /作为公共模版分离出去-->
-
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/lib/My97DatePicker/4.8/WdatePicker.js"></script>

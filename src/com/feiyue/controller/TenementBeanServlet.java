@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.feiyue.entiy.CostBean;
 import com.feiyue.entiy.TenementBean;
 import com.feiyue.service.TenementBeanService;
 import com.feiyue.service.impl.TenementBeanServiceImpl;
@@ -59,6 +58,7 @@ public class TenementBeanServlet extends HttpServlet {
 				out.close();
 
 			}
+
 			else if ("".equals(op)) {
 				List<TenementBean> list = tbs.getTenementBean();
 				// Ajax来实现
@@ -88,10 +88,10 @@ public class TenementBeanServlet extends HttpServlet {
 				String homeAddress = request.getParameter("homeAddress");
 				String residenceType = request.getParameter("residenceType");
 				String maritalStatus = request.getParameter("maritalStatus");
-				int userId = Integer.parseInt(request.getParameter("userId"));
+				//int userId = Integer.parseInt(request.getParameter("userId"));
 				String remark = request.getParameter("remark");
 				TenementBean tb = new TenementBean(tenementName, sex, aunit, idCard, mobilePhone, email, areStay,
-						nationality, homeAddress, residenceType, maritalStatus, userId, remark);
+						nationality, homeAddress, residenceType, maritalStatus, 2, remark);
 				boolean flag = tbs.getInsertTenementBean(tb);
 				PrintWriter out = response.getWriter();
 				out.print(flag);
@@ -108,11 +108,11 @@ public class TenementBeanServlet extends HttpServlet {
 				String homeAddress = request.getParameter("homeAddress");
 				String residenceType = request.getParameter("residenceType");
 				String maritalStatus = request.getParameter("maritalStatus");
-				int userId = Integer.parseInt(request.getParameter("userId"));
+				//int userId = Integer.parseInt(request.getParameter("userId"));
 				String remark = request.getParameter("remark");
 				int tenementId = Integer.parseInt(request.getParameter("tenementId"));
 				TenementBean tb = new TenementBean(tenementName, sex, aunit, idCard, mobilePhone, email, areStay,
-						nationality, homeAddress, residenceType, maritalStatus, userId, remark, tenementId);
+						nationality, homeAddress, residenceType, maritalStatus,2, remark, tenementId);
 				boolean flag = tbs.updateTenementBean(tb);
 				PrintWriter out = response.getWriter();
 				out.print(flag);

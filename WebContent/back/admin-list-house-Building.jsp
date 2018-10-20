@@ -98,7 +98,6 @@
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/static/h-ui.admin/js/H-ui.admin.page.js"></script>
 	<!--/_footer /作为公共模版分离出去-->
-
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/lib/My97DatePicker/4.8/WdatePicker.js"></script>

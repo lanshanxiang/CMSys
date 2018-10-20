@@ -400,46 +400,7 @@
 	</script>
 
 	<script>
-		$(function() {
-			//修改密码的超链接单击事件
-			$(document).on(
-					"click",
-					'.changepwd',
-					function() {
-						var _this = $(this);
-						data = _this.parent().siblings();
-						var arr = [];
-						for (var i = 1; i < data.length; i++) {
-							// console.log($(data[i]).text());
-							arr.push($(data[i]).text());//拿到点击按钮的当前那条信息的内容 放到一个数组里
-						}
-						console.log(arr);
-						//change-em-password.html
-
-						layer
-								.open({
-									type : 2,
-									area : [ '600px', '270px' ],
-									fix : false, //不固定
-									maxmin : true,
-									shade : 0.4,
-									title : '修改密码',
-									content : 'change-emp-password.html',
-									success : function(layero, index) {
-										var body = layer.getChildFrame('body',
-												index);//建立父子联系
-										var iframeWin = window[layero
-												.find('iframe')[0]['name']];
-
-										var _ename = body.find('#ename');
-										console.log(_ename + "," + arr[1]);
-										$(_ename).html(arr[1]);
-
-									}
-								});
-
-					});
-
+		
 			//修改员工信息的超链接单击事件
 			$(document).on(
 					"click",
@@ -451,8 +412,6 @@
 						for (var i = 1; i < data.length; i++) { //1 从1开始 从姓名开始
 							arr.push($(data[i]).text());//每一个td中的内容() 放到一个数组里
 						}
-						// console.log(arr);
-						//change-password.html
 
 						//打开新窗口 编辑窗口
 						layer.open({
@@ -461,7 +420,7 @@
 									fix : false, //不固定
 									maxmin : true,
 									shade : 0.4,
-									title : '编辑员工信息', //显示的标题
+									title : '编辑住户信息', //显示的标题
 									content : 'admin-list-check-update.jsp', //很多种写法 其中之一直接写目标窗口(要弹出来窗口)
 									success : function(layero, index) { //success可以不写
 										var body = layer.getChildFrame('body',
@@ -478,7 +437,7 @@
 
 					});
 
-		});
+	
 	</script>
 	<script
 		src="${pageContext.request.contextPath}/plugin/datatables/jquery.dataTables.min.js"></script>
@@ -541,21 +500,7 @@
 			"searchable" : false,
 			"orderable" : false,
 			"targets" : 0
-		},//第一行不进行排序和搜索
-		//        {"targets": [12], "visible": false},    //设置第13列隐藏/显示
-		//        {"width": "10%", "targets": [1]},  //设置第2列宽度
-		//        {
-		//            对第7列内容进行替换处理
-		//            targets: 6,
-		//            render: function (data, type, row, meta) {
-		//                if (data == "1") {
-		//                    return employee.table.sexMan;
-		//                }
-		//                if (data == "0") {
-		//                    return employee.table.sexWoman;
-		//                }
-		//            }
-		//        },
+		},
 		{
 			defaultContent : '',
 			targets : [ '_all' ]
@@ -603,9 +548,7 @@
 						$(nTd)
 								.html(
 										'<a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
-						//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
-						//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
-						//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");
+						
 					}
 				} ];
 
@@ -2048,21 +1991,7 @@
 			"searchable" : false,
 			"orderable" : false,
 			"targets" : 0
-		},//第一行不进行排序和搜索
-		//        {"targets": [12], "visible": false},    //设置第13列隐藏/显示
-		//        {"width": "10%", "targets": [1]},  //设置第2列宽度
-		//        {
-		//            对第7列内容进行替换处理
-		//            targets: 6,
-		//            render: function (data, type, row, meta) {
-		//                if (data == "1") {
-		//                    return employee.table.sexMan;
-		//                }
-		//                if (data == "0") {
-		//                    return employee.table.sexWoman;
-		//                }
-		//            }
-		//        },
+		},
 		{
 			defaultContent : '',
 			targets : [ '_all' ]
@@ -2110,9 +2039,7 @@
 						$(nTd)
 								.html(
 										' <a title="删除" href="javascript:;" onclick="member_del(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
-						//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
-						//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
-						//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");
+						
 					}
 				} ];
 
@@ -2413,12 +2340,6 @@
 	<script>
 		$(function() {
 
-			/* $(document).on("click",'a[data-toggle="tab"]',function(){
-				console.log("click"+$(this));
-			
-				$.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
-				//$($.fn.dataTable.tables( true ) ).DataTable().columns.adjust().draw();
-			}); */
 
 			$('a[data-toggle="tab"]').on("click", function(e) {
 				console.log("click..  " + e.target);
