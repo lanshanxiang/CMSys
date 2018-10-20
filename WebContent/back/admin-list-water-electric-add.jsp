@@ -4,6 +4,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<%
+	if (null == request.getSession().getAttribute("users")) {
+		request.getRequestDispatcher("login.jsp").forward(request, response);
+	}
+%>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -23,41 +28,118 @@
 	id="skin" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/static/h-ui.admin/css/style.css" />
-<!--[if IE 6]>
-<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
-<script>DD_belatedPNG.fix('*');</script>
-<![endif]-->
-<!--/meta 作为公共模版分离出去-->
 
-<title>新增文章 - 资讯管理 - H-ui.admin v2.3</title>
+
+<title>修改费用 </title>
 <meta name="keywords"
-	content="H-ui.admin v2.3,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+	content="HTML后台模版下载">
 <meta name="description"
-	content="H-ui.admin v2.3，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+	content="适合中小型CMS后台系统。">
+	<link rel="stylesheet" href="../front/css/layui.css" media="all">
+<script src="../front/layer.js"></script>
+<script src="../front/layui.js"></script>
+<link rel="stylesheet" type="text/css" href="../front/css/bootstrap.min.css">
+<script src="../front/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<article class="cl pd-20">
 		<form class="form form-horizontal"
 			id="form-member-add">
+			
+			
 			<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>通知公告类型名称：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" value="新闻资讯" placeholder=""
-						id="typeName" name="typeName">
+				<label for="tenementId" class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>住户名称：</label>
+				<div class="formControls col-xs-4 col-sm-4 ">
+					<select class="form-control select" name="tenementId" id="tenementId">
+
+					</select>
 				</div>
 			</div>
 
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>备注：</label>
+					class="c-red">*</span>年：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value=""
-						name="extent" id="extent">
+					<input type="text" class="input-text" value="2018" placeholder=""
+						id="years" name="years">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>月：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="1" placeholder=""
+						name="months" id="months">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>上月度数：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="0"
+						placeholder="" name="lastHalf" id="lastHalf">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>本月度数：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" placeholder="" value="0"
+						name="thisMonth" id="thisMonth">
+				</div>
+			</div>
+			<input type="hidden" name="oldCostId" id="oldCostId" value="" />
+			<div class="row cl">
+				<label for="costId" class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>费用名称：</label>
+				<div class="formControls col-xs-4 col-sm-4 ">
+					<select class="form-control select" name="costId" id="costId">
+
+					</select>
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>走表数：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" placeholder="" value="0"
+						name="quantity" id="quantity">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>应缴费：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" placeholder="" value="0"
+						name="payable" id="payable">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>实缴费：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" placeholder="" value="0"
+						name="practical" id="practical">
 				</div>
 			</div>
 			
-			
+			<div class="row cl">
+					<label for="payDate" class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>缴费日期：</label>
+					<div class="form-label col-xs-4 col-sm-3">
+						<input type="text" class="layui-input" id="payDate" name="payDate"
+							placeholder="请输入年月日"  style="width: 300px;">
+					</div>
+				</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+					class="c-red">*</span>备注：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" placeholder="" value="0"
+						name="extent" id="extent">
+				</div>
+			</div>
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 					<input class="btn btn-primary radius" id="btnAdd" type="button" value="提交" />
@@ -96,13 +178,23 @@
 			$("#btnAdd").click(function(){
 				//ajax请求
 				$.ajax({
-					url : "${pageContext.request.contextPath}/NoticeTypeBeanServlet?op=addNoticeType",//url地址
+					url : "${pageContext.request.contextPath}/PaymentServlet?op=add",//url地址
 					type : "post",
 					data : {
-						"typeName" : $('#typeName').val(),
+						
+						"tenementId" : $('#tenementId').val(),
+						"years" : $('#years').val(),//传值
+						"months" : $('#months').val(),
+						"lastHalf" : $('#lastHalf').val(),
+						"thisMonth" : $('#thisMonth').val(),
+						"costId" : $('#costId').val(),
+						"quantity" : $('#quantity').val(),
+						"payable" : $('#payable').val(),
+						"practical" : $('#practical').val(),
+						"payDate" : $('#payDate').val(),
 						"extent" : $('#extent').val()
 					},
-					// 成功后执行的操作
+					//成功后执行的操作
 					success : function(data) {
 						//判断用户名密码是否正确，正确的话则跳到前台首页
 						if (data == "false") {
@@ -110,7 +202,7 @@
 						} else {
 							layer
 							.msg(
-									'增加成功!',
+									'添加成功!',
 									{
 										icon : 1,
 										time : 1000
@@ -135,7 +227,44 @@
 			
 		});
 	</script>
+	<script type="text/javascript">
+		$(function() {
+			//ajax的 get请求
+			$.get("${pageContext.request.contextPath}/TenementBeanServlet?op=load", function(data, status) {
+				//使用js的内置对象JSON将返回的值转化为数组
+				/* array = JSON.parse(data); */
+				//遍历数组
+				$.each(data, function(index, report) {
+					$("#tenementId").append(
+							"<option value="+report.tenementId+">" + report.tenementName+ "</option>");
+				});
+			});
+		});
+		$(function() {
+			//ajax的 get请求
+			$.get("${pageContext.request.contextPath}/CostServlet?op=load", function(data, status) {
+				//使用js的内置对象JSON将返回的值转化为数组
+				/* array = JSON.parse(data); */
+				//遍历数组
+				$.each(data, function(index, report) {
+					$("#costId").append(
+							"<option value="+report.costId+">" + report.costName+ "</option>");
+				});
+			});
+		});
+	</script>
+	<script>
+	    //使用layui插件将选择日期变美观
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
 
+			//常规用法
+			laydate.render({
+				elem : '#payDate',
+				type : 'datetime'
+			});
+		});
+	</script>
 
 	<!--/请在上方写此页面业务相关的脚本-->
 </body>

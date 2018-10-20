@@ -52,6 +52,12 @@
 			</div>
 		</div>
 		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户账号：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text"  placeholder="请输入用户手机号" id="register" name="register">
+			</div>
+		</div>
+		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名称：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text"  placeholder="请输入用户名称" id="userName" name="userName">
@@ -146,7 +152,26 @@ $(function(){
 		radioClass: 'iradio-blue',
 		increaseArea: '20%'
 	});
+	$("#register").blur(function(){
+		var regExp = new RegExp("^[1][0-9]{10}$");
+		if($(this).val()==""){
+			layer.msg(
+					'手机号不能为空!',
+					{
+						icon : 1,
+						time : 1000
+					});
+		}else if(!regExp.test($(this).val())){
+			layer.msg(
+					'手机号格式有误!',
+					{
+						icon : 1,
+						time : 1000
+					});
+		}
+	});
 	$("#userPwd").blur(function(){
+		
 		if($(this).val()==""){
 			layer.msg(
 					'密码不能为空!',
@@ -202,6 +227,7 @@ $(function(){
 					url : "${pageContext.request.contextPath}/UserBeanServlet?op=addUser",//url地址
 					type : "post",
 					data : {
+						"register" : $('#register').val(),
 						"userName" : $('#userName').val(),
 						"userPwd" : $('#userPwd').val(),
 						"userSex" : $("input[type='radio']:checked").val(),

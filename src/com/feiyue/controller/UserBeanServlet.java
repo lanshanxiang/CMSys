@@ -20,7 +20,8 @@ import com.feiyue.util.MyData;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class UserBeanServlet
+ *  UserBeanServlet类处理与用户有关的操作
+ *  @author 李友惠
  */
 @WebServlet("/UserBeanServlet")
 public class UserBeanServlet extends HttpServlet {
@@ -35,7 +36,7 @@ public class UserBeanServlet extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see doGet方法接收和处理页面发来的请求
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -69,11 +70,12 @@ public class UserBeanServlet extends HttpServlet {
 			
             //释放资源
 			out.close();
-		//登录
+		//用户登录
 		}else if("login".equals(op)) {
 			//从页面中获取用户名和密码
 			String username=request.getParameter("username");
 			String password=request.getParameter("password");
+			//密码加密
 			String userPwd=MD5Util.getEncodeByMd5(password);
 			UserBean user=null;
 			user=ubs.getLogin(username, userPwd);
@@ -120,7 +122,7 @@ public class UserBeanServlet extends HttpServlet {
 				else if("addUser".equals(op)) {
 					
 					
-					String register=doGetRegisterNo();
+					String register=request.getParameter("register");
 					String userName=request.getParameter("userName");
 					String userPwd=MD5Util.getEncodeByMd5(request.getParameter("userPwd"));
 					String userSex=request.getParameter("userSex");
@@ -195,10 +197,10 @@ public class UserBeanServlet extends HttpServlet {
 		else if("isHaveUser".equals(op)) {
 			UserBean user=null;
 			String register=request.getParameter("register");
-			System.out.println(register);
+			
 			user=ubs.getUserByRegister(register);
 			PrintWriter out = response.getWriter();
-			System.out.println(user);
+			
 			if(user!=null) {
 				
 				//out.print(user.getQuestion());

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!--_meta 作为公共模版分离出去-->
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -28,17 +28,10 @@
 	id="skin" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/static/h-ui.admin/css/style.css" />
-<!--[if IE 6]>
-<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
-<script>DD_belatedPNG.fix('*');</script>
-<![endif]-->
-<!--/meta 作为公共模版分离出去-->
 
-<title>新增文章 - 资讯管理 - H-ui.admin v2.3</title>
-<meta name="keywords"
-	content="H-ui.admin v2.3,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
-<meta name="description"
-	content="H-ui.admin v2.3，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+
+<title>修改费用 </title>
+
 	<link rel="stylesheet" href="../front/css/layui.css" media="all">
 <script src="../front/layer.js"></script>
 <script src="../front/layui.js"></script>
@@ -65,7 +58,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>年：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" value="2018" placeholder=""
+					<input type="text" class="input-text"  placeholder=""
 						id="years" name="years">
 				</div>
 			</div>
@@ -73,7 +66,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>月：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" value="1" placeholder=""
+					<input type="text" class="input-text"  placeholder=""
 						name="months" id="months">
 				</div>
 			</div>
@@ -81,7 +74,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>上月度数：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" value="0"
+					<input type="text" class="input-text" 
 						placeholder="" name="lastHalf" id="lastHalf">
 				</div>
 			</div>
@@ -89,7 +82,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>本月度数：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="0"
+					<input type="text" class="input-text" placeholder="" 
 						name="thisMonth" id="thisMonth">
 				</div>
 			</div>
@@ -107,7 +100,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>走表数：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="0"
+					<input type="text" class="input-text" placeholder="" 
 						name="quantity" id="quantity">
 				</div>
 			</div>
@@ -115,7 +108,7 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>应缴费：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="0"
+					<input type="text" class="input-text" placeholder="" 
 						name="payable" id="payable">
 				</div>
 			</div>
@@ -123,18 +116,11 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>实缴费：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" placeholder="" value="0"
+					<input type="text" class="input-text" placeholder="" 
 						name="practical" id="practical">
 				</div>
 			</div>
-			<!-- <div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>缴费日期：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="date" class="input-text" placeholder="" value=""
-						name="payDate" id="payDate">
-				</div>
-			</div> -->
+			
 			<div class="row cl">
 					<label for="payDate" class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>缴费日期：</label>

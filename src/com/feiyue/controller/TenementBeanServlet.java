@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.feiyue.entiy.CostBean;
 import com.feiyue.entiy.TenementBean;
 import com.feiyue.service.TenementBeanService;
 import com.feiyue.service.impl.TenementBeanServiceImpl;
@@ -48,7 +49,17 @@ public class TenementBeanServlet extends HttpServlet {
 		}
 		Object obj = request.getSession().getAttribute("users");
 		if (obj != null) {
-			if ("".equals(op)) {
+			if ("load".equals(op)) {
+				List<TenementBean> list = tbs.getTenementBean();
+				PrintWriter out = response.getWriter();
+
+				Gson gson = new Gson();
+				out.println(gson.toJson(list));
+
+				out.close();
+
+			}
+			else if ("".equals(op)) {
 				List<TenementBean> list = tbs.getTenementBean();
 				// Ajax来实现
 				// 返回数据最好是json格式 外部的jar包 gson

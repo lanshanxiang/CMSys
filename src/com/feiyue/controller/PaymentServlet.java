@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 @WebServlet("/PaymentServlet")
 public class PaymentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	//定义PaymentServiceImpl实现类，获得对数据库费用表处理的各种方法
 	private PaymentService psi = new PaymentServiceImpl();
 
@@ -58,8 +59,9 @@ public class PaymentServlet extends HttpServlet {
 			if ("load".equals(op)) {
 				List<PaymentBean> list = psi.getPayment();
 				PrintWriter out = response.getWriter();
-				//将得到的list集合转换为json对象传回请求的页面
+				//创建的json对象
 				Gson gson = new Gson();
+				//将得到的list集合转换为json对象传回请求的页面
 				out.println(gson.toJson(list));
 
 				out.close();
@@ -99,7 +101,7 @@ public class PaymentServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				// 输出jsonStr
 				out.print(jsonStr);
-				System.out.println("[jsonStr]:" + jsonStr);
+				
 				// 关闭
 				out.close();
 			}
@@ -119,7 +121,7 @@ public class PaymentServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				// 输出jsonStr
 				out.print(jsonStr);
-				System.out.println("[jsonStr]:" + jsonStr);
+				
 				// 关闭
 				out.close();
 			}
@@ -154,6 +156,7 @@ public class PaymentServlet extends HttpServlet {
 			} 
 			//更新费用信息
 			else if ("update".equals(op)) {
+				///得到修改后的数据
 				int payId = Integer.parseInt(request.getParameter("payId"));
 				int tenementId = Integer.parseInt(request.getParameter("tenementId"));
 				String years = request.getParameter("years");
@@ -166,27 +169,36 @@ public class PaymentServlet extends HttpServlet {
 				double practical = Double.parseDouble(request.getParameter("practical"));
 				String payDate = request.getParameter("payDate");
 				String extent = request.getParameter("extent");
+				//创建PaymentBean对象存储得到的数据
 				PaymentBean payment = new PaymentBean(payId, tenementId, years, months, lastHalf, thisMonth, costId,
 						quantity, payable, practical, payDate, extent);
 				PrintWriter out = response.getWriter();
+				System.out.println(payment);
+				//返回给页面修改的结果 true 修改成功 false 修改失败
 				boolean flag = psi.updatePayment(payment);
 				if (flag) {
 					out.print(true);
 				} else {
 					out.print(false);
 				}
-
-			} else if ("del".equals(op)) {
+				
+				
+			}//根据费用ID删除指定费用记录 
+			else if ("del".equals(op)) {
+				//得到页面传来的ID参数值
 				int payId = Integer.parseInt(request.getParameter("payId"));
+				//执行删除的方法，删除数据库中的指定数据
 				boolean flag = psi.deletePayment(payId);
 				PrintWriter out = response.getWriter();
+				//返回给页面删除结果 true 删除成功 false 删除失败
 				if (flag) {
 					out.print(true);
 				} else {
 					out.print(false);
 				}
 
-			}else if("batchDelete".equals(op)) {
+			}//批量删除费用记录
+			else if("batchDelete".equals(op)) {
 				//批量删除的SQL语句
 				String sql="DELETE FROM tb_payment WHERE payId IN (";
 				//获取批量ID
@@ -202,6 +214,7 @@ public class PaymentServlet extends HttpServlet {
 				out.print(flag);
 			}
 		} else {
+			//如果session（user)为空，跳转到登录界面
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);
 		}
 
