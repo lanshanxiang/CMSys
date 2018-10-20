@@ -24,4 +24,6 @@ public interface VillageInfoBeanDao {
     public boolean deleteVillageInfoBean(int VillageId);
    //批量删除
     public boolean batchDeleteTenementBean(String sql);
+   //前台申请小区
+    public boolean villageInfoBeanAdd(VillageInfoBean vb,int tenementId);
 }

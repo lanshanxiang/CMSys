@@ -2,7 +2,7 @@ package com.feiyue.dao;
 
 import java.util.List;
 
-
+import com.feiyue.entiy.Lost;
 import com.feiyue.entiy.RoomBean;
 /**
  * 房间管理的DAO
@@ -26,4 +26,6 @@ public interface RoomBeanDao {
     
     //前台查询房屋信息
     PageData<RoomBean> selectAllRoomBean(int page,int pageSize);
+    //前台用户申请住房
+    public boolean RoomBeanAdd(RoomBean rb,int tenementId);
 }

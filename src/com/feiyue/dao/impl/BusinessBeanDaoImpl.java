@@ -70,4 +70,14 @@ public class BusinessBeanDaoImpl implements BusinessBeanDao {
 		return DBUtil.getPage(sql,page, pageSize, BusinessBean.class);
 	}
 
+	/**
+	 * 前台申请我的商家
+	 */
+	@Override
+	public boolean BusinessBeanAdd(BusinessBean c, int tenementId) {
+		// TODO Auto-generated method stub
+		String sql = "";
+		return DBUtil.execute(sql)>0;
+	}
+
 }

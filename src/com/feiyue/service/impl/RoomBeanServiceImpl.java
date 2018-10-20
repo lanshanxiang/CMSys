@@ -56,5 +56,13 @@ public class RoomBeanServiceImpl implements RoomBeanService  {
 		// TODO Auto-generated method stub
 		return rbd.selectAllRoomBean(page, pageSize);
 	}
+	/**
+	 * 前台申请房屋信息
+	 */
+	@Override
+	public boolean getRoomBeanAdd(RoomBean rb, int tenementId) {
+		// TODO Auto-generated method stub
+		return rbd.RoomBeanAdd(rb, tenementId);
+	}
 
 }

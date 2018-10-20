@@ -26,4 +26,6 @@ public interface BusinessBeanService {
     public boolean getBatchDeleteBusinessBean(String sql);
     //前台查询全部
     public PageData<BusinessBean> getSelectAllBusinessBean(int page, int pageSize);
+    //前台申请商家
+    public boolean getBusinessBeanAdd(BusinessBean c,int tenementId);
 }

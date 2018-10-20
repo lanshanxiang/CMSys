@@ -74,4 +74,14 @@ public class ParkingBeanDaoImpl implements ParkingBeanDao {
 		return DBUtil.getPage(sql, page, pageSize, ParkingBean.class);
 	}
 
+	/**
+	 * 前台增加我的车位
+	 */
+	@Override
+	public boolean ParkingBeanAdd(ParkingBean pb, int tenementId) {
+		// TODO Auto-generated method stub
+		String sql = "";
+		return DBUtil.execute(sql)>0;
+	}
+
 }

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.feiyue.entiy.Lost;
 import com.feiyue.entiy.ParkingBean;
+import com.feiyue.entiy.RoomBean;
 import com.feiyue.service.LostService;
 import com.feiyue.service.ParkingBeanService;
 import com.feiyue.service.impl.LostServiceImpl;
@@ -77,6 +78,17 @@ public class FrontPackingServlet extends HttpServlet {
 			String str = gs.toJson(listParkingBean.getData());
 			//将字符组传到页面
 			response.getWriter().print(str+listParkingBean.getTotalPage());
+		}
+		//前台申请车位处理的servlet
+		else if("addRoom".equals(op)) {
+			
+			//替换下面语句
+			String lostGood=request.getParameter("lostGood");
+
+			ParkingBean pb = new ParkingBean();
+			int tenementId= 1;
+			boolean flag = pbs.getParkingBeanAdd(pb, tenementId);
+			response.getWriter().print(flag);
 		}
 		
 	}

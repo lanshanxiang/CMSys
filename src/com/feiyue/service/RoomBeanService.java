@@ -20,4 +20,6 @@ public interface RoomBeanService {
     public boolean getBatchDeleteRoomBean(String sql);
     //前台查询所有房屋信息
     public PageData<RoomBean> getselectAllRoomBean(int page,int pageSize);
+   //前台申请房屋信息
+    public boolean getRoomBeanAdd(RoomBean rb,int tenementId);
 }

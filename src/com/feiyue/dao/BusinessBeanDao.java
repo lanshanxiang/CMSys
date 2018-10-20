@@ -24,6 +24,9 @@ public interface BusinessBeanDao {
     public boolean deleteBusinessBean(int bId);
     //批量删除
     public boolean batchDeleteBusinessBean(String sql);
-    
+    //前台查询所有商家信息
     public PageData<BusinessBean> selectAllBusinessBean(int page, int pageSize);
+    //前台申请我的商家
+    public boolean BusinessBeanAdd(BusinessBean c,int tenementId);
+    
 }

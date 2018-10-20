@@ -57,5 +57,14 @@ public class RoomBeanDaoImpl implements RoomBeanDao {
 		String sql= "select * from tb_room";
 		return DBUtil.getPage(sql, page, pageSize, RoomBean.class);
 	}
+	/**
+	 * 前台用户申请住房
+	 */
+	@Override
+	public boolean RoomBeanAdd(RoomBean rb, int tenementId) {
+		// TODO Auto-generated method stub
+		String sql= "select * from tb_room";
+		return DBUtil.execute(sql)>0;
+	}
 
 }

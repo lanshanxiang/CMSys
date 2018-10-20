@@ -24,5 +24,7 @@ public interface ParkingBeanDao {
   	public PageData<ParkingBean> queryParkingBean(int page,int pageSize,int tenementId);
     //前台查询车位全部信息
   	public PageData<ParkingBean> selectAllParkingBean(int page,int pageSize);
+    //前台增加我的车位
+  	public boolean ParkingBeanAdd(ParkingBean pb,int tenementId);
 
 }

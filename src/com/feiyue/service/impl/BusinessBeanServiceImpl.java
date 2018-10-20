@@ -71,4 +71,13 @@ public class BusinessBeanServiceImpl implements BusinessBeanService {
 		return bbd.selectAllBusinessBean(page, pageSize);
 	}
 
+	/**
+	 * 前台申请商家
+	 */
+	@Override
+	public boolean getBusinessBeanAdd(BusinessBean c, int tenementId) {
+		// TODO Auto-generated method stub
+		return bbd.BusinessBeanAdd(c, tenementId);
+	}
+
 }

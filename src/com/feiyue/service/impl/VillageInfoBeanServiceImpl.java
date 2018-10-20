@@ -47,4 +47,10 @@ public class VillageInfoBeanServiceImpl implements VillageInfoBeanService{
 		return vibd.queryVillageInfoBeanByPage(page, pageSize);
 	}
 
+	@Override
+	public boolean getVillageInfoBeanAdd(VillageInfoBean vb, int tenementId) {
+		// TODO Auto-generated method stub
+		return vibd.villageInfoBeanAdd(vb, tenementId);
+	}
+
 }

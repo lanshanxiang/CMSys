@@ -71,6 +71,17 @@ public class FrontBusinessBeanServlet extends HttpServlet {
 			// 将字符组传到页面
 			response.getWriter().print(str + listBusinessBean.getTotalPage());
 		}
+		//申请商家入驻
+		else if("add".equals(op)) {
+			
+			//替换下面语句
+			String lostGood=request.getParameter("lostGood");
+
+			BusinessBean bb = new BusinessBean();
+			int tenementId= 1;
+			boolean flag = bbs.getBusinessBeanAdd(bb, tenementId);
+			response.getWriter().print(flag);
+		}
 	}
 
 	/**

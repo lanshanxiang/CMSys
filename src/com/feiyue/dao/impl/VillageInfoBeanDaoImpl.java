@@ -49,5 +49,14 @@ public class VillageInfoBeanDaoImpl implements VillageInfoBeanDao {
 		// TODO Auto-generated method stub
 		return DBUtil.getPage("select * from tb_villageinfo ORDER BY tb_villageinfo.villageId DESC", page, pageSize, VillageInfoBean.class);
 	}
+	/**
+	 * 前台申请小区
+	 */
+	@Override
+	public boolean villageInfoBeanAdd(VillageInfoBean vb,int tenementId) {
+		// TODO Auto-generated method stub
+		String sql = "";
+		return DBUtil.execute(sql)>0;
+	}
 
 }

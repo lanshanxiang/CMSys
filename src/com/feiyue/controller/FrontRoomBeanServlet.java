@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.feiyue.entiy.Lost;
 import com.feiyue.entiy.RepairBean;
 import com.feiyue.entiy.RoomBean;
 import com.feiyue.service.RoomBeanService;
@@ -68,6 +69,25 @@ public class FrontRoomBeanServlet extends HttpServlet {
 			String str = gs.toJson(listRoomBean.getData());
 			// 将字符组传到页面
 			response.getWriter().print(str + listRoomBean.getTotalPage());
+		}
+		// 申请买房
+		else if ("addRoom".equals(op)) {
+
+			// 替换下面语句
+			String lostGood = request.getParameter("lostGood");
+
+			RoomBean rb = new RoomBean();
+			int tenementId = 1;
+			boolean flag = rbs.getRoomBeanAdd(rb, tenementId);
+			response.getWriter().print(flag);
+		}
+		// 查询所有房屋
+		else if ("queryAllRoom".equals(op)) {
+			List<RoomBean> list = rbs.getQueryOnlyRoomBean();
+			PrintWriter out = response.getWriter();
+			Gson gson = new Gson();
+			out.println(gson.toJson(list));
+			out.close();
 		}
 	}
 
