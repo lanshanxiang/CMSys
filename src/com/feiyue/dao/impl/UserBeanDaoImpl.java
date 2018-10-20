@@ -74,7 +74,7 @@ public class UserBeanDaoImpl implements UserBeanDao {
 	@Override
 	public boolean updatePwd(String register, String newPwd) {
 		// TODO Auto-generated method stub
-		return DBUtil.execute("update tb_user set userAge=? where register=?", newPwd,register)>0;
+		return DBUtil.execute("update tb_user set userPwd=? where register=?", newPwd,register)>0;
 	}
 /**
  * 管理员添加新用户

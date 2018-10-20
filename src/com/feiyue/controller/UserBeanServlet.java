@@ -151,19 +151,11 @@ public class UserBeanServlet extends HttpServlet {
 			UserBean user=null;
 			PrintWriter out = response.getWriter();
 			String register=request.getParameter("register");
-			String answer=request.getParameter("answer");
+			
 			String newPwd=MD5Util.getEncodeByMd5(request.getParameter("password"));
-			user=ubs.getUserByRegister(register);
-			if(user!=null) {
-				if(user.getAnswer().equals(answer)) {
-					out.print(ubs.updatePwd(register, newPwd));
-				}
-				
-			}else {
-				out.print(false);
-			}
-			
-			
+							
+			out.print(ubs.updatePwd(register, newPwd));
+	
 			
 		}//管理员通过userID重置用户密码
 		else if("resetPwd".equals(op)) {
@@ -189,7 +181,7 @@ public class UserBeanServlet extends HttpServlet {
 			boolean flag=ubs.getDeleteUser(userId);
 			PrintWriter out = response.getWriter();
 			out.print(flag);
-		}
+		}//批量删除用户
 		else if("deleteUserBeans".equals(op)) {
 			
 			String[] userId = request.getParameterValues("userId");
@@ -199,7 +191,7 @@ public class UserBeanServlet extends HttpServlet {
 			out.print(flag);
 		}
 	
-		//得到指定账号的密保问题
+		//判断指定账号是否存在
 		else if("isHaveUser".equals(op)) {
 			UserBean user=null;
 			String register=request.getParameter("register");
