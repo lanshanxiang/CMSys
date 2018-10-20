@@ -194,7 +194,7 @@
 					content : "手机号格式错误"
 				});
 				flag = true;
-			}else{s
+			}else{
 				
 				if (password == "") {
 					$.pt({
@@ -223,7 +223,7 @@
 									success : function(data) {
 										//判断用户名密码是否正确，正确的话则跳到前台首页
 										console.log(data);
-										if (data == false) {
+										if (data == "false") {
 											layer.msg('登录失败!请重新登录', {
 												icon : 5,
 												time : 3000
