@@ -204,20 +204,18 @@
 					<!-- Search box End -->
 				</div>
 				<div class="col-sm-3">
-				<!-- cart-menu -->
-				<div class="cart-menu">
-					<ul>
-						
-						<li class="dropdown">
-							<a href="#" data-toggle="dropdown" data-hover="dropdown"><i class="icon-basket-loaded icons" aria-hidden="true"></i></a><span class="subno">2</span><strong>我的车位</strong>
-							<div class="dropdown-menu  cart-outer" id="park">
-								
-							</div>
-						</li>
-					</ul>
+					<!-- cart-menu -->
+					<div class="cart-menu">
+						<ul>
+
+							<li class="dropdown"><a href="#" data-toggle="dropdown"
+								data-hover="dropdown"><i class="icon-basket-loaded icons"
+									aria-hidden="true"></i></a><span class="subno">2</span><strong>我的车位</strong>
+								<div class="dropdown-menu  cart-outer" id="park"></div></li>
+						</ul>
+					</div>
+					<!-- cart-menu End -->
 				</div>
-				<!-- cart-menu End -->
-			</div>
 				<div class="main-menu">
 					<!--  nav  -->
 					<nav class="navbar navbar-inverse navbar-default">
@@ -262,10 +260,10 @@
 										<li class="dropdown"><a href="#"><img
 												src="assets/images/menu-icon4.png" alt="menu-icon4" /> 申请车位
 												<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-											
 										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon5.png" alt="menu-icon2" /> 申请商家入驻
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
+												src="assets/images/menu-icon5.png" alt="menu-icon2" />
+												申请商家入驻 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+											<!--<ul class="dropdown-menu right">
 										
 										</ul>--></li>
 										<li class="dropdown"><a href="#"><img
@@ -279,26 +277,26 @@
 												src="assets/images/menu-icon7.png" alt="menu-icon2" /> 我要缴费
 												<sup class="bg-blue">NEW</sup></a></li>
 										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon8.png" alt="menu-icon2" /> 申请失物招领
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
+												src="assets/images/menu-icon8.png" alt="menu-icon2" />
+												申请失物招领 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+											<!--<ul class="dropdown-menu right">
 											<li><a href="grid.html">Toys 05</a></li>
 											<li><a href="list.html">Hobbies 02</a></li>
 											<li><a href="grid.html">Toys 01</a></li>
 										</ul>--></li>
-										
-									</ul>
-								</li>
+
+									</ul></li>
 								<li class="active"><a href="index.jsp">首页</a></li>
-							<li><a href="queryRepair.jsp">住户维修记录</a></li>
-							<li><a href="room.jsp">房屋</a></li>
-							<li><a href="parking.jsp">车位</a></li>
-							<li><a href="business.jsp">商家</a></li>
-							<li><a href="village.jsp">小区</a></li>
-							<li><a href="welfare.jsp">福利</a></li>
-							<li><a href="active.jsp">社区活动</a></li>
-							<li><a href="lost.jsp">失物招领</a></li>
-							<li><a href="payment.jsp">缴费记录</a></li>
-							<li><a href="complain.html">社区公告</a></li>
+								<li><a href="queryRepair.jsp">住户维修记录</a></li>
+								<li><a href="room.jsp">房屋</a></li>
+								<li><a href="parking.jsp">车位</a></li>
+								<li><a href="business.jsp">商家</a></li>
+								<li><a href="village.jsp">小区</a></li>
+								<li><a href="welfare.jsp">福利</a></li>
+								<li><a href="active.jsp">社区活动</a></li>
+								<li><a href="lost.jsp">失物招领</a></li>
+								<li><a href="payment.jsp">缴费记录</a></li>
+								<li><a href="complain.html">社区公告</a></li>
 							</ul>
 							<!-- /.navbar-collapse -->
 						</div>
@@ -325,34 +323,23 @@
 					<div class="content w1150" id="content"
 						style="margin-bottom: 50px;">
 						<div class="content__article">
-						<h3>我要报修!!</h3>
-                        <hr>
+							<h3>申请车位!!</h3>
+							<hr>
 							<form class="form-horizontal" style="margin-left: 100px;">
 								<div class="form-group">
-									<label for="equipment" class="col-sm-2 control-label">设备名称:</label>
-									<div class="col-sm-6">
-										<input type="text" class="form-control" id="equipment"
-											name="equipment" placeholder="请输入设备名称">
+									<label for="parkingId" class="col-sm-2 control-label">请选择要您喜欢的车位</label>
+									<div class="col-sm-4">
+										<select class="form-control" name="parkingId" id="parkingId">
+                                             
+										</select>
 									</div>
+									<button id="btnQueryPark" class="btn btn-success">查询</button>
 								</div>
-								<div class="form-group">
-									<label for="reportName" class="col-sm-2 control-label">姓名:</label>
-									<div class="col-sm-6">
-										<input type="text" class="form-control" id="reportName"
-											name="reportName" placeholder="请输入报修人的姓名">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="extent" class="col-sm-2 control-label">备注:</label>
-									<div class="col-sm-6">
-										<textarea class="layui-input form-control" id="extent"
-											name="extent" placeholder=""></textarea>
-									</div>
-								</div>
+								<div class="content__list" id="queryPark"></div>
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-2">
-										<button style="width: 100px;" id="addReport" type="button"
-											class="btn btn-success">提交</button>
+										<button style="width: 100px;" id="buyPark" type="button"
+											class="btn btn-success">申请</button>
 									</div>
 								</div>
 							</form>
@@ -494,7 +481,84 @@
 		});
 	</script>
 	<script>
-	       $("#addReport")
+	 $("#btnQueryPark").click(function() { layui.use('flow', function(){
+		  var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+		  var flow = layui.flow;
+		  flow.load({
+		    elem: '#queryPark' //指定列表容器
+		    ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+		      var lis = [];
+		      //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+		      $.ajax({
+     			 url:"${pageContext.request.contextPath}/FrontPaymentServlet?op=myElectric",
+     			 type:"get",
+     			 data:{
+     				"parkingId" : $("#parkingId").find("option:selected").val(),
+     				 "page":page
+     			 },
+     			 dataType:"text",
+     			 success:function(res){
+		        //假设你的列表返回在data集合中
+		          var one = res.lastIndexOf("]");
+		          var totalPage=res.substring(one+1);
+     			  var result=res.substring(0,one+1);
+     			  console.log(result);
+     			 console.log(1111);
+     			  var array = JSON.parse(result);
+		          layui.each(array, function(index, payment){
+		        	  var text = "";
+		        	  text += "<div class=\"tianyi__list-a\" node-type=\"list\">";
+		        	  text += "						<div class=\"ty-card ty-card-type1 clearfix\"";
+		        	  text += "									node-type=\"ty-card-item\" __tianyi=\"\">";
+		        	  text += "									<div class=\"ty-card-l\">";
+		        	  text += "										<div class=\"ty-card-thumb-w\">";
+		        	  text += "											<a";
+		        	  text += "												node-type=\"sima-click-0\"><img";
+		        	  text += "												src=\"//k.sinaimg.cn/n/sports/crawl/55/w550h305/20181018/KSAz-hmrasqr8698670.jpg/w150h100f1t0l0q100syf.jpg\"";
+		        	  text += "												alt=\"\" class=\"ty-card-thumb\" width=\"150\" height=\"100\"";
+		        	  text += "												onerror=\"if(this.src!='//n.sinaimg.cn/ent/c30320b4/20170511/img-replaced-w.png'){this.src='//n.sinaimg.cn/ent/c30320b4/20170511/img-replaced-w.png';this.className+=' ty-card-thumb-noani';}\"></a>";
+		        	  text += "										</div>";
+		        	  text += "									</div>";
+		        	  text += "									<div class=\"ty-card-r\">";
+		        	  text += "										<h3 class=\"ty-card-tt\">";
+		        	  text += "											<a";
+		        	  text += "												 node-type=\"sima-click-0\">住户:"+payment.tenementName+"</a>";
+		        	  text += "										</h3>";
+		        	  text += "										<p class=\"ty-card-tip1\">年份："+payment.years+"    月份:"+payment.months+"</p>";
+		        	  text += "										<p class=\"ty-card-tip2 clearfix\">";
+		        	  text += "											<span class=\"ty-card-tip2-i ty-card-time\">费用："+payment.payable+"</span><span";
+		        	  text += "												class=\"ty-card-tip2-i ty-card-media\"></span><span";
+		        	  text += "												class=\"ty-card-tip2-i ty-card-tags\"><span";
+		        	  text += "												class=\"ty-card-tag\" node-type=\"ty-card-tag\"><a";
+		        	  text += "													 target=\"_blank\"></a></span><span";
+		        	  text += "												class=\"ty-card-tag\" node-type=\"ty-card-tag\"><a";
+		        	  text += "													 target=\"_blank\"></a></span><span";
+		        	  text += "												class=\"ty-card-tag\" node-type=\"ty-card-tag\"><a";
+		        	  text += "													 target=\"_blank\"></a></span></span><span";
+		        	  text += "												class=\"ty-card-tip2-i ty-card-cmnt\" node-type=\"ty-card-cmnt\"><a";
+		        	  text += "												";
+		        	  text += "												><span class=\"ty-card-cmnt-icon\"></span><span";
+		        	  text += "													class=\"ty-card-cmnt-total\"></span></a> </span>";
+		        	  text += "										</p>";
+		        	  text += "									</div>";
+		        	  text += "									<span class=\"ty-card-close\" node-type=\"feed-close\"></span>";
+		        	  text += "								</div>";
+
+		            lis.push(text);
+		        }); 
+		        
+		        //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+		        //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+		        next(lis.join(''), page < totalPage);
+     			 }
+		      });
+		    }
+		  });
+		});
+				});		
+</script>
+	<script>
+	       $("#buyPark")
 			.click(
 					function() {
 						console.log(111);
@@ -515,10 +579,12 @@
 											alert("提交失败");
 										} else {
 											layer.msg(
-															'提交成功!请等待维修人员进行维修',
+															'提交成功!',
 															{
 																icon : 1,
 																time : 1000
+															},function(){
+																location.href="addReport.jsp";
 															});
 										}
 									}
@@ -526,18 +592,25 @@
 					});
 </script>
 	<script>
-    //使用layui插件将选择日期变美观
-	layui.use('laydate', function() {
-		var laydate = layui.laydate;
-
-		//常规用法
-		laydate.render({
-			elem : '#lostDate',
-			type : 'datetime'
+$(function() {
+	//ajax的 get请求
+	$.get("FrontRoomBeanServlet?op=queryAllRoom", function(data, status) {
+		//使用js的内置对象JSON将返回的值转化为数组
+		array = JSON.parse(data);
+		//遍历数组
+		$.each(array, function(index, park) {
+			$("#parkingId").append(
+					"<option value="+park.parkingId+">" + park.ptName
+							+ "</option>");
 		});
 	});
+});
 </script>
-		
+<!-- <script type="text/javascript">
+    $("#btnQueryRoom").click(function(){
+    	alert($("#roomId").find("option:selected").val());
+    });
+</script> -->
 </body>
 
 </html>

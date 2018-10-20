@@ -61,10 +61,20 @@ public class RoomBeanDaoImpl implements RoomBeanDao {
 	 * 前台用户申请住房
 	 */
 	@Override
-	public boolean RoomBeanAdd(RoomBean rb, int tenementId) {
+	public boolean roomBeanUpdate(RoomBean rb, int tenementId) {
 		// TODO Auto-generated method stub
-		String sql= "select * from tb_room";
-		return DBUtil.execute(sql)>0;
+		String sql= "update tb_room set lease=?,tenementId=? where roomId=?";
+		return DBUtil.execute(sql, rb.getLease(),tenementId,rb.getRoomId())>0;
+	}
+	@Override
+	public List<RoomBean> queryRoomByLease(String lease) {
+		// TODO Auto-generated method stub
+		return (List<RoomBean>) DBUtil.select("select * from tb_room where lease=?", RoomBean.class, lease);
+	}
+	@Override
+	public List<RoomBean> queryRoomById(int roomId) {
+		// TODO Auto-generated method stub
+		return (List<RoomBean>) DBUtil.select("select * from tb_room where roomId=?", RoomBean.class, roomId);
 	}
 
 }

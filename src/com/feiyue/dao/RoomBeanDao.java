@@ -27,5 +27,9 @@ public interface RoomBeanDao {
     //前台查询房屋信息
     PageData<RoomBean> selectAllRoomBean(int page,int pageSize);
     //前台用户申请住房
-    public boolean RoomBeanAdd(RoomBean rb,int tenementId);
+    public boolean roomBeanUpdate(RoomBean rb,int tenementId);
+    //前台通过lease 状态查所有房间信息
+    public List<RoomBean> queryRoomByLease(String lease);
+    //前台根据Id找
+    public List<RoomBean> queryRoomById(int roomId);
 }

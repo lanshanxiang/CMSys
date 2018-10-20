@@ -36,6 +36,18 @@ public class RoomBean {
 		this.lease = lease;
 	}
 	
+	
+	
+	
+	public RoomBean(String lease,int roomId) {
+		super();
+		this.roomId = roomId;
+		this.lease = lease;
+	}
+
+
+
+
 	public RoomBean(String roomName, int buildingId, String unitNum, String eApartment, double buildArea,
 			double usingArea, String face, String extent, String housetype, String lease) {
 		super();

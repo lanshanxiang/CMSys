@@ -204,20 +204,18 @@
 					<!-- Search box End -->
 				</div>
 				<div class="col-sm-3">
-				<!-- cart-menu -->
-				<div class="cart-menu">
-					<ul>
-						
-						<li class="dropdown">
-							<a href="#" data-toggle="dropdown" data-hover="dropdown"><i class="icon-basket-loaded icons" aria-hidden="true"></i></a><span class="subno">2</span><strong>我的车位</strong>
-							<div class="dropdown-menu  cart-outer" id="park">
-								
-							</div>
-						</li>
-					</ul>
+					<!-- cart-menu -->
+					<div class="cart-menu">
+						<ul>
+
+							<li class="dropdown"><a href="#" data-toggle="dropdown"
+								data-hover="dropdown"><i class="icon-basket-loaded icons"
+									aria-hidden="true"></i></a><span class="subno">2</span><strong>我的车位</strong>
+								<div class="dropdown-menu  cart-outer" id="park"></div></li>
+						</ul>
+					</div>
+					<!-- cart-menu End -->
 				</div>
-				<!-- cart-menu End -->
-			</div>
 				<div class="main-menu">
 					<!--  nav  -->
 					<nav class="navbar navbar-inverse navbar-default">
@@ -262,10 +260,10 @@
 										<li class="dropdown"><a href="#"><img
 												src="assets/images/menu-icon4.png" alt="menu-icon4" /> 申请车位
 												<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-											
 										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon5.png" alt="menu-icon2" /> 申请商家入驻
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
+												src="assets/images/menu-icon5.png" alt="menu-icon2" />
+												申请商家入驻 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+											<!--<ul class="dropdown-menu right">
 										
 										</ul>--></li>
 										<li class="dropdown"><a href="#"><img
@@ -279,26 +277,26 @@
 												src="assets/images/menu-icon7.png" alt="menu-icon2" /> 我要缴费
 												<sup class="bg-blue">NEW</sup></a></li>
 										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon8.png" alt="menu-icon2" /> 申请失物招领
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
+												src="assets/images/menu-icon8.png" alt="menu-icon2" />
+												申请失物招领 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+											<!--<ul class="dropdown-menu right">
 											<li><a href="grid.html">Toys 05</a></li>
 											<li><a href="list.html">Hobbies 02</a></li>
 											<li><a href="grid.html">Toys 01</a></li>
 										</ul>--></li>
-										
-									</ul>
-								</li>
+
+									</ul></li>
 								<li class="active"><a href="index.jsp">首页</a></li>
-							<li><a href="queryRepair.jsp">住户维修记录</a></li>
-							<li><a href="room.jsp">房屋</a></li>
-							<li><a href="parking.jsp">车位</a></li>
-							<li><a href="business.jsp">商家</a></li>
-							<li><a href="village.jsp">小区</a></li>
-							<li><a href="welfare.jsp">福利</a></li>
-							<li><a href="active.jsp">社区活动</a></li>
-							<li><a href="lost.jsp">失物招领</a></li>
-							<li><a href="payment.jsp">缴费记录</a></li>
-							<li><a href="complain.html">社区公告</a></li>
+								<li><a href="queryRepair.jsp">住户维修记录</a></li>
+								<li><a href="room.jsp">房屋</a></li>
+								<li><a href="parking.jsp">车位</a></li>
+								<li><a href="business.jsp">商家</a></li>
+								<li><a href="village.jsp">小区</a></li>
+								<li><a href="welfare.jsp">福利</a></li>
+								<li><a href="active.jsp">社区活动</a></li>
+								<li><a href="lost.jsp">失物招领</a></li>
+								<li><a href="payment.jsp">缴费记录</a></li>
+								<li><a href="complain.html">社区公告</a></li>
 							</ul>
 							<!-- /.navbar-collapse -->
 						</div>
@@ -324,46 +322,114 @@
                 -->
 					<div class="content w1150" id="content"
 						style="margin-bottom: 50px;">
-						<div class="content__article">
-						<h3>我要报修!!</h3>
-                        <hr>
+						<h1 style="color: dodgerblue;">账单查缴</h1>
+							<hr />
+							<ul class="nav nav-tabs">
+								<li class="active">
+									<a data-toggle="tab" href="#electric">电费缴纳</a>
+								</li>
+								<li>
+									<a data-toggle="tab" href="#water">水费缴纳</a>
+								</li>
+								<li>
+									<a data-toggle="tab" href="#other">其他费用缴纳</a>
+								</li>
+						</ul>
+						<div class="tab-content">
+						 <div id="electric" class="content__article tab-pane fade in active" style="margin-top: 20px">
+							<h3>交电费!</h3>
+							<hr>
 							<form class="form-horizontal" style="margin-left: 100px;">
 								<div class="form-group">
-									<label for="equipment" class="col-sm-2 control-label">设备名称:</label>
+									<label for="payMoney" class="col-sm-2 control-label">请输入金额:</label>
 									<div class="col-sm-6">
-										<input type="text" class="form-control" id="equipment"
-											name="equipment" placeholder="请输入设备名称">
+										<input type="text" class="form-control" id="payMoney"
+											name="payMoney" placeholder="请输入金额:">
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="reportName" class="col-sm-2 control-label">姓名:</label>
-									<div class="col-sm-6">
-										<input type="text" class="form-control" id="reportName"
-											name="reportName" placeholder="请输入报修人的姓名">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="extent" class="col-sm-2 control-label">备注:</label>
-									<div class="col-sm-6">
-										<textarea class="layui-input form-control" id="extent"
-											name="extent" placeholder=""></textarea>
-									</div>
-								</div>
+
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-2">
-										<button style="width: 100px;" id="addReport" type="button"
-											class="btn btn-success">提交</button>
+										<button style="width: 100px;" id="queryMyElectric"
+											type="button" class="btn btn-success">充值</button>
 									</div>
 								</div>
 							</form>
+							<div class="content w1150" id="content"
+								style="margin-bottom: 50px;">
+
+
+								<div class="content__list" id="myElectric"></div>
+
+							</div>
+						</div>
+						<div id="water" class="content__article tab-pane fade" style="margin-top: 20px">
+						<h3>交水费!</h3>
+                        <hr>
+							<form class="form-horizontal" style="margin-left: 100px;">
+								<div class="form-group">
+									<label for="payMoney" class="col-sm-2 control-label">请输入金额:</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control" id="payMoney"
+											name="payMoney" placeholder="请输入金额:">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-2">
+										<button style="width: 100px;" id="queryMyWater" type="button"
+											class="btn btn-success">充值</button>
+									</div>
+								</div>
+							</form>
+							<div class="content w1150" id="content" style="margin-bottom: 50px;">
+						
+
+							<div class="content__list" id="myWater">
+								
+							</div>
+						
+					</div>
+						</div>
+						<div id="other" class="content__article tab-pane fade" style="margin-top: 20px">
+						<h3>交其他费用!</h3>
+                        <hr>
+							<form class="form-horizontal" style="margin-left: 100px;">
+								<div class="form-group">
+									<label for="payMoney" class="col-sm-2 control-label">请输入金额:</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control" id="payMoney"
+											name="payMoney" placeholder="请输入金额:">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-2">
+										<button style="width: 100px;" id="queryMyOther" type="button"
+											class="btn btn-success">充值</button>
+									</div>
+								</div>
+							</form>
+							<div class="content w1150" id="content" style="margin-bottom: 50px;">
+						
+
+							<div class="content__list" id="myOther">
+								
+							</div>
+						
+					</div>
+						</div>
 						</div>
 					</div>
+
 
 				</div>
 
 				<!-- right side -->
 			</div>
+
 		</div>
+
 		<!-- /.grid-shop -->
 	</section>
 	<!-- newsletter -->
@@ -493,38 +559,7 @@
 			zoomWindowFadeOut : 750
 		});
 	</script>
-	<script>
-	       $("#addReport")
-			.click(
-					function() {
-						console.log(111);
-						$.ajax({
-									url : "${pageContext.request.contextPath}/FrontReportBeanServlet?op=addReportBean",//url地址
-									type : "post",
-									data : {
-										"equipment" : $('#equipment').val(),
-										"tenementId" : ${user.tenementId},
-										"reportName" : $('#reportName').val(),
-										"extent" : $('#extent').val()
-									},
-									//成功后执行的操作
-									success : function(data) {
-										//判断用户名密码是否正确，正确的话则跳到前台首页
-										console.log(data);
-										if (data == "false") {
-											alert("提交失败");
-										} else {
-											layer.msg(
-															'提交成功!请等待维修人员进行维修',
-															{
-																icon : 1,
-																time : 1000
-															});
-										}
-									}
-								});
-					});
-</script>
+	
 	<script>
     //使用layui插件将选择日期变美观
 	layui.use('laydate', function() {
@@ -537,7 +572,7 @@
 		});
 	});
 </script>
-		
+
 </body>
 
 </html>

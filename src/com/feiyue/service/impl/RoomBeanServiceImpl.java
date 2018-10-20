@@ -60,9 +60,21 @@ public class RoomBeanServiceImpl implements RoomBeanService  {
 	 * 前台申请房屋信息
 	 */
 	@Override
-	public boolean getRoomBeanAdd(RoomBean rb, int tenementId) {
+	public boolean getRoomBeanUpdate(RoomBean rb, int tenementId) {
 		// TODO Auto-generated method stub
-		return rbd.RoomBeanAdd(rb, tenementId);
+		return rbd.roomBeanUpdate(rb, tenementId);
+	}
+
+	@Override
+	public List<RoomBean> getQueryRoomByLease(String lease) {
+		// TODO Auto-generated method stub
+		return rbd.queryRoomByLease(lease);
+	}
+
+	@Override
+	public List<RoomBean> getQueryRoomById(int roomId) {
+		// TODO Auto-generated method stub
+		return rbd.queryRoomById(roomId);
 	}
 
 }

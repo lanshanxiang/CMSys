@@ -71,14 +71,14 @@ public class FrontRoomBeanServlet extends HttpServlet {
 			response.getWriter().print(str + listRoomBean.getTotalPage());
 		}
 		// 申请买房
-		else if ("addRoom".equals(op)) {
+		else if ("updateRoom".equals(op)) {
 
 			// 替换下面语句
-			String lostGood = request.getParameter("lostGood");
-
-			RoomBean rb = new RoomBean();
-			int tenementId = 1;
-			boolean flag = rbs.getRoomBeanAdd(rb, tenementId);
+			String lease = request.getParameter("lease");
+            int roomId=Integer.parseInt(request.getParameter("roomId"));
+			RoomBean rb = new RoomBean(lease,roomId);
+			int tenementId = Integer.parseInt(request.getParameter("tenementId"));
+			boolean flag = rbs.getRoomBeanUpdate(rb, tenementId);
 			response.getWriter().print(flag);
 		}
 		// 查询所有房屋
@@ -86,7 +86,25 @@ public class FrontRoomBeanServlet extends HttpServlet {
 			List<RoomBean> list = rbs.getQueryOnlyRoomBean();
 			PrintWriter out = response.getWriter();
 			Gson gson = new Gson();
-			out.println(gson.toJson(list));
+			out.print(gson.toJson(list));
+			out.close();
+		}
+		//根据状态查询所有
+		else if("queryRoomByLease".equals(op)) {
+			String lease="空置";
+			List<RoomBean> list = rbs.getQueryRoomByLease(lease);
+			PrintWriter out = response.getWriter();
+			Gson gson = new Gson();
+			out.print(gson.toJson(list));
+			out.close();
+		}
+		//根据ID查找
+		else if("queryRoomById".equals(op)) {
+			int roomId=Integer.parseInt(request.getParameter("roomId"));
+			List<RoomBean> list = rbs.getQueryRoomById(3);
+			PrintWriter out = response.getWriter();
+			Gson gson = new Gson();
+			out.print(gson.toJson(list));
 			out.close();
 		}
 	}

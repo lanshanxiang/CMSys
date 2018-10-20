@@ -65,7 +65,7 @@ public class FrontPaymentServlet extends HttpServlet {
 			out.close();
 
 		} else if ("myWater".equals(op)) {
-			int tenementId = 5;
+			int tenementId = Integer.parseInt(request.getParameter("tenementId"));
 			String years = request.getParameter("years");
 			String months = request.getParameter("months");
 			int costId=2;
@@ -83,7 +83,7 @@ public class FrontPaymentServlet extends HttpServlet {
 			// 关闭
 			out.close();
 		}else if ("myElectric".equals(op)) {
-			int tenementId = 5;
+			int tenementId = Integer.parseInt(request.getParameter("tenementId"));
 			String years = request.getParameter("years");
 			String months = request.getParameter("months");
 			int costId=5;
@@ -102,7 +102,7 @@ public class FrontPaymentServlet extends HttpServlet {
 			// 关闭
 			out.close();
 		}else if ("myOther".equals(op)) {
-			int tenementId = 5;
+			int tenementId = Integer.parseInt(request.getParameter("tenementId"));
 			String years = request.getParameter("years");
 			String months = request.getParameter("months");
 			// 使用Gson对象
