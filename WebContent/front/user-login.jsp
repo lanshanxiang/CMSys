@@ -81,6 +81,35 @@
 		}).blur(function() {
 			$('.forget-owl').removeClass('password');
 		});
+		$('#login-username')
+		.blur(
+				function() {
+					if($(this).val()==""){
+						$.pt({
+							target : $("#login-username"),
+							position : 'r',
+							align : 't',
+							width : 'auto',
+							height : 'auto',
+							content : "手机号不能为空"
+						});
+					}else{
+						//用户名只能是15位以下的字母或`1321`290-0. 数字
+						var regExp = new RegExp("^[1][0-9]{10}$");
+						if (!regExp.test($(this).val())) {
+							$.pt({
+								target : $("#login-username"),
+								position : 'r',
+								align : 't',
+								width : 'auto',
+								height : 'auto',
+								content : "手机号格式错误"
+							});
+						}
+					}
+					
+					
+});
 		$('#forget-username')
 				.blur(
 						function() {
@@ -108,7 +137,7 @@
 										}
 									});
 
-						});
+		});
 	});
 
 	function goto_register() {
@@ -152,87 +181,158 @@
 				content : "用户名不能为空"
 			});
 			flag = true;
+		}else{
+			//用户名只能是11位数字
+			var regExp = new RegExp("^[1][0-9]{10}$");
+			if (!regExp.test(username)) {
+				$.pt({
+					target : $("#login-username"),
+					position : 'r',
+					align : 't',
+					width : 'auto',
+					height : 'auto',
+					content : "手机号格式错误"
+				});
+				flag = true;
+			}else{s
+				
+				if (password == "") {
+					$.pt({
+						target : $("#login-password"),
+						position : 'r',
+						align : 't',
+						width : 'auto',
+						height : 'auto',
+						content : "密码不能为空"
+					});
+					flag = true;
+				}else{
+					
+					if (flag) {
+						return false;
+					} else {//登录
+						$
+								.ajax({
+									url : "${pageContext.request.contextPath}/UserBeanServlet?op=login",//url地址
+									type : "post",
+									data : {
+										"username" : username,
+										"password" : password
+									},
+									//成功后执行的操作
+									success : function(data) {
+										//判断用户名密码是否正确，正确的话则跳到前台首页
+										console.log(data);
+										if (data == false) {
+											layer.msg('登录失败!请重新登录', {
+												icon : 5,
+												time : 3000
+											});
+										} else {
+											layer.msg('登录成功!', {
+												icon : 1,
+												time : 1000
+											}, function() {
+												location.href = "index.jsp";
+
+											});
+										}
+									}
+								});
+
+						//调用后台登录验证的方法
+						//alert('登录成功');
+						//return false;
+					}
+					
+				}
+				
+				
+			}
+			
+			
 		}
-		if (password == "") {
-			$.pt({
-				target : $("#login-password"),
-				position : 'r',
-				align : 't',
-				width : 'auto',
-				height : 'auto',
-				content : "密码不能为空"
-			});
-			flag = true;
-		}
-		//用户名只能是15位以下的字母或数字
-		var regExp = new RegExp("^[0-9]{11}$");
-		if (!regExp.test(username)) {
+		
+		
+
+		
+	}
+	var codestr;
+	//获取验证码
+	function getCode(){
+		
+		//判断用户名是否为空
+		if ($("#register-username").val() == "") {
 			$.pt({
 				target : $("#login-username"),
 				position : 'r',
 				align : 't',
 				width : 'auto',
 				height : 'auto',
-				content : "用户名必须为长度为11位的数字"
+				content : "手机号不能为空"
 			});
-			flag = true;
-		}
-
-		if (flag) {
-			return false;
-		} else {//登录
-			$
-					.ajax({
-						url : "${pageContext.request.contextPath}/UserBeanServlet?op=login",//url地址
-						type : "post",
-						data : {
-							"username" : username,
-							"password" : password
-						},
-						//成功后执行的操作
-						success : function(data) {
-							//判断用户名密码是否正确，正确的话则跳到前台首页
-							console.log(data);
-							if (data == false) {
-								layer.msg('登录失败!请重新登录', {
-									icon : 5,
-									time : 3000
-								});
-							} else {
-								layer.msg('登录成功!', {
-									icon : 1,
-									time : 1000
-								}, function() {
-									location.href = "index.jsp";
-
-								});
-							}
-						}
-					});
-
-			//调用后台登录验证的方法
-			//alert('登录成功');
-			//return false;
-		}
-	}
-	var codestr;
-	//获取验证码
-	function getCode(){
-		$
-		.ajax({
-			url : "${pageContext.request.contextPath}/UserBeanServlet?op=getCode",//url地址
-			type : "post",
-			data : {
-				"tel" : $("#register-username").val()
+			
+		}else{
+			//用户名只能是11位数字
+			var regExp = new RegExp("^[1][0-9]{10}$");
+			if (!regExp.test($("#register-username").val())) {
+				$.pt({
+					target : $("#register-username"),
+					position : 'r',
+					align : 't',
+					width : 'auto',
+					height : 'auto',
+					content : "手机号格式错误"
+				});
 				
-			},
-			//成功后执行的操作
-			success : function(data) {
-				//判断用户名密码是否正确，正确的话则跳到前台首页
-				codestr=data;
+			}else{
+				
+				$
+				.ajax({
+					url : "${pageContext.request.contextPath}/UserBeanServlet?op=getCode",//url地址
+					type : "post",
+					data : {
+						"tel" : $("#register-username").val()
+						
+					},
+					//成功后执行的操作
+					success : function(data) {
+						//判断用户名密码是否正确，正确的话则跳到前台首页
+						codestr=data;
+						
+					}
+				});
+				
+				
+				
+				
+		         var time=60;
+		        
+		         timer=setInterval(function(){
+		            
+		             if(time<=0){
+		                 
+		                 $("#btn-getCode").val("获取验证码").removeAttr("disabled")
+		                 clearInterval(timer);
+		                 
+		             }else {
+		            	 $("#btn-getCode").attr("disabled", "disabled");
+		            	 $("#btn-getCode").val("倒计时"+time+"秒");
+		                 
+		                 time--;
+		             }
+		                
+		             
+		         },1000);
 				
 			}
-		});
+			
+			
+		}
+		
+		
+		
+		
 
 		
 	}
@@ -562,7 +662,7 @@ body {
 							class="input input--hideo"> <input
 							class="input__field input__field--hideo" type="text"
 							id="login-username" autocomplete="off" placeholder="请输入手机号"
-							tabindex="1" maxlength="10" /> <label
+							tabindex="1" maxlength="11" /> <label
 							class="input__label input__label--hideo" for="login-username">
 								<i class="fa fa-fw fa-user icon icon--hideo"></i> <span
 								class="input__label-content input__label-content--hideo"></span>
@@ -602,34 +702,23 @@ body {
 						<section class="content"> <span
 							class="input input--hideo"> <input
 							class="input__field input__field--hideo" type="text"
-							id="forget-username" autocomplete="off" placeholder="请输入账号" /> <label
+							id="forget-username" autocomplete="off" placeholder="请输入手机号" /> <label
 							class="input__label input__label--hideo" for="forget-username">
 								<i class="fa fa-fw fa-user icon icon--hideo"></i> <span
 								class="input__label-content input__label-content--hideo"></span>
 						</label>
-						</span> <span class="input input--hideo"> <input
-							class="input__field input__field--hideo" type="text"
-							id="forget-question" autocomplete="off" placeholder="密保问题：" /> <label
-							class="input__label input__label--hideo" for="forget-question">
-								<i class="fa fa-fw fa-wifi icon icon--hideo"></i> <span
-								class="input__label-content input__label-content--hideo"></span>
-						</label>
-
-						</span> <span class="input input--hideo"> <input
-							class="input__field input__field--hideo" type="text"
-							id="forget-answer" autocomplete="off" placeholder="请输入密保答案" /> <label
-							class="input__label input__label--hideo" for="forget-answer">
-								<i class="fa fa-fw fa-wifi icon icon--hideo"></i> <span
-								class="input__label-content input__label-content--hideo"></span>
-						</label>
-						</span> <span class="input input--hideo"> <input
-							class="input__field input__field--hideo" type="password"
-							id="forget-password" placeholder="请输入新密码" /> <label
-							class="input__label input__label--hideo" for="forget-password">
-								<i class="fa fa-fw fa-lock icon icon--hideo"></i> <span
-								class="input__label-content input__label-content--hideo"></span>
-						</label>
-						</span> </section>
+						</span> 
+						<span class="input input--hideo" style="width: 200px; float: left;">
+								<input class="input__field input__field--hideo" type="text" id="forget-code"  autocomplete="off" style="" placeholder="请输入验证码"/>
+								<label  class="input__label input__label--hideo" for="register-code">
+									<i class="fa fa-fw fa-wifi icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo" ></span>
+								</label>	
+							</span>
+							<span class="input--hideo" style="position: relative; top: 18px;">
+								<input class="btn btn-info" type="button" onClick="getCode()" id="btn-forget-getCode" value="获取验证码" style="color:white;"/>
+							</span> 
+						</section>
 					</div>
 					<div class="form-actions">
 						<a class="btn pull-left btn-link text-muted"
@@ -655,7 +744,7 @@ body {
 						<section class="content">
 							<span class="input input--hideo">
 								<input class="input__field input__field--hideo" type="text" id="register-username" 
-									autocomplete="off" placeholder="请输入用户名" maxlength="15"/>
+									autocomplete="off" placeholder="请输入手机号" maxlength="11"/>
 								<label class="input__label input__label--hideo" for="register-username">
 									<i class="fa fa-fw fa-user icon icon--hideo"></i>
 									<span class="input__label-content input__label-content--hideo"></span>
@@ -676,14 +765,14 @@ body {
 								</label>
 							</span>
 							<span class="input input--hideo" style="width: 200px; float: left;">
-								<input class="input__field input__field--hideo" type="text" id="register-code"  autocomplete="off" style="" placeholder="请输入注册码"/>
+								<input class="input__field input__field--hideo" type="text" id="register-code"  autocomplete="off" style="" placeholder="请输入验证码"/>
 								<label  class="input__label input__label--hideo" for="register-code">
 									<i class="fa fa-fw fa-wifi icon icon--hideo"></i>
 									<span class="input__label-content input__label-content--hideo" ></span>
 								</label>	
 							</span>
 							<span class="input--hideo" style="position: relative; top: 18px;">
-								<input class="btn btn-info" type="button" onClick="getCode()" value="获取验证码" style="color:white;"/>
+								<input class="btn btn-info" type="button" onClick="getCode()" id="btn-getCode" value="获取验证码" style="color:white;"/>
 							</span>
 						</section>
 					</div>
