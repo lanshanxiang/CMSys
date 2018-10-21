@@ -31,7 +31,7 @@ public class ComplainServlet extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+@Override
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -76,7 +76,6 @@ public class ComplainServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				// 将jsonString返回到页面
 				out.print(jsonString);
-				System.out.println(jsonString);
 				// 释放资源
 				out.close();
 				// 增加功能
@@ -147,7 +146,7 @@ public class ComplainServlet extends HttpServlet {
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);
 		}
 	}
-
+@Override
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

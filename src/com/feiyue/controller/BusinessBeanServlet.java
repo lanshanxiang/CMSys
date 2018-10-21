@@ -1,25 +1,20 @@
 package com.feiyue.controller;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.feiyue.entiy.BusinessBean;
-import com.feiyue.entiy.ReportBean;
-import com.feiyue.entiy.TenementBean;
 import com.feiyue.service.BusinessBeanService;
 import com.feiyue.service.impl.BusinessBeanServiceImpl;
 import com.feiyue.util.MyData;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class BusinessBeanServlet
+ * @author Administrator Servlet implementation class BusinessBeanServlet
  */
 @WebServlet("/BusinessBeanServlet")
 public class BusinessBeanServlet extends HttpServlet {
@@ -31,16 +26,17 @@ public class BusinessBeanServlet extends HttpServlet {
 	 */
 	public BusinessBeanServlet() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
+	@Override
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		// 设置响应和请求编码
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
@@ -56,10 +52,8 @@ public class BusinessBeanServlet extends HttpServlet {
 			if ("load".equals(op)) {
 				List<BusinessBean> list = bbs.getQueryBusinessBean();
 				PrintWriter out = response.getWriter();
-
 				Gson gson = new Gson();
 				out.println(gson.toJson(list));
-
 				out.close();
 				// 展示所有功能
 			} else if ("".equals(op)) {
@@ -190,18 +184,18 @@ public class BusinessBeanServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				out.print(flag);
 				out.close();
-			}else if("batchDelete".equals(op)) {
-				//批量删除的SQL语句
-				String sql="DELETE FROM tb_business WHERE bId IN (";
-				//获取批量ID
+			} else if ("batchDelete".equals(op)) {
+				// 批量删除的SQL语句
+				String sql = "DELETE FROM tb_business WHERE bId IN (";
+				// 获取批量ID
 				String[] bId = request.getParameterValues("bId");
 				PrintWriter out = response.getWriter();
-				//循环拼接ID
+				// 循环拼接ID
 				for (String string : bId) {
-					sql+=string+",";
+					sql += string + ",";
 				}
-				//最后的SQL语句
-				sql=sql.substring(0,sql.lastIndexOf(","))+")";
+				// 最后的SQL语句
+				sql = sql.substring(0, sql.lastIndexOf(",")) + ")";
 				boolean flag = bbs.getBatchDeleteBusinessBean(sql);
 				out.print(flag);
 			}
@@ -210,6 +204,11 @@ public class BusinessBeanServlet extends HttpServlet {
 		}
 	}
 
+	public void getLoad() {
+
+	}
+
+	@Override
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

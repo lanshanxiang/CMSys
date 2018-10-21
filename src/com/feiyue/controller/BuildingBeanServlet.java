@@ -16,6 +16,7 @@ import com.feiyue.util.MyData;
 import com.google.gson.Gson;
 
 /**
+ * @author Administrator
  * 用来处理后台楼房管理的servlet
  */
 @WebServlet("/BuildingBeanServlet")
@@ -31,7 +32,9 @@ public class BuildingBeanServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
 	/**
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
@@ -150,7 +153,7 @@ public class BuildingBeanServlet extends HttpServlet {
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);
 		}
 	}
-
+@Override
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

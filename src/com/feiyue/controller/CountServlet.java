@@ -36,7 +36,7 @@ import com.feiyue.service.impl.T_countServiceImpl;
 import com.feiyue.service.impl.U_countServiceImpl;
 import com.feiyue.service.impl.V_countServiceImpl;
 
-/**
+/**@author Administrator
  * Servlet implementation class CountServlet
  */
 @WebServlet("/CountServlet")
@@ -57,7 +57,7 @@ public class CountServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+@Override
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -115,7 +115,7 @@ public class CountServlet extends HttpServlet {
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);
 		}
 	}
-
+@Override
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

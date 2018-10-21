@@ -17,6 +17,7 @@ import com.feiyue.util.MyData;
 import com.google.gson.Gson;
 
 /**
+ * @author Administrator
  * Servlet implementation class PaymentServlet
  */
 @WebServlet("/CostTypeServlet")
@@ -31,7 +32,7 @@ public class CostTypeServlet extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+@Override
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -130,7 +131,7 @@ public class CostTypeServlet extends HttpServlet {
 		}
 
 	}
-
+@Override
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

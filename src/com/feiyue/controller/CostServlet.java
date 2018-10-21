@@ -3,13 +3,11 @@ package com.feiyue.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.feiyue.entiy.CostBean;
 import com.feiyue.entiy.PaymentBean;
 import com.feiyue.service.CostService;
@@ -34,7 +32,7 @@ public class CostServlet extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+@Override
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -75,7 +73,6 @@ public class CostServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				// 输出jsonStr
 				out.print(jsonStr);
-				System.out.println("[jsonStr]:" + jsonStr);
 				// 关闭
 				out.close();
 			} else if ("add".equals(op)) {
@@ -141,6 +138,7 @@ public class CostServlet extends HttpServlet {
 		}
 
 	}
+@Override
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
