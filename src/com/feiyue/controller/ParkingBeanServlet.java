@@ -13,7 +13,8 @@ import com.feiyue.service.impl.ParkingBeanServiceImpl;
 import com.feiyue.util.MyData;
 import com.google.gson.Gson;
 /**
- * Servlet implementation class ParkingSpaceServlet
+ * 处理车位管理模块的servlet类
+ * @author 飞跃队
  */
 @WebServlet("/ParkingBeanServlet")
 public class ParkingBeanServlet extends HttpServlet {
@@ -29,9 +30,11 @@ public class ParkingBeanServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @param request
+	 * @param response
+	 *  doGet方法接收和处理页面发来的请求
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -120,9 +123,11 @@ public class ParkingBeanServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @param request
+	 * @param response
+	 *  doGet方法接收和处理页面发来的请求
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub

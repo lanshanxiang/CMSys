@@ -17,7 +17,10 @@ import com.feiyue.util.MyData;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class PaymentServlet
+ * 用于处理费用通知管理的servlet
+ * 
+ * @author 飞跃队
+ *
  */
 @WebServlet("/PayNoticeServlet")
 public class PayNoticeServlet extends HttpServlet {
@@ -33,31 +36,30 @@ public class PayNoticeServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @param request
+	 * @param response
+	 * doGet方法接收和处理页面发来的请求
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// 设置响应和请求编码
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
+		// 设置返回的为json格式
 		response.setContentType("application/json");
+		// 设置op值为“”
 		String op = "";
+		// 如果传来的op值不为空 获取op值
 		if (request.getParameter("op") != null) {
 			op = request.getParameter("op");
 		}
+		// 得到session中的user对象
 		Object obj = request.getSession().getAttribute("users");
+		// obj不为空则
 		if (obj != null) {
-			if ("load".equals(op)) {
-				List<PayNoticeBean> list = pnsi.getPayNotice();
-				PrintWriter out = response.getWriter();
-
-				Gson gson = new Gson();
-				out.println(gson.toJson(list));
-
-				out.close();
-
-			} else if ("".equals(op)) {
+			//页面加载时得到数据库中的所有费用通知记录
+			 if ("".equals(op)) {
 				// 使用Gson对象
 				Gson gson = new Gson();
 				System.out.println(123);
@@ -76,7 +78,8 @@ public class PayNoticeServlet extends HttpServlet {
 				System.out.println("[jsonStr]:" + jsonStr);
 				// 关闭
 				out.close();
-			} else if ("load".equals(op)) {
+			}//页面加载时得到数据库中的所有费用通知记录 
+			 else if ("load".equals(op)) {
 				// 使用Gson对象
 				Gson gson = new Gson();
 				// 得到费用信息
@@ -88,11 +91,12 @@ public class PayNoticeServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				// 输出jsonStr
 				out.print(jsonStr);
-				System.out.println("[jsonStr]:" + jsonStr);
+				
 				// 关闭
 				out.close();
 			}
 		} else {
+			//obj为空就跳到登录界面
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);
 		}
 
@@ -102,6 +106,7 @@ public class PayNoticeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub

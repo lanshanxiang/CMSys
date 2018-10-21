@@ -18,7 +18,8 @@ import com.feiyue.util.MyData;
 import com.google.gson.Gson;
 
 /**
- * 通知公告类型的servlet
+ * 处理通知类型的servlet类
+ * @author 飞跃队
  */
 @WebServlet("/NoticeTypeBeanServlet")
 public class NoticeTypeBeanServlet extends HttpServlet {
@@ -33,9 +34,12 @@ public class NoticeTypeBeanServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+	 * @param request
+	 * @param response
+	 *  doGet方法接收和处理页面发来的请求
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//设置响应和请求编码
@@ -77,7 +81,7 @@ public class NoticeTypeBeanServlet extends HttpServlet {
 		            //释放资源
 					out.close();
 					
-				//增加
+				//增加新通知类型
 				}else if("addNoticeType".equals(op)) {
 					String typeName = request.getParameter("typeName");
 					String remark = request.getParameter("remark");
@@ -87,7 +91,7 @@ public class NoticeTypeBeanServlet extends HttpServlet {
 					out.print(flag);
 					
 					
-					
+					//修改通知类型的信息
 				}else if("updateNoticeType".equals(op)) {
 					int typeId=Integer.parseInt(request.getParameter("typeId"));
 					String typeName = request.getParameter("typeName");
@@ -102,7 +106,7 @@ public class NoticeTypeBeanServlet extends HttpServlet {
 					}
 					
 					
-					
+					//删除指定ID的通知类型
 				}else if("delNoticeType".equals(op)) {
 					int typeId=Integer.parseInt(request.getParameter("typeId"));
 					boolean flag=ntbs.deleteNoticeType(typeId);
@@ -118,8 +122,11 @@ public class NoticeTypeBeanServlet extends HttpServlet {
 			}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @param request
+	 * @param response
+	 *  doGet方法接收和处理页面发来的请求
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

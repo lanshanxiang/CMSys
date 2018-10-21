@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 
 /**
  * 处理费用的servlet类
- * 
+ * @author 飞跃队
  */
 @WebServlet("/PaymentServlet")
 public class PaymentServlet extends HttpServlet {
@@ -36,8 +36,11 @@ public class PaymentServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see doGET方法 处理各种请求
+	 * @param request
+	 * @param response
+	 *  doGet方法接收和处理页面发来的请求
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -221,9 +224,11 @@ public class PaymentServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @param request
+	 * @param response
+	 *  doPost方法接收和处理页面发来的请求
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
