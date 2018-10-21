@@ -17,6 +17,7 @@ import com.feiyue.util.MyData;
 import com.google.gson.Gson;
 
 /**
+ * @author Administrator
  * 通知公告类型的servlet
  */
 @WebServlet("/NoticeBeanServlet")
@@ -31,7 +32,7 @@ public class NoticeBeanServlet extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+@Override
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -72,7 +73,6 @@ public class NoticeBeanServlet extends HttpServlet {
 					PrintWriter out = response.getWriter();
 		            //将jsonString返回到页面
 					out.print(jsonString);
-					System.out.println(jsonString);
 		            //释放资源
 					out.close();
 				
@@ -125,7 +125,7 @@ public class NoticeBeanServlet extends HttpServlet {
 				}
 					
 	}
-
+@Override
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

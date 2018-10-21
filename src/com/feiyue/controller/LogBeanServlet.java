@@ -22,14 +22,14 @@ public class LogBeanServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	LogBeanService lbs = new LogBeanServiceImpl();
 
-	/**
+	/**@author Administrator
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public LogBeanServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+@Override
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -49,13 +49,7 @@ public class LogBeanServlet extends HttpServlet {
 		}
 		Object obj = request.getSession().getAttribute("users");
 		if (obj != null) {
-			/*
-			 * int page = 1; int pageSize = 5; if (request.getParameter("page") != null) {
-			 * page = Integer.parseInt(request.getParameter("page")); } if
-			 * (request.getParameter("pageSize") != null) { pageSize =
-			 * Integer.parseInt(request.getParameter("pageSize")); } PageData<LogBean>
-			 * pd=lbs.getQueryLogByPage(page, pageSize);
-			 */
+			
 			List<LogBean> list = lbs.getQueryLog();
 			request.setAttribute("listLogNo", list);
 			request.getRequestDispatcher("back/admin-list-log.jsp").forward(request, response);
@@ -63,7 +57,7 @@ public class LogBeanServlet extends HttpServlet {
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);
 		}
 	}
-
+@Override
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

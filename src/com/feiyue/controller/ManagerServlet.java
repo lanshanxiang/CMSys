@@ -36,7 +36,7 @@ public class ManagerServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+@Override
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -53,18 +53,11 @@ public class ManagerServlet extends HttpServlet {
 			// Ajax来实现
 			// 返回数据最好是json格式 外部的jar包 gson
 			MyData<TenementBean> md = new MyData<TenementBean>();
-
-			//md.setData(list);
-
 			Gson gson = new Gson();
 			String jsonString = gson.toJson(md);
-
 			// 使用printWriter对象
 			PrintWriter out = response.getWriter();
-
 			out.print(jsonString);
-			System.out.println("[jsonString] :" + jsonString);
-
 			out.close();
 		}else if("login".equals(op)) {
 			// 通过response的方法得到一个jspwriter
@@ -100,7 +93,7 @@ public class ManagerServlet extends HttpServlet {
 			response.sendRedirect("back/login.jsp");
 		}
 	}
-
+@Override
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

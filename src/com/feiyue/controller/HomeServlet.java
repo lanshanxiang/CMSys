@@ -40,7 +40,7 @@ import com.feiyue.service.impl.UserBeanServiceImpl;
 import com.feiyue.service.impl.VillageInfoBeanServiceImpl;
 import com.feiyue.util.PageData;
 
-/**
+/**@author Administrator
  * Servlet implementation class HomeServlet
  */
 @WebServlet("/HomeServlet")
@@ -63,7 +63,7 @@ public class HomeServlet extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+@Override
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -114,7 +114,7 @@ public class HomeServlet extends HttpServlet {
 			request.getRequestDispatcher("back/login.jsp").forward(request, response);
 		}
 	}
-
+@Override
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

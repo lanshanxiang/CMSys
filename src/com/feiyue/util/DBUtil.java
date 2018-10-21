@@ -15,16 +15,20 @@ import org.apache.commons.beanutils.BeanUtils;
  */
 
 /**
+ * @author Administrator
  * 数据库操作的辅助类
  */
 public class DBUtil {
 
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://192.168.9.237:3306/community_manager?useunicode=true&characterEncoding=utf-8";
+	//private static final String URL = "jdbc:mysql://localhost:3306/community_manager?useunicode=true&characterEncoding=utf-8";
 	private static final String USER = "root"; // 用户名
 	private static final String PASSWORD = "lx11100919";// 密码
+	//private static final String PASSWORD = "123";// 密码
 
 	/**
+	 * @author Administrator
 	 * 获取连接对象
 	 * 
 	 * @return 连接对象
@@ -45,6 +49,7 @@ public class DBUtil {
 	}
 
 	/**
+	 * @author Administrator
 	 * 释放资源
 	 * 
 	 * @param rs
@@ -73,7 +78,7 @@ public class DBUtil {
 
 	/**
 	 * 设置参数
-	 * 
+	 * @author Administrator
 	 * @param sql
 	 * @param conn
 	 * @param pstmt
@@ -93,6 +98,7 @@ public class DBUtil {
 	}
 
 	/**
+	 * @author Administrator
 	 * 通用的数据库(增,删,改)操作方法
 	 * 
 	 * @param sql
@@ -151,7 +157,7 @@ public class DBUtil {
 
 	/**
 	 * 带事务的查询方法
-	 * 
+	 * @author Administrator
 	 * @param sql
 	 * @param conn
 	 * @param cla
