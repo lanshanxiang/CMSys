@@ -31,5 +31,5 @@ public interface RoomBeanDao {
     //前台通过lease 状态查所有房间信息
     public List<RoomBean> queryRoomByLease(String lease);
     //前台根据Id找
-    public List<RoomBean> queryRoomById(int roomId);
+    public PageData<RoomBean> queryRoomById(int page,int pageSize,int roomId);
 }

@@ -23,5 +23,5 @@ public interface RoomBeanService {
    //前台申请房屋信息
     public boolean getRoomBeanUpdate(RoomBean rb,int tenementId);
     public List<RoomBean> getQueryRoomByLease(String lease);
-    public List<RoomBean> getQueryRoomById(int roomId);
+    public PageData<RoomBean> getQueryRoomById(int page,int pageSize,int roomId);
 }

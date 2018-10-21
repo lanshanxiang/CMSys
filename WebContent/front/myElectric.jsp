@@ -525,8 +525,6 @@
 		          var one = res.lastIndexOf("]");
 		          var totalPage=res.substring(one+1);
      			  var result=res.substring(0,one+1);
-     			  console.log(result);
-     			 console.log(1111);
      			  var array = JSON.parse(result);
 		          layui.each(array, function(index, payment){
 		        	  var text = "";

@@ -330,16 +330,16 @@
 									<label for="roomId" class="col-sm-2 control-label">请选择要您喜欢的房间</label>
 									<div class="col-sm-4">
 										<select class="form-control" name="roomId" id="roomId">
-                                             
+                                             <option value="1">请选择</option>
 										</select>
 									</div>
-									<button id="btnQueryRoom" class="btn btn-success">查询</button>
+
 								</div>
 								<div class="content__list" id="queryRoom"></div>
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-2">
-										<button style="width: 100px;" id="buyRoom" type="button"
-											class="btn btn-success">购买</button>
+										<button type="button" style="width: 100px;" id="buyRoom"
+											type="button" class="btn btn-success">购买</button>
 									</div>
 								</div>
 							</form>
@@ -481,7 +481,7 @@
 		});
 	</script>
 	<script>
-	 $("#btnQueryRoom").click(function() {
+	$("#roomId").bind("change",function(){
 		 layui.use('flow', function(){
 			  var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
 			  var flow = layui.flow;
@@ -492,7 +492,7 @@
 			      //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
 			      $.ajax({
 	     			 url:"${pageContext.request.contextPath}/FrontRoomBeanServlet?op=queryRoomById",
-	     			 type:"get",
+	     			 type:"post",
 	     			 data:{
 	     				 "roomId": $("#roomId").find("option:selected").val(),
 	     				 "page":page
@@ -500,9 +500,10 @@
 	     			 dataType:"text",
 	     			 success:function(res){
 			        //假设你的列表返回在data集合中
-	     			  console.log(res);
-	     			 console.log(1111);
-	     			  var array = JSON.parse(res);
+	     			 var one = res.lastIndexOf("]");
+		             var totalPage=res.substring(one+1);
+     			      var result=res.substring(0,one+1);
+     			      var array = JSON.parse(result);
 			          layui.each(array, function(index, room){
 			        	  var text = "";
 			        	  text += "<div class=\"tianyi__list-a\" node-type=\"list\">";
@@ -545,6 +546,7 @@
 			        	  text += "								</div>";
 
 			            lis.push(text);
+			            $("#queryRoom").html(text);
 			        }); 
 			        
 			        //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
@@ -557,7 +559,7 @@
 			});
 	 });		
 </script>
-	
+
 	<script>
 	       $("#buyRoom")
 			.click(
@@ -583,6 +585,8 @@
 															{
 																icon : 1,
 																time : 1000
+															},function(){
+																location.reload();
 															});
 										}
 									}

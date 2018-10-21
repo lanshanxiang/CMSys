@@ -330,10 +330,9 @@
 									<label for="roomId" class="col-sm-2 control-label">请选择要您喜欢的房间</label>
 									<div class="col-sm-4">
 										<select class="form-control" name="roomId" id="roomId">
-                                             
+                                             <option value="1">请选择</option>
 										</select>
 									</div>
-									<button id="btnQueryRoom" class="btn btn-success">查询</button>
 								</div>
 								<div class="content__list" id="queryRoom"></div>
 								<div class="form-group">
@@ -481,7 +480,8 @@
 		});
 	</script>
 	<script>
-	 $("#btnQueryRoom").click(function() { layui.use('flow', function(){
+	$("#roomId").bind("change",function(){
+		  layui.use('flow', function(){
 		  var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
 		  var flow = layui.flow;
 		  flow.load({
@@ -490,7 +490,7 @@
 		      var lis = [];
 		      //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
 		      $.ajax({
-     			 url:"${pageContext.request.contextPath}/FrontPaymentServlet?op=myElectric",
+     			 url:"${pageContext.request.contextPath}/FrontRoomBeanServlet?op=queryRoomByLease",
      			 type:"get",
      			 data:{
      				"roomId" : $("#roomId").find("option:selected").val(),
@@ -505,7 +505,7 @@
      			  console.log(result);
      			 console.log(1111);
      			  var array = JSON.parse(result);
-		          layui.each(array, function(index, payment){
+		          layui.each(array, function(index, room){
 		        	  var text = "";
 		        	  text += "<div class=\"tianyi__list-a\" node-type=\"list\">";
 		        	  text += "						<div class=\"ty-card ty-card-type1 clearfix\"";
@@ -513,7 +513,8 @@
 		        	  text += "									<div class=\"ty-card-l\">";
 		        	  text += "										<div class=\"ty-card-thumb-w\">";
 		        	  text += "											<a";
-		        	  text += "												node-type=\"sima-click-0\"><img";
+		        	  text += "												href=\"http://sports.sina.com.cn/basketball/nba/2018-10-18/doc-ihmrasqr8710783.shtml?cre=tianyi&amp;mod=pcsptw&amp;loc=1&amp;r=97&amp;doct=0&amp;rfunc=29&amp;tj=none&amp;tr=97\"";
+		        	  text += "												target=\"_blank\" node-type=\"sima-click-0\"><img";
 		        	  text += "												src=\"//k.sinaimg.cn/n/sports/crawl/55/w550h305/20181018/KSAz-hmrasqr8698670.jpg/w150h100f1t0l0q100syf.jpg\"";
 		        	  text += "												alt=\"\" class=\"ty-card-thumb\" width=\"150\" height=\"100\"";
 		        	  text += "												onerror=\"if(this.src!='//n.sinaimg.cn/ent/c30320b4/20170511/img-replaced-w.png'){this.src='//n.sinaimg.cn/ent/c30320b4/20170511/img-replaced-w.png';this.className+=' ty-card-thumb-noani';}\"></a>";
@@ -522,22 +523,23 @@
 		        	  text += "									<div class=\"ty-card-r\">";
 		        	  text += "										<h3 class=\"ty-card-tt\">";
 		        	  text += "											<a";
-		        	  text += "												 node-type=\"sima-click-0\">住户:"+payment.tenementName+"</a>";
+		        	  text += "												href=\"http://sports.sina.com.cn/basketball/nba/2018-10-18/doc-ihmrasqr8710783.shtml?cre=tianyi&amp;mod=pcsptw&amp;loc=1&amp;r=97&amp;doct=0&amp;rfunc=29&amp;tj=none&amp;tr=97\"";
+		        	  text += "												target=\"_blank\" node-type=\"sima-click-0\">房间名称:"+room.roomName+"</a>";
 		        	  text += "										</h3>";
-		        	  text += "										<p class=\"ty-card-tip1\">年份："+payment.years+"    月份:"+payment.months+"</p>";
+		        	  text += "										<p class=\"ty-card-tip1\">房间简介："+room.eApartment+"</p>";
 		        	  text += "										<p class=\"ty-card-tip2 clearfix\">";
-		        	  text += "											<span class=\"ty-card-tip2-i ty-card-time\">费用："+payment.payable+"</span><span";
-		        	  text += "												class=\"ty-card-tip2-i ty-card-media\"></span><span";
+		        	  text += "											<span class=\"ty-card-tip2-i ty-card-time\">建筑面积："+room.buildArea+"</span><span";
+		        	  text += "												class=\"ty-card-tip2-i ty-card-media\">| 使用面积："+room.usingArea+"</span><span";
 		        	  text += "												class=\"ty-card-tip2-i ty-card-tags\"><span";
 		        	  text += "												class=\"ty-card-tag\" node-type=\"ty-card-tag\"><a";
-		        	  text += "													 target=\"_blank\"></a></span><span";
+		        	  text += "													href=\"//tags.sports.sina.com.cn/米罗蒂奇\" target=\"_blank\">朝向："+room.face+"</a></span><span";
 		        	  text += "												class=\"ty-card-tag\" node-type=\"ty-card-tag\"><a";
-		        	  text += "													 target=\"_blank\"></a></span><span";
+		        	  text += "													href=\"//tags.sports.sina.com.cn/安东尼\" target=\"_blank\"></a></span><span";
 		        	  text += "												class=\"ty-card-tag\" node-type=\"ty-card-tag\"><a";
-		        	  text += "													 target=\"_blank\"></a></span></span><span";
+		        	  text += "													href=\"//tags.sports.sina.com.cn/卡佩拉\" target=\"_blank\"></a></span></span><span";
 		        	  text += "												class=\"ty-card-tip2-i ty-card-cmnt\" node-type=\"ty-card-cmnt\"><a";
-		        	  text += "												";
-		        	  text += "												><span class=\"ty-card-cmnt-icon\"></span><span";
+		        	  text += "												href=\"http://comment5.news.sina.com.cn/comment/skin/default.html?channel=ty&amp;newsid=comos-hmrasqr8710783\"";
+		        	  text += "												target=\"_blank\"><span class=\"ty-card-cmnt-icon\"></span><span";
 		        	  text += "													class=\"ty-card-cmnt-total\"></span></a> </span>";
 		        	  text += "										</p>";
 		        	  text += "									</div>";
@@ -545,6 +547,7 @@
 		        	  text += "								</div>";
 
 		            lis.push(text);
+		            $("#queryRoom").html(text);
 		        }); 
 		        
 		        //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
@@ -558,18 +561,17 @@
 				});		
 </script>
 	<script>
-	       $("#buyRoom")
+	       $("#rentRoom")
 			.click(
 					function() {
 						console.log(111);
 						$.ajax({
-									url : "${pageContext.request.contextPath}/FrontReportBeanServlet?op=addReportBean",//url地址
+									url : "${pageContext.request.contextPath}/FrontRoomBeanServlet?op=updateRentRoom",//url地址
 									type : "post",
 									data : {
-										"equipment" : $('#equipment').val(),
+										"lease" : $('#lease').val(),
 										"tenementId" : ${user.tenementId},
-										"reportName" : $('#reportName').val(),
-										"extent" : $('#extent').val()
+										"roomId" : $("#roomId").find("option:selected").val()
 									},
 									//成功后执行的操作
 									success : function(data) {
@@ -579,13 +581,14 @@
 											alert("提交失败");
 										} else {
 											layer.msg(
-															'提交成功!',
+															'租房成功!，请到社区服务中心领取钥匙',
 															{
 																icon : 1,
 																time : 1000
 															},function(){
-																location.href="addReport.jsp";
+																location.reload();
 															});
+											
 										}
 									}
 								});
@@ -594,7 +597,7 @@
 	<script>
 $(function() {
 	//ajax的 get请求
-	$.get("FrontRoomBeanServlet?op=queryAllRoom", function(data, status) {
+	$.get("${pageContext.request.contextPath}/FrontRoomBeanServlet?op=queryRoomByLease", function(data, status) {
 		//使用js的内置对象JSON将返回的值转化为数组
 		array = JSON.parse(data);
 		//遍历数组

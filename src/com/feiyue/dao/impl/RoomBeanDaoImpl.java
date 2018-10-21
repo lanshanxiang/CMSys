@@ -72,9 +72,9 @@ public class RoomBeanDaoImpl implements RoomBeanDao {
 		return (List<RoomBean>) DBUtil.select("select * from tb_room where lease=?", RoomBean.class, lease);
 	}
 	@Override
-	public List<RoomBean> queryRoomById(int roomId) {
-		// TODO Auto-generated method stub
-		return (List<RoomBean>) DBUtil.select("select * from tb_room where roomId=?", RoomBean.class, roomId);
+	public PageData<RoomBean> queryRoomById(int page,int pageSize,int roomId) {
+		// TODO Auto-generated method stub 
+		return (PageData<RoomBean>) DBUtil.getPage("select * from tb_room where roomId=?", page, pageSize, RoomBean.class, roomId);
 	}
 
 }

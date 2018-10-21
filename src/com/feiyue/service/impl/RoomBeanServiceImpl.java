@@ -72,9 +72,9 @@ public class RoomBeanServiceImpl implements RoomBeanService  {
 	}
 
 	@Override
-	public List<RoomBean> getQueryRoomById(int roomId) {
+	public PageData<RoomBean> getQueryRoomById(int page,int pageSize,int roomId) {
 		// TODO Auto-generated method stub
-		return rbd.queryRoomById(roomId);
+		return rbd.queryRoomById(page,pageSize,roomId);
 	}
 
 }

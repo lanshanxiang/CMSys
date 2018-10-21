@@ -51,7 +51,7 @@ public class FrontRoomBeanServlet extends HttpServlet {
 			op = request.getParameter("op");
 		}
 		int page = 1;
-		int pageSize = 3;
+		int pageSize = 5;
 		if (null != request.getParameter("page")) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
@@ -74,13 +74,26 @@ public class FrontRoomBeanServlet extends HttpServlet {
 		else if ("updateRoom".equals(op)) {
 
 			// 替换下面语句
-			String lease = request.getParameter("lease");
+			String lease = "已被购买";
             int roomId=Integer.parseInt(request.getParameter("roomId"));
 			RoomBean rb = new RoomBean(lease,roomId);
 			int tenementId = Integer.parseInt(request.getParameter("tenementId"));
+			System.out.println(tenementId);
 			boolean flag = rbs.getRoomBeanUpdate(rb, tenementId);
 			response.getWriter().print(flag);
 		}
+		// 申请租房
+				else if ("updateRentRoom".equals(op)) {
+
+					// 替换下面语句
+					String lease = "已被租";
+		            int roomId=Integer.parseInt(request.getParameter("roomId"));
+					RoomBean rb = new RoomBean(lease,roomId);
+					int tenementId = Integer.parseInt(request.getParameter("tenementId"));
+					System.out.println(tenementId);
+					boolean flag = rbs.getRoomBeanUpdate(rb, tenementId);
+					response.getWriter().print(flag);
+				}
 		// 查询所有房屋
 		else if ("queryAllRoom".equals(op)) {
 			List<RoomBean> list = rbs.getQueryOnlyRoomBean();
@@ -101,10 +114,10 @@ public class FrontRoomBeanServlet extends HttpServlet {
 		//根据ID查找
 		else if("queryRoomById".equals(op)) {
 			int roomId=Integer.parseInt(request.getParameter("roomId"));
-			List<RoomBean> list = rbs.getQueryRoomById(3);
+			PageData<RoomBean> pdRoomById = rbs.getQueryRoomById(page,pageSize,roomId);
 			PrintWriter out = response.getWriter();
 			Gson gson = new Gson();
-			out.print(gson.toJson(list));
+			out.print(gson.toJson(pdRoomById.getData())+pdRoomById.getTotalPage());
 			out.close();
 		}
 	}
