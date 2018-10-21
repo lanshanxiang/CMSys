@@ -4,7 +4,11 @@ import java.util.List;
 import com.feiyue.entiy.CostBean;
 import com.feiyue.entiy.NoticeBean;
 import com.feiyue.util.PageData;
-
+/**
+ * 
+ * @author Administrator
+ *
+ */
 public interface NoticeBeanDao {
 	    //增加
 		public boolean addNotice(NoticeBean n);

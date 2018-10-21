@@ -1,9 +1,12 @@
 package com.feiyue.dao;
 import java.util.List;
-
-import com.feiyue.entiy.CostTypeBean;
 import com.feiyue.entiy.NoticeTypeBean;
 import com.feiyue.util.PageData;
+/**
+ * 
+ * @author Administrator
+ *
+ */
 public interface NoticeTypeBeanDao {
 	    //增加
 		public boolean addNoticeType(NoticeTypeBean nt);

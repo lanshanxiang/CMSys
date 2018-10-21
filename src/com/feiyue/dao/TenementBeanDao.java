@@ -3,7 +3,11 @@ package com.feiyue.dao;
 import java.util.List;
 
 import com.feiyue.entiy.TenementBean;
-
+/**
+ * 
+ * @author Administrator
+ *
+ */
 public interface TenementBeanDao {
 
 	//查询所有居民信息

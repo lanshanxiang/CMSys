@@ -6,7 +6,11 @@ import com.feiyue.entiy.ReportBean;
 import com.feiyue.entiy.TenementBean;
 
 
-
+/**
+ * 
+ * @author Administrator
+ *
+ */
 public interface ReportBeanDao {
 	//查询所有方法(报修标+住户表)
     public List<ReportBean> queryReportTenementBean();

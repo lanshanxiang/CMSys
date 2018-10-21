@@ -4,7 +4,11 @@ import java.util.List;
 
 import com.feiyue.entiy.BusinessBean;
 import com.feiyue.util.PageData;
-
+/**
+ * 
+ * @author Administrator
+ *
+ */
 public interface BusinessBeanDao {
 	 //查询所有方法
     public List<BusinessBean> queryBusinessBean();

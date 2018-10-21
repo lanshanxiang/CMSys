@@ -4,7 +4,11 @@ import java.util.List;
 
 import com.feiyue.entiy.PaymentBean;
 import com.feiyue.util.PageData;
-
+/**
+ * 
+ * @author Administrator
+ *
+ */
 public interface PaymentDao {
 	//增加
 	public boolean add(PaymentBean payment);

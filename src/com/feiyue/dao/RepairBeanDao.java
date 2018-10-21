@@ -5,7 +5,11 @@ import java.util.List;
 import com.feiyue.entiy.Lost;
 import com.feiyue.entiy.RepairBean;
 import com.feiyue.util.PageData;
-
+/**
+ * 
+ * @author Administrator
+ *
+ */
 
 
 public interface RepairBeanDao {

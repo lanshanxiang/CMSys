@@ -4,7 +4,11 @@ import java.util.List;
 
 import com.feiyue.entiy.CostBean;
 import com.feiyue.util.PageData;
-
+/**
+ * 
+ * @author Administrator
+ *
+ */
 public interface CostDao {
 	//增加
 	public boolean add(CostBean cost);

@@ -10,6 +10,11 @@ import com.feiyue.entiy.RoomBean;
  *
  */
 import com.feiyue.util.PageData;
+/**
+ * 
+ * @author Administrator
+ *
+ */
 public interface RoomBeanDao {
 	//查询所有方法(楼房表+房屋表)
     public List<RoomBean> queryBuildingRoomBean();
