@@ -15,7 +15,8 @@ import com.feiyue.util.PageData;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class FontActiveServlet
+ * @author 飞跃队
+ * 处理前台的servlet
  */
 @WebServlet("/FrontActiveServlet")
 public class FrontActiveServlet extends HttpServlet {
@@ -33,6 +34,7 @@ public class FrontActiveServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 设置响应和请求编码
@@ -69,6 +71,7 @@ public class FrontActiveServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

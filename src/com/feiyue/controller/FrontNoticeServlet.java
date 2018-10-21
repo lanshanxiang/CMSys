@@ -17,7 +17,7 @@ import com.feiyue.util.PageData;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class FrontNoticeServlet
+ * 处理前台公告的Servlet  FrontNoticeServlet
  */
 @WebServlet("/FrontNoticeServlet")
 public class FrontNoticeServlet extends HttpServlet {
@@ -35,6 +35,7 @@ public class FrontNoticeServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 设置响应和请求编码
 		request.setCharacterEncoding("utf-8");
@@ -70,6 +71,7 @@ public class FrontNoticeServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
