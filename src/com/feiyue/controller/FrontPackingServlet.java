@@ -1,6 +1,9 @@
 package com.feiyue.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,8 +61,8 @@ public class FrontPackingServlet extends HttpServlet {
 		}
 		//查询所有！ 流加载 ,前台查询我的车位
 		if("".equals(op)) {
-			//int tenementId = Integer.parseInt(request.getParameter("tenementId"));
-			PageData<ParkingBean> listPark = pbs.getQueryParkingBean(page, pageSize, 10);
+			int tenementId = Integer.parseInt(request.getParameter("tenementId"));
+			PageData<ParkingBean> listPark = pbs.getQueryParkingBean(page, pageSize, tenementId);
 			//将查询到的返回值存起来
 			request.setAttribute("listPark", listPark);
 			//创建一个Gson对象
@@ -80,15 +83,28 @@ public class FrontPackingServlet extends HttpServlet {
 			response.getWriter().print(str+listParkingBean.getTotalPage());
 		}
 		//前台申请车位处理的servlet
-		else if("addRoom".equals(op)) {
+		else if("updatePark".equals(op)) {
 			
 			//替换下面语句
-			String lostGood=request.getParameter("lostGood");
-
-			ParkingBean pb = new ParkingBean();
-			int tenementId= 1;
-			boolean flag = pbs.getParkingBeanAdd(pb, tenementId);
+			int parkSRId=Integer.parseInt(request.getParameter("parkSRId"));
+			int parkingId=Integer.parseInt(request.getParameter("parkingId"));
+			ParkingBean pb = new ParkingBean(parkSRId,parkingId);
+			int tenementId= Integer.parseInt(request.getParameter("tenementId"));
+			boolean flag = pbs.getParkingBeanUpdate(pb, tenementId);
 			response.getWriter().print(flag);
+		}else if("queryParkByStatu".equals(op)) {
+			List<ParkingBean> listParkState=pbs.getAllParkingBeanByStateService();
+			PrintWriter out = response.getWriter();
+			Gson gson = new Gson();
+			out.print(gson.toJson(listParkState));
+			out.close();
+		}else if("queryParkById".equals(op)) {
+			int parkingId=Integer.parseInt(request.getParameter("parkingId"));
+			PageData<ParkingBean> listParkById = pbs.getSelectsssssParkingBeanById(page, pageSize, parkingId);
+			PrintWriter out = response.getWriter();
+			Gson gson = new Gson();
+			out.print(gson.toJson(listParkById.getData())+listParkById.getTotalPage());
+			out.close();
 		}
 		
 	}

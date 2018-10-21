@@ -107,66 +107,33 @@
 		<div id="loading"></div>
 	</div>
 	<header>
-		<!--  top-header  -->
-		<div class="top-header">
-			<div class="container">
+	<!--  top-header  -->
+	<div class="top-header">
+		<div class="container">
 
-				<div class="col-md-6">
-					<div class="top-header-left">
-						<ul>
-							<li>
-								<div class="dropdown">
-									<a href="#" class="btn btn-default dropdown-toggle"
-										data-toggle="dropdown" data-hover="dropdown"> <img
-										src="assets/images/eng-flg.jpg" alt="eng-flg"> 个人信息 <i
-										class="fa fa-angle-down" aria-hidden="true"></i>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a href="#">切换账号</a></li>
-										<li><a href="#">退出</a></li>
-									</ul>
-								</div>
-							</li>
-							<li>
-								<div class="dropdown">
-									<a href="#" class="btn btn-default dropdown-toggle"
-										data-toggle="dropdown" data-hover="dropdown"> USD <i
-										class="fa fa-angle-down" aria-hidden="true"></i>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a href="#">GBP</a></li>
-										<li><a href="#">USD</a></li>
-									</ul>
-								</div>
-							</li>
-							<li><span>欢迎来到飞跃社区服务中心</span></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="top-header-right">
-						<ul>
-							<li><a href="user-login.jsp" style="color: white;">登录</a></li>
-							<li><i class="icon-note icons" aria-hidden="true"></i> 快速发布</li>
-							<li>
-								<div class="dropdown">
-									<a href="#" class="btn btn-default dropdown-toggle"
-										data-toggle="dropdown" data-hover="dropdown"> <i
-										class="icon-settings icons" aria-hidden="true"></i> 设置
-									</a>
-									<ul class="dropdown-menu">
-										<li><a href="#">我的信息</a></li>
-										<li><a href="#">修改密码</a></li>
-										<li><a href="#">修改地址</a></li>
-									</ul>
-								</div>
-							</li>
-						</ul>
-					</div>
+			<div class="col-md-6">
+				<div class="top-header-left">
+					<ul>
+						<li>
+							<div class="dropdown">
+								<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+								   <img src="assets/images/eng-flg.jpg" alt="eng-flg"> ${user.userName} <i class="fa fa-angle-down" aria-hidden="true"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="user-login.jsp">切换账号</a></li>
+									<li id="exit"><a href="#">退出</a></li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<span>欢迎来到飞跃社区服务中心</span>
+						</li>
+					</ul>
 				</div>
 			</div>
-			<!--  /top-header  -->
 		</div>
+		<!--  /top-header  -->
+	</div>
 		<section class="top-md-menu">
 			<div class="container">
 				<div class="col-sm-3">
@@ -241,54 +208,34 @@
 									aria-expanded="false"><span> 快速导航</span> <i
 										class="fa fa-bars" aria-hidden="true"></i> </a>
 									<ul class="dropdown-menu dropdownhover-bottom" role="menu">
-										<li class="dropdown"><a href="index.html"><img
-												src="assets/images/menu-icon1.png" alt="menu-icon1" /> 我要报修
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Electronic 01</a></li>
-											<li><a href="list.html">Electronic 02</a></li>
-										</ul>--></li>
-										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon2.png" alt="menu-icon2" /> 我要买房
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Iphone 05</a></li>
-											<li><a href="list.html">Iphone 06</a></li>
-											<li><a href="grid.html">Iphone 07</a></li>
-											<li><a href="list.html">Handfree</a></li>
-											<li><a href="grid.html">Bettery</a></li>
-										</ul>--></li>
-										<li><a href="#"><img
-												src="assets/images/menu-icon3.png" alt="menu-icon3" /> 我要租房
-												<sup class="bg-red">hot!</sup></a></li>
-										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon4.png" alt="menu-icon4" /> 申请车位
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-											
-										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon5.png" alt="menu-icon2" /> 申请商家入驻
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
-										
-										</ul>--></li>
-										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon6.png" alt="menu-icon2" /> 购买小区
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Jewelry 05</a></li>
-											<li><a href="grid.html">Watches 07</a></li>
-											<li><a href="list.html">Watches 02</a></li>
-										</ul>--></li>
-										<li><a href="#"><img
-												src="assets/images/menu-icon7.png" alt="menu-icon2" /> 我要缴费
-												<sup class="bg-blue">NEW</sup></a></li>
-										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon8.png" alt="menu-icon2" /> 申请失物招领
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Toys 05</a></li>
-											<li><a href="list.html">Hobbies 02</a></li>
-											<li><a href="grid.html">Toys 01</a></li>
-										</ul>--></li>
-										
-									</ul>
+										<li class="dropdown">
+										<a href="addReport.jsp"><img src="assets/images/menu-icon1.png" alt="menu-icon1" /> 我要报修 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+									</li>
+									<li class="dropdown">
+										<a href="buyRoom.jsp"><img src="assets/images/menu-icon2.png" alt="menu-icon2" /> 我要买房 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+									</li>
+									<li>
+										<a href="rentRoom.jsp"><img src="assets/images/menu-icon3.png" alt="menu-icon3" /> 我要租房 <sup class="bg-red">hot!</sup></a>
+									</li>
+									<li class="dropdown">
+										<a href="buyPark.jsp"><img src="assets/images/menu-icon4.png" alt="menu-icon4" /> 申请车位 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+										<div class="dropdown-menu dropdownhover-bottom mega-menu" role="menu">
+
+								</div>
+									</li>
+									<li class="dropdown">
+										<a href="addBusiness.jsp"><img src="assets/images/menu-icon5.png" alt="menu-icon2" /> 申请商家入驻 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+									</li>
+									<li>
+										<a href="goCost.jsp"><img src="assets/images/menu-icon7.png" alt="menu-icon2" /> 我要缴费 <sup class="bg-blue">NEW</sup></a>
+									</li>
+									
+									<li>
+										<a href="addLost.jsp"><img src="assets/images/menu-icon11.png" alt="menu-icon2" />申请失物招领</a>
+									</li>
+								</ul>
 								</li>
-								<li class="active"><a href="index.jsp">首页</a></li>
+								<li><a href="index.jsp">首页</a></li>
 							<li><a href="queryRepair.jsp">住户维修记录</a></li>
 							<li><a href="room.jsp">房屋</a></li>
 							<li><a href="parking.jsp">车位</a></li>
@@ -298,7 +245,7 @@
 							<li><a href="active.jsp">社区活动</a></li>
 							<li><a href="lost.jsp">失物招领</a></li>
 							<li><a href="payment.jsp">缴费记录</a></li>
-							<li><a href="complain.html">社区公告</a></li>
+							<li><a href="notice.jsp">社区公告</a></li>
 							</ul>
 							<!-- /.navbar-collapse -->
 						</div>
@@ -308,7 +255,7 @@
 			</div>
 		</section>
 		<section class="header-outer" style="margin-top: 30px;">
-			<img alt="" src="img/22.png">
+			<img alt="" src="img/申请失物招领.png">
 		</section>
 	</header>
 	<!-- newsletter -->

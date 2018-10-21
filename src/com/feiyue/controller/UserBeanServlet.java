@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import com.feiyue.entiy.UserBean;
 import com.feiyue.service.UserBeanService;
@@ -237,6 +237,11 @@ public class UserBeanServlet extends HttpServlet {
 				out.print(codestr);
 			
 			
+		}else if("exit".equals(op)) {
+			//将session中的值设置为null
+			HttpSession session=request.getSession();
+			session.removeAttribute("user");
+			response.sendRedirect("index.jsp");
 		}
 	}
 

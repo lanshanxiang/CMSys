@@ -29,5 +29,9 @@ public interface ParkingBeanService {
 	public PageData<ParkingBean> getSelectAllParkingBean(int page, int pageSize);
 
 	// 前台增加我的车位
-	public boolean getParkingBeanAdd(ParkingBean pb, int tenementId);
+	public boolean getParkingBeanUpdate(ParkingBean pb, int tenementId);
+	 //得到全部车位信息(通过状态)
+  	public List<ParkingBean> getAllParkingBeanByStateService();
+  	//通过id查询
+  	public PageData<ParkingBean> getSelectsssssParkingBeanById(int page,int pageSize,int parkingId);
 }

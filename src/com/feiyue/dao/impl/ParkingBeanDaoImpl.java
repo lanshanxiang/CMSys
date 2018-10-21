@@ -78,10 +78,24 @@ public class ParkingBeanDaoImpl implements ParkingBeanDao {
 	 * 前台增加我的车位
 	 */
 	@Override
-	public boolean ParkingBeanAdd(ParkingBean pb, int tenementId) {
+	public boolean parkingBeanUpdate(ParkingBean pb, int tenementId) {
 		// TODO Auto-generated method stub
-		String sql = "";
-		return DBUtil.execute(sql)>0;
+		String sql = "update tb_parkings set parkSRId=?,tenementId=? where parkingId=?";
+		return DBUtil.execute(sql, pb.getParkSRId(),tenementId,pb.getParkingId())>0;
+	}
+
+	@Override
+	public List<ParkingBean> getAllParkingBeanByState() {
+		// TODO Auto-generated method stub
+		return (List<ParkingBean>) DBUtil.select("select * from tb_parkings where parkSRId=3", ParkingBean.class);
+	}
+
+	@Override
+	public PageData<ParkingBean> selectsssssParkingBeanById(int page, int pageSize, int parkingId) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT tb_parkings.parkingNo, tb_parkings.timeStart, tb_parkings.timeEnd, tb_parkings.remarks, tb_parkings.area, tb_parkings.tenementId, tb_parktype.ptName, tb_parkings.villageId, tb_parkings.parkSRId, tb_parkings.parkingId, tb_villageinfo.villageName, tb_parktype.ptId, tb_parktype.managerCost FROM tb_parkings INNER JOIN tb_parktype ON tb_parkings.ptId = tb_parktype.ptId INNER JOIN tb_villageinfo ON tb_parkings.villageId = tb_villageinfo.villageId where tb_parkings.parkingId = ?";
+		
+		return DBUtil.getPage(sql, page, pageSize, ParkingBean.class, parkingId);
 	}
 
 }

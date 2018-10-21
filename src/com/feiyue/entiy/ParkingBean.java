@@ -112,6 +112,12 @@ public ParkingBean() {
 	// TODO Auto-generated constructor stub
 }
 
+public ParkingBean(int parkSRId, int parkingId) {
+	super();
+	this.parkSRId = parkSRId;
+	this.parkingId=parkingId;
+}
+
 /**
  * 带参构造 增加时用
  * @param parkingNo

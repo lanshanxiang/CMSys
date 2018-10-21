@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>飞跃社区服务中心</title>
 <!-- Latest Bootstrap min CSS -->
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <!-- Dropdownhover CSS -->
 <link rel="stylesheet" href="assets/css/bootstrap-dropdownhover.min.css" type="text/css">
@@ -58,46 +59,16 @@
 						<li>
 							<div class="dropdown">
 								<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-								   <img src="assets/images/eng-flg.jpg" alt="eng-flg"> 个人信息 <i class="fa fa-angle-down" aria-hidden="true"></i>
+								   <img src="assets/images/eng-flg.jpg" alt="eng-flg"> ${user.userName} <i class="fa fa-angle-down" aria-hidden="true"></i>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a href="#">切换账号</a></li>
-									<li><a href="#">退出</a></li>
-								</ul>
-							</div>
-						</li>
-						<li>
-							<div class="dropdown">
-								<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-									USD <i class="fa fa-angle-down" aria-hidden="true"></i>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">GBP</a></li>
-									<li><a href="#">USD</a></li>									
+									<li><a href="user-login.jsp">切换账号</a></li>
+									<li id="exit"><a href="#">退出</a></li>
 								</ul>
 							</div>
 						</li>
 						<li>
 							<span>欢迎来到飞跃社区服务中心</span>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="top-header-right">
-					<ul>
-						<li><a href="user-login.jsp" style="color: white;">登录</a></li>
-						<li><i class="icon-note icons" aria-hidden="true"></i> 快速发布</li>
-						<li>
-							<div class="dropdown">
-								<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-									<i class="icon-settings icons" aria-hidden="true"></i> 设置
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">我的信息</a></li>
-									<li><a href="#">修改密码</a></li>
-								</ul>
-							</div>
 						</li>
 					</ul>
 				</div>
@@ -173,36 +144,22 @@
 										<a href="addReport.jsp"><img src="assets/images/menu-icon1.png" alt="menu-icon1" /> 我要报修 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 									</li>
 									<li class="dropdown">
-										<a href="#"><img src="assets/images/menu-icon2.png" alt="menu-icon2" /> 我要买房 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+										<a href="buyRoom.jsp"><img src="assets/images/menu-icon2.png" alt="menu-icon2" /> 我要买房 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 									</li>
 									<li>
-										<a href="#"><img src="assets/images/menu-icon3.png" alt="menu-icon3" /> 我要租房 <sup class="bg-red">hot!</sup></a>
+										<a href="rentRoom.jsp"><img src="assets/images/menu-icon3.png" alt="menu-icon3" /> 我要租房 <sup class="bg-red">hot!</sup></a>
 									</li>
 									<li class="dropdown">
-										<a href="#"><img src="assets/images/menu-icon4.png" alt="menu-icon4" /> 申请车位 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+										<a href="buyPark.jsp"><img src="assets/images/menu-icon4.png" alt="menu-icon4" /> 申请车位 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 										<div class="dropdown-menu dropdownhover-bottom mega-menu" role="menu">
 
 								</div>
 									</li>
 									<li class="dropdown">
-										<a href="#"><img src="assets/images/menu-icon5.png" alt="menu-icon2" /> 申请商家入驻 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-										<!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Sport 05</a></li>
-											<li><a href="list.html">Sport 06</a></li>
-											<li><a href="list.html">Outdoors 02</a></li>
-											<li><a href="grid.html">Outdoors 01</a></li>
-										</ul>-->
-									</li>
-									<li class="dropdown">
-										<a href="#"><img src="assets/images/menu-icon6.png" alt="menu-icon2" /> 购买小区 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-										<!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Jewelry 05</a></li>
-											<li><a href="grid.html">Watches 07</a></li>
-											<li><a href="list.html">Watches 02</a></li>
-										</ul>-->
+										<a href="addBusiness.jsp"><img src="assets/images/menu-icon5.png" alt="menu-icon2" /> 申请商家入驻 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 									</li>
 									<li>
-										<a href="#"><img src="assets/images/menu-icon7.png" alt="menu-icon2" /> 我要缴费 <sup class="bg-blue">NEW</sup></a>
+										<a href="goCost.jsp"><img src="assets/images/menu-icon7.png" alt="menu-icon2" /> 我要缴费 <sup class="bg-blue">NEW</sup></a>
 									</li>
 									
 									<li>
@@ -210,7 +167,7 @@
 									</li>
 								</ul>
 							</li>
-							<li class="active"><a href="index.jsp">首页</a></li>
+							<li><a href="index.jsp">首页</a></li>
 							<li><a href="queryRepair.jsp">住户维修记录</a></li>
 							<li><a href="room.jsp">房屋</a></li>
 							<li><a href="parking.jsp">车位</a></li>
@@ -220,7 +177,7 @@
 							<li><a href="active.jsp">社区活动</a></li>
 							<li><a href="lost.jsp">失物招领</a></li>
 							<li><a href="payment.jsp">缴费记录</a></li>
-							<li><a href="complain.html">社区公告</a></li>
+							<li><a href="notice.jsp">社区公告</a></li>
 						</ul>
 						<!-- /.navbar-collapse -->
 					</div>
@@ -236,7 +193,7 @@
 					<div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
 						<!-- .home-slider -->
 						<div class="carousel-inner">
-							<div class="item active" style="background-image: url(assets/images/home-header1.jpg);  background-repeat: no-repeat; background-position: top;">
+							<div class="item active" style="background-image: url(assets/images/01.png);  background-repeat: no-repeat; background-position: top;">
 								<div class="container">		
 									<div class="caption">
 									<div class="caption-outer">
@@ -260,7 +217,7 @@
 								</div>
 								
 							</div>
-							<div class="item" style="background-image: url(assets/images/home-header2.jpg);  background-repeat: no-repeat; background-position: top;">
+							<div class="item" style="background-image: url(assets/images/02.png);  background-repeat: no-repeat; background-position: top;">
 								<div class="container">		
 									<div class="caption">
 									<div class="caption-outer">
@@ -395,7 +352,7 @@
 											<div class="pro-text text-center">
 												<!-- .pro-img -->
 												<div class="pro-img">
-													<img src="img/20131262143085ke2v3_120x120.jpg" alt="2" />
+													<img src="images/sqfb${village.villageId}.jpg" alt="2" />
 												</div>
 												<p>${village.villageName}</p>
 												<!-- /.pro-img -->
@@ -422,7 +379,7 @@
 											<div class="pro-text text-center">
 												<!-- .pro-img -->
 												<div class="pro-img">
-													<img src="img/2014162028141254iy09_200x0_145x120.jpg" alt="2" />
+													<img src="images/cw${park.parkingId}.jpg" alt="2" />
 												</div>
 												<p>${park.ptName}</p>
 												<!-- /.pro-img -->
@@ -452,7 +409,7 @@
 											<div class="pro-text text-center">
 												<!-- .pro-img -->
 												<div class="pro-img">
-													<img src="img/20153151317315713da3j_120x90.jpg" alt="2" />
+													<img src="images/fw${room.roomId}.jpg" alt="2" />
 												</div>
 												<p>${room.roomName}</p>
 												<!-- /.pro-img -->
@@ -506,7 +463,7 @@
 												<!-- e-product -->
 												<div class="e-product">
 													<div class="pro-img">
-														<img src="img/20131262143085ke2v3_120x120.jpg" alt="2">
+														<img src="images/fl${welfare.welfareId}.jpg" alt="2">
 														<div class="hover-icon">
 															<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
 														</div>
@@ -569,22 +526,10 @@
 										<!-- blog-outer -->
 										<div class="blog-outer">
 											<div class="blog-img">
-												<img src="img/c2.jpg" alt="lt-blog-img1">
+												<img src="images/sj1.jpg" alt="lt-blog-img1">
 											</div>
 											<div class="blog-img">
-												<img src="img/c2.jpg" alt="lt-blog-img1">
-											</div>
-										</div>
-										<!-- /blog-outer -->
-									</div>
-									<div class="bdr col-xs-12 col-sm-12 col-md-4">
-										<!-- blog-outer -->
-										<div class="blog-outer">
-											<div class="blog-img">
-												<img src="img/c2.jpg" alt="lt-blog-img1">
-											</div>
-											<div class="blog-img">
-												<img src="img/c2.jpg" alt="lt-blog-img1">
+												<img src="images/fj2.jpg" alt="lt-blog-img1">
 											</div>
 										</div>
 										<!-- /blog-outer -->
@@ -593,10 +538,22 @@
 										<!-- blog-outer -->
 										<div class="blog-outer">
 											<div class="blog-img">
-												<img src="img/c2.jpg" alt="lt-blog-img1">
+												<img src="images/fj3.jpg" alt="lt-blog-img1">
 											</div>
 											<div class="blog-img">
-												<img src="img/c2.jpg" alt="lt-blog-img1">
+												<img src="images/fj4.jpg" alt="lt-blog-img1">
+											</div>
+										</div>
+										<!-- /blog-outer -->
+									</div>
+									<div class="bdr col-xs-12 col-sm-12 col-md-4">
+										<!-- blog-outer -->
+										<div class="blog-outer">
+											<div class="blog-img">
+												<img src="images/fj5.jpg" alt="lt-blog-img1">
+											</div>
+											<div class="blog-img">
+												<img src="images/fj6.jpg" alt="lt-blog-img1">
 											</div>
 										</div>
 										<!-- /blog-outer -->
@@ -735,6 +692,11 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+     $("#exit").click(function(){
+    	 location.href="${pageContext.request.contextPath}/UserBeanServlet?op=exit";
+     });     
+</script>
 <script>
 	layui.use('flow', function(){
 		  var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
@@ -748,6 +710,7 @@
      			 url:"${pageContext.request.contextPath}/FrontPackingServlet",
      			 type:"get",
      			 data:{
+     				 "tenementId":${user.tenementId},
      				 "page":page
      			 },
      			 dataType:"text",

@@ -241,52 +241,32 @@
 									aria-expanded="false"><span> 快速导航</span> <i
 										class="fa fa-bars" aria-hidden="true"></i> </a>
 									<ul class="dropdown-menu dropdownhover-bottom" role="menu">
-										<li class="dropdown"><a href="index.html"><img
-												src="assets/images/menu-icon1.png" alt="menu-icon1" /> 我要报修
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Electronic 01</a></li>
-											<li><a href="list.html">Electronic 02</a></li>
-										</ul>--></li>
-										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon2.png" alt="menu-icon2" /> 我要买房
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Iphone 05</a></li>
-											<li><a href="list.html">Iphone 06</a></li>
-											<li><a href="grid.html">Iphone 07</a></li>
-											<li><a href="list.html">Handfree</a></li>
-											<li><a href="grid.html">Bettery</a></li>
-										</ul>--></li>
-										<li><a href="#"><img
-												src="assets/images/menu-icon3.png" alt="menu-icon3" /> 我要租房
-												<sup class="bg-red">hot!</sup></a></li>
-										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon4.png" alt="menu-icon4" /> 申请车位
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-											
-										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon5.png" alt="menu-icon2" /> 申请商家入驻
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
-										
-										</ul>--></li>
-										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon6.png" alt="menu-icon2" /> 购买小区
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Jewelry 05</a></li>
-											<li><a href="grid.html">Watches 07</a></li>
-											<li><a href="list.html">Watches 02</a></li>
-										</ul>--></li>
-										<li><a href="#"><img
-												src="assets/images/menu-icon7.png" alt="menu-icon2" /> 我要缴费
-												<sup class="bg-blue">NEW</sup></a></li>
-										<li class="dropdown"><a href="#"><img
-												src="assets/images/menu-icon8.png" alt="menu-icon2" /> 申请失物招领
-												<i class="fa fa-angle-right" aria-hidden="true"></i></a> <!--<ul class="dropdown-menu right">
-											<li><a href="grid.html">Toys 05</a></li>
-											<li><a href="list.html">Hobbies 02</a></li>
-											<li><a href="grid.html">Toys 01</a></li>
-										</ul>--></li>
-										
-									</ul>
+										<li class="dropdown">
+										<a href="addReport.jsp"><img src="assets/images/menu-icon1.png" alt="menu-icon1" /> 我要报修 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+									</li>
+									<li class="dropdown">
+										<a href="buyRoom.jsp"><img src="assets/images/menu-icon2.png" alt="menu-icon2" /> 我要买房 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+									</li>
+									<li>
+										<a href="rentRoom.jsp"><img src="assets/images/menu-icon3.png" alt="menu-icon3" /> 我要租房 <sup class="bg-red">hot!</sup></a>
+									</li>
+									<li class="dropdown">
+										<a href="buyPark.jsp"><img src="assets/images/menu-icon4.png" alt="menu-icon4" /> 申请车位 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+										<div class="dropdown-menu dropdownhover-bottom mega-menu" role="menu">
+
+								</div>
+									</li>
+									<li class="dropdown">
+										<a href="addBusiness.jsp"><img src="assets/images/menu-icon5.png" alt="menu-icon2" /> 申请商家入驻 <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+									</li>
+									<li>
+										<a href="goCost.jsp"><img src="assets/images/menu-icon7.png" alt="menu-icon2" /> 我要缴费 <sup class="bg-blue">NEW</sup></a>
+									</li>
+									
+									<li>
+										<a href="addLost.jsp"><img src="assets/images/menu-icon11.png" alt="menu-icon2" />申请失物招领</a>
+									</li>
+								</ul>
 								</li>
 								<li class="active"><a href="index.jsp">首页</a></li>
 							<li><a href="queryRepair.jsp">住户维修记录</a></li>
@@ -298,7 +278,7 @@
 							<li><a href="active.jsp">社区活动</a></li>
 							<li><a href="lost.jsp">失物招领</a></li>
 							<li><a href="payment.jsp">缴费记录</a></li>
-							<li><a href="complain.html">社区公告</a></li>
+							<li><a href="notice.jsp">社区公告</a></li>
 							</ul>
 							<!-- /.navbar-collapse -->
 						</div>

@@ -57,9 +57,21 @@ public class ParkingBeanServiceImpl implements ParkingBeanService {
 	 * 前台增加我的车位
 	 */
 	@Override
-	public boolean getParkingBeanAdd(ParkingBean pb, int tenementId) {
+	public boolean getParkingBeanUpdate(ParkingBean pb, int tenementId) {
 		// TODO Auto-generated method stub
-		return pbd.ParkingBeanAdd(pb, tenementId);
+		return pbd.parkingBeanUpdate(pb, tenementId);
+	}
+
+	@Override
+	public List<ParkingBean> getAllParkingBeanByStateService() {
+		// TODO Auto-generated method stub
+		return pbd.getAllParkingBeanByState();
+	}
+
+	@Override
+	public PageData<ParkingBean> getSelectsssssParkingBeanById(int page, int pageSize, int parkingId) {
+		// TODO Auto-generated method stub
+		return pbd.selectsssssParkingBeanById(page, pageSize, parkingId);
 	}
 	
 	
