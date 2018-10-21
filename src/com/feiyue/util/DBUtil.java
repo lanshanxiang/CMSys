@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.beanutils.BeanUtils;
+/**
+ * @author Administrator
+ */
 
 /**
  * 数据库操作的辅助类
