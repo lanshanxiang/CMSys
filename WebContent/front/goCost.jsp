@@ -341,83 +341,65 @@
 							<hr>
 							<form class="form-horizontal" style="margin-left: 100px;">
 								<div class="form-group">
-									<label for="payMoney" class="col-sm-2 control-label">请输入金额:</label>
+									<label for="payElectric" class="col-sm-2 control-label">请输入金额:</label>
 									<div class="col-sm-6">
-										<input type="text" class="form-control" id="payMoney"
-											name="payMoney" placeholder="请输入金额:">
+										<input type="text" class="form-control" id="payElectric"
+											name="payElectric" placeholder="请输入金额:">
 									</div>
 								</div>
 
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-2">
-										<button style="width: 100px;" id="queryMyElectric"
+										<button style="width: 100px;" id="btnPayElectric"
 											type="button" class="btn btn-success">充值</button>
 									</div>
 								</div>
 							</form>
-							<div class="content w1150" id="content"
-								style="margin-bottom: 50px;">
-
-
-								<div class="content__list" id="myElectric"></div>
-
-							</div>
 						</div>
 						<div id="water" class="content__article tab-pane fade" style="margin-top: 20px">
 						<h3>交水费!</h3>
                         <hr>
 							<form class="form-horizontal" style="margin-left: 100px;">
 								<div class="form-group">
-									<label for="payMoney" class="col-sm-2 control-label">请输入金额:</label>
+									<label for="payWater" class="col-sm-2 control-label">请输入金额:</label>
 									<div class="col-sm-6">
-										<input type="text" class="form-control" id="payMoney"
-											name="payMoney" placeholder="请输入金额:">
+										<input type="text" class="form-control" id="payWater"
+											name="payWater" placeholder="请输入金额:">
 									</div>
 								</div>
 								
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-2">
-										<button style="width: 100px;" id="queryMyWater" type="button"
+										<button style="width: 100px;" id="btnPayWater" type="button"
 											class="btn btn-success">充值</button>
 									</div>
 								</div>
 							</form>
-							<div class="content w1150" id="content" style="margin-bottom: 50px;">
-						
-
-							<div class="content__list" id="myWater">
-								
-							</div>
 						
 					</div>
-						</div>
-						<div id="other" class="content__article tab-pane fade" style="margin-top: 20px">
+					<div id="other" class="content__article tab-pane fade" style="margin-top: 20px">
 						<h3>交其他费用!</h3>
                         <hr>
 							<form class="form-horizontal" style="margin-left: 100px;">
 								<div class="form-group">
-									<label for="payMoney" class="col-sm-2 control-label">请输入金额:</label>
+									<label for="payOther" class="col-sm-2 control-label">请输入金额:</label>
 									<div class="col-sm-6">
-										<input type="text" class="form-control" id="payMoney"
-											name="payMoney" placeholder="请输入金额:">
+										<input type="text" class="form-control" id="payOther"
+											name="payOther" placeholder="请输入金额:">
 									</div>
 								</div>
 								
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-2">
-										<button style="width: 100px;" id="queryMyOther" type="button"
+										<button style="width: 100px;" id="btnPayOther" type="button"
 											class="btn btn-success">充值</button>
 									</div>
 								</div>
 							</form>
-							<div class="content w1150" id="content" style="margin-bottom: 50px;">
-						
-
-							<div class="content__list" id="myOther">
-								
-							</div>
 						
 					</div>
+						</div>
+						
 						</div>
 						</div>
 					</div>
@@ -559,6 +541,108 @@
 			zoomWindowFadeOut : 750
 		});
 	</script>
+	
+	<script>
+	       $("#btnPayElectric")
+			.click(
+					function() {
+						console.log(111);
+						$.ajax({
+									url : "${pageContext.request.contextPath}/FrontPayServlet?op=addPay",//url地址
+									type : "post",
+									data : {
+										"payMoney" : $('#payElectric').val(),
+										"costId" : 5,
+										"tenementId" : ${user.tenementId}
+									},
+									//成功后执行的操作
+									success : function(data) {
+										//判断用户名密码是否正确，正确的话则跳到前台首页
+										console.log(data);
+										if (data == "false") {
+											alert("充值失败");
+										} else {
+											layer.msg(
+															'充值成功!',
+															{
+																icon : 1,
+																time : 1000
+															},function(){
+																$('#payElectric').val("");
+															});
+										}
+									}
+								});
+					});
+   </script>
+   
+   <script>
+	       $("#btnPayWater")
+			.click(
+					function() {
+						console.log(111);
+						$.ajax({
+									url : "${pageContext.request.contextPath}/FrontPayServlet?op=addPay",//url地址
+									type : "post",
+									data : {
+										"payMoney" : $('#payWater').val(),
+										"costId" : 2,
+										"tenementId" : ${user.tenementId}
+									},
+									//成功后执行的操作
+									success : function(data) {
+										//判断用户名密码是否正确，正确的话则跳到前台首页
+										console.log(data);
+										if (data == "false") {
+											alert("充值失败");
+										} else {
+											layer.msg(
+															'充值成功!',
+															{
+																icon : 1,
+																time : 1000
+															},function(){
+																$('#payWater').val("");
+															});
+										}
+									}
+								});
+					});
+   </script>
+   
+   <script>
+	       $("#btnPayOther")
+			.click(
+					function() {
+						console.log(111);
+						$.ajax({
+									url : "${pageContext.request.contextPath}/FrontPayServlet?op=addPay",//url地址
+									type : "post",
+									data : {
+										"payMoney" : $('#payOther').val(),
+										"costId" : 1,
+										"tenementId" : ${user.tenementId}
+									},
+									//成功后执行的操作
+									success : function(data) {
+										//判断用户名密码是否正确，正确的话则跳到前台首页
+										console.log(data);
+										if (data == "false") {
+											alert("充值失败");
+										} else {
+											layer.msg(
+															'充值成功!',
+															{
+																icon : 1,
+																time : 1000
+															},function(){
+																$('#payOther').val("");
+															});
+										}
+									}
+								});
+					});
+   </script>
 	
 	<script>
     //使用layui插件将选择日期变美观

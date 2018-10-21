@@ -13,7 +13,14 @@ public class Pay {
 		super();
 	}
 
-
+	public Pay(double payMoney, int costId, int tenementId) {
+		super();
+		this.payMoney = payMoney;
+		this.costId = costId;
+		this.tenementId = tenementId;
+	}
+	
+	
 	public Pay(int pId, String payTime, double payMoney, int costId, int tenementId) {
 		super();
 		this.pId = pId;

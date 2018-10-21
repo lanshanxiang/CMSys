@@ -65,6 +65,13 @@ public class FrontPayServlet extends HttpServlet {
 			String str = gs.toJson(pdPay.getData());
 			// 将字符组传到页面
 			response.getWriter().print(str + pdPay.getTotalPage());
+		}else if("addPay".equals(op)) {
+			double payMoney=Double.parseDouble(request.getParameter("payMoney"));
+			int costId=Integer.parseInt(request.getParameter("costId"));
+			int tenementId=Integer.parseInt(request.getParameter("tenementId"));
+			Pay p=new Pay(payMoney, costId, tenementId);
+			boolean flag=ps.getAddPay(p);
+			response.getWriter().print(flag);
 		}
 	}
 
