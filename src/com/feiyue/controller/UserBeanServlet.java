@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.feiyue.entiy.LogBean;
 import com.feiyue.entiy.UserBean;
+import com.feiyue.service.LogBeanService;
 import com.feiyue.service.UserBeanService;
+import com.feiyue.service.impl.LogBeanServiceImpl;
 import com.feiyue.service.impl.UserBeanServiceImpl;
 import com.feiyue.util.MD5Util;
 import com.feiyue.util.MessageSend;
@@ -28,6 +31,7 @@ public class UserBeanServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//创建UserBeanServiceImpl对象，得到各种处理用户的方法
     UserBeanService ubs=new UserBeanServiceImpl();
+    LogBeanService lbs=new LogBeanServiceImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -91,6 +95,10 @@ public class UserBeanServlet extends HttpServlet {
 			if(user!=null) {
 				//登录验证成功 设置session存放相关user对象信息
 				request.getSession().setAttribute("user", user);
+				String logName=user.getUserName();
+				String logContent="登录飞跃社区服务中心";
+				LogBean lb=new LogBean(logName, logContent);
+				boolean flag1=lbs.getAddLog(lb);
 				//flag为 true
 				flag=true;
 			}

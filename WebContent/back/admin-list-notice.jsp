@@ -34,7 +34,7 @@
    		 发布时间：<input type="text" class="form-controlSearch input-text " placeholder="输入发布时间" data-column="5" id="col5_filter" style="width:100px;">
    
 		   </div>
-			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" id="plsc" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加小区通知公告信息表','admin-list-notice-add.jsp','','540')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加通知公告信息表</a></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
+			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"> <a href="javascript:;" onclick="member_add('添加小区通知公告信息表','admin-list-notice-add.jsp','','540')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加通知公告信息表</a></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>

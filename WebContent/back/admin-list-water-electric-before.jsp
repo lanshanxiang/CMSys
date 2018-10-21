@@ -34,7 +34,7 @@
    		 费用编号：<input type="text" class="form-controlSearch input-text " placeholder="输入费用编号" data-column="7" id="col7_filter" style="width:100px;">
    
 		   </div>
-			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" id="plsc" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加缴费记录','admin-list-water-electric-add.jsp','','760')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加缴费记录</a></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
+			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" id="plsc" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加缴费记录','admin-list-water-electric-add.jsp','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加缴费记录</a></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>

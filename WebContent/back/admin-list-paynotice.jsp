@@ -30,11 +30,11 @@
 		        是否自动检索：<input type="checkbox" id="autoSearch">
 		        住户名称：<input type="text" class="form-controlSearch input-text " placeholder="输入住户名称" data-column="1" id="col1_filter" style="width:100px;">
 		   手机号：<input type="text" class="form-controlSearch input-text " placeholder="输入手机号" data-column="2" id="col2_filter" style="width:100px;">
-   		 年：<input type="text" class="form-controlSearch input-text " placeholder="输入年" data-column="4" id="col4_filter" style="width:100px;">
-   		  月：<input type="text" class="form-controlSearch input-text " placeholder="输入月" data-column="5" id="col5_filter" style="width:100px;">
+   		 年：<input type="text" class="form-controlSearch input-text " placeholder="输入年" data-column="3" id="col3_filter" style="width:100px;">
+   		  月：<input type="text" class="form-controlSearch input-text " placeholder="输入月" data-column="4" id="col4_filter" style="width:100px;">
    
 		   </div>
-			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加物业费用信息表','admin-list-cost-add.jsp','','540')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加物业费用信息表</a></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
+			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"></span> <span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>
@@ -45,7 +45,6 @@
            					<th>年</th>
            				  	<th>月</th>
            				    <th>总费用</th>
-           				    <th>操作</th>
 						</tr>
 					</thead>
 					<tbody>					
@@ -87,6 +86,9 @@ $(function(){
 			$(this).addClass('selected');
 		}
 	});
+});
+$("#plsc").click(function(){
+	batchIds();
 });
 /*用户-添加*/
 function member_add(title,url,w,h){
@@ -396,18 +398,7 @@ function member_del(obj,id){
         {"data": "mobilePhone"},
         {"data": "years"},
         {"data": "months"},
-        {"data": "totalPay"},
-        {    //创建操作那个列
-        	"data":"extn",
-        	"createdCell":function(nTd)
-        	{
-        		//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
-        		$(nTd).html(' <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a><a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
-        		//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
-        		//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
-        		//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");
-        	}
-        }
+        {"data": "totalPay"}
     ];
 
      //导航按钮操作
@@ -623,20 +614,52 @@ function member_del(obj,id){
         eloancn.table.grid.columns().search("").draw();
     }
 
-    //获取所有选中行的UUID
-    function batchIds(){
+  //获取所有选中行的UUID
+	function batchIds() {
+		var uuid = '';
+		var uuids = eloancn.table.grid.rows(".selected").data();
+		console.log(uuids.length);
+		if (uuids.length == 0) {
+			alert(eloancn.table.statusTitle);
+		} else {
+			// 上面是自带的语句,大概意思就是判断有没有选数据,没有的话进行提示
+			// 下面是选中数据后
+			// 创建一个数组commentId的数组进行存放选中行所对应要操作的commentId
+			var conplyId = new Array();
+			// 循环往数组里添加数据
+			for (var i = 0; i < uuids.length; i++) {
+				conplyId.push(uuids[i]['conplyId']);
+			}
+			//这里进行ajax
+			$.ajax({
+				type : 'POST',
+				url : '${pageContext.request.contextPath}/cs.do?op=batchDelete',
+				// 传递数组
+				data : {
+					'conplyId' : conplyId
+				},
+				// 设置traditional属性: true后才能将集合传到servlet里面去
+				traditional : true,
+				dataType : 'text',//接受数据类型为文本类型
+				success : function(data) {
+					layer.msg('删除成功!', {
+						icon : 1,
+						time : 1000
+					});
+					//成功之后重新加载页面
+					reload();
 
-        var uuid = '';
-        var uuids =eloancn.table.grid.rows(".selected").data();
-        if(uuids.length==0){
-            alert(eloancn.table.statusTitle);
-        }else{
-            for(var i=0;i<uuids.length;i++){
-                uuid = uuid+uuids[i].extn+",";
-            }
-            alert(uuid);
-        }
-    }
+				},
+				error : function(data) {
+					layer.msg('删除失败!', {
+						icon : 1,
+						time : 1000
+					});
+				},
+			});
+
+		}
+	}
 
     //单选
     function selection(){
