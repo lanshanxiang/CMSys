@@ -72,7 +72,7 @@ public class BusinessBeanServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				// 将jsonString返回到页面
 				out.print(jsonString);
-				System.out.println(jsonString);
+				
 				// 释放资源
 				out.close();
 				// 查询已修理
@@ -92,7 +92,7 @@ public class BusinessBeanServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				// 将jsonString返回到页面
 				out.print(jsonString);
-				System.out.println(jsonString);
+				
 				// 释放资源
 				out.close();
 				// 查询正在修理
@@ -112,7 +112,7 @@ public class BusinessBeanServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				// 将jsonString返回到页面
 				out.print(jsonString);
-				System.out.println(jsonString);
+				
 				// 释放资源
 				out.close();
 				// 查询修理失败
@@ -132,7 +132,7 @@ public class BusinessBeanServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				// 将jsonString返回到页面
 				out.print(jsonString);
-				System.out.println(jsonString);
+				
 				// 释放资源
 				out.close();
 			}

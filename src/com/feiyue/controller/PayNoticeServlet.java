@@ -62,7 +62,7 @@ public class PayNoticeServlet extends HttpServlet {
 			 if ("".equals(op)) {
 				// 使用Gson对象
 				Gson gson = new Gson();
-				System.out.println(123);
+				
 				// 得到费用信息
 				List<PayNoticeBean> list = pnsi.getPayNotice();
 
@@ -75,7 +75,7 @@ public class PayNoticeServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				// 输出jsonStr
 				out.print(jsonStr);
-				System.out.println("[jsonStr]:" + jsonStr);
+				
 				// 关闭
 				out.close();
 			}//页面加载时得到数据库中的所有费用通知记录 

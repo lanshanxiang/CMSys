@@ -73,7 +73,7 @@ public class ManagerServlet extends HttpServlet {
 			} else {
 				//1 登录成功，需要将用户登录的信息存储在session中.
 				//HttpSession session=request.getSession();
-				System.out.println(111);
+				
 				request.getSession().setAttribute("users", m);
 				//将用户登录的信息存储在cookie
 				Cookie  cookie =new Cookie("userName",m.getmName());

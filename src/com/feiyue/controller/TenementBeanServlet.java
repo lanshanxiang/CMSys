@@ -182,7 +182,7 @@ public class TenementBeanServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 
 				out.print(jsonString);
-				System.out.println("[jsonString] :" + jsonString);
+				
 
 				out.close();
 			}//得到状态为审核失败的住户 
@@ -201,7 +201,7 @@ public class TenementBeanServlet extends HttpServlet {
 				PrintWriter out = response.getWriter();
 
 				out.print(jsonString);
-				System.out.println("[jsonString] :" + jsonString);
+			
 
 				out.close();
 			}//得到状态为已迁入的用户列表
