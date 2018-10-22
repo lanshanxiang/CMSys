@@ -28,7 +28,6 @@ public class FrontComplainServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	@Override
 	public FrontComplainServlet() {
 		super();
 		// TODO Auto-generated constructor stub
